@@ -1,0 +1,34 @@
+<component name="libraryTable">
+  <library name="test1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project22.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project2.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project14.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project18.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project7.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project3.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project21.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project13.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project12.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project26.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project17.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project4.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project25.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project8.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project16.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project11.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project24.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project5.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project20.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project9.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project23.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project15.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project10.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project1.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project19.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JSprotect/out/artifacts/JSprotect_war_exploded/Projects/test/Project6.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
