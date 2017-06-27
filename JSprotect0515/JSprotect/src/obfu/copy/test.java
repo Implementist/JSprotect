@@ -50,7 +50,6 @@ public class test {
         return new String(str);
     }
 
-
     //是否控制流平展，阈值，case大小，大数组加壳，计算式混淆，计算式混淆参数，属性名，处理数字，处理字符串
     public void protect(int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, int IsNum, int IsString, String path, String FilePath, String fileName, String projectId, String user) {
         //public static void main(String[] args)throws IOException{
@@ -97,18 +96,18 @@ public class test {
             Nnode = cfunc.createfunction(Nnode, KeyWord, Shell, IIS, IsNum, IsString);
             testpage test = new testpage();
             test.testt(Nnode, NodeList);
-            File protectedProjectPath = new File("C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps\\ROOT\\Projects\\" + user);
+            File protectedProjectPath = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user));
             if (!protectedProjectPath.exists())
                 protectedProjectPath.mkdir();
-            System.out.println("C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps\\ROOT\\Projects\\" + user + "\\" + projectId + "\\" + projectId + fileName + "====----====");
-            File protectedProjectPath2 = new File("C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps\\ROOT\\Projects\\" + user + "\\" + projectId);
+            System.out.println(FileUtils.getWholeFileName(projectId + fileName + "====----====", FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
+            File protectedProjectPath2 = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
             if (!protectedProjectPath2.exists())
                 protectedProjectPath2.mkdirs();
 
-            File dir = new File("C:" + File.separator + "Projects" + File.separator + user + File.separator + projectId);
+            File dir = new File(FileUtils.getWholeDirectory(FileUtils.C_PROJECTS_FOLDER, user, projectId));
             dir.mkdirs();
 
-            FileWriter fw = new FileWriter("C:" + File.separator + "Projects" + File.separator + user + File.separator + projectId + File.separator + projectId + fileName);
+            FileWriter fw = new FileWriter(FileUtils.getWholeFileName(projectId + fileName, FileUtils.C_PROJECTS_FOLDER, user, projectId));
             String str = Nnode.toSource();
             if (IIS == 1) {
                 str = str.replace("\\\\x", "\\x");
@@ -119,116 +118,12 @@ public class test {
             fw.flush();
             fw.close();
             compress comp = new compress();
-            comp.compress("C:" + File.separator + "Projects" + File.separator + user + File.separator + projectId + File.separator + projectId + fileName);
-            moveFile("C:" + File.separator + "Projects" + File.separator + user + File.separator + projectId,
-                    "C:" + File.separator + "Program Files" + File.separator + "Apache Software Foundation" + File.separator + "Tomcat 7.0" + File.separator + "webapps" + File.separator + "ROOT" + File.separator + "Projects" + File.separator + user + File.separator + projectId);
+            comp.compress(FileUtils.getWholeFileName(projectId + fileName, FileUtils.C_PROJECTS_FOLDER, user, projectId));
+
+            FileUtils.moveFile(FileUtils.getWholeDirectory(FileUtils.C_PROJECTS_FOLDER, user, projectId),
+                    FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
         } catch (IOException ee) {
             System.out.println(ee.toString());
-        }
-    }
-
-    private void moveFile(String source, String target) {
-        copyFolder(source,  target);
-        delFolder(source);
-    }
-
-    /**
-     *  复制整个文件夹内容
-     *  @param  oldPath  String  原文件路径  如：c:/fqf
-     *  @param  newPath  String  复制后路径  如：f:/fqf/ff
-     *  @return  boolean
-     */
-    public  void  copyFolder(String  oldPath,  String  newPath)  {
-
-        try  {
-            (new  File(newPath)).mkdirs();  //如果文件夹不存在  则建立新文件夹
-            File  a=new  File(oldPath);
-            String[]  file=a.list();
-            File  temp=null;
-            for  (int  i  =  0;  i  <  file.length;  i++)  {
-                if(oldPath.endsWith(File.separator)){
-                    temp=new  File(oldPath+file[i]);
-                }
-                else{
-                    temp=new  File(oldPath+File.separator+file[i]);
-                }
-
-                if(temp.isFile()){
-                    FileInputStream  input  =  new  FileInputStream(temp);
-                    FileOutputStream  output  =  new  FileOutputStream(newPath  +  "/"  +
-                            (temp.getName()).toString());
-                    byte[]  b  =  new  byte[1024  *  5];
-                    int  len;
-                    while  (  (len  =  input.read(b))  !=  -1)  {
-                        output.write(b,  0,  len);
-                    }
-                    output.flush();
-                    output.close();
-                    input.close();
-                }
-                if(temp.isDirectory()){//如果是子文件夹
-                    copyFolder(oldPath+"/"+file[i],newPath+"/"+file[i]);
-                }
-            }
-        }
-        catch  (Exception  e)  {
-            System.out.println("复制整个文件夹内容操作出错");
-            e.printStackTrace();
-
-        }
-
-    }
-
-    /**
-     *  删除文件夹
-     *  @param folderPath 文件夹路径
-     *  @return  是否删除成功
-     */
-    public  void  delFolder(String  folderPath)  {
-        try  {
-            delAllFile(folderPath);  //删除完里面所有内容
-            String  filePath  =  folderPath;
-            filePath  =  filePath.toString();
-            java.io.File  myFilePath  =  new  java.io.File(filePath);
-            myFilePath.delete();  //删除空文件夹
-
-        }
-        catch  (Exception  e)  {
-            System.out.println("删除文件夹操作出错");
-            e.printStackTrace();
-
-        }
-
-    }
-
-    /**
-     *  删除文件夹里面的所有文件
-     *  @param  path  String  文件夹路径  如  c:/fqf
-     */
-    public  void  delAllFile(String  path)  {
-        File  file  =  new  File(path);
-        if  (!file.exists())  {
-            return;
-        }
-        if  (!file.isDirectory())  {
-            return;
-        }
-        String[]  tempList  =  file.list();
-        File  temp  =  null;
-        for  (int  i  =  0;  i  <  tempList.length;  i++)  {
-            if  (path.endsWith(File.separator))  {
-                temp  =  new  File(path  +  tempList[i]);
-            }
-            else  {
-                temp  =  new  File(path  +  File.separator  +  tempList[i]);
-            }
-            if  (temp.isFile())  {
-                temp.delete();
-            }
-            if  (temp.isDirectory())  {
-                delAllFile(path+"/"+  tempList[i]);//先删除文件夹里面的文件
-                delFolder(path+"/"+  tempList[i]);//再删除空文件夹
-            }
         }
     }
 }
