@@ -97,8 +97,12 @@
                     } else if (fi.getFieldName().equals("txtBlockSize")) {
                         blockSize = Integer.parseInt(fi.getString());
                         System.out.println(blockSize);
-                    } else if (fi.getFieldName().equals("chbStringAndNumber")) {
+                    }
+                    //TODO: The following two cases should be deleted later.
+                    else if (fi.getFieldName().equals("chbStringAndNumber")) {
                         stringAndNumber = fi.getString().equals("checked") ? 1 : 0;
+                        number = stringAndNumber;
+                        string = 0;
                         System.out.println(stringAndNumber);
                     } else if (fi.getFieldName().equals("chbString")) {
                         string = fi.getString().equals("checked") ? 1 : 0;
@@ -112,7 +116,6 @@
                     }
                 } else {
                     String fileName = fi.getName();
-                    //System.out.println("askhafdkuaqhdkahshfqwhkuhqkuhdqhdasbda");
                     // 写入文件
                     if (fileName.lastIndexOf("\\") >= 0) {
                         file = new File(filePath,
@@ -124,8 +127,6 @@
                                         .lastIndexOf("\\") + 1));
                     }
                     fi.write(file);
-                    //System.out.print("hahsdjkhjkshj");
-
                     System.out.println("Uploaded Filename:" + filePath + fileName);
 
                     // 生成该用户的ProjectId
