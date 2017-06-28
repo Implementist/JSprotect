@@ -67,8 +67,32 @@
                         <div class="ui grid">
                             <div class="column">
                                 <iframe id="hidden_frame" name="hidden_frame" style="display:none"></iframe>
-                                <form id="form1" style="margin: 0 auto;" action="doUpload.jsp" method="post" enctype="multipart/form-data" target="hidden_frame">
-                                    <legend style="margin-bottom:50px;">Create New Project</legend>
+                                <form id="form1" style="margin: 0 auto;" action="doUpload.jsp" method="post"
+                                      enctype="multipart/form-data" target="hidden_frame">
+                                    <legend style="margin-bottom:50px;">
+                                        Create New Project
+                                        <img id="imgHelp" src="img/feedback.png"
+                                             style="width: 25px; height: 25px; margin-bottom: 5px; margin-left: 5px"
+                                             onmouseover="this.src='img/feedback_fill.png'; this.style.cursor='pointer'"
+                                             onmouseleave="this.src='img/feedback.png'"
+                                             onclick="confirm('操作说明:\n\n' +
+                                              '*框选计算式后可设置强度，范围[1~10]\n\n' +
+                                              '*框选控制流平展后可设置阈值和块大小\n' +
+                                              '        阈值表示触发平展的最低函数量,范围[1~10]\n' +
+                                              '        块大小表示平展分块的大小,范围[1~阈值-1]\n\n' +
+                                              '下面举例说明( 假定设置阈值和块大小分别为 5 和 3 )：\n' +
+                                              '平展前：\n' +
+                                              'function(){\n' +
+                                              '        节点一\n        节点二\n        节点三\n        节点四\n        节点五\n' +
+                                              '}\n\n' +
+                                              '平展后：\n' +
+                                              'switch(blockNumber){\n' +
+                                              '    case 0:\n        节点一\n        节点二\n        节点三\n    break;\n' +
+                                              '    case 1:\n        节点四\n        节点五\n    break;\n' +
+                                              '}\n' +
+                                              '注意：块大小应小于阈值！\n\n' +
+                                              '记得选择要上传的文件！')">
+                                    </legend>
                                     <div class="ui relaxed four column grid">
                                         <div class="column">
                                             <div class="ui basic segment">
@@ -76,7 +100,8 @@
                                                     <div class="ui checked checkbox">
                                                         <label>
                                                             <input name="chbBigArray" type="checkbox" tabindex="0"
-                                                                   value="unchecked" onchange="reverseValue(document.getElementsByName('chbBigArray')[0])">大数组加壳
+                                                                   value="unchecked"
+                                                                   onchange="reverseValue(document.getElementsByName('chbBigArray')[0])">大数组加壳
                                                         </label>
                                                     </div>
                                                 </div>
@@ -115,19 +140,18 @@
                                                 <div class="disabled field">
                                                     <label style="position: relative;left: 20px">阈值</label>
                                                     <div class="ui input">
-                                                        <input name="txtThresholdValue" type="text" value="0"
-                                                               readonly="readonly" style="width: 91px">
+                                                        <input name="txtThresholdValue" type="number" value="5"
+                                                               step="1" min="1" max="10"
+                                                               readonly="readonly" style="width: 91px"
+                                                               onmouseout="changeMaxValue()">
                                                     </div>
                                                 </div>
-                                                <div class="disabled field">
-                                                    <label style="position: relative;left: 20px">块大小</label>
-                                                    <div class="ui input">
-                                                        <input name="txtBlockSize" type="text" value="0"
-                                                               readonly="readonly" style="width: 91px"><br>
-                                                    </div>
-                                                    <div style="font-size: 12px">
-                                                        块大小应小于阈值
-                                                    </div>
+                                                <label style="position: relative;left: 20px">块大小</label>
+                                                <input name="txtBlockSize" type="number" value="4"
+                                                       step="1" min="1" max="4"
+                                                       readonly="readonly" style="width: 91px"><br>
+                                                <div style="font-size: 12px">
+                                                    块大小应小于阈值
                                                 </div>
                                             </div>
                                         </div>
@@ -138,21 +162,7 @@
                                                         <label>
                                                             <input name="chbStringAndNumber" type="checkbox"
                                                                    tabindex="0" value="unchecked"
-                                                                   onchange="setDisabledOfStringAndNumber()">字符串、数字处理
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="disabled field">
-                                                    <div class="ui checkbox">
-                                                        <label>
-                                                            <input name="chbString" type="checkbox" tabindex="0" value="unchecked"
-                                                                   disabled="disabled" onchange="reverseValue(document.getElementsByName('chbString')[0])">字符串
-                                                        </label>
-                                                    </div>
-                                                    <div class="ui checkbox">
-                                                        <label>
-                                                            <input name="chbNumber" type="checkbox" tabindex="0" value="unchecked"
-                                                                   disabled="disabled" onchange="reverseValue(document.getElementsByName('chbNumber')[0])">数字
+                                                                   onchange="reverseValue(document.getElementsByName('chbStringAndNumber')[0])">数字处理
                                                         </label>
                                                     </div>
                                                 </div>
@@ -161,7 +171,8 @@
                                                     <div class="ui checked checkbox">
                                                         <label>
                                                             <input name="chbParamName" type="checkbox" tabindex="0"
-                                                                   value="unchecked" onchange="reverseValue(document.getElementsByName('chbParamName')[0])">属性名
+                                                                   value="unchecked"
+                                                                   onchange="reverseValue(document.getElementsByName('chbParamName')[0])">属性名
                                                         </label>
                                                     </div>
                                                 </div>
@@ -170,7 +181,8 @@
                                     </div>
                                     <div class="row">
                                         <div style="text-align: center">
-                                            <input type="file" name="upfile" size="200" accept="application" id="filesubmit">&nbsp;&nbsp;
+                                            <input type="file" name="upfile" size="200" accept="application"
+                                                   id="filesubmit">&nbsp;&nbsp;
                                             <input type="submit" class="btn" value="Submit" id="btnsubmit">
                                         </div>
                                     </div>
