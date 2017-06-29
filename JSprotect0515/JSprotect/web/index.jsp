@@ -84,15 +84,13 @@
 
                         for (ProjectInfo projectInfo : projectInfos) {
                             //下载地址
-                            String downloadURLItem = "\"" + "Projects/" + (String) session.getAttribute("user") + "/" + projectInfo.getProjectId() + "/" + projectInfo.getProjectId() + projectInfo.getFileName().substring(0, projectInfo.getFileName().length() - 3) + "-min.js" + "\"";
+                            String downloadURLItem = "\"" + "Projects/" + (String) session.getAttribute("user") + "/" + projectInfo.getProjectId() + "/" + projectInfo.getFileName().substring(0, projectInfo.getFileName().length() - 3) + "-min.js" + "\"";
 
                             out.print("<tr>");
                             out.print("<td>" + projectInfo.getProjectId() + "</td>");
                             out.print("<td>" + projectInfo.getDate() + "</td>");
 
-                            System.out.println("AAASSSDDD: " + projectInfo.getFileName());
-
-                            out.print("<td> <a href=" + downloadURLItem + " download=" + "\"" + projectInfo.getProjectId() + projectInfo.getFileName().substring(0, projectInfo.getFileName().length() - 3) + "-min.js" + "\"" + ">" + projectInfo.getProjectId() + projectInfo.getFileName() + "</a></td>");
+                            out.print("<td> <a href=" + downloadURLItem + " download=" + "\"" + projectInfo.getFileName().substring(0, projectInfo.getFileName().length() - 3) + "-min.js" + "\"" + ">" + projectInfo.getFileName() + "</a></td>");
                             if (projectInfo.getRunnable())
                                 out.print("<td> <input type=\"checkbox\" checked=\"checked\" onclick=\"updateRunnable('" + session.getAttribute("user") + "\',\'" + projectInfo.getProjectId() + "')\"></td>");
                             else
