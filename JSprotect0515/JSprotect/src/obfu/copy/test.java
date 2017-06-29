@@ -99,15 +99,15 @@ public class test {
             File protectedProjectPath = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user));
             if (!protectedProjectPath.exists())
                 protectedProjectPath.mkdir();
-            System.out.println(FileUtils.getWholeFileName(projectId + fileName + "====----====", FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
+            System.out.println(FileUtils.getWholeFileName(fileName + "====----====", FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
             File protectedProjectPath2 = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
             if (!protectedProjectPath2.exists())
                 protectedProjectPath2.mkdirs();
 
-            File dir = new File(FileUtils.getWholeDirectory(FileUtils.C_PROJECTS_FOLDER, user, projectId));
+            File dir = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
             dir.mkdirs();
 
-            FileWriter fw = new FileWriter(FileUtils.getWholeFileName(projectId + fileName, FileUtils.C_PROJECTS_FOLDER, user, projectId));
+            FileWriter fw = new FileWriter(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
             String str = Nnode.toSource();
             if (IIS == 1) {
                 str = str.replace("\\\\x", "\\x");
@@ -118,10 +118,7 @@ public class test {
             fw.flush();
             fw.close();
             compress comp = new compress();
-            comp.compress(FileUtils.getWholeFileName(projectId + fileName, FileUtils.C_PROJECTS_FOLDER, user, projectId));
-
-            FileUtils.moveFile(FileUtils.getWholeDirectory(FileUtils.C_PROJECTS_FOLDER, user, projectId),
-                    FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
+            comp.compress(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
         } catch (IOException ee) {
             System.out.println(ee.toString());
         }
