@@ -19,7 +19,6 @@ local.properties
 *.log
 
 # Intellij
-*.iml
 .idea/workspace.xml
 
 # Keystore files
