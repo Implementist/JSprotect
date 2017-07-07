@@ -42,7 +42,7 @@ public class createfunc {
 			Assignment NewAss=new Assignment();
 			Name AName=new Name();
 			//AName.setIdentifier((char)('a'+i)+"");
-			AName.setIdentifier("a"+i);
+			AName.setIdentifier("NislArgu"+i);
 			NameStr.add(AName.toSource());
 			MuMap.put(AName.toSource(), NameStr);
 			NewAss.setLeftAndRight(NameLists.get(0),AName);
@@ -190,7 +190,7 @@ public class createfunc {
 				Array.add(elem);
 				Name eleName=new Name();
 				//ArrayList<String> NameStr=MuMap.get((char)('a'+i)+"");
-				ArrayList<String> NameStr=MuMap.get("a"+i);
+				ArrayList<String> NameStr=MuMap.get("NislArgu"+i);
 				eleName.setIdentifier(NameStr.get(random.nextInt(NameStr.size())));
 				NumberLiteral num=new NumberLiteral();
 				num.setValue(""+j);
@@ -386,7 +386,7 @@ public class createfunc {
 				AstNode elem=(AstNode)Ass.clone();
 				Array.add(elem);
 				Name eleName=new Name();
-				ArrayList<String> NameStr=MuMap.get("a"+i);
+				ArrayList<String> NameStr=MuMap.get("NislArgu"+i);
 				eleName.setIdentifier(NameStr.get(random.nextInt(NameStr.size())));
 				NumberLiteral num=new NumberLiteral();
 				num.setValue(""+j);
@@ -551,7 +551,7 @@ public class createfunc {
 			for(int i=0;i<4;i++){
 				Name arguName=new Name();
 				//arguName.setIdentifier(""+(char)('a'+i));
-				arguName.setIdentifier("a"+i);
+				arguName.setIdentifier("NislArgu"+i);
 				Argu1.add(arguName);
 			}
 			ArrayList<AstNode> Body=new ArrayList<AstNode>();

@@ -73,7 +73,7 @@
             out.println("<title>JSP File upload</title>");
             out.println("</head>");
             out.println("<body>");
-            int bigArray = 0, calculate = 0, strength = 0, cff = 0, thresholdValue = 0, blockSize = 0, stringAndNumber = 0, string = 0, number = 0, paramName = 0;
+            int bigArray = 0, calculate = 0, strength = 0, cff = 0, thresholdValue = 0, blockSize = 0, numberHandling = 0, paramName = 0;
             while (i.hasNext()) {
                 // 获取上传文件的参数
                 FileItem fi = (FileItem) i.next();
@@ -100,16 +100,8 @@
                     }
                     //TODO: The following two cases should be deleted later.
                     else if (fi.getFieldName().equals("chbStringAndNumber")) {
-                        stringAndNumber = fi.getString().equals("checked") ? 1 : 0;
-                        number = stringAndNumber;
-                        string = 0;
-                        System.out.println(stringAndNumber);
-                    } else if (fi.getFieldName().equals("chbString")) {
-                        string = fi.getString().equals("checked") ? 1 : 0;
-                        System.out.println(string);
-                    } else if (fi.getFieldName().equals("chbNumber")) {
-                        number = fi.getString().equals("checked") ? 1 : 0;
-                        System.out.println(number);
+                        numberHandling = fi.getString().equals("checked") ? 1 : 0;
+                        System.out.println(numberHandling);
                     } else if (fi.getFieldName().equals("chbParamName")) {
                         paramName = fi.getString().equals("checked") ? 1 : 0;
                         System.out.println(paramName);
@@ -183,7 +175,7 @@
                     test ntest = new test();
                     //System.out.println("/////////"+"fp"+filePath+RName);
                     System.out.println(filePath + "KKKLLLL" + fileName);
-                    ntest.protect(cff, thresholdValue, blockSize, bigArray, calculate, strength, paramName, stringAndNumber, number, string, filePath + fileName, filePath, fileName, projectId, (String) session.getAttribute("user"));
+                    ntest.protect(cff, thresholdValue, blockSize, bigArray, calculate, strength, paramName, numberHandling, filePath + fileName, filePath, fileName, projectId, (String) session.getAttribute("user"));
 
                     //TryYUI.compress(filePath+fileName);
                     //此部分为混淆强度设置
