@@ -1,4 +1,5 @@
 package obfu.copy;
+
 import org.mozilla.javascript.ast.AstNode;
 
 import java.util.*;
@@ -12,6 +13,7 @@ public class DataTrees implements Cloneable{
 	private ArrayList<String> Params;
 	private Set<String> OtherNames;//在一个函数内所有非声明的变量名
 	private Map<String,ArrayList<AstNode>> VariablesNames;//声明变量和新名字的匹配
+	private ArrayList<String> VariablesNamesList;//数组记录变量名（主要是为了维持原本的声明顺序）
 	private ArrayList<DataTrees> Children;//记录函数内部新的函数
 	private DataTrees father;//记录父节点
 	private Random random;
@@ -23,6 +25,7 @@ public class DataTrees implements Cloneable{
 		this.FuName=new HashSet<String>();
 		this.SumNames=new HashSet<String>();
 		this.VariablesNames=new HashMap<String,ArrayList<AstNode>>();
+		this.VariablesNamesList=new ArrayList<String>();
 		this.OtherNames=new HashSet<String>();
 		this.Children=new ArrayList<DataTrees>();
 		this.father=father;
@@ -85,17 +88,53 @@ public class DataTrees implements Cloneable{
 	}
 	
 	
-	public void addData(String name){//先插入声明的结点
-		this.VariablesNames.put(name, null);
+	
+	public ArrayList<String> getVariablesNamesList(){
+		return this.VariablesNamesList;
 	}
 	
-	public void showPara(){
-		Iterator it=Params.iterator();
-		System.out.println("(");
-		while(it.hasNext()){
-			System.out.print(it.next());
+	
+	public void addData(String name){//先插入声明的结点
+		this.VariablesNames.put(name, null);
+		this.VariablesNamesList.add(name);
+	}
+	
+	
+	
+	public ArrayList<AstNode> getNames_f(String name){
+		if(CheckData(name)){
+			ArrayList<AstNode> tmpList=VariablesNames.get(name);
+			return tmpList;
 		}
-		System.out.println(")");
+		DataTrees father=this.father;
+		if(father==null)return null;
+		while(true){
+			while(!father.CheckData(name)){
+				father=father.getFather();
+				if(father==null)
+					return null;
+			}
+			ArrayList tmpNames=father.getNames_f(name);
+			return tmpNames;
+		}
+	}
+	
+	public AstNode getRandomName_f(String name){
+		if(CheckData(name)){
+			ArrayList<AstNode> tmpList=this.VariablesNames.get(name);
+			return tmpList.get(this.random.nextInt(tmpList.size()));
+		}
+		DataTrees father=this.father;
+		if(father==null)return null;
+		while(true){
+			while(!father.CheckData(name)){
+				father=father.getFather();
+				if(father==null)
+					return null;
+			}
+			AstNode ResName=father.getRandomName_f(name);
+			return ResName;
+		}
 	}
 	
 	public ArrayList<AstNode> getNames(String name){
@@ -150,28 +189,12 @@ public class DataTrees implements Cloneable{
 		DataTrees NewTree=null;
 		try{
 			NewTree=(DataTrees)super.clone();
-			/*if(this.father!=null)NewTree.father=(DataTrees)this.father.clone();
-			else NewTree.father=null;
-			NewTree.Children=new ArrayList<DataTrees>();
-			for(int i=0;i<Children.size();i++){
-				DataTrees DT=(DataTrees)Children.get(i).clone();
-				NewTree.Children.add(DT);
-			}
-			NewTree.VariablesNames=new HashMap<String,ArrayList<AstNode>>();
-			Iterator it=VariablesNames.keySet().iterator();
-			while(it.hasNext()){
-				String str=(String)it.next();
-				ArrayList<AstNode>Names=new ArrayList<AstNode>();
-				for(int i=0;i<3;i++){
-					Names.add((AstNode)VariablesNames.get(str).get(i).clone());
-				}
-				NewTree.VariablesNames.put(str, Names);
-			}*/
 		}catch(CloneNotSupportedException e){
 			e.printStackTrace();
 		}
 		return NewTree;
 	}
+	
 	
 	public void ShowAllName(DataTrees Node){
 		System.out.printf("(");
@@ -187,6 +210,25 @@ public class DataTrees implements Cloneable{
 	
 	
 	
+	public void ShowTree_f(DataTrees Node){
+		System.out.printf("(");
+		Iterator it=Node.GetVarKeySet().iterator();
+		while(it.hasNext()){
+			String tmp=(String)it.next();
+			ArrayList<AstNode> tmpList=Node.getNames_f(tmp);
+			System.out.printf("%s ",tmp);
+			//System.out.printf("[");
+			//for(int i=0;i<tmpList.size();i++)
+				//System.out.printf("%s ",tmpList.get(i).toSource());
+			//System.out.printf("] ");
+		}
+		ArrayList<DataTrees> tmpChildren=Node.getChildren();
+		for(int i=0;i<tmpChildren.size();i++)
+			ShowTree(tmpChildren.get(i));
+		System.out.printf(")  ");
+	}
+	
+	
 	public void ShowTree(DataTrees Node){
 		System.out.printf("(");
 		Iterator it=Node.GetVarKeySet().iterator();
@@ -196,7 +238,7 @@ public class DataTrees implements Cloneable{
 			System.out.printf("%s ",tmp);
 			//System.out.printf("[");
 			//for(int i=0;i<tmpList.size();i++)
-			//	System.out.printf("%s ",tmpList.get(i).toSource());
+				//System.out.printf("%s ",tmpList.get(i).toSource());
 			//System.out.printf("] ");
 		}
 		ArrayList<DataTrees> tmpChildren=Node.getChildren();

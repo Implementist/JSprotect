@@ -51,7 +51,7 @@ public class test {
     }
 
     //是否控制流平展，阈值，case大小，大数组加壳，计算式混淆，计算式混淆参数，属性名，处理数字，处理字符串
-    public void protect(int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, int IsNum, int IsString, String path, String FilePath, String fileName, String projectId, String user) {
+    public void protect(int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, String projectId, String user) {
         //public static void main(String[] args)throws IOException{
         try {
             //D:\个人\js前端相关\JSprotect0515\JSprotect\src\obfu\copy
@@ -93,7 +93,7 @@ public class test {
                 fla.flattencontrol(Nnode, stand, eachcase);
             }
             createfunc cfunc = new createfunc();
-            Nnode = cfunc.createfunction(Nnode, KeyWord, Shell, IIS, IsNum, IsString);
+            Nnode = cfunc.createfunction(Nnode, KeyWord, Shell, IIS,IIS, 0);
             testpage test = new testpage();
             test.testt(Nnode, NodeList);
             File protectedProjectPath = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user));
@@ -109,10 +109,6 @@ public class test {
 
             FileWriter fw = new FileWriter(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
             String str = Nnode.toSource();
-            if (IIS == 1) {
-                str = str.replace("\\\\x", "\\x");
-                str = DealStr(str);
-            }
             //System.out.println(str);
             fw.write(str);
             fw.flush();

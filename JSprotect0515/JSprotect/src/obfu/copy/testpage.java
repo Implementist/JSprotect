@@ -1,49 +1,8 @@
 package obfu.copy;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
-import java.util.Random;
 
-import org.mozilla.javascript.Node;
-import org.mozilla.javascript.Token;
-import org.mozilla.javascript.ast.ArrayLiteral;
-import org.mozilla.javascript.ast.Assignment;
-import org.mozilla.javascript.ast.AstNode;
-import org.mozilla.javascript.ast.AstRoot;
-import org.mozilla.javascript.ast.ConditionalExpression;
-import org.mozilla.javascript.ast.ContinueStatement;
-import org.mozilla.javascript.ast.ElementGet;
-import org.mozilla.javascript.ast.ForInLoop;
-import org.mozilla.javascript.ast.FunctionCall;
-import org.mozilla.javascript.ast.FunctionNode;
-import org.mozilla.javascript.ast.InfixExpression;
-import org.mozilla.javascript.ast.KeywordLiteral;
-import org.mozilla.javascript.ast.Loop;
-import org.mozilla.javascript.ast.Name;
-import org.mozilla.javascript.ast.ExpressionStatement;
-import org.mozilla.javascript.ast.NewExpression;
-import org.mozilla.javascript.ast.NodeVisitor;
-import org.mozilla.javascript.ast.NumberLiteral;
-import org.mozilla.javascript.ast.ObjectLiteral;
-import org.mozilla.javascript.ast.ObjectProperty;
-import org.mozilla.javascript.ast.ParenthesizedExpression;
-import org.mozilla.javascript.ast.PropertyGet;
-import org.mozilla.javascript.ast.RegExpLiteral;
-import org.mozilla.javascript.ast.StringLiteral;
-import org.mozilla.javascript.ast.SwitchCase;
-import org.mozilla.javascript.ast.UnaryExpression;
-import org.mozilla.javascript.ast.VariableDeclaration;
-import org.mozilla.javascript.ast.VariableInitializer;
-import org.mozilla.javascript.ast.IfStatement;
-import org.mozilla.javascript.ast.ForLoop;
-import org.mozilla.javascript.ast.ReturnStatement;
-import org.mozilla.javascript.ast.WhileLoop;
-import org.mozilla.javascript.ast.SwitchStatement;
+import org.mozilla.javascript.ast.*;
+
+import java.util.*;
 
 
 //函数形式声明对象会出错
@@ -72,12 +31,10 @@ public class testpage {
 	private ArrayList<String>   twos;
 	private ArrayList<String>   threes;
 	private ArrayList<String> Names=new ArrayList<String>();
-	private int total=203000;
+	private int total=203140;
 	private Random random;
 	testpage(){
 		this.initVariablesPool();
-		//for(int i=0;i<15;i++)
-		//	System.out.printf(" "+Names.get(i));
         this.random=new Random();
 	}
 	
@@ -88,6 +45,7 @@ public class testpage {
             ones.add(Character.toString(c));
         for (char c = 'A'; c <= 'Z'; c++)
             ones.add(Character.toString(c));
+        ones.add("_");
         twos = new ArrayList<String>();
         for (int i = 0; i < ones.size(); i++) {
             String one = ones.get(i);
@@ -108,22 +66,12 @@ public class testpage {
             for (char c = '0'; c <= '9'; c++)
                 threes.add(two + Character.toString(c));
         }
-        ones.remove("a");
-        ones.remove("b");
-        ones.remove("c");
-        ones.remove("d");
-        ones.remove("m");
-        ones.remove("n");
         twos.remove("as");
         twos.remove("is");
         twos.remove("do");
         twos.remove("if");
         twos.remove("in");
         twos.remove("of");
-        twos.remove("a1");
-        twos.remove("a2");
-        twos.remove("a3");
-        twos.remove("a0");
         threes.remove("for");
         threes.remove("int");
         threes.remove("new");
@@ -201,7 +149,9 @@ public class testpage {
 				if(parent instanceof FunctionNode){
 					List<AstNode>Params=((FunctionNode) parent).getParams();
 					for(int j=0;j<Params.size();j++){
-						scopeData.addParams(Params.get(j).toSource());
+						if(!Params.get(j).toSource().contains("NislArgu"))
+							scopeData.addParams(Params.get(j).toSource());
+						scopeData.addData(Params.get(j).toSource());
 					}
 					//AstNode FunName=((FunctionNode) parent).getFunctionName();
 					//if(FunName!=null)scopeData.addParams(((FunctionNode) parent).getFunctionName().toSource());
@@ -217,17 +167,19 @@ public class testpage {
 			}else if(node instanceof Name){
 				scopeData.AddOtherNames(node.toSource());
 				if(node.getParent() instanceof VariableInitializer){
-					//System.out.println(node.getParent().toSource());
 					AstNode tmp=node.getParent();
 					AstNode tmpP=tmp.getParent();
-					//System.out.println(tmpP.toSource()+" "+tmpP.getClass());
-					if(((VariableInitializer)tmp).getInitializer()!=node){//&&((VariableDeclaration)tmpP).isStatement()
-							//if(!node.toSource().equals("$"))
+					if(((VariableInitializer)tmp).getInitializer()!=node){
 								scopeData.addData(node.toSource());
 					}
 				}else if(node.getParent() instanceof ElementGet){
 					if(((ElementGet)node.getParent()).getTarget().toSource().equals("window")&&!node.toSource().equals("window"))
 						VarNode.add(node);
+				}else if(node.getParent() instanceof FunctionNode){
+					AstNode FunctionName=((FunctionNode)node.getParent()).getFunctionName();
+					if(FunctionName!=null&&FunctionName==node){
+						scopeData.addData(node.toSource());
+					}
 				}
 			}
 			return true;
@@ -267,7 +219,7 @@ public class testpage {
 			for(int i=0;i<NewNames.size();i++)
 				scopeData.AddOtherNames(NewNames.get(i));
 		}
-		Iterator it=scopeData.GetVarKeySet().iterator();
+		/*Iterator it=scopeData.GetVarKeySet().iterator();
 		while(it.hasNext()){
 			String Str=(String)it.next();
 			ArrayList<AstNode>Names=null;
@@ -293,8 +245,35 @@ public class testpage {
 			for(int i=0;i<Names.size();i++){
 				scopeData.AddOtherNames(Names.get(i).toSource());
 			}
+		}*/
+		ArrayList<String> VariableNameList=scopeData.getVariablesNamesList();
+		for(int k=0;k<VariableNameList.size();k++){
+			String Str=VariableNameList.get(k);
+			ArrayList<AstNode>Names=null;
+				if(Str.equals("$")){
+					System.out.println(Str+"adadada");
+					Name SpeName=new Name();
+					SpeName.setIdentifier("$");
+					ArrayList<AstNode> Namess=new ArrayList<AstNode>();
+					Namess.add(SpeName);
+					Names=Namess;
+				}else{
+					if(FunName.contains(Str)){
+						Name tmp=new Name();
+						tmp.setIdentifier(Str);
+						ArrayList<AstNode>tmps=new ArrayList<AstNode>();
+						tmps.add(tmp);
+						Names=tmps;
+					}else
+						Names=GetThreeName(scopeData,scopeData.GetSumNames(),1);
+				}
+			scopeData.addThreeNames(Str, Names);
+			for(int i=0;i<Names.size();i++){
+				scopeData.AddOtherNames(Names.get(i).toSource());
+			}
 		}
 		ArrayList<DataTrees> Children=scopeData.getChildren();
+		System.out.println(Children.size());
 		for(int i=0;i<Children.size();i++)
 			DealFirstTree(Children.get(i));
 	}
@@ -307,33 +286,18 @@ public class testpage {
 	}
 	
 	
-	class BuildTree implements NodeVisitor{
-		public boolean visit(AstNode node){
-			if(node instanceof StringLiteral&&((StringLiteral) node).getValue().equals("start flag")){
-				DataTrees ChildScope=new DataTrees(scopeData);
-				scopeData.addChild(ChildScope);
-				scopeData=ChildScope;
-			}
-			if(node instanceof StringLiteral&&((StringLiteral) node).getValue().equals("end flag")){
-				scopeData=scopeData.getFather();
-			}
-			if(node instanceof Name){
-				if(node.getParent() instanceof VariableInitializer){
-					AstNode tmp=node.getParent();
-					if(((VariableInitializer)tmp).getInitializer()!=node){
-						//ArrayList<AstNode>tmpNames=GetThreeName(3);
-						//scopeData.addData(node.toSource(), tmpNames);
-					}
-				}
-			}
-			
-			return true;
-		}
-	}
-	
 	class MultiVar implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof StringLiteral&&((StringLiteral) node).getValue().equals("start flag")){
+				AstNode parent=node.getParent().getParent();
+				if(parent instanceof FunctionNode){
+					List<AstNode> Params=((FunctionNode) parent).getParams();
+					if(Params.size()==4){
+						for(int j=0;j<Params.size();j++)
+							if(Params.get(j).toSource().equals("NislArgu"+j))
+								((Name)Params.get(j)).setIdentifier(NislArgu.get(j).toSource());
+					}
+				}
 				int oldScopeNum=scopeNum.pop();
 				scopeNum.push(oldScopeNum+1);
 				scopeNum.push(0);
@@ -347,10 +311,8 @@ public class testpage {
 				if(node.getParent() instanceof VariableInitializer){
 					AstNode tmp=node.getParent();
 					if(((VariableInitializer)tmp).getInitializer()!=node){
-						//System.out.println(node.toSource()+" "+node.getParent().toSource());
 						VarToScope.put(node, (DataTrees)scopeData.clone());
 					}else{
-						//System.out.println(node.toSource()+" "+node.getParent().toSource());
 						VarRToScope.put(node, (DataTrees)scopeData.clone());
 					}
 				}else if(node.getParent() instanceof Assignment){
@@ -359,7 +321,6 @@ public class testpage {
 					else
 						AssToScope.put(node,(DataTrees)scopeData.clone());
 				}else {
-					//System.out.println(node.getParent().getClass());
 					NameToScope.put(node,(DataTrees)scopeData.clone());
 				}
 			}
@@ -464,112 +425,6 @@ public class testpage {
 		}
 	}
 	
-	
-	private ArrayList<AstNode> SuP=new ArrayList<AstNode>();
-	private void DealVarToScope3(){
-		Iterator it=VarToScope.keySet().iterator();
-		while(it.hasNext()){
-			AstNode Name=(AstNode)it.next();
-			//System.out.println(Name.toSource());
-			DataTrees DT=VarToScope.get(Name);
-			VariableInitializer parent=(VariableInitializer)Name.getParent();
-			VariableDeclaration Suparent=(VariableDeclaration)parent.getParent();
-			boolean IsStatement=Suparent.isStatement();
-			if(IsStatement){//判断是否是独立语句
-				//System.out.println(Suparent.toSource());
-				List<VariableInitializer> InitList=Suparent.getVariables();
-				ArrayList<AstNode> Names=DT.getNames(Name.toSource());
-				List<VariableInitializer> NewInitList=new ArrayList<VariableInitializer>();
-				List<VariableInitializer> NewInitList2=new ArrayList<VariableInitializer>();
-				ArrayList<AstNode> NewExprList=new ArrayList<AstNode>();
-				for(int i=0;i<InitList.size();i++){
-					int flag=0;
-					if(InitList.get(i).getInitializer()==null&&InitList.get(i).getTarget().toSource().equals(Name.toSource())){
-						InitList.get(i).setTarget(Names.get(0));
-						Names.get(0).setParent(InitList.get(i));
-						Names.get(0).setRelative(InitList.get(i).getPosition());
-						for(int j=1;j<Names.size();j++){
-							VariableInitializer tmpInit=new VariableInitializer();
-							tmpInit.setTarget(Names.get(j));
-							Names.get(j).setParent(tmpInit);
-							Names.get(j).setRelative(tmpInit.getPosition());
-							NewInitList.add((VariableInitializer)tmpInit.clone());
-						}
-						for(int j=0;j<NewInitList.size();j++)
-							InitList.add(NewInitList.get(j));
-					}else if(InitList.get(i).getInitializer()!=null&&InitList.get(i).getTarget().toSource().equals(Name.toSource())){
-						AstNode Initc=(AstNode)InitList.get(i).getInitializer().clone();
-						if(Initc instanceof StringLiteral||Initc instanceof NumberLiteral||Initc instanceof RegExpLiteral||Initc instanceof KeywordLiteral||Initc instanceof Name)
-							flag=1;
-						Assignment tmpAss=null;
-						//System.out.println(Name.toSource());
-						if(Names==null)System.out.println("ook");
-						for(int j=0;j<Names.size();j++){
-							VariableInitializer tmpInit=new VariableInitializer();
-							//if(Names==null)System.out.println(Suparent.toSource());
-							tmpInit.setTarget((AstNode)Names.get(j).clone());
-							NewInitList2.add(tmpInit);
-							tmpAss=new Assignment();
-							AstNode tmpc=(AstNode)Names.get(j).clone();
-							tmpAss.setLeftAndRight(tmpc,Initc);
-							tmpAss.setOperator(Token.ASSIGN);
-							//System.out.println(tmpAss.toSource());
-							if(j==0&&flag==1)Params.add(tmpAss);
-							tmpc.setParent(tmpAss);
-							tmpc.setRelative(tmpAss.getPosition());
-							Initc.setParent(tmpAss);
-							Initc.setRelative(tmpAss.getPosition());
-							Initc=(AstNode)tmpAss;
-						}
-						ExpressionStatement Expr=new ExpressionStatement();
-						Expr.setExpression(tmpAss);
-						NewExprList.add(Expr);
-						VariableDeclaration NewVar=new VariableDeclaration();
-						NewVar.setVariables(NewInitList2);
-						NewVar.setIsStatement(true);
-						AstNode Parent=Suparent.getParent();
-						//if(Parent instanceof AstRoot)System.out.println(Suparent.toSource());
-						if(Parent==null)System.out.println("::"+Suparent.toSource());
-						//System.out.println(Suparent.toSource());
-						if(!(Parent instanceof SwitchCase)){
-							//if(Parent==null)System.out.println("::"+Suparent.toSource());
-							Parent.addChildBefore(NewVar, Suparent);
-							NewVar.setParent(Parent);
-							NewVar.setRelative(Parent.getPosition());
-							for(int k=0;k<NewExprList.size();k++){
-								Parent.addChildBefore(NewExprList.get(k), Suparent);
-								NewExprList.get(k).setParent(Parent);
-								NewExprList.get(k).setRelative(Parent.getPosition());
-							}
-							Parent.removeChild(Suparent);
-						}else{
-							List<AstNode> Statements=((SwitchCase)Parent).getStatements();
-							int j=0;
-							for(j=0;j<Statements.size();j++){
-								if(Statements.get(j).toSource().equals(Suparent.toSource())){
-									break;
-								}
-							}//插入顺序有问题 
-							for(int k=NewExprList.size()-1;k>=0;k--){
-								Statements.add(j,NewExprList.get(k));
-								NewExprList.get(k).setParent(Parent);
-								NewExprList.get(k).setRelative(Parent.getPosition());
-							}
-							Statements.add(j, NewVar);
-							NewVar.setParent(Parent);
-							NewVar.setRelative(Parent.getPosition());
-	
-	
-						}
-											//if(Parent==null)System.out.println(Suparent.toSource());
-						//else System.out.println(Parent.toSource()+" "+Parent.getClass());
-						//Parent.addChildAfter(NewVar, Suparent);
-					}
-				}
-			}
-		}
-	}
-	
 	private void DealVarToScope(){
 		Iterator it=VarToScope.keySet().iterator();
 		while(it.hasNext()){
@@ -633,8 +488,10 @@ public class testpage {
 			AstNode parent=Name.getParent();
 			if(parent instanceof FunctionNode){
 				List<AstNode> Params=((FunctionNode) parent).getParams();
-				if(Params.contains(Name))
-					continue;
+				for(int j=0;j<Params.size();j++){
+					AstNode tmpName=DT.getRandomName(Params.get(j).toSource());
+					if(tmpName!=null)((Name)Params.get(j)).setIdentifier(tmpName.toSource());
+				}
 				//System.out.println("baozha");
 			}else if(parent instanceof FunctionCall){
 				AstNode Tar=((FunctionCall) parent).getTarget();
@@ -645,8 +502,6 @@ public class testpage {
 				//System.out.println("ok");
 			}else{
 				AstNode tmpName=DT.getRandomName(Name.toSource());
-				if(tmpName!=null)
-				//System.out.println(Name.toSource()+" "+tmpName.toSource());
 				if(tmpName!=null){
 					((Name)Name).setIdentifier(tmpName.toSource());
 					//System.out.println("res:"+Name.toSource()+"  "+Name.getParent().getParent().toSource());
@@ -682,35 +537,37 @@ public class testpage {
 	//functioncall 参数提取父节点设置有问题。
 	ToElement ob =null;
 	AstNode Root=null;
+	
+	
+	ArrayList<AstNode> NislArgu=new ArrayList<AstNode>();
 	public void testt(AstNode node,ArrayList<AstNode> NodeList){
 		this.ob=ob;
 		Root=(AstNode)node.clone();
 		scopeNum.push(0);
 		node.visit(new InsertFlag());
-		Iterator it=ArguName.iterator();
+		/*Iterator it=ArguName.iterator();
 		while(it.hasNext()){
 			String name=(String)it.next();
-			//System.out.println(name);
-			Names.remove(name);
-		}
+			//Names.remove(name);
+		}*/
 		node.visit(new BuildFirstTree());
 		ArrageFirstTree(scopeData);
-		//scopeData.ShowTree(scopeData);
+		scopeData.ShowTree(scopeData);
 		DealFirstTree(scopeData);//给声明结点赋予三个新变量
 		//scopeData.ShowAllName(scopeData);
 		//DealVarName();
+		for(int i=0;i<4;i++){
+			AstNode tmp=scopeData.getChild(0).getRandomName("NislArgu"+i);
+			if(tmp!=null)NislArgu.add(tmp);
+		}
 		node.visit(new MultiVar());
 		DealVarRToScope();
 		DealVarToScope2();
-		for(int i=0;i<SuP.size();i++){
-			AstNode parent=SuP.get(i).getParent();
-			parent.removeChild(SuP.get(i));
-		}
 		DealAssToScope();
 		DealAssRToScope();
 		DealNameToScope();
 		DeleteFlag();
-		//scopeData.ShowTree(scopeData);
+		scopeData.ShowTree(scopeData);
 	}
 }
 //匿名函数中不适用，会出错
