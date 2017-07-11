@@ -101,7 +101,8 @@
                                                         <label>
                                                             <input name="chbBigArray" type="checkbox" tabindex="0"
                                                                    value="unchecked"
-                                                                   onchange="reverseValue(document.getElementsByName('chbBigArray')[0])"><h4>大数组加壳</h4>
+                                                                   onchange="reverseValue(document.getElementsByName('chbBigArray')[0])">
+                                                            <h4>大数组加壳</h4>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -111,7 +112,8 @@
                                                         <label>
                                                             <input name="chbComputation" type="checkbox" tabindex="0"
                                                                    value="unchecked"
-                                                                   onchange="setDisabledOfComputationParam()"><h4 style="letter-spacing:17px">计算式</h4>
+                                                                   onchange="setDisabledOfComputationParam()"><h4
+                                                                style="letter-spacing:17px">计算式</h4>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -133,7 +135,8 @@
                                                         <label>
                                                             <input name="chbControlFlowFlatten" type="checkbox"
                                                                    tabindex="0" value="unchecked"
-                                                                   onchange="setDisabledOfFlattenParams()"><h4>控制流平展</h4>
+                                                                   onchange="setDisabledOfFlattenParams()"><h4>
+                                                            控制流平展</h4>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -142,27 +145,30 @@
                                                     <div class="ui input">
                                                         <input name="txtThresholdValue" type="number" value="5"
                                                                step="1" min="1" max="10"
-                                                               readonly="readonly" style="width: 55px;position: relative;left: 55px;top: 10px"
+                                                               readonly="readonly"
+                                                               style="width: 55px;position: relative;left: 55px;top: 10px"
                                                                onmouseout="changeMaxValue()">
                                                     </div>
                                                 </div>
                                                 <label style="position: relative;left: 23px;top:42px">块大小</label>
                                                 <input name="txtBlockSize" type="number" value="4"
                                                        step="1" min="1" max="4"
-                                                       readonly="readonly" style="width: 43px;position: relative;top: 10px;left: 68px"><br>
+                                                       readonly="readonly"
+                                                       style="width: 43px;position: relative;top: 10px;left: 68px"><br>
                                                 <div style="font-size: 12px;position: relative;left: 17px">
                                                     (块大小应小于阈值)
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="column">
+                                        <div class="column" id="lastColumn">
                                             <div class="ui basic segment" style="position: relative;left: 104px">
                                                 <div class="field">
                                                     <div class="ui checkbox">
                                                         <label>
                                                             <input name="chbStringAndNumber" type="checkbox"
                                                                    tabindex="0" value="unchecked"
-                                                                   onchange="reverseValue(document.getElementsByName('chbStringAndNumber')[0])"><h4>数字处理</h4>
+                                                                   onchange="reverseValue(document.getElementsByName('chbStringAndNumber')[0])">
+                                                            <h4>数字处理</h4>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -172,10 +178,22 @@
                                                         <label>
                                                             <input name="chbParamName" type="checkbox" tabindex="0"
                                                                    value="unchecked"
-                                                                   onchange="reverseValue(document.getElementsByName('chbParamName')[0])"><h4>属性名</h4>
+                                                                   onchange="reverseValue(document.getElementsByName('chbParamName')[0])">
+                                                            <h4>属性名</h4>
                                                         </label>
                                                     </div>
                                                 </div>
+
+                                                <div class="field" style="position: relative;top:60px">
+                                                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;保留字</h4>
+                                                    <input name="txtReserveName" type="text"
+                                                           style="width: 100px;float: left">
+                                                    <input type="button" value="添加"
+                                                           style="float: left;font-size: 16px;height: 36px"
+                                                           onclick="addReserveName()">
+                                                </div>
+                                                <div style="margin-top: 105px"></div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -183,7 +201,8 @@
                                         <div style="text-align: center">
                                             <input type="file" name="upfile" size="200" accept="application"
                                                    id="filesubmit" style="position: relative;top:48px;left: 11px">&nbsp;&nbsp;
-                                            <input type="submit" class="btn" value="Submit" id="btnsubmit" style="position: relative;top:44px;left: -43px">
+                                            <input type="submit" class="btn" value="Submit" id="btnsubmit"
+                                                   style="position: relative;top:44px;left: -43px">
                                         </div>
                                     </div>
                                 </form>
