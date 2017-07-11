@@ -73,7 +73,7 @@
 
 <div class="container" id="aeaoofnhgocdbnbeljkmbjdmhbcokfdb-mousedown">
     <div class="site-footer" role="contentinfo">
-        &copy NWU-IRDETO IoT & Infosec Joint Lab
+        &copy NWU-IRDETO IoT & Infosec Joint Lab <br> Updated on 7 July 2017
     </div><!-- /.site-footer -->
 </div>
 </body>

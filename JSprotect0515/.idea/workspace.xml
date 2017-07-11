@@ -7,16 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b7f517f-0037-445e-b011-c19abb60119a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/toElement.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/DataTrees.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/DataTrees.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/createfunc.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/createfunc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/test.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/flatten.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/flatten.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/doUpload.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/doUpload.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/ErrorManagement.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/ErrorManagement.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/ProjectInfo.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/ProjectInfo.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/UserManagement.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/UserManagement.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/index.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/login.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/login.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/signUp.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/signUp.jsp" />
     </list>
     <ignored path="JSprotect0515.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,57 +53,29 @@
     <favorites_list name="JSprotect0515" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="toElement.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/toElement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="FunNameAndParams.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-720">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateNewProject.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="71" column="72" lean-forward="false" selection-start-line="71" selection-start-column="72" selection-end-line="71" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testpage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataTrees.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/DataTrees.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#8905#8906#0" expanded="true" />
+                <element signature="e#8925#8926#0" expanded="true" />
+                <element signature="e#10902#10903#0" expanded="true" />
+                <element signature="e#10926#10927#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toElement.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/toElement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -169,12 +145,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/JSprotect/web/deleteUser.jsp" />
-        <option value="$PROJECT_DIR$/JSprotect/web/superUserPage.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/verify.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/a.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/unzip.jsp" />
-        <option value="$PROJECT_DIR$/JSprotect/web/login.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/js/deleteUser.js" />
         <option value="$PROJECT_DIR$/JSprotect/src/com/rocky/db/UserInfoDAO.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/reverseStatus.jsp" />
@@ -190,19 +163,14 @@
         <option value="$PROJECT_DIR$/JSprotect/src/com/rocky/db/Error.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/com/rocky/db/ErrorDAO.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/js/ErrorUtils.js" />
-        <option value="$PROJECT_DIR$/JSprotect/web/ErrorManagement.jsp" />
-        <option value="$PROJECT_DIR$/JSprotect/web/UserManagement.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/ccreateNewProject.jsp" />
-        <option value="$PROJECT_DIR$/JSprotect/web/signUp.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/css/main.css" />
         <option value="$PROJECT_DIR$/JSprotect/web/css/createNewProject.css" />
-        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/flatten.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/com/rocky/db/Info.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/com/rocky/db/InfoDAO.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/com/rocky/db/ProjectInfo.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/com/rocky/db/ProjectInfoDAO.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/compress.java" />
-        <option value="$PROJECT_DIR$/JSprotect/web/ProjectInfo.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/js/uupLoadProject.js" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/function.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/GlobalConstant.java" />
@@ -210,16 +178,24 @@
         <option value="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeGlobal.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ScriptRuntime.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js" />
-        <option value="$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp" />
-        <option value="$PROJECT_DIR$/JSprotect/web/index.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/test.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/doUpload.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/src/com/rocky/security/MD5.java" />
-        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/toElement.java" />
-        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/Datatrees.java" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/createfunc.java" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/DataTrees.java" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/flatten.java" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" />
+        <option value="$PROJECT_DIR$/JSprotect/web/index.jsp" />
+        <option value="$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp" />
+        <option value="$PROJECT_DIR$/JSprotect/web/ErrorManagement.jsp" />
+        <option value="$PROJECT_DIR$/JSprotect/web/login.jsp" />
+        <option value="$PROJECT_DIR$/JSprotect/web/ProjectInfo.jsp" />
+        <option value="$PROJECT_DIR$/JSprotect/web/signUp.jsp" />
+        <option value="$PROJECT_DIR$/JSprotect/web/UserManagement.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/toElement.java" />
       </list>
     </option>
   </component>
@@ -271,8 +247,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -466,6 +440,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1198,12 +1174,14 @@
       <workItem from="1498825377537" duration="717000" />
       <workItem from="1499303168844" duration="33000" />
       <workItem from="1499303356028" duration="45000" />
-      <workItem from="1499392333658" duration="23000" />
+      <workItem from="1499392333658" duration="3250000" />
+      <workItem from="1499409881169" duration="1753000" />
+      <workItem from="1499736573684" duration="23000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256743000" />
+    <option name="totallyTimeSpent" value="261746000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1216,7 +1194,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="976" extended-state="7" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1236,10 +1213,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3799076" sideWeight="0.8512793" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3799076" sideWeight="0.8512793" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26796874" sideWeight="0.49538106" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26796874" sideWeight="0.49538106" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26796874" sideWeight="0.50461894" order="2" side_tool="true" content_ui="tabs" />
@@ -1307,57 +1284,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/css/main.css" />
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="292" column="23" lean-forward="true" selection-start-line="292" selection-start-column="23" selection-end-line="292" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/signUp.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/ProjectUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-134">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/UserUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/ErrorUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/ccreateNewProject.jsp" />
     <entry file="file://$PROJECT_DIR$/JSprotect/web/css/createNewProject.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -1400,21 +1326,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/ProjectInfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="129" column="50" lean-forward="false" selection-start-line="129" selection-start-column="50" selection-end-line="129" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/src/org/mozilla/classfile/ByteCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/createAccount.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1453,13 +1365,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/flatten.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13860">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1504,13 +1409,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/updateRunnable.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeGlobal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15030">
@@ -1543,27 +1441,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2760">
-          <caret line="92" column="202" lean-forward="false" selection-start-line="92" selection-start-column="202" selection-end-line="92" selection-end-column="202" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/createfunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14940">
-          <caret line="505" column="16" lean-forward="false" selection-start-line="505" selection-start-column="16" selection-end-line="505" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/doUpload.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6330">
-          <caret line="211" column="41" lean-forward="false" selection-start-line="211" selection-start-column="41" selection-end-line="211" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1602,47 +1479,262 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/DataTrees.java">
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/createfunc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        <state relative-caret-position="360">
+          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#189#190#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
+            <element signature="e#461#487#0" expanded="true" />
+            <element signature="e#647#668#0" expanded="true" />
+            <element signature="e#714#720#0" expanded="true" />
+            <element signature="e#766#774#0" expanded="true" />
+            <element signature="e#5463#5480#0" expanded="true" />
+            <element signature="e#5576#5591#0" expanded="true" />
+            <element signature="e#5737#5746#0" expanded="true" />
+            <element signature="e#6461#6470#0" expanded="true" />
+            <element signature="e#10939#10940#0" expanded="true" />
+            <element signature="e#10956#10957#0" expanded="true" />
+            <element signature="e#10992#11001#0" expanded="true" />
+            <element signature="e#11039#11047#0" expanded="true" />
+            <element signature="e#11101#11128#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/DataTrees.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="281" column="1" lean-forward="false" selection-start-line="281" selection-start-column="1" selection-end-line="281" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1141#1142#0" expanded="false" />
+            <element signature="e#1171#1172#0" expanded="false" />
+            <element signature="e#1205#1206#0" expanded="false" />
+            <element signature="e#1225#1226#0" expanded="false" />
+            <element signature="e#1252#1253#0" expanded="false" />
+            <element signature="e#1273#1274#0" expanded="false" />
+            <element signature="e#1301#1302#0" expanded="false" />
+            <element signature="e#1317#1318#0" expanded="false" />
+            <element signature="e#1354#1355#0" expanded="false" />
+            <element signature="e#1377#1378#0" expanded="false" />
+            <element signature="e#1417#1418#0" expanded="false" />
+            <element signature="e#1437#1438#0" expanded="false" />
+            <element signature="e#1476#1477#0" expanded="false" />
+            <element signature="e#1500#1501#0" expanded="false" />
+            <element signature="e#1542#1543#0" expanded="false" />
+            <element signature="e#1569#1570#0" expanded="false" />
+            <element signature="e#1867#1868#0" expanded="false" />
+            <element signature="e#1894#1895#0" expanded="false" />
+            <element signature="e#2042#2043#0" expanded="false" />
+            <element signature="e#2073#2074#0" expanded="false" />
+            <element signature="e#2453#2454#0" expanded="false" />
+            <element signature="e#2490#2491#0" expanded="false" />
+            <element signature="e#4548#4549#0" expanded="false" />
+            <element signature="e#4575#4576#0" expanded="false" />
+            <element signature="e#4604#4605#0" expanded="false" />
+            <element signature="e#4646#4647#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/flatten.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="469" column="1" lean-forward="false" selection-start-line="469" selection-start-column="1" selection-end-line="469" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#193#202#0" expanded="true" />
+            <element signature="e#257#266#0" expanded="true" />
+            <element signature="e#316#324#0" expanded="true" />
+            <element signature="e#1455#1456#0" expanded="true" />
+            <element signature="e#1487#1488#0" expanded="true" />
+            <element signature="e#4867#4876#0" expanded="true" />
+            <element signature="e#5121#5136#0" expanded="true" />
+            <element signature="e#5268#5277#0" expanded="true" />
+            <element signature="e#5890#5911#0" expanded="true" />
+            <element signature="e#6384#6405#0" expanded="true" />
+            <element signature="e#7582#7594#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="741">
+          <caret line="596" column="14" lean-forward="false" selection-start-line="596" selection-start-column="14" selection-end-line="596" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#158#166#0" expanded="true" />
+            <element signature="e#217#225#0" expanded="true" />
+            <element signature="e#268#277#0" expanded="true" />
+            <element signature="e#344#353#0" expanded="true" />
+            <element signature="e#405#414#0" expanded="true" />
+            <element signature="e#544#563#0" expanded="true" />
+            <element signature="e#641#660#0" expanded="true" />
+            <element signature="e#719#738#0" expanded="true" />
+            <element signature="e#811#830#0" expanded="true" />
+            <element signature="e#937#956#0" expanded="true" />
+            <element signature="e#1002#1011#0" expanded="true" />
+            <element signature="e#1054#1062#0" expanded="true" />
+            <element signature="e#1132#1140#0" expanded="true" />
+            <element signature="e#1297#1305#0" expanded="true" />
+            <element signature="e#7358#7366#0" expanded="true" />
+            <element signature="e#8099#8108#0" expanded="true" />
+            <element signature="e#8292#8301#0" expanded="true" />
+            <element signature="e#8877#8885#0" expanded="true" />
+            <element signature="e#9613#9622#0" expanded="true" />
+            <element signature="e#9806#9815#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14313#14314#0" expanded="true" />
+            <element signature="e#15380#15401#0" expanded="true" />
+            <element signature="e#17840#17849#0" expanded="true" />
+            <element signature="e#18433#18442#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/createAccount.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-595">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="71" column="72" lean-forward="false" selection-start-line="71" selection-start-column="72" selection-end-line="71" selection-end-column="72" />
+        <state relative-caret-position="261">
+          <caret line="200" column="80" lean-forward="false" selection-start-line="200" selection-start-column="80" selection-end-line="200" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/deleteProject.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-339">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/deleteUser.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/doUpload.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="211" column="41" lean-forward="false" selection-start-line="211" selection-start-column="41" selection-end-line="211" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/ErrorManagement.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="101" column="80" lean-forward="false" selection-start-line="101" selection-start-column="80" selection-end-line="101" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="75" column="76" lean-forward="false" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/ProjectInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="118" column="76" lean-forward="false" selection-start-line="118" selection-start-column="76" selection-end-line="118" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/reverseStatus.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-339">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/unzip.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1553">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/signUp.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="149" column="76" lean-forward="false" selection-start-line="149" selection-start-column="76" selection-end-line="149" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/updateRunnable.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/verify.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-339">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/UserManagement.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="107" column="80" lean-forward="false" selection-start-line="107" selection-start-column="80" selection-end-line="107" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="112" column="52" lean-forward="true" selection-start-line="112" selection-start-column="52" selection-end-line="112" selection-end-column="80" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-720">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="30">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8905#8906#0" expanded="true" />
+            <element signature="e#8925#8926#0" expanded="true" />
+            <element signature="e#10902#10903#0" expanded="true" />
+            <element signature="e#10926#10927#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/toElement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

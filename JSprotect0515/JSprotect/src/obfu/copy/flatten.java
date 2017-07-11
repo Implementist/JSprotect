@@ -4,6 +4,7 @@ import org.mozilla.javascript.ast.*;
 
 import java.util.*;
 
+
 public class flatten {
 	private ArrayList<AstNode> FunctionList=new ArrayList<AstNode>();
 	private ArrayList<AstNode> ScopeList=new ArrayList<AstNode>();
@@ -12,92 +13,55 @@ public class flatten {
 	private ArrayList<String>   ones;
 	private ArrayList<String>   twos;
 	private ArrayList<String>   threes;
+	private ArrayList<String>   four;
 	private int total=19982;
 	private Random random;
 	private int Namenum;//记录使用到第几个名字
-	
+
 	flatten(AstNode node){
 		Namenum=0;
 		this.NamesInFlattern=new ArrayList<String>();
 		this.collectNames(node);//获取目前所有的变量名。
-        this.initVariablesPool();
-        this.random=new Random();
+		this.initVariablesPool();
+		this.random=new Random();
 	}
-	
+
 	private void initVariablesPool() {
-        ones = new ArrayList<String>();
-        for (char c = 'a'; c <= 'z'; c++)
-            ones.add(Character.toString(c));
-        for (char c = 'A'; c <= 'Z'; c++)
-            ones.add(Character.toString(c));
-        twos = new ArrayList<String>();
-        for (int i = 0; i < ones.size(); i++) {
-            String one = ones.get(i);
-            for (char c = 'a'; c <= 'z'; c++)
-                twos.add(one + Character.toString(c));
-            for (char c = 'A'; c <= 'Z'; c++)
-                twos.add(one + Character.toString(c));
-            for (char c = '0'; c <= '9'; c++)
-                twos.add(one + Character.toString(c));
-        }
-        threes = new ArrayList<String>();
-        for (int i = 0; i < twos.size(); i++) {
-            String two = twos.get(i);
-            for (char c = 'a'; c <= 'z'; c++)
-                threes.add(two + Character.toString(c));
-            for (char c = 'A'; c <= 'Z'; c++)
-                threes.add(two + Character.toString(c));
-            for (char c = '0'; c <= '9'; c++)
-                threes.add(two + Character.toString(c));
-        }
-        ones.remove("a");
-        ones.remove("b");
-        ones.remove("c");
-        ones.remove("d");
-        ones.remove("m");
-        ones.remove("n");
-        twos.remove("as");
-        twos.remove("is");
-        twos.remove("do");
-        twos.remove("if");
-        twos.remove("in");
-        twos.remove("of");
-        twos.remove("a1");
-        twos.remove("a2");
-        twos.remove("a3");
-        twos.remove("a0");
-        threes.remove("for");
-        threes.remove("int");
-        threes.remove("new");
-        threes.remove("try");
-        threes.remove("use");
-        threes.remove("var");
-        threes.remove("cos");
-        threes.remove("sin");
-        for(int i=0;i<ones.size();i++)
-        	Names.add(ones.get(i));
-        for(int i=0;i<twos.size();i++)
-        	Names.add(twos.get(i));
-        for(int i=0;i<threes.size();i++)
-        	Names.add(threes.get(i));
-    }
-    private void collectNames(AstNode node) {
-    	node.visit(new Visitor());
+		ones = new ArrayList<String>();
+		for (char c = 'a'; c <= 'z'; c++)
+			ones.add(Character.toString(c));
+		for (char c = 'A'; c <= 'Z'; c++)
+			ones.add(Character.toString(c));
+		twos = new ArrayList<String>();
+		for (int i = 0; i < ones.size(); i++) {
+			String one = ones.get(i);
+			for (char c = 'a'; c <= 'z'; c++)
+				twos.add(one + Character.toString(c));
+			for (char c = 'A'; c <= 'Z'; c++)
+				twos.add(one + Character.toString(c));
+			for (char c = '0'; c <= '9'; c++)
+				twos.add(one + Character.toString(c));
+		}
+		for(int i=0;i<twos.size();i++)
+			Names.add(twos.get(i)+"xc");
 	}
-	 class Visitor implements NodeVisitor{
-	    	public boolean visit(AstNode node){
-	    		if(node.getType()==Token.NAME){
-	    			if(((Name)node).getIdentifier().length()<4)
-	    				NamesInFlattern.add(((Name)node).getIdentifier());
-	    		}
-	    		return true;
-	    	}
-	    }
-	 public String getWordFromThePool() {
-	        String word = this.Names.get(Namenum++);
-	        return word;
-	    }
-	 
+	private void collectNames(AstNode node) {
+		node.visit(new Visitor());
+	}
+	class Visitor implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node.getType()==Token.NAME){
+				if(((Name)node).getIdentifier().length()<4)
+					NamesInFlattern.add(((Name)node).getIdentifier());
+			}
+			return true;
+		}
+	}
+	public String getWordFromThePool() {
+		String word = this.Names.get(Namenum++);
+		return word;
+	}
+
 	public  String getValidWord(AstNode node) {
 		//this.NamesInFlattern.clear();
 		//this.collectNames(node);
@@ -107,9 +71,9 @@ public class flatten {
 		}
 		this.NamesInFlattern.add(word);
 		return word;
-    }
-	
-	
+	}
+
+
 	private int FunFlag=0;
 	class TestFun implements NodeVisitor{
 		public boolean visit(AstNode node){
@@ -129,7 +93,7 @@ public class flatten {
 			return true;
 		}
 	}
-	
+
 	class getFunction implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof FunctionNode){
@@ -142,7 +106,7 @@ public class flatten {
 			return true;
 		}
 	}
-	
+
 	class getOption implements NodeVisitor{
 		public boolean visit(AstNode node){
 			//获取除了等号，冒号，逗号，点的运算符
@@ -159,7 +123,7 @@ public class flatten {
 			return true;
 		}
 	}
-	
+
 	private AstNode CreateFunction(int op){
 		//创建调用函数
 		FunctionNode NewFun=new FunctionNode();
@@ -181,7 +145,7 @@ public class flatten {
 		NewFun.setBody(FBlock);
 		return NewFun;
 	}
-	
+
 	public int[] getSequence(int no){
 		int[] sequence=new int[no];
 		for(int i=0;i<no;i++){
@@ -197,8 +161,8 @@ public class flatten {
 		random=null;
 		return sequence;
 	}
-	
-	
+
+
 	private void DealFunctionFlatten(){
 		for(int i=0;i<FunctionList.size();i++){
 			ArrayList<AstNode>NodeList=new ArrayList<AstNode>();
@@ -235,10 +199,14 @@ public class flatten {
 				ForInit.setInitializer(KeyWord);
 				ForInits.add(ForInit);
 				ForVar.setVariables(ForInits);
+
 				VariableDeclaration SwitchVar=new VariableDeclaration();
 				List<VariableInitializer> SwitchInits=new ArrayList<VariableInitializer>();
 				VariableInitializer SwitchInit=new VariableInitializer();
-				SwitchInit.setTarget(Switch);
+				AstNode SwitchInitName=(AstNode)Switch.clone();
+				SwitchInit.setTarget(SwitchInitName);
+				SwitchInitName.setParent(SwitchInit);
+				SwitchInitName.setRelative(SwitchInit.getPosition());
 				NumberLiteral SwitchNum=new NumberLiteral();
 				int SNum=0;
 				SwitchNum.setValue(SNum+"");
@@ -249,19 +217,22 @@ public class flatten {
 				Scope scopeFor=new Scope();
 				forLoop.setBody(scopeFor);
 				forLoop.setIncrement(new EmptyExpression());
-				forLoop.setInitializer((AstNode)ForVar.clone());
+				forLoop.setInitializer(new EmptyExpression());
 				AstNode Condition=(AstNode)ForLoop.clone();
 				forLoop.setCondition(Condition);
 				Condition.setParent(forLoop);
 				Condition.setRelative(forLoop.getPosition());
 				SwitchStatement switchStatement=new SwitchStatement();
-				switchStatement.setExpression(Switch);
+				AstNode SwitchStatementName=(AstNode)Switch.clone();
+				switchStatement.setExpression(SwitchStatementName);
+				SwitchStatementName.setParent(switchStatement);
+				SwitchStatementName.setRelative(switchStatement.getPosition());
 				ArrayList<SwitchCase>cases=new ArrayList<SwitchCase>();
 				//System.out.println(Statements.size());
 				//System.out.println();
 				//for(int j=0;j<casesequence.length;j++)
 				//	System.out.print(" "+casesequence[j]);
-				
+
 				for(int j=0;j<Statements.size();j++){
 					int num=casesequence[j];
 					//System.out.println(num);
@@ -272,16 +243,22 @@ public class flatten {
 						if(k==Statements.get(num).size()-1){
 							Assignment CaseAss=new Assignment();
 							if(num!=Statements.size()-1){
-							NumberLiteral Num=new NumberLiteral();
-							Num.setValue((casesequence[j]+1)+"");
-							CaseAss.setLeftAndRight(Switch, Num);
-							CaseAss.setOperator(Token.ASSIGN);
-							Expr.setExpression(CaseAss);
-							Case.addStatement(Expr);
+								NumberLiteral Num=new NumberLiteral();
+								Num.setValue((casesequence[j]+1)+"");
+								AstNode CaseAssSwitchName=(AstNode)Switch.clone();
+								CaseAss.setLeftAndRight(CaseAssSwitchName, Num);
+								CaseAssSwitchName.setParent(CaseAss);
+								CaseAssSwitchName.setRelative(CaseAss.getPosition());
+								CaseAss.setOperator(Token.ASSIGN);
+								Expr.setExpression(CaseAss);
+								Case.addStatement(Expr);
 							}else{
 								KeywordLiteral KeyW=new KeywordLiteral();
 								KeyW.setType(Token.FALSE);
-								CaseAss.setLeftAndRight(ForLoop, KeyW);
+								AstNode CaseAssName=(AstNode) ForLoop.clone();
+								CaseAss.setLeftAndRight(CaseAssName, KeyW);
+								CaseAssName.setParent(CaseAss);
+								CaseAssName.setRelative(CaseAss.getPosition());
 								CaseAss.setOperator(Token.ASSIGN);
 								Expr.setExpression(CaseAss);
 								Case.addStatement(Expr);
@@ -297,15 +274,15 @@ public class flatten {
 				switchStatement.setCases(cases);
 				scopeFor.addChild(switchStatement);
 				//System.out.println(forLoop.toSource());
-				
+
 				Scope FunScope=new Scope();
 				SwitchVar.setIsStatement(true);
 				ForVar.setIsStatement(true);
-				//FunScope.addChild(ForVar);
+				FunScope.addChild(ForVar);
 				FunScope.addChild(SwitchVar);
 				FunScope.addChild(forLoop);
-				//ForVar.setParent(FunScope);
-				//ForVar.setRelative(FunScope.getPosition());
+				ForVar.setParent(FunScope);
+				ForVar.setRelative(FunScope.getPosition());
 				SwitchVar.setParent(FunScope);
 				SwitchVar.setRelative(FunScope.getPosition());
 				forLoop.setParent(FunScope);
@@ -314,7 +291,7 @@ public class flatten {
 			}
 		}
 	}
-	
+
 	//这部分处理函数将操作符提取的规则
 	private AstNode FunctionNode=null;
 	private ArrayList<AstNode>OpList=new ArrayList<AstNode>();
@@ -410,7 +387,7 @@ public class flatten {
 					}
 					NewFun.setParent(parent);
 					NewFun.setRelative(parent.getPosition());
-					
+
 				}else if(parent instanceof IfStatement){
 					AstNode Condition=((IfStatement) parent).getCondition();
 					if(Condition==OpList.get(j)){
@@ -462,7 +439,7 @@ public class flatten {
 				}else if(parent instanceof ExpressionStatement){
 					System.out.println(parent.toSource());
 				}else if(parent instanceof ForLoop){
-					
+
 				}else{
 					//System.out.println("??"+parent.toSource()+" "+parent.getClass());
 				}

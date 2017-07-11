@@ -8,7 +8,7 @@ import java.util.*;
 public class createfunc {
 	private Random random;
 	//创建数组.
-	
+
 	createfunc(){
 		random=new Random();
 	}
@@ -19,8 +19,8 @@ public class createfunc {
 		}
 		return NewArray;
 	}
-	
-	
+
+
 	Map<String,ArrayList<String>> MuMap=new HashMap<String,ArrayList<String>>();
 	private void MutiVar(){
 		for(int i=0;i<4;i++){
@@ -75,7 +75,7 @@ public class createfunc {
 			Expr.setRelative(parent.getPosition());
 		}
 	}
-	
+
 	//创建函数.
 	private AstNode CreateFun(ArrayList<AstNode>nodes,List<AstNode> Argu){
 		FunctionNode FuncNode=new FunctionNode();
@@ -87,7 +87,7 @@ public class createfunc {
 		FuncNode.setBody(FBlock);
 		return FuncNode;
 	}
-	
+
 	private AstNode CreateFunCall(AstNode node,AstNode TarName,List<AstNode> Argu){
 		FunctionCall FunCall=new FunctionCall();
 		if(TarName==null){
@@ -102,15 +102,15 @@ public class createfunc {
 		Expr.setExpression(FunCall);
 		return Expr;
 	}
-	
+
 	public static String stringToAscii(String value)
 	{
 		StringBuffer sbu = new StringBuffer("\\x");
-		char[] chars = value.toCharArray(); 
+		char[] chars = value.toCharArray();
 		for (int i = 0; i < chars.length; i++) {
 			if(i != chars.length - 1)
-			{	
-				String Str=Integer.toHexString((int)chars[i]);	
+			{
+				String Str=Integer.toHexString((int)chars[i]);
 				sbu.append(Str).append("\\x");
 			}
 			else {
@@ -120,10 +120,10 @@ public class createfunc {
 		}
 		return sbu.toString();
 	}
-	
+
 	class StrNum implements NodeVisitor{
-		public boolean visit(AstNode node){			
-			 if(node instanceof NumberLiteral&&IsNum==1){
+		public boolean visit(AstNode node){
+			if(node instanceof NumberLiteral&&IsNum==1){
 				String StrNum=((NumberLiteral)node).getValue();
 				if(!StrNum.contains(".")&&!StrNum.contains("0x")&&!StrNum.contains("e")&&!StrNum.contains("E")){
 					long in=Long.valueOf(StrNum).longValue();
@@ -132,7 +132,7 @@ public class createfunc {
 			}else if(node instanceof StringLiteral&&IsString==1){
 				AstNode parent=node.getParent();
 				if(parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node){
-					
+
 				}else{
 					String value=((StringLiteral) node).getValue();
 					if(!value.equals("")&&!value.contains("\\x")&&!value.contains("\\u")&&!value.contains("u")&&!value.contains("x")){
@@ -145,21 +145,21 @@ public class createfunc {
 			return true;
 		}
 	}
-	
+
 	//Set<AstNode> Params=new HashSet<AstNode>();
 	class getParam implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof StringLiteral){
 				AstNode parent=node.getParent();
 				if(parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node){
-					
+
 				}else{
 					Params.add(node);
 				}
 			}else if(node instanceof NumberLiteral){
 				AstNode parent=node.getParent();
 				if(parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node){
-					
+
 				}
 				else Params.add(node);
 			}else if(node instanceof RegExpLiteral){
@@ -169,12 +169,12 @@ public class createfunc {
 					Params.add(((VariableInitializer) node).getInitializer());
 				}
 			}
-		return true;
+			return true;
 		}
 	}
-	
-	
-	
+
+
+
 	Map<AstNode,AstNode> ParaMap=new HashMap<AstNode,AstNode>();
 	private ArrayList<AstNode> CreateArrays(){
 		ArrayList<List<AstNode>> SArrays=new ArrayList<List<AstNode>>();
@@ -200,7 +200,7 @@ public class createfunc {
 				ParaMap.put(Ass,EleNode);
 				System.out.println(Ass.toSource()+" "+EleNode.toSource());
 				j++;
-				}
+			}
 			SArrays.add(Array);
 			j=0;
 		}
@@ -212,7 +212,7 @@ public class createfunc {
 		}
 		return Arrays;
 	}
-	
+
 	private void DealParams(){
 		Iterator it=ParaMap.keySet().iterator();
 		while(it.hasNext()){
@@ -326,8 +326,8 @@ public class createfunc {
 	private void InitFirst(AstNode node){
 		First=node;
 	}
-	
-	
+
+
 	Set<AstNode> Params=new HashSet<AstNode>();
 	Set<String> StrParams=new HashSet<String>();
 	Map<String,ArrayList<AstNode>> NumMap=new HashMap<String,ArrayList<AstNode>>();
@@ -335,10 +335,8 @@ public class createfunc {
 		public boolean visit(AstNode node){
 			if(node instanceof StringLiteral){
 				AstNode parent=node.getParent();
-				if(parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node){
-
-				}else {
-						Params.add(node);
+				if(!(parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node)){
+					Params.add(node);
 				}
 			}else if(node instanceof NumberLiteral){
 				AstNode parent =node.getParent();
@@ -428,110 +426,110 @@ public class createfunc {
 	private void LocalNode(AstNode Node,AstNode parent,AstNode NewNode){
 		//System.out.println("ook");
 		if(parent instanceof Assignment){
-					if(((Assignment) parent).getRight().toSource().equals(Node.toSource())){
-						((Assignment) parent).setRight(NewNode);
+			if(((Assignment) parent).getRight().toSource().equals(Node.toSource())){
+				((Assignment) parent).setRight(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}else if(((Assignment) parent).getLeft().toSource().equals(Node.toSource())){
+				((Assignment) parent).setLeft(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}
+		}else if(parent instanceof FunctionCall){
+			AstNode Target=((FunctionCall) parent).getTarget();
+			List<AstNode> Statements=((FunctionCall) parent).getArguments();
+			if(Target.toSource().equals(Node.toSource())){
+				((FunctionCall) parent).setTarget(Node);
+				Node.setParent(parent);
+				Node.setRelative(parent.getPosition());
+			}else{
+				for(int j=0;j<Statements.size();j++){
+					if(Statements.get(j)==Node){
+						Statements.set(j, NewNode);
 						NewNode.setParent(parent);
 						NewNode.setRelative(parent.getPosition());
-					}else if(((Assignment) parent).getLeft().toSource().equals(Node.toSource())){
-						((Assignment) parent).setLeft(NewNode);
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
+						break;
 					}
-				}else if(parent instanceof FunctionCall){
-					AstNode Target=((FunctionCall) parent).getTarget();
-					List<AstNode> Statements=((FunctionCall) parent).getArguments();
-					if(Target.toSource().equals(Node.toSource())){
-						((FunctionCall) parent).setTarget(Node);
-						Node.setParent(parent);
-						Node.setRelative(parent.getPosition());
-					}else{
-						for(int j=0;j<Statements.size();j++){
-							if(Statements.get(j)==Node){
-								Statements.set(j, NewNode);
-								NewNode.setParent(parent);
-								NewNode.setRelative(parent.getPosition());
-								break;
-							}
-						}
-					}
-				}else if(parent instanceof VariableInitializer){
-					if(((VariableInitializer) parent).getInitializer()==Node){
-						((VariableInitializer) parent).setInitializer(NewNode);
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
-					}
-				}else if(parent instanceof ElementGet){
-					if(((ElementGet) parent).getTarget()==Node){
-						((ElementGet) parent).setTarget(NewNode);
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
-					}else if(((ElementGet) parent).getElement()==Node){
-						NewNode.setParent(parent);
-						((ElementGet) parent).setElement(NewNode);
-						NewNode.setRelative(parent.getPosition());
-					}
-				}else if(parent instanceof InfixExpression){
-					if(((InfixExpression) parent).getLeft()==Node){
-						((InfixExpression) parent).setLeft(NewNode);
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
-					}else if(((InfixExpression) parent).getRight()==Node){
-						((InfixExpression) parent).setRight(NewNode);
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
-					}
-				}else if(parent instanceof ArrayLiteral){
-					List<AstNode>Statements=((ArrayLiteral) parent).getElements();
-					for(int j=0;j<Statements.size();j++){
-						if(Statements.get(j)==Node){
-							Statements.set(j, NewNode);
-							NewNode.setParent(parent);
-							NewNode.setRelative(parent.getPosition());
-							break;
-						}
-					}
-				}else if(parent instanceof ConditionalExpression){
-					if(((ConditionalExpression) parent).getTrueExpression()==Node){
-						((ConditionalExpression) parent).setTrueExpression(NewNode);
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
-					}else if(((ConditionalExpression) parent).getFalseExpression()==Node){
-						((ConditionalExpression) parent).setFalseExpression(NewNode);
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
-					}
-				}else if(parent instanceof ReturnStatement){
-					if(((ReturnStatement) parent).getReturnValue()==Node){
-						((ReturnStatement) parent).setReturnValue(NewNode);
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
-					}
-				}else if(parent instanceof UnaryExpression){
-					if(((UnaryExpression) parent).getOperand()==Node){
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
-						((UnaryExpression) parent).setOperand(NewNode);
-					}
-				}else if(parent instanceof SwitchCase){
-					if(((SwitchCase) parent).getExpression()==Node){
-						((SwitchCase) parent).setExpression(NewNode);
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
-					}
-				}else if(parent instanceof ParenthesizedExpression){
-					AstNode Expr=((ParenthesizedExpression) parent).getExpression();
-					if(Expr==Node){
-						((ParenthesizedExpression) parent).setExpression(NewNode);
-						NewNode.setParent(parent);
-						NewNode.setRelative(parent.getPosition());
-					}
-				}else{
-					System.out.println("::"+parent.getClass());
 				}
 			}
+		}else if(parent instanceof VariableInitializer){
+			if(((VariableInitializer) parent).getInitializer()==Node){
+				((VariableInitializer) parent).setInitializer(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}
+		}else if(parent instanceof ElementGet){
+			if(((ElementGet) parent).getTarget()==Node){
+				((ElementGet) parent).setTarget(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}else if(((ElementGet) parent).getElement()==Node){
+				NewNode.setParent(parent);
+				((ElementGet) parent).setElement(NewNode);
+				NewNode.setRelative(parent.getPosition());
+			}
+		}else if(parent instanceof InfixExpression){
+			if(((InfixExpression) parent).getLeft()==Node){
+				((InfixExpression) parent).setLeft(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}else if(((InfixExpression) parent).getRight()==Node){
+				((InfixExpression) parent).setRight(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}
+		}else if(parent instanceof ArrayLiteral){
+			List<AstNode>Statements=((ArrayLiteral) parent).getElements();
+			for(int j=0;j<Statements.size();j++){
+				if(Statements.get(j)==Node){
+					Statements.set(j, NewNode);
+					NewNode.setParent(parent);
+					NewNode.setRelative(parent.getPosition());
+					break;
+				}
+			}
+		}else if(parent instanceof ConditionalExpression){
+			if(((ConditionalExpression) parent).getTrueExpression()==Node){
+				((ConditionalExpression) parent).setTrueExpression(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}else if(((ConditionalExpression) parent).getFalseExpression()==Node){
+				((ConditionalExpression) parent).setFalseExpression(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}
+		}else if(parent instanceof ReturnStatement){
+			if(((ReturnStatement) parent).getReturnValue()==Node){
+				((ReturnStatement) parent).setReturnValue(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}
+		}else if(parent instanceof UnaryExpression){
+			if(((UnaryExpression) parent).getOperand()==Node){
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+				((UnaryExpression) parent).setOperand(NewNode);
+			}
+		}else if(parent instanceof SwitchCase){
+			if(((SwitchCase) parent).getExpression()==Node){
+				((SwitchCase) parent).setExpression(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}
+		}else if(parent instanceof ParenthesizedExpression){
+			AstNode Expr=((ParenthesizedExpression) parent).getExpression();
+			if(Expr==Node){
+				((ParenthesizedExpression) parent).setExpression(NewNode);
+				NewNode.setParent(parent);
+				NewNode.setRelative(parent.getPosition());
+			}
+		}else{
+			System.out.println("::"+parent.getClass());
+		}
+	}
 
-	
-	
+
+
 	private Set<String>KeyWord=null;
 	private int IsNum;
 	private int IsString;
@@ -556,11 +554,11 @@ public class createfunc {
 			}
 			ArrayList<AstNode> Body=new ArrayList<AstNode>();
 			Body.add(node);
-			AstNode OutFun=CreateFun(Body,Argu1);	
+			AstNode OutFun=CreateFun(Body,Argu1);
 			OutFunCall=CreateFunCall(OutFun,null,arrays);
 		}
 		if(IIS==1){
-		OutFunCall.visit(new StrNum());
+			OutFunCall.visit(new StrNum());
 		}
 		return OutFunCall;
 	}

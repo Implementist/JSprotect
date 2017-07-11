@@ -12,6 +12,7 @@ public class FunNameAndParams {
 	private Set<String>FunName=new HashSet<String>();//记录函数名
 	private Set<String>ArguName=new HashSet<String>();
 	private Set<AstNode>Params=new HashSet<AstNode>();
+	private Set<AstNode> DealedNode=new HashSet<AstNode>();//记录处理过的结点
 	//记录所有的全局变量
 	private ArrayList<AstNode> FlagList=new ArrayList<AstNode>();
 	private ArrayList<AstNode>VarNode=new ArrayList<AstNode>();
@@ -64,10 +65,6 @@ public class FunNameAndParams {
 		twos.remove("if");
 		twos.remove("in");
 		twos.remove("of");
-		twos.remove("a1");
-		twos.remove("a2");
-		twos.remove("a3");
-		twos.remove("a0");
 		threes.remove("for");
 		threes.remove("int");
 		threes.remove("new");
@@ -140,16 +137,20 @@ public class FunNameAndParams {
 				AstNode parent=node.getParent().getParent();
 				if(parent instanceof FunctionNode){
 					List<AstNode>Params=((FunctionNode) parent).getParams();
-					for(int j=0;j<Params.size();j++)
+					for(int j=0;j<Params.size();j++){
 						scopeData.addData(Params.get(j).toSource());
+						DealedNode.add(Params.get(j));
+					}
 				}
 			}else if(node instanceof StringLiteral&&((StringLiteral) node).getValue().equals("end flag")){
 				scopeData=scopeData.getFather();
 			}else if(node instanceof Name){
+				//if(!(node.getParent() instanceof PropertyGet))
 				scopeData.AddOtherNames(node.toSource());
 				if(node.getParent() instanceof FunctionNode){
 					if(((FunctionNode)node.getParent()).getFunctionName()==node&&!ObjName.contains(node.toSource())){
 						scopeData.addData(node.toSource());
+						DealedNode.add(node);
 					}
 				}
 			}
@@ -180,7 +181,6 @@ public class FunNameAndParams {
 			Iterator it=scopeData.GetSumNames().iterator();
 			while(it.hasNext()){
 				String name=(String)it.next();
-				//System.out.println(name);
 				ArrayList<AstNode> names=scopeData.getNames_f(name);
 				if(names!=null){
 					for(int j=0;j<names.size();j++)
@@ -193,10 +193,12 @@ public class FunNameAndParams {
 		Iterator it=scopeData.GetVarKeySet().iterator();
 		while(it.hasNext()){
 			String Str=(String)it.next();
+			//System.out.printf("??"+Str);
 			ArrayList<AstNode>Names=null;
 			Names=GetThreeName(scopeData,scopeData.GetSumNames(),1);
 			scopeData.addThreeNames(Str, Names);
 			for(int i=0;i<Names.size();i++){
+				//System.out.println(" "+Names.get(i).toSource()+"  ");
 				scopeData.AddOtherNames(Names.get(i).toSource());
 			}
 		}
@@ -223,20 +225,19 @@ public class FunNameAndParams {
 				//6.27修改  函数名，参数名
 				AstNode grandPa=node.getParent().getParent();
 				if(grandPa instanceof FunctionNode){
-					AstNode FunName=((FunctionNode)grandPa).getFunctionName();
-					if(FunName!=null)
-						NameToScope.put(FunName,(DataTrees)scopeData.clone());
+					//AstNode FunName=((FunctionNode)grandPa).getFunctionName();
+					//if(FunName!=null)
+					//	NameToScope.put(FunName,(DataTrees)scopeData.clone());
 					List<AstNode> Params=((FunctionNode)grandPa).getParams();
 					for(int j=0;j<Params.size();j++){
 						NameToScope.put(Params.get(j), (DataTrees)scopeData.clone());
 					}
 				}
-			}
+			}else
 			if(node instanceof StringLiteral&&((StringLiteral) node).getValue().equals("end flag")){
 				scopeNum.pop();
 				scopeData=scopeData.getFather();
-			}
-			if(node instanceof Name){
+			}else if(node instanceof Name){
 				NameToScope.put(node,(DataTrees)scopeData.clone());
 			}
 			return true;
@@ -247,15 +248,24 @@ public class FunNameAndParams {
 	class DealObjMethod implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof Name){
-				if(ObjMethod.containsKey(node.toSource()))
+				if(ObjMethod.containsKey(node.toSource())){
 					((Name) node).setIdentifier(ObjMethod.get(node.toSource()));
-				if(thisMap.containsKey(node.toSource()))
+					DealedNode.add(node);
+				}
+				if(thisMap.containsKey(node.toSource())){
 					((Name) node).setIdentifier(thisMap.get(node.toSource()));
+					DealedNode.add(node);
+				}
 			}else if(node instanceof StringLiteral){
 				if(ObjMethod.containsKey(((StringLiteral) node).getValue()))
 					((StringLiteral) node).setValue(ObjMethod.get(((StringLiteral) node).getValue()));
 				if(thisMap.containsKey(((StringLiteral) node).getValue()))
 					((StringLiteral) node).setValue(thisMap.get(((StringLiteral) node).getValue()));
+			}else if(node instanceof PropertyGet){
+				AstNode Target=((PropertyGet) node).getTarget();
+				if(Target.toSource().equals("this")&&!(node.getParent() instanceof FunctionCall)){
+
+				}
 			}
 			return true;
 		}
@@ -276,14 +286,22 @@ public class FunNameAndParams {
 				AstNode parent=Name.getParent();
 				if(parent instanceof FunctionNode){
 					AstNode FunName=((FunctionNode) parent).getFunctionName();
-					if(FunName!=null){
+					//System.out.println(FunName.toSource()+"  "+Name.toSource());
+					if(FunName!=null&&FunName==Name){
 						AstNode Funtmp=DT.getRandomName_f(FunName.toSource());
-						if(Funtmp!=null)((FunctionNode) parent).setFunctionName((Name)Funtmp);
-					}
-					List<AstNode> Params=((FunctionNode) parent).getParams();
-					for(int j=0;j<Params.size();j++){
-						AstNode tmp=DT.getRandomName_f(Params.get(j).toSource());
-						if(tmp!=null)((Name)Params.get(j)).setIdentifier(tmp.toSource());
+						if(Funtmp!=null){
+							((Name)FunName).setIdentifier(Funtmp.toSource());
+							DealedNode.add(FunName);
+						}
+					}else{
+						List<AstNode> Params=((FunctionNode) parent).getParams();
+						for(int j=0;j<Params.size();j++){
+							AstNode tmp=DT.getRandomName_f(Params.get(j).toSource());
+							if(tmp!=null&&Params.get(j)==Name){
+								((Name)Params.get(j)).setIdentifier(tmp.toSource());
+								DealedNode.add(Params.get(j));
+							}
+						}
 					}
 				}else{
 					AstNode tmpName=DT.getRandomName_f(Name.toSource());
@@ -291,22 +309,30 @@ public class FunNameAndParams {
 						if(parent instanceof PropertyGet){
 							AstNode Property=((PropertyGet) parent).getProperty();
 							AstNode Target=((PropertyGet) parent).getTarget();
-							//if(Target instanceof Name&&DT.getRandomName(Target.toSource())!=null)
 							if(Property.toSource().equals(Name.toSource())&&FunName.contains(Property.toSource())){
-								System.out.println(Name.toSource());
-								ObjMethod.put(Name.toSource(), tmpName.toSource());
+								//ObjMethod.put(Name.toSource(), tmpName.toSource());
+							}
+							if(Target.toSource().equals("this")){
+								//thisMap.put(Name.toSource(),tmpName.toSource());
+							}
+							if(Target==Name){
+								((Name)Name).setIdentifier(tmpName.toSource());
+								DealedNode.add(Name);
+							}
+						}else{
+							if(!(parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==Name)){
+								((Name)Name).setIdentifier(tmpName.toSource());
+								DealedNode.add(Name);
 							}
 						}
-						if(parent instanceof PropertyGet){
-							AstNode Target=((PropertyGet) parent).getTarget();
-							if(Target.toSource().equals("this"))
-								thisMap.put(Name.toSource(),tmpName.toSource());
-						}
-						((Name)Name).setIdentifier(tmpName.toSource());
 					}
 				}
 			}
 		}
+	}
+
+	public Set<AstNode> GetDealedNode(){
+		return DealedNode;
 	}
 
 	private ArrayList<AstNode> GetThreeName(DataTrees scopeData,Set<String> Names,int num){
@@ -333,10 +359,6 @@ public class FunNameAndParams {
 		ArrayList<String> Names=new ArrayList<String>();
 		AstNode nisl4=scopeData.getRandomName_f("nisl4");
 		AstNode nisl2=scopeData.getRandomName_f("nisl2");
-		if(nisl4!=null&&nisl2!=null)
-			System.out.println(nisl2.toSource()+" "+nisl4.toSource());
-		else
-			System.out.println("null");
 		Names.add(nisl2.toSource());
 		Names.add(nisl4.toSource());
 		return Names;
@@ -353,15 +375,9 @@ public class FunNameAndParams {
 		Root=(AstNode)node.clone();
 		scopeNum.push(0);
 		node.visit(new InsertFlag());
-		Iterator it=ArguName.iterator();
-		while(it.hasNext()){
-			String name=(String)it.next();
-			Names.remove(name);
-		}
 		node.visit(new BuildFirstTree());
 		ArrageFirstTree(scopeData);
 		DealFirstTree(scopeData);//给声明结点赋予三个新变量
-		//scopeData.ShowTree(scopeData);
 		node.visit(new MultiVar());
 		DealNameToScope();
 		DeleteFlag();

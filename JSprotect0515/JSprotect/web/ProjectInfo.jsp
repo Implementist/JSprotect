@@ -116,7 +116,7 @@
 </div>
 <div class="container" style="margin-top: 100px;" id="aeaoofnhgocdbnbeljkmbjdmhbcokfdb-mousedown">
     <div class="site-footer" role="contentinfo" id="" style="text-align:center;">
-        &copy NWU-IRDETO IoT & Infosec Joint Lab
+        &copy NWU-IRDETO IoT & Infosec Joint Lab <br> Updated on 7 July 2017
     </div><!-- /.site-footer -->
 </div>
 </div>
