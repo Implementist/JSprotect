@@ -35,73 +35,81 @@ public class testpage {
 	private Random random;
 	testpage(){
 		this.initVariablesPool();
-        this.random=new Random();
+		this.random=new Random();
 	}
-	
-	
+
+
 	private void initVariablesPool() {
-        ones = new ArrayList<String>();
-        for (char c = 'a'; c <= 'z'; c++)
-            ones.add(Character.toString(c));
-        for (char c = 'A'; c <= 'Z'; c++)
-            ones.add(Character.toString(c));
-        ones.add("_");
-        twos = new ArrayList<String>();
-        for (int i = 0; i < ones.size(); i++) {
-            String one = ones.get(i);
-            for (char c = 'a'; c <= 'z'; c++)
-                twos.add(one + Character.toString(c));
-            for (char c = 'A'; c <= 'Z'; c++)
-                twos.add(one + Character.toString(c));
-            for (char c = '0'; c <= '9'; c++)
-                twos.add(one + Character.toString(c));
-        }
-        threes = new ArrayList<String>();
-        for (int i = 0; i < twos.size(); i++) {
-            String two = twos.get(i);
-            for (char c = 'a'; c <= 'z'; c++)
-                threes.add(two + Character.toString(c));
-            for (char c = 'A'; c <= 'Z'; c++)
-                threes.add(two + Character.toString(c));
-            for (char c = '0'; c <= '9'; c++)
-                threes.add(two + Character.toString(c));
-        }
-        twos.remove("as");
-        twos.remove("is");
-        twos.remove("do");
-        twos.remove("if");
-        twos.remove("in");
-        twos.remove("of");
-        threes.remove("for");
-        threes.remove("int");
-        threes.remove("new");
-        threes.remove("try");
-        threes.remove("use");
-        threes.remove("var");
-        threes.remove("cos");
-        threes.remove("sin");
-        for(int i=0;i<ones.size();i++)
-        	Names.add(ones.get(i));
-        for(int i=0;i<twos.size();i++)
-        	Names.add(twos.get(i));
-        for(int i=0;i<threes.size();i++)
-        	Names.add(threes.get(i));
-    }
-	
-	 public String getWordFromThePool(DataTrees scopeData) {
-	        String word = this.Names.get(scopeData.getNameNum());
-	        scopeData.SetNameNum();
-	        return word;
-	    }
-	 
+		ones = new ArrayList<String>();
+		for (char c = 'a'; c <= 'z'; c++)
+			ones.add(Character.toString(c));
+		for (char c = 'A'; c <= 'Z'; c++)
+			ones.add(Character.toString(c));
+		ones.add("_");
+		twos = new ArrayList<String>();
+		for (int i = 0; i < ones.size(); i++) {
+			String one = ones.get(i);
+			for (char c = 'a'; c <= 'z'; c++)
+				twos.add(one + Character.toString(c));
+			for (char c = 'A'; c <= 'Z'; c++)
+				twos.add(one + Character.toString(c));
+			for (char c = '0'; c <= '9'; c++)
+				twos.add(one + Character.toString(c));
+		}
+		threes = new ArrayList<String>();
+		for (int i = 0; i < twos.size(); i++) {
+			String two = twos.get(i);
+			for (char c = 'a'; c <= 'z'; c++)
+				threes.add(two + Character.toString(c));
+			for (char c = 'A'; c <= 'Z'; c++)
+				threes.add(two + Character.toString(c));
+			for (char c = '0'; c <= '9'; c++)
+				threes.add(two + Character.toString(c));
+		}
+		twos.remove("as");
+		twos.remove("is");
+		twos.remove("do");
+		twos.remove("if");
+		twos.remove("in");
+		twos.remove("of");
+		threes.remove("for");
+		threes.remove("int");
+		threes.remove("new");
+		threes.remove("try");
+		threes.remove("use");
+		threes.remove("var");
+		threes.remove("cos");
+		threes.remove("sin");
+		for(int i=0;i<ones.size();i++)
+			Names.add(ones.get(i));
+		for(int i=0;i<twos.size();i++)
+			Names.add(twos.get(i));
+		for(int i=0;i<threes.size();i++)
+			Names.add(threes.get(i));
+	}
+
+	public String getWordFromThePool(DataTrees scopeData) {
+		int num=scopeData.getNameNum();
+		String word = this.Names.get(num);
+		scopeData.SetNameNum();
+		return word;
+	}
+
+	int fuck=1;
 	public  String getValidWord(DataTrees scopeData,Set Names,AstNode node) {
+		if(fuck==1){
+			Iterator it=Names.iterator();
+			while(it.hasNext())
+				System.out.println(it.next());
+			fuck=0;
+		}
 		String word = this.getWordFromThePool(scopeData);
 		while (Names.contains(word)) {
 			word = this.getWordFromThePool(scopeData);
 		}
 		return word;
-    }
-	
+	}
+
 	class InsertFlag implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof FunctionNode){
@@ -128,16 +136,16 @@ public class testpage {
 				parent.addChildrenToBack(end);
 			}else if(node instanceof VariableInitializer){
 				//if(((VariableInitializer) node).getInitializer() instanceof ObjectLiteral)
-					//System.out.println(node.toSource());
+				//System.out.println(node.toSource());
 			}else if(node instanceof Name){
 				NameSet.add(node.toSource());
 			}
 			return true;
 		}
 	}
-	
-	
-	
+
+
+
 	class BuildFirstTree implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof StringLiteral &&((StringLiteral)node).getValue().equals("start flag")){
@@ -145,7 +153,6 @@ public class testpage {
 				scopeData.addChild(ChildScope);
 				scopeData=ChildScope;
 				AstNode parent=node.getParent().getParent();
-				//System.out.println(node.getParent().getClass());
 				if(parent instanceof FunctionNode){
 					List<AstNode>Params=((FunctionNode) parent).getParams();
 					for(int j=0;j<Params.size();j++){
@@ -153,8 +160,6 @@ public class testpage {
 							scopeData.addParams(Params.get(j).toSource());
 						scopeData.addData(Params.get(j).toSource());
 					}
-					//AstNode FunName=((FunctionNode) parent).getFunctionName();
-					//if(FunName!=null)scopeData.addParams(((FunctionNode) parent).getFunctionName().toSource());
 				}
 			}else
 			if(node instanceof StringLiteral&&((StringLiteral) node).getValue().equals("end flag")){
@@ -165,12 +170,14 @@ public class testpage {
 				if(FuName!=null)
 					scopeData.addFuName(FuName.toSource());
 			}else if(node instanceof Name){
-				scopeData.AddOtherNames(node.toSource());
+				//System.out.println(node.getParent().toSource()+" "+node.getParent().getClass());
+				if(!(node.getParent() instanceof ObjectProperty))
+					scopeData.AddOtherNames(node.toSource());
 				if(node.getParent() instanceof VariableInitializer){
 					AstNode tmp=node.getParent();
 					AstNode tmpP=tmp.getParent();
 					if(((VariableInitializer)tmp).getInitializer()!=node){
-								scopeData.addData(node.toSource());
+						scopeData.addData(node.toSource());
 					}
 				}else if(node.getParent() instanceof ElementGet){
 					if(((ElementGet)node.getParent()).getTarget().toSource().equals("window")&&!node.toSource().equals("window"))
@@ -185,8 +192,8 @@ public class testpage {
 			return true;
 		}
 	}
-	
-	
+
+
 	private void ArrageFirstTree(DataTrees scopeData){
 		ArrayList<DataTrees> Children=scopeData.getChildren();
 		if(Children!=null){
@@ -199,17 +206,73 @@ public class testpage {
 				}
 			}
 		}
-		
+
 	}
-	
-	
+
+
 	private void DealFirstTree(DataTrees scopeData){
+		Set<String>FunNames=scopeData.getFuName();
+		Iterator FunIt=FunNames.iterator();
+		while(FunIt.hasNext()){
+			scopeData.AddNewNameSet((String)FunIt.next());
+		}
+		ArrayList<String>Params=scopeData.getParams();
+		for(int j=0;j<Params.size();j++)
+			scopeData.AddNewNameSet(Params.get(j));
 		if(scopeData.getFather()!=null){
 			ArrayList<String> NewNames=new ArrayList<String>();
 			Iterator it=scopeData.GetSumNames().iterator();
 			while(it.hasNext()){
 				String name=(String)it.next();
-				//System.out.println(name);
+				ArrayList<AstNode>names=scopeData.getNames(name);
+				if(names!=null){
+					for(int j=0;j<names.size();j++)
+						NewNames.add(names.get(j).toSource());
+				}
+			}
+			for(int j=0;j<NewNames.size();j++){
+				scopeData.AddNewNameSet(NewNames.get(j));
+			}
+		}
+		ArrayList<String> VariableNameList=scopeData.getVariablesNamesList();
+		for(int k=0;k<VariableNameList.size();k++){
+			String Str=VariableNameList.get(k);
+			ArrayList<AstNode>Names=null;
+			if(Str.equals("$")){
+				System.out.println(Str+"adadada");
+				Name SpeName=new Name();
+				SpeName.setIdentifier("$");
+				ArrayList<AstNode> Namess=new ArrayList<AstNode>();
+				Namess.add(SpeName);
+				Names=Namess;
+			}else{
+				if(FunName.contains(Str)){
+					Name tmp=new Name();
+					tmp.setIdentifier(Str);
+					ArrayList<AstNode>tmps=new ArrayList<AstNode>();
+					tmps.add(tmp);
+					Names=tmps;
+				}else{
+					Names=GetThreeName(scopeData,scopeData.GetNewNameSet(),1);
+				}
+			}
+			//System.out.println(Names.get(0).toSource());
+			for(int i=0;i<Names.size();i++){
+				scopeData.AddNewNameSet(Names.get(i).toSource());
+			}
+			scopeData.addThreeNames(Str,Names);
+		}
+		ArrayList<DataTrees>Children=scopeData.getChildren();
+		for(int i=0;i<Children.size();i++)
+			DealFirstTree(Children.get(i));
+	}
+
+	private void DealFirstTree2(DataTrees scopeData){
+		if(scopeData.getFather()!=null){
+			ArrayList<String> NewNames=new ArrayList<String>();
+			Iterator it=scopeData.GetSumNames().iterator();
+			while(it.hasNext()){
+				String name=(String)it.next();
 				ArrayList<AstNode> names=scopeData.getNames(name);
 				if(names!=null){
 					for(int j=0;j<names.size();j++)
@@ -219,73 +282,46 @@ public class testpage {
 			for(int i=0;i<NewNames.size();i++)
 				scopeData.AddOtherNames(NewNames.get(i));
 		}
-		/*Iterator it=scopeData.GetVarKeySet().iterator();
-		while(it.hasNext()){
-			String Str=(String)it.next();
-			ArrayList<AstNode>Names=null;
-				if(Str.equals("$")){
-					
-					System.out.println(Str+"adadada");
-					Name SpeName=new Name();
-					SpeName.setIdentifier("$");
-					ArrayList<AstNode> Namess=new ArrayList<AstNode>();
-					Namess.add(SpeName);
-					Names=Namess;
-				}else{
-					if(FunName.contains(Str)){
-						Name tmp=new Name();
-						tmp.setIdentifier(Str);
-						ArrayList<AstNode>tmps=new ArrayList<AstNode>();
-						tmps.add(tmp);
-						Names=tmps;
-					}else
-						Names=GetThreeName(scopeData,scopeData.GetSumNames(),1);
-				}
-			scopeData.addThreeNames(Str, Names);
-			for(int i=0;i<Names.size();i++){
-				scopeData.AddOtherNames(Names.get(i).toSource());
-			}
-		}*/
 		ArrayList<String> VariableNameList=scopeData.getVariablesNamesList();
 		for(int k=0;k<VariableNameList.size();k++){
 			String Str=VariableNameList.get(k);
 			ArrayList<AstNode>Names=null;
-				if(Str.equals("$")){
-					System.out.println(Str+"adadada");
-					Name SpeName=new Name();
-					SpeName.setIdentifier("$");
-					ArrayList<AstNode> Namess=new ArrayList<AstNode>();
-					Namess.add(SpeName);
-					Names=Namess;
+			if(Str.equals("$")){
+				System.out.println(Str+"adadada");
+				Name SpeName=new Name();
+				SpeName.setIdentifier("$");
+				ArrayList<AstNode> Namess=new ArrayList<AstNode>();
+				Namess.add(SpeName);
+				Names=Namess;
+			}else{
+				if(FunName.contains(Str)){
+					Name tmp=new Name();
+					tmp.setIdentifier(Str);
+					ArrayList<AstNode>tmps=new ArrayList<AstNode>();
+					tmps.add(tmp);
+					Names=tmps;
 				}else{
-					if(FunName.contains(Str)){
-						Name tmp=new Name();
-						tmp.setIdentifier(Str);
-						ArrayList<AstNode>tmps=new ArrayList<AstNode>();
-						tmps.add(tmp);
-						Names=tmps;
-					}else
-						Names=GetThreeName(scopeData,scopeData.GetSumNames(),1);
+					Names=GetThreeName(scopeData,scopeData.GetSumNames(),1);
 				}
+			}
 			scopeData.addThreeNames(Str, Names);
 			for(int i=0;i<Names.size();i++){
 				scopeData.AddOtherNames(Names.get(i).toSource());
 			}
 		}
 		ArrayList<DataTrees> Children=scopeData.getChildren();
-		System.out.println(Children.size());
 		for(int i=0;i<Children.size();i++)
 			DealFirstTree(Children.get(i));
 	}
-	
+
 	private void DealVarName(){
 		for(int i=0;i<VarNode.size();i++){
 			ArrayList<AstNode> names=GetThreeName(scopeData,scopeData.GetSumNames(),1);
 			scopeData.addThreeNames(VarNode.get(i).toSource(), names);
 		}
 	}
-	
-	
+
+
 	class MultiVar implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof StringLiteral&&((StringLiteral) node).getValue().equals("start flag")){
@@ -327,7 +363,7 @@ public class testpage {
 			return true;
 		}
 	}
-	
+
 	private void DealVarRToScope(){
 		Iterator it=VarRToScope.keySet().iterator();
 		while(it.hasNext()){
@@ -344,7 +380,7 @@ public class testpage {
 			}
 		}
 	}
-	
+
 	private void DealAssRToScope(){
 		Iterator it=AssRToScope.keySet().iterator();
 		while(it.hasNext()){
@@ -353,7 +389,7 @@ public class testpage {
 			if(tmpName!=null)((Name)Name).setIdentifier(tmpName.toSource());
 		}
 	}
-	
+
 	private void DealAssToScope(){
 		Iterator it=AssToScope.keySet().iterator();
 		while(it.hasNext()){
@@ -366,8 +402,8 @@ public class testpage {
 			}
 		}
 	}
-	
-	
+
+
 	private void DealAssToScope2(){
 		Iterator it=AssToScope.keySet().iterator();
 		while(it.hasNext()){
@@ -389,128 +425,112 @@ public class testpage {
 					((Assignment)parent).setLeftAndRight(Names.get(i), NewRight);
 					NewRight.setParent(parent);
 					NewRight.setRelative(parent.getPosition());
-				}	
+				}
 			}else if(Names!=null&&Right.toSource().equals(Assign.toSource())){
 				((Name)Right).setIdentifier(DT.getRandomName(Right.toSource()).toSource());
 			}
 			//System.out.println(Assign.toSource());
 		}
 	}
-	
+
 	public Set getParams(){
 		return Params;
 	}
-	
+
 	private void DealVarToScope2(){
 		Iterator it=VarToScope.keySet().iterator();
 		while(it.hasNext()){
 			AstNode Name=(AstNode)it.next();
-			//System.out.println(Name.toSource());
 			DataTrees Dt=VarToScope.get(Name);
 			VariableInitializer parent=(VariableInitializer)Name.getParent();
 			VariableDeclaration Suparent=(VariableDeclaration)parent.getParent();
-		//	System.out.println(Suparent.toSource());
-			//if(Suparent.isStatement()){
-				ArrayList<AstNode> Names=Dt.getNames(Name.toSource());
-				//if(Names==null)
-				//System.out.println(parent.toSource());
-				//System.out.println(Name.toSource());
-				if(Names!=null){
+			ArrayList<AstNode> Names=Dt.getNames(Name.toSource());
+			if(Names!=null){
 				if(Names.size()!=1){
 					System.out.println(Names.size()+"error!!!");
 				}
 				parent.setTarget(Names.get(0));
-				}
-			//}
+			}
 		}
 	}
-	
+
 	private void DealVarToScope(){
 		Iterator it=VarToScope.keySet().iterator();
 		while(it.hasNext()){
 			AstNode Name=(AstNode)it.next();
 			DataTrees DT=VarToScope.get(Name);
 			VariableInitializer parent=(VariableInitializer)Name.getParent();
-				VariableDeclaration Suparent=(VariableDeclaration)parent.getParent();
-				//System.out.println(Suparent.toSource());
-				List<VariableInitializer> InitList=Suparent.getVariables();
-				ArrayList<AstNode> Names=DT.getNames(Name.toSource());
-				List<VariableInitializer> NewInitList=new ArrayList<VariableInitializer>();
-				for(int i=0;i<InitList.size();i++){
-					if(InitList.get(i).getInitializer()==null&&InitList.get(i).getTarget().toSource().equals(Name.toSource())){
-						InitList.get(i).setTarget(Names.get(0));
-						Names.get(0).setParent(InitList.get(i));
-						Names.get(0).setRelative(InitList.get(i).getPosition());
-						for(int j=1;j<3;j++){
-							VariableInitializer tmpInit=new VariableInitializer();
-							tmpInit.setTarget(Names.get(j));
-							Names.get(j).setParent(tmpInit);
-							Names.get(j).setRelative(tmpInit.getPosition());
-							NewInitList.add((VariableInitializer)tmpInit.clone());
-						}
-					}else if(InitList.get(i).getInitializer()!=null&&InitList.get(i).getTarget().toSource().equals(Name.toSource())){
-						VariableInitializer tmp=InitList.get(i);
-						tmp.setTarget(Names.get(0));
-						Names.get(0).setParent(tmp);
-						Names.get(0).setRelative(tmp.getPosition());
-						for(int j=1;j<3;j++){
-							VariableInitializer tmpVar=new VariableInitializer();
-							tmpVar.setInitializer(tmp);
-							tmp.setParent(tmpVar);
-							tmp.setRelative(tmpVar.getPosition());
-							tmpVar.setTarget(Names.get(j));
-							Names.get(j).setParent(tmpVar);
-							Names.get(j).setRelative(tmpVar.getPosition());
-							tmp=tmpVar;
-						}
-						InitList.set(i, tmp);
-						AstNode Init=tmp.getInitializer();
-						if(Init.toSource().equals(Name.toSource())){
-							//System.out.println("ok");
-							((Name)Init).setIdentifier(DT.getRandomName(Name.toSource()).toSource());
-						}
+			VariableDeclaration Suparent=(VariableDeclaration)parent.getParent();
+			//System.out.println(Suparent.toSource());
+			List<VariableInitializer> InitList=Suparent.getVariables();
+			ArrayList<AstNode> Names=DT.getNames(Name.toSource());
+			List<VariableInitializer> NewInitList=new ArrayList<VariableInitializer>();
+			for(int i=0;i<InitList.size();i++){
+				if(InitList.get(i).getInitializer()==null&&InitList.get(i).getTarget().toSource().equals(Name.toSource())){
+					InitList.get(i).setTarget(Names.get(0));
+					Names.get(0).setParent(InitList.get(i));
+					Names.get(0).setRelative(InitList.get(i).getPosition());
+					for(int j=1;j<3;j++){
+						VariableInitializer tmpInit=new VariableInitializer();
+						tmpInit.setTarget(Names.get(j));
+						Names.get(j).setParent(tmpInit);
+						Names.get(j).setRelative(tmpInit.getPosition());
+						NewInitList.add((VariableInitializer)tmpInit.clone());
+					}
+				}else if(InitList.get(i).getInitializer()!=null&&InitList.get(i).getTarget().toSource().equals(Name.toSource())){
+					VariableInitializer tmp=InitList.get(i);
+					tmp.setTarget(Names.get(0));
+					Names.get(0).setParent(tmp);
+					Names.get(0).setRelative(tmp.getPosition());
+					for(int j=1;j<3;j++){
+						VariableInitializer tmpVar=new VariableInitializer();
+						tmpVar.setInitializer(tmp);
+						tmp.setParent(tmpVar);
+						tmp.setRelative(tmpVar.getPosition());
+						tmpVar.setTarget(Names.get(j));
+						Names.get(j).setParent(tmpVar);
+						Names.get(j).setRelative(tmpVar.getPosition());
+						tmp=tmpVar;
+					}
+					InitList.set(i, tmp);
+					AstNode Init=tmp.getInitializer();
+					if(Init.toSource().equals(Name.toSource())){
+						//System.out.println("ok");
+						((Name)Init).setIdentifier(DT.getRandomName(Name.toSource()).toSource());
 					}
 				}
-				for(int j=0;j<NewInitList.size();j++)
-					InitList.add(NewInitList.get(j));
-				
 			}
+			for(int j=0;j<NewInitList.size();j++)
+				InitList.add(NewInitList.get(j));
+
+		}
 	}
-	
+
 	private void DealNameToScope(){
 		Iterator it=NameToScope.keySet().iterator();
 		while(it.hasNext()){
 			AstNode Name=(AstNode)it.next();
-			//System.out.println(Name.toSource());
-			//System.out.println(Name.toSource()+"  "+Name.getParent().toSource());
 			if(!Name.toSource().equals("$")){
-			DataTrees DT=NameToScope.get(Name);
-			AstNode parent=Name.getParent();
-			if(parent instanceof FunctionNode){
-				List<AstNode> Params=((FunctionNode) parent).getParams();
-				for(int j=0;j<Params.size();j++){
-					AstNode tmpName=DT.getRandomName(Params.get(j).toSource());
-					if(tmpName!=null)((Name)Params.get(j)).setIdentifier(tmpName.toSource());
+				DataTrees DT=NameToScope.get(Name);
+				AstNode parent=Name.getParent();
+				if(parent instanceof FunctionNode){
+					continue;
+				}else if(parent instanceof ObjectProperty){
+					AstNode Left=((ObjectProperty) parent).getLeft();
+					AstNode tmpName=DT.getRandomName(Name.toSource());
+					if(tmpName!=null){
+						if(Left!=Name)((Name)Name).setIdentifier(tmpName.toSource());
+					}
+				}else{
+					AstNode tmpName=DT.getRandomName(Name.toSource());
+					if(tmpName!=null){
+						((Name)Name).setIdentifier(tmpName.toSource());
+					}
 				}
-				//System.out.println("baozha");
-			}else if(parent instanceof FunctionCall){
-				AstNode Tar=((FunctionCall) parent).getTarget();
-				//if(Tar instanceof Name&&Tar.toSource().equals(Name.toSource()))
-					//continue;
-			}
-			if(parent instanceof ObjectProperty&&Name==((ObjectProperty) parent).getLeft()){
-				//System.out.println("ok");
-			}else{
-				AstNode tmpName=DT.getRandomName(Name.toSource());
-				if(tmpName!=null){
-					((Name)Name).setIdentifier(tmpName.toSource());
-					//System.out.println("res:"+Name.toSource()+"  "+Name.getParent().getParent().toSource());
-				}
-			}
 			}
 		}
 	}
-	
+
 	private ArrayList<AstNode> GetThreeName(DataTrees scopeData,Set<String> Names,int num){
 		ArrayList<AstNode> VarNameList=new ArrayList<AstNode>();
 		for(int i=0;i<num;i++){
@@ -522,9 +542,9 @@ public class testpage {
 		}
 		return VarNameList;
 	}
-	
 
-	
+
+
 	private void DeleteFlag(){
 		for(int i=0;i<FlagList.size();i++){
 			AstNode parent=FlagList.get(i).getParent();
@@ -533,41 +553,45 @@ public class testpage {
 			FlagList.get(i).setParent(null);
 		}
 	}
-	
+
 	//functioncall 参数提取父节点设置有问题。
 	ToElement ob =null;
 	AstNode Root=null;
-	
-	
+
+
 	ArrayList<AstNode> NislArgu=new ArrayList<AstNode>();
 	public void testt(AstNode node,ArrayList<AstNode> NodeList){
 		this.ob=ob;
 		Root=(AstNode)node.clone();
 		scopeNum.push(0);
 		node.visit(new InsertFlag());
-		/*Iterator it=ArguName.iterator();
+		Iterator it=ArguName.iterator();
 		while(it.hasNext()){
-			String name=(String)it.next();
-			//Names.remove(name);
-		}*/
+			Names.remove((String)it.next());
+		}
+		Iterator iit=FunName.iterator();
+		while(iit.hasNext()){
+			Names.remove((String)iit.next());
+		}
 		node.visit(new BuildFirstTree());
 		ArrageFirstTree(scopeData);
-		scopeData.ShowTree(scopeData);
+		//scopeData.ShowTree(scopeData);
 		DealFirstTree(scopeData);//给声明结点赋予三个新变量
+		//scopeData.ShowNewTree(scopeData);
 		//scopeData.ShowAllName(scopeData);
-		//DealVarName();
 		for(int i=0;i<4;i++){
 			AstNode tmp=scopeData.getChild(0).getRandomName("NislArgu"+i);
 			if(tmp!=null)NislArgu.add(tmp);
 		}
 		node.visit(new MultiVar());
-		DealVarRToScope();
 		DealVarToScope2();
+		DealVarRToScope();
 		DealAssToScope();
 		DealAssRToScope();
 		DealNameToScope();
 		DeleteFlag();
-		scopeData.ShowTree(scopeData);
+		//	System.out.println();
+		//scopeData.ShowTree(scopeData);
 	}
 }
 //匿名函数中不适用，会出错

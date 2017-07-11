@@ -100,7 +100,7 @@
                         }
                         out.print("</tbody></table>");
                     } else {
-                        out.print("Please create a jsadb project to proect your applications.");
+                        out.print("Please create a project to protect your applications.");
                     }
 
 
@@ -110,7 +110,7 @@
     </div>
     <div class="container" id="aeaoofnhgocdbnbeljkmbjdmhbcokfdb-mousedown">
         <div class="site-footer" role="contentinfo" id="" style="text-align:center;">
-            &copy NWU-IRDETO IoT & Infosec Joint Lab
+            &copy NWU-IRDETO IoT & Infosec Joint Lab <br> Updated on 7 July 2017
         </div><!-- /.site-footer -->
     </div>
 </div>
