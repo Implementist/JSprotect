@@ -20,7 +20,8 @@ class ToElement{
 	private Set<String> Param=new HashSet<String>();//作为参数的结点
 	private Set<AstNode> KeyWord=new HashSet<AstNode>();//获取Keyword
 	private ArrayList<AstNode> moduleNode=new ArrayList<AstNode>();//获取模块函数
-	private ArrayList<AstNode> ObjNode=new ArrayList<AstNode>();
+	private ArrayList<AstNode> ObjNode=new ArrayList<AstNode>();//保存所有的声明的对象
+	private ArrayList<String> StrObjNode=new ArrayList<String>();//保存所有声明的对象的字符串形式名字
 	private Set<String> FirstEle=new HashSet<String>();//首元素
 	private ArrayList<String> FunNames=new ArrayList<String>();//记录所有的函数名,参数名
 	private Set<String> SetNames=new HashSet<String>();//记录所有的变量名
@@ -69,7 +70,6 @@ class ToElement{
 	private int ObjNameNum;
 	ToElement(AstNode node){
 		InitObjKeyWord();
-		InitObjName();
 		Namenum=1;
 		ObjNameNum=1;
 		ObjNamenum=1;
@@ -77,76 +77,6 @@ class ToElement{
 		this.initVariablesPool();
 		this.random=new Random();
 		InitComm();
-	}
-
-	private void InitObjName(){
-		ObjName.add("message");
-		ObjName.add("onmessage");
-		ObjName.add("stringify");
-		ObjName.add("closed");
-		ObjName.add("length");
-		ObjName.add("opener");
-		ObjName.add("child");
-		ObjName.add("val");
-		ObjName.add("parent");
-		ObjName.add("self");
-		ObjName.add("top");
-		ObjName.add("window");
-		ObjName.add("alert");
-		ObjName.add("open");
-		ObjName.add("type");
-		ObjName.add("print");
-		ObjName.add("confirm");
-		ObjName.add("prompt");
-		ObjName.add("Name");
-		ObjName.add("height");
-		ObjName.add("visibility");
-		ObjName.add("width");
-		ObjName.add("back");
-		ObjName.add("forward");
-		ObjName.add("go");
-		ObjName.add("hash");
-		ObjName.add("host");
-		ObjName.add("href");
-		ObjName.add("pathname");
-		ObjName.add("search");
-		ObjName.add("reload");
-		ObjName.add("title");
-		ObjName.add("URL");
-		ObjName.add("write");
-		ObjName.add("title");
-		ObjName.add("item");
-		ObjName.add("toString");
-		ObjName.add("style");
-		ObjName.add("replaceChild");
-		ObjName.add("id");
-		ObjName.add("dir");
-		ObjName.add("value");
-		ObjName.add("pop");
-		ObjName.add("constructor");
-		ObjName.add("concat");
-		ObjName.add("shift");
-		ObjName.add("toSource");
-		ObjName.add("toString");
-		ObjName.add("replace");
-		ObjName.add("parseInt");
-		ObjName.add("parseFloat");
-		ObjName.add("parse");
-		ObjName.add("eval");
-		ObjName.add("escape");
-		ObjName.add("exec");
-		ObjName.add("test");
-		ObjName.add("sort");
-		ObjName.add("match");
-		ObjName.add("push");
-		ObjName.add("pop");
-		ObjName.add("now");
-		ObjName.add("apply");
-		ObjName.add("iceServers");
-		ObjName.add("urls");
-		ObjName.add("optional");
-		ObjName.add("init");
-		//ObjName.add("RtpDataChannels");
 	}
 
 
@@ -206,7 +136,7 @@ class ToElement{
 		ObjKeyWord.add("Float32Array");
 		ObjKeyWord.add("XMLHttpRequest");
 		ObjKeyWord.add("Infinity");
-		ObjKeyWord.add("Error");
+		//ObjKeyWord.add("Error");
 	}
 
 	public	Set<String> getKeyWord(){
@@ -526,6 +456,7 @@ class ToElement{
 				ObjectList.add(node);
 			} if(node instanceof VariableInitializer&&((VariableInitializer)node).getInitializer() instanceof ObjectLiteral){
 				ObjNode.add(node);
+				StrObjNode.add(((VariableInitializer)node).getTarget().toSource());
 			}else if(node instanceof Label){
 				LabelName.add(((Label) node).getName());
 			}else if(node instanceof ObjectProperty){
@@ -589,7 +520,7 @@ class ToElement{
 				AstNode parent=node.getParent();//字符串处理有问题
 				if(parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node){
 
-				}else if(((StringLiteral) node).getValue().length()>=5){
+				}else if(((StringLiteral) node).getValue().length()>4){
 					StrDataList.add(node);
 				}
 			}else if(node instanceof RegExpLiteral){
@@ -597,12 +528,7 @@ class ToElement{
 			}else if(node instanceof PropertyGet){
 				PropertyList.add(node);
 			}else if(node instanceof NumberLiteral){
-				//String StrNum=((NumberLiteral)node).getValue();
-				//if(!(StrNum.contains(".")||!StrNum.contains("x")||!StrNum.contains("e")||!StrNum.contains("E"))){
-				//int db=Integer.valueOf(((NumberLiteral) node).getValue()).intValue();
-				//((NumberLiteral) node).setValue("0x"+Integer.toHexString(db));
 				NumDataList.add(node);
-				//}
 			} else if(node instanceof KeywordLiteral){
 				KeyWord.add(node);
 			}
@@ -1957,8 +1883,6 @@ class ToElement{
 			String str=((AstNode)DealIt.next()).toSource();
 			MapNames.remove(str);
 		}
-		MapNames.remove("Error");
-		MapNames.remove("SyntaxError");
 	}
 
 	private Map<String,Map<String,String>> require=new HashMap<String,Map<String,String>>();
@@ -2029,12 +1953,12 @@ class ToElement{
 				ArrayList<String> str=null;
 				ArrayList<String> NodeName=new ArrayList<String>();
 				String value=((StringLiteral) Init).getValue();
-				if(12<=value.length()&&value.length()<=22)
+				if(8<=value.length()&&value.length()<=16)
 					str=Split2(value);
-				else if(value.length()>22)
+				else if(value.length()>16)
 					str=Split4(value);
 				if(str!=null){
-					for(int j=0;j<str.size();j++){
+					/*for(int j=0;j<str.size();j++){
 						Name name=new Name();
 						name.setIdentifier(getValidWord(name,1));
 						NodeName.add(name.toSource());
@@ -2048,7 +1972,7 @@ class ToElement{
 					if(str.size()<3){
 						NodeName.add(fakeName.get(random.nextInt(fakeName.size()-1)));
 						NodeName.add(fakeName.get(random.nextInt(fakeName.size()-1)));
-					}
+					}*/
 					AstNode NewInit=null;
 					if(str.size()<3){
 						Name sum=new Name();
@@ -2058,10 +1982,16 @@ class ToElement{
 						FunName2.setIdentifier(NislFunction.get(0));
 						join2.setTarget((AstNode)FunName2.clone());
 						List<AstNode> Argu=new ArrayList<AstNode>();
-						for(int k=0;k<NodeName.size();k++){
-							Name argu=new Name();
+						for(int k=0;k<str.size();k++){
+							/*Name argu=new Name();
 							argu.setIdentifier(NodeName.get(k));
-							Argu.add(argu);
+							Argu.add(argu);*/
+							StringLiteral string=new StringLiteral();
+							string.setValue(str.get(k));
+							string.setQuoteCharacter('"');
+							Argu.add(string);
+							string.setParent(join2);
+							string.setRelative(join2.getPosition());
 						}
 						join2.setArguments(Argu);
 						NewInit=(AstNode)join2.clone();
@@ -2071,10 +2001,16 @@ class ToElement{
 						FunctionCall join4=new FunctionCall();
 						join4.setTarget((AstNode)FunName4.clone());
 						List<AstNode> Argu=new ArrayList<AstNode>();
-						for(int k=0;k<4;k++){
-							Name argu=new Name();
+						for(int k=0;k<str.size();k++){
+							/*Name argu=new Name();
 							argu.setIdentifier(NodeName.get(k));
-							Argu.add(argu);
+							Argu.add(argu);*/
+							StringLiteral string=new StringLiteral();
+							string.setValue(str.get(k));
+							string.setQuoteCharacter('"');
+							Argu.add(string);
+							string.setParent(join4);
+							string.setRelative(join4.getPosition());
 						}
 						join4.setArguments(Argu);
 						NewInit=(AstNode)join4.clone();
@@ -2134,81 +2070,12 @@ class ToElement{
 		return NodeList;
 	}
 
-	//记录所有的属性名，方法名
-	private void DealObjProName(){
-		Iterator it=ObjProName.iterator();
-		while(it.hasNext()){
-			String ProName=(String)it.next();
-			//不处理属性名方法名太短的，也不处理和公有方法名属性名相同的
-			if(!ObjName.contains(ProName)&&ProName.length()>=2){
-				NewObjNameMap.put(ProName,getNewObjName());
-			}
-		}
-	}
+
 
 
 
 	private ArrayList<AstNode> WinVar=new ArrayList<AstNode>();//记录window属性声明结点.
 	private ArrayList<String> WindowNode=new ArrayList<String>();//获取所有给window.node赋值右值的变量（window.Message=window.Message||Message）
-	class DealErrorNode implements NodeVisitor{
-		public boolean visit(AstNode node){
-			if(node instanceof NewExpression){
-				List<AstNode> Elements=((NewExpression) node).getArguments();
-				for(int i=0;i<Elements.size();i++){
-					if(Elements.get(i) instanceof ObjectLiteral){
-						//System.out.println(node.toSource());
-						List<ObjectProperty> Objs=((ObjectLiteral)Elements.get(i)).getElements();
-						for(int j=0;j<Objs.size();j++){
-							String ObjsName=Objs.get(j).getLeft().toSource();
-							if(NewObjNameMap.containsKey(ObjsName))NewObjNameMap.remove(ObjsName);
-						}
-					}else if(Elements.get(i) instanceof Name){
-						ObjectLiteral Obj=(ObjectLiteral)ErrorNode.get(Elements.get(i).toSource());
-						if(Obj!=null){
-							List<ObjectProperty> Objs=Obj.getElements();
-							for(int j=0;j<Objs.size();j++){
-								String ObjsName=Objs.get(j).getLeft().toSource();
-								if(NewObjNameMap.containsKey(ObjsName))NewObjNameMap.remove(ObjsName);
-							}
-						}
-					}
-				}
-			}
-			if(node instanceof FunctionCall){
-				AstNode Name=((FunctionCall) node).getTarget();
-				if(Name!=null){
-					if(ErrorNode.containsKey(Name.toSource())&&!FuncName.contains(Name.toSource())){
-						ObjectLiteral Obj=(ObjectLiteral)ErrorNode.get(Name.toSource());
-						if(Obj!=null){
-							if(Obj!=null){
-								List<ObjectProperty> Objs=Obj.getElements();
-								for(int j=0;j<Objs.size();j++){
-									String ObjsName=Objs.get(j).getLeft().toSource();
-									if(NewObjNameMap.containsKey(ObjsName))NewObjNameMap.remove(ObjsName);
-								}
-							}
-						}
-					}
-				}
-			}else if(node instanceof Assignment){
-				AstNode Left=((Assignment) node).getLeft();
-				if(Left instanceof PropertyGet){
-					AstNode Target=((PropertyGet) Left).getTarget();
-					if(Target instanceof Name&&WindowSet.contains(Target.toSource())){
-						AstNode Right=((Assignment) node).getRight();
-						Right.visit(new GetWindowNode());
-						Root.visit(new GetWindowNodeVarAss());
-						for(int j=0;j<WindowNodeAst.size();j++){
-							WinVar.add(WindowNodeAst.get(j));
-						}
-						WindowNodeAst.clear();
-						WindowNode.clear();
-					}
-				}
-			}
-			return true;
-		}
-	}
 	//记录等于释放变量名的结点
 	private ArrayList<AstNode> WindowNodeAst=new ArrayList<AstNode>();
 
@@ -2228,137 +2095,21 @@ class ToElement{
 	}
 
 
-	class GetWindowNode implements NodeVisitor{
-		public boolean visit(AstNode node){
-			if(node instanceof Name){
-				if(!(node instanceof PropertyGet)){
-					WindowNode.add(node.toSource());
-				}
-			}
-			return true;
-		}
-	}
 
 
-	class WinObj implements NodeVisitor{
-		public boolean visit(AstNode node){
-			if(node instanceof ObjectProperty){
-				AstNode Left=((ObjectProperty) node).getLeft();
-				if(Left instanceof Name)
-					NewObjNameMap.remove(Left.toSource());
-			}
-			return true;
-		}
-	}
-
-	private void DealWinVar(){
-		for(int i=0;i<WinVar.size();i++){
-			WinVar.get(i).visit(new WinObj());
-		}
-	}
 
 
-	Map<String,AstNode>ErrorNode=new HashMap<String,AstNode>();
-	ArrayList<AstNode> MayBeObjNode=new ArrayList<AstNode>();
-	class FindObjName implements NodeVisitor{
-		public boolean visit(AstNode node){
-			//获取和方法名，属性名名字相同的结点
-			if(node instanceof ObjectLiteral){
-				if(node.getParent() instanceof FunctionCall){
-					AstNode FName=((FunctionCall)node.getParent()).getTarget();
-					if(FName!=null&&!FuncName.contains(FName.toSource())){
-						//未声明的函数参数如果是对象，则不修改属性名
-						List<ObjectProperty> ObjPro=((ObjectLiteral) node).getElements();
-						for(int j=0;j<ObjPro.size();j++){
-							if(NewObjNameMap.containsKey(ObjPro.get(j).toSource()))
-								NewObjNameMap.remove(ObjPro.get(j).toSource());
-						}
-					}
-				}else if(node.getParent() instanceof VariableInitializer){
-					ErrorNode.put(((VariableInitializer)node.getParent()).getTarget().toSource(), ((VariableInitializer)node.getParent()).getInitializer());
-				}else if(node.getParent() instanceof Assignment){
-					ErrorNode.put(((Assignment)node.getParent()).getLeft().toSource(),((Assignment)node.getParent()).getRight());
-				}
-			}
-			if(node instanceof Name){
-				//记录用到属性名的结点
-				if(NewObjNameMap.containsKey(node.toSource())){
-					AstNode parent=node.getParent();
-					if(parent instanceof PropertyGet){
-						if(((PropertyGet) parent).getTarget()!=node)
-							MayBeObjNode.add(node);
-					}else if(parent instanceof ObjectProperty){
-						if(((ObjectProperty) parent).getLeft()==node)
-							MayBeObjNode.add(node);
-					}
-				}
-			}else if(node instanceof StringLiteral){
-				//获取和属性名，方法名名字相同的字符串，防止 haveownproperty("属性名，方法名")的状况
-				if(NewObjNameMap.containsKey(((StringLiteral) node).getValue()))
-					MayBeObjNode.add(node);
-			}
-			return true;
-		}
-	}
 
-	private void DealMayBeObjNode(){
-		for(int i=0;i<MayBeObjNode.size();i++){
-			if(MayBeObjNode.get(i) instanceof Name)
-				if(NewObjNameMap.get(MayBeObjNode.get(i).toSource())!=null)
-					((Name)MayBeObjNode.get(i)).setIdentifier(NewObjNameMap.get(MayBeObjNode.get(i).toSource()));
-				else if(MayBeObjNode.get(i) instanceof StringLiteral){
-					if(NewObjNameMap.get(((StringLiteral)MayBeObjNode.get(i)).getValue())!=null)
-						((StringLiteral)MayBeObjNode.get(i)).setValue(NewObjNameMap.get(((StringLiteral)MayBeObjNode.get(i)).getValue()));
-				}
-		}
-	}
 
-	private Set<String>WindowSet=new HashSet<String>();//保存所有值等于window的结点名
-	private Set<String>WinPro=new HashSet<String>();
-	//处理用window释放的部分
-	class DealWindow implements NodeVisitor{
-		public boolean visit(AstNode node){
-			//处理window作为函数参数的部分：
-			//（function(export){
-			//})(window);的形式
-			if(node instanceof FunctionCall){
-				List<AstNode> Argus=((FunctionCall) node).getArguments();
-				int windownum=0x7fffffff;
-				for(int i=0;i<Argus.size();i++){
-					if(Argus.get(i).toSource().equals("window")){
-						windownum=i;
-						break;
-					}
-				}
-				AstNode Target=((FunctionCall) node).getTarget();
-				if(Target instanceof ParenthesizedExpression){
-					AstNode Expr=((ParenthesizedExpression) Target).getExpression();
-					if(Expr instanceof FunctionNode){
-						List<AstNode> Params=((FunctionNode) Expr).getParams();
-						if(windownum<Params.size()){
-							AstNode TarParam=Params.get(windownum);
-							WindowSet.add(TarParam.toSource());
-						}
-					}
-				}
-			}else if(node instanceof VariableInitializer){
-				//处理将window赋值的情况
-				AstNode Init=((VariableInitializer) node).getInitializer();
-				if(Init instanceof Name&&WindowSet.contains(Init.toSource())){
-					AstNode Tar=((VariableInitializer) node).getTarget();
-					if(Tar instanceof Name)WindowSet.add(Tar.toSource());
-				}
-			}else if(node instanceof PropertyGet){
-				//获取window.目标  这种类型
-				AstNode Tar=((PropertyGet) node).getTarget();
-				if(Tar instanceof Name&&WindowSet.contains(Tar.toSource())){
-					AstNode Pro=((PropertyGet) node).getProperty();
-					if(Pro instanceof Name)WinPro.add(Pro.toSource());
-				}
-			}
-			return true;
-		}
-	}
+
+
+
+
+
+
+
+
+
 
 
 	AstNode Root=null;
@@ -2367,26 +2118,21 @@ class ToElement{
 	private int ratecalculate;
 	private ArrayList<String> NislFunction;
 	private Set<AstNode> DealedNodes;
-	public void GetVarNameMap(AstNode node,int Prop,int caculate,int Shell,int ratecalculate) throws IOException {
+	public void GetVarNameMap(AstNode node,int Prop,int caculate,int Shell,int ratecalculate,Set<String> ResverName) throws IOException {
 		this.ratecalculate=ratecalculate;
 		this.Shell=Shell;
 		Root=node;
 		InitFirst((AstNode)node.getFirstChild());
 		node.visit(new testvisit1());
 		FunNameAndParams NameAndParams=new FunNameAndParams();
-		NameAndParams.testt(node,ObjName);
+		NameAndParams.testt(node,ObjName,ResverName);
 		NislFunction=NameAndParams.getEncryptFunctionName();
 		DealedNodes=NameAndParams.GetDealedNode();
 		//属性名修改
 		collectNames(node);//获取目前所有的变量名。
 		if(Prop==1){
-			WindowSet.add("window");
-			node.visit(new DealWindow());
-			DealObjProName();
-			node.visit(new FindObjName());
-			node.visit(new DealErrorNode());
-			DealWinVar();
-			DealMayBeObjNode();
+			DealProperty property=new DealProperty();
+			property.DealPropertyName(node);
 		}
 		//补充if,for循环的大括号
 		DealBlankList();//必选

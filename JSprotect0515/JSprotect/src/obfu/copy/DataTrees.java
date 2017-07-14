@@ -1,5 +1,6 @@
 package obfu.copy;
 
+
 import org.mozilla.javascript.ast.AstNode;
 
 import java.util.*;
@@ -236,14 +237,14 @@ public class DataTrees implements Cloneable{
 			String tmp=(String)it.next();
 			ArrayList<AstNode> tmpList=Node.getNames_f(tmp);
 			System.out.printf("%s ",tmp);
-			//System.out.printf("[");
-			//for(int i=0;i<tmpList.size();i++)
-			//System.out.printf("%s ",tmpList.get(i).toSource());
-			//System.out.printf("] ");
+			System.out.printf("[");
+			for(int i=0;i<tmpList.size();i++)
+				System.out.printf("%s ",tmpList.get(i).toSource());
+			System.out.printf("] ");
 		}
 		ArrayList<DataTrees> tmpChildren=Node.getChildren();
 		for(int i=0;i<tmpChildren.size();i++)
-			ShowTree(tmpChildren.get(i));
+			ShowTree_f(tmpChildren.get(i));
 		System.out.printf(")  ");
 	}
 

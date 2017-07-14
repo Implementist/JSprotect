@@ -198,7 +198,6 @@ public class createfunc {
 				EleNode.setTarget(eleName);
 				EleNode.setElement(num);
 				ParaMap.put(Ass,EleNode);
-				System.out.println(Ass.toSource()+" "+EleNode.toSource());
 				j++;
 			}
 			SArrays.add(Array);
@@ -329,14 +328,26 @@ public class createfunc {
 
 
 	Set<AstNode> Params=new HashSet<AstNode>();
-	Set<String> StrParams=new HashSet<String>();
+	Set<String> StrParams=new HashSet<String>();//记录数字
+	Set<String> StrParam=new HashSet<String>();//记录字符串
+	Set<Integer> KeyLiteral=new HashSet<Integer>();//记录keywordliteral;
 	Map<String,ArrayList<AstNode>> NumMap=new HashMap<String,ArrayList<AstNode>>();
+	Map<Integer,ArrayList<AstNode>> KeyMap=new HashMap<Integer,ArrayList<AstNode>>();
+	Map<String,ArrayList<AstNode>> StrMap=new HashMap<String,ArrayList<AstNode>>();
 	class getParam2 implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof StringLiteral){
 				AstNode parent=node.getParent();
 				if(!(parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node)){
-					Params.add(node);
+					StrParam.add(((StringLiteral) node).getValue());
+					if(StrMap.containsKey(((StringLiteral) node).getValue())){
+						ArrayList<AstNode>StrLists=StrMap.get(((StringLiteral)node).getValue());
+						StrLists.add(node);
+					}else{
+						ArrayList<AstNode> StrLists=new ArrayList<AstNode>();
+						StrLists.add(node);
+						StrMap.put(((StringLiteral)node).getValue(), StrLists);
+					}
 				}
 			}else if(node instanceof NumberLiteral){
 				AstNode parent =node.getParent();
@@ -358,7 +369,20 @@ public class createfunc {
 				Params.add(node);
 			}else if(node instanceof VariableInitializer){
 				if(((VariableInitializer)node).getInitializer()!=null&&KeyWord.contains(((VariableInitializer)node).getInitializer().toSource())){
+					//System.out.println(node.toSource());
 					Params.add(((VariableInitializer)node).getInitializer());
+				}
+			}else if(node instanceof KeywordLiteral){
+				if(!node.toSource().equals("this")){
+					KeyLiteral.add(node.getType());
+					if(KeyMap.containsKey(node.toSource())){
+						ArrayList<AstNode>KeyLists=KeyMap.get(node.toSource());
+						KeyLists.add(node);
+					}else{
+						ArrayList<AstNode> KeyLists=new ArrayList<AstNode>();
+						KeyLists.add(node);
+						KeyMap.put(node.getType(), KeyLists);
+					}
 				}
 			}
 			return true;
@@ -371,6 +395,20 @@ public class createfunc {
 			NumberLiteral ParaNum=new NumberLiteral();
 			ParaNum.setValue((String)itt.next());
 			Params.add(ParaNum);
+		}
+		Iterator strit=StrParam.iterator();
+		while(strit.hasNext()){
+			StringLiteral ParaStr=new StringLiteral();
+			ParaStr.setValue((String)strit.next());
+			ParaStr.setQuoteCharacter('"');
+			Params.add(ParaStr);
+		}
+		Iterator keyIt=KeyLiteral.iterator();
+		System.out.println(KeyLiteral.size());
+		while(keyIt.hasNext()){
+			KeywordLiteral Key=new KeywordLiteral();
+			Key.setType((int)keyIt.next());
+			Params.add(Key);
 		}
 		ArrayList<List<AstNode>> SArrays=new ArrayList<List<AstNode>>();
 		int size=Params.size();
@@ -413,9 +451,24 @@ public class createfunc {
 			AstNode parent=Node.getParent();
 			AstNode NewNode=ParaMap.get(Node);
 			if(parent==null){
-				ArrayList<AstNode> NumLists=NumMap.get(Node.toSource());
-				for(int j=0;j<NumLists.size();j++){
-					LocalNode(NumLists.get(j),NumLists.get(j).getParent(),NewNode);
+				if(Node instanceof KeywordLiteral){
+					ArrayList<AstNode>KeyLists=KeyMap.get(Node.getType());
+					if(KeyLists!=null){
+						for(int j=0;j<KeyLists.size();j++)
+							LocalNode(KeyLists.get(j),KeyLists.get(j).getParent(),NewNode);
+					}
+				}else{
+					ArrayList<AstNode> NumLists=NumMap.get(Node.toSource());
+					if(NumLists!=null){
+						for(int j=0;j<NumLists.size();j++){
+							LocalNode(NumLists.get(j),NumLists.get(j).getParent(),NewNode);
+						}
+					}else if(StrMap.get(((StringLiteral)Node).getValue())!=null){
+						ArrayList<AstNode> StrLists=StrMap.get(((StringLiteral)Node).getValue());
+						for(int j=0;j<StrLists.size();j++){
+							LocalNode(StrLists.get(j),StrLists.get(j).getParent(),NewNode);
+						}
+					}
 				}
 			}else{
 				LocalNode(Node,parent,NewNode);
@@ -548,7 +601,6 @@ public class createfunc {
 			List<AstNode>Argu2=new ArrayList<AstNode>();
 			for(int i=0;i<4;i++){
 				Name arguName=new Name();
-				//arguName.setIdentifier(""+(char)('a'+i));
 				arguName.setIdentifier("NislArgu"+i);
 				Argu1.add(arguName);
 			}

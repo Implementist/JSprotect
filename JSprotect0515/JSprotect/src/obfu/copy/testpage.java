@@ -95,14 +95,7 @@ public class testpage {
 		return word;
 	}
 
-	int fuck=1;
 	public  String getValidWord(DataTrees scopeData,Set Names,AstNode node) {
-		if(fuck==1){
-			Iterator it=Names.iterator();
-			while(it.hasNext())
-				System.out.println(it.next());
-			fuck=0;
-		}
 		String word = this.getWordFromThePool(scopeData);
 		while (Names.contains(word)) {
 			word = this.getWordFromThePool(scopeData);
@@ -171,7 +164,7 @@ public class testpage {
 					scopeData.addFuName(FuName.toSource());
 			}else if(node instanceof Name){
 				//System.out.println(node.getParent().toSource()+" "+node.getParent().getClass());
-				if(!(node.getParent() instanceof ObjectProperty))
+				if(!((node.getParent() instanceof ObjectProperty)&&((ObjectProperty)node.getParent()).getLeft()==node))
 					scopeData.AddOtherNames(node.toSource());
 				if(node.getParent() instanceof VariableInitializer){
 					AstNode tmp=node.getParent();
@@ -253,7 +246,14 @@ public class testpage {
 					tmps.add(tmp);
 					Names=tmps;
 				}else{
-					Names=GetThreeName(scopeData,scopeData.GetNewNameSet(),1);
+					if(ResverNames.contains(Str)){
+						ArrayList<AstNode> Resver=new ArrayList<AstNode>();
+						Name RName=new Name();
+						RName.setIdentifier(Str);
+						Resver.add(RName);
+						Names=Resver;
+					}else
+						Names=GetThreeName(scopeData,scopeData.GetNewNameSet(),1);
 				}
 			}
 			//System.out.println(Names.get(0).toSource());
@@ -521,6 +521,17 @@ public class testpage {
 					if(tmpName!=null){
 						if(Left!=Name)((Name)Name).setIdentifier(tmpName.toSource());
 					}
+				}else if(parent instanceof PropertyGet){
+					AstNode Target=((PropertyGet) parent).getTarget();
+					while(Target instanceof PropertyGet){
+						Target=((PropertyGet)Target).getTarget();
+					}
+					if(Target instanceof Name &&Target==Name){
+						AstNode tmpName=DT.getRandomName(Name.toSource());
+						if(tmpName!=null){
+							((Name)Name).setIdentifier(tmpName.toSource());
+						}
+					}
 				}else{
 					AstNode tmpName=DT.getRandomName(Name.toSource());
 					if(tmpName!=null){
@@ -558,10 +569,11 @@ public class testpage {
 	ToElement ob =null;
 	AstNode Root=null;
 
-
+	Set<String> ResverNames=null;
 	ArrayList<AstNode> NislArgu=new ArrayList<AstNode>();
-	public void testt(AstNode node,ArrayList<AstNode> NodeList){
+	public void testt(AstNode node,ArrayList<AstNode> NodeList,Set<String> ResverName){
 		this.ob=ob;
+		ResverNames=ResverName;
 		Root=(AstNode)node.clone();
 		scopeNum.push(0);
 		node.visit(new InsertFlag());
@@ -575,10 +587,7 @@ public class testpage {
 		}
 		node.visit(new BuildFirstTree());
 		ArrageFirstTree(scopeData);
-		//scopeData.ShowTree(scopeData);
 		DealFirstTree(scopeData);//给声明结点赋予三个新变量
-		//scopeData.ShowNewTree(scopeData);
-		//scopeData.ShowAllName(scopeData);
 		for(int i=0;i<4;i++){
 			AstNode tmp=scopeData.getChild(0).getRandomName("NislArgu"+i);
 			if(tmp!=null)NislArgu.add(tmp);
@@ -590,8 +599,6 @@ public class testpage {
 		DealAssRToScope();
 		DealNameToScope();
 		DeleteFlag();
-		//	System.out.println();
-		//scopeData.ShowTree(scopeData);
 	}
 }
 //匿名函数中不适用，会出错

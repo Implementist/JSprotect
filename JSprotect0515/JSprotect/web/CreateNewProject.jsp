@@ -186,11 +186,9 @@
 
                                                 <div class="field" style="position: relative;top:60px">
                                                     <h4>&nbsp;&nbsp;&nbsp;&nbsp;保留字</h4>
-                                                    <input name="txtReserveName" type="text"
+                                                    <textarea name="txtReserveName" type="text"
                                                            style="width: 100px;float: left">
-                                                    <input type="button" value="添加"
-                                                           style="float: left;font-size: 16px;height: 36px"
-                                                           onclick="addReserveName()">
+                                                    </textarea>
                                                 </div>
                                                 <div style="margin-top: 105px"></div>
 
