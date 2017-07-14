@@ -1,5 +1,6 @@
 package obfu.copy;
 
+
 import org.mozilla.javascript.ast.*;
 
 import java.util.*;
@@ -193,12 +194,18 @@ public class FunNameAndParams {
 		Iterator it=scopeData.GetVarKeySet().iterator();
 		while(it.hasNext()){
 			String Str=(String)it.next();
-			//System.out.printf("??"+Str);
 			ArrayList<AstNode>Names=null;
-			Names=GetThreeName(scopeData,scopeData.GetSumNames(),1);
+			if(ResverNames.contains(Str)){
+				ArrayList<AstNode> Resver=new ArrayList<AstNode>();
+				Name RName=new Name();
+				RName.setIdentifier(Str);
+				Resver.add(RName);
+				Names=Resver;
+			}else{
+				Names=GetThreeName(scopeData,scopeData.GetSumNames(),1);
+			}
 			scopeData.addThreeNames(Str, Names);
 			for(int i=0;i<Names.size();i++){
-				//System.out.println(" "+Names.get(i).toSource()+"  ");
 				scopeData.AddOtherNames(Names.get(i).toSource());
 			}
 		}
@@ -369,9 +376,11 @@ public class FunNameAndParams {
 	ToElement ob =null;
 	AstNode Root=null;
 	private Set<String> ObjName;
-	public void testt(AstNode node,Set<String> ObjName){
+	private Set<String>ResverNames;
+	public void testt(AstNode node,Set<String> ObjName,Set<String> ResverName){
 		this.ob=ob;
 		this.ObjName=ObjName;
+		ResverNames=ResverName;
 		Root=(AstNode)node.clone();
 		scopeNum.push(0);
 		node.visit(new InsertFlag());

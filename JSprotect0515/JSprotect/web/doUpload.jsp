@@ -74,11 +74,13 @@
             out.println("</head>");
             out.println("<body>");
             int bigArray = 0, calculate = 0, strength = 0, cff = 0, thresholdValue = 0, blockSize = 0, numberHandling = 0, paramName = 0;
+            HashSet<String> reserveName = new HashSet<String>();
             while (i.hasNext()) {
                 // 获取上传文件的参数
                 FileItem fi = (FileItem) i.next();
                 if (fi.isFormField()) {
                     System.out.println(fi.getFieldName());
+
                     if (fi.getFieldName().equals("chbBigArray")) {
                         bigArray = fi.getString().equals("checked") ? 1 : 0;
                         System.out.println(bigArray);
@@ -105,8 +107,13 @@
                     } else if (fi.getFieldName().equals("chbParamName")) {
                         paramName = fi.getString().equals("checked") ? 1 : 0;
                         System.out.println(paramName);
+                    } else if (fi.getFieldName().equals("txtReserveName")){
+                        String[] reserveNames = fi.getString().trim().split(";");
+                        reserveName.addAll(Arrays.asList(reserveNames));
+                        System.out.println(fi.getString());
                     }
                 } else {
+
                     String fileName = fi.getName();
                     // 写入文件
                     if (fileName.lastIndexOf("\\") >= 0) {
@@ -175,7 +182,7 @@
                     test ntest = new test();
                     //System.out.println("/////////"+"fp"+filePath+RName);
                     System.out.println(filePath + "KKKLLLL" + fileName);
-                    ntest.protect(cff, thresholdValue, blockSize, bigArray, calculate, strength, paramName, numberHandling, filePath + fileName, filePath, fileName, projectId, (String) session.getAttribute("user"));
+                    ntest.protect(reserveName, cff, thresholdValue, blockSize, bigArray, calculate, strength, paramName, numberHandling, filePath + fileName, filePath, fileName, projectId, (String) session.getAttribute("user"));
 
                     //TryYUI.compress(filePath+fileName);
                     //此部分为混淆强度设置

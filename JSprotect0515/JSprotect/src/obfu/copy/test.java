@@ -51,7 +51,7 @@ public class test {
     }
 
     //是否控制流平展，阈值，case大小，大数组加壳，计算式混淆，计算式混淆参数，属性名，处理数字，处理字符串
-    public void protect(int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, String projectId, String user) {
+    public void protect(Set ReserverName,int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, String projectId, String user) {
         //public static void main(String[] args)throws IOException{
         try {
             //D:\个人\js前端相关\JSprotect0515\JSprotect\src\obfu\copy
@@ -79,7 +79,7 @@ public class test {
             AstNode Nnode = InsertCrypt(decryptnode, (AstNode) node.getFirstChild());
             function fu = new function();
             ToElement ob = new ToElement(Nnode);
-            ob.GetVarNameMap(Nnode, Prop, caculate, Shell, ratecalculate);
+            ob.GetVarNameMap(Nnode, Prop, caculate, Shell, ratecalculate,ReserverName);
             Set<String> KeyWord = ob.getKeyWord();
             ArrayList<AstNode> NodeList = ob.getNodeList();
             VarComp Varp = new VarComp();
@@ -95,7 +95,7 @@ public class test {
             createfunc cfunc = new createfunc();
             Nnode = cfunc.createfunction(Nnode, KeyWord, Shell, IIS,IIS, 0);
             testpage test = new testpage();
-            test.testt(Nnode, NodeList);
+            test.testt(Nnode, NodeList,ReserverName);
             File protectedProjectPath = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user));
             if (!protectedProjectPath.exists())
                 protectedProjectPath.mkdir();
