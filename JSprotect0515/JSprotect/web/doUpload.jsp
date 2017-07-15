@@ -108,7 +108,7 @@
                         paramName = fi.getString().equals("checked") ? 1 : 0;
                         System.out.println(paramName);
                     } else if (fi.getFieldName().equals("txtReserveName")){
-                        String[] reserveNames = fi.getString().trim().split(";");
+                        String[] reserveNames = fi.getString().trim().split(" ");
                         reserveName.addAll(Arrays.asList(reserveNames));
                         System.out.println(fi.getString());
                     }
