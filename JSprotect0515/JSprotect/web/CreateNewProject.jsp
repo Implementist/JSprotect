@@ -17,6 +17,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/createNewProject.css" rel="stylesheet" type="text/css"/>
     <link rel="icon" href="img/logo.ico" type="image/x-icon">
+    <script type="text/javascript" src="js/bootstrap-filestyle.js"></script>
     <script src="js/uupLoadProject.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
@@ -60,15 +61,15 @@
     </div>
 
     <div class="ui container grid" style="width:740px; margin: 80px auto 0;">
-        <div class="row">
-            <div class="column">
-                <div class="" id="root">
-                    <div data-reactroot="">
-                        <div class="ui grid">
-                            <div class="column">
-                                <iframe id="hidden_frame" name="hidden_frame" style="display:none"></iframe>
-                                <form id="form1" style="margin: 0 auto;" action="doUpload.jsp" method="post"
-                                      enctype="multipart/form-data" target="hidden_frame">
+        <form id="form1" style="margin: 0 auto;" action="doUpload.jsp" method="post"
+              enctype="multipart/form-data" target="hidden_frame">
+            <div class="row">
+                <div class="column">
+                    <div class="" id="root">
+                        <div data-reactroot="">
+                            <div class="ui grid">
+                                <div class="column">
+                                    <iframe id="hidden_frame" name="hidden_frame" style="display:none"></iframe>
                                     <legend style="margin-bottom:50px;">
                                         Create New Project
                                         <img id="imgHelp" src="img/feedback.png"
@@ -184,10 +185,21 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="field" style="position: relative;top:48px">
+                                                    <div class="ui checked checkbox">
+                                                        <label>
+                                                            <input name="chbWasteCode" type="checkbox" tabindex="0"
+                                                                   value="unchecked"
+                                                                   onchange="reverseValue(document.getElementsByName('chbWasteCode')[0])">
+                                                            <h4>废代码</h4>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
                                                 <div class="field" style="position: relative;top:60px">
                                                     <h4>&nbsp;&nbsp;&nbsp;&nbsp;保留字</h4>
                                                     <textarea name="txtReserveName" type="text"
-                                                           style="width: 100px;float: left">
+                                                              style="width: 100px;float: left">
                                                     </textarea>
                                                 </div>
                                                 <div style="margin-top: 105px"></div>
@@ -195,22 +207,21 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div style="text-align: center">
-                                            <input type="file" name="upfile" size="200" accept="application"
-                                                   id="filesubmit" style="position: relative;top:48px;left: 11px">&nbsp;&nbsp;
-                                            <input type="submit" class="btn" value="Submit" id="btnsubmit"
-                                                   style="position: relative;top:44px;left: -43px">
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+            <div class="row">
+                <div style="text-align: center">
+                    <input class="filestyle" type="file" name="upfile" id="filesubmit" accept="application"
+                           style="position: relative;top:48px;float: left">&nbsp;&nbsp;
+                    <input type="submit" class="btn" value="Submit" id="btnsubmit"
+                           style="position: relative;top:48px">
+                </div>
+            </div>
+        </form>
     </div><!-- end of container -->
 
     <div class="container" style="margin-top: 100px;" id="aeaoofnhgocdbnbeljkmbjdmhbcokfdb-mousedown">
