@@ -185,7 +185,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="field" style="position: relative;top:48px">
+                                                <div class="field" style="position: relative;top:96px">
                                                     <div class="ui checked checkbox">
                                                         <label>
                                                             <input name="chbWasteCode" type="checkbox" tabindex="0"
@@ -195,15 +195,18 @@
                                                         </label>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
 
-                                                <div class="field" style="position: relative;top:60px">
+                                        <div class="column">
+                                            <div class="ui basic segment" style="position: relative;left: 104px">
+                                                <div class="field" style="position: relative">
                                                     <h4>&nbsp;&nbsp;&nbsp;&nbsp;保留字</h4>
                                                     <textarea name="txtReserveName" type="text"
-                                                              style="width: 100px;float: left">
+                                                              style="width: 100px;height: 140px;float: left">
                                                     </textarea>
+                                                    <span style="font-size: 12px;position: relative;left: -80px;top: 140px">(请用空格间隔)</span>
                                                 </div>
-                                                <div style="margin-top: 105px"></div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -216,9 +219,9 @@
             <div class="row">
                 <div style="text-align: center">
                     <input class="filestyle" type="file" name="upfile" id="filesubmit" accept="application"
-                           style="position: relative;top:48px;float: left">&nbsp;&nbsp;
+                           style="position: relative;top:48px;float: left;left: 10%">&nbsp;&nbsp;
                     <input type="submit" class="btn" value="Submit" id="btnsubmit"
-                           style="position: relative;top:48px">
+                           style="position: relative;top:48px;float: right;right: 30%">
                 </div>
             </div>
         </form>
