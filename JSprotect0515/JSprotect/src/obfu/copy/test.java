@@ -51,7 +51,7 @@ public class test {
     }
 
     //是否控制流平展，阈值，case大小，大数组加壳，计算式混淆，计算式混淆参数，属性名，处理数字，处理字符串
-    public void protect(Set ReserverName,int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, String projectId, String user) {
+    public void protect(int DeadCode, Set ReserverName, int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, String projectId, String user) {
         //public static void main(String[] args)throws IOException{
         try {
             //D:\个人\js前端相关\JSprotect0515\JSprotect\src\obfu\copy
@@ -66,6 +66,25 @@ public class test {
             decryptenv.setRecordingComments(true);
             AstRoot decryptnode = new Parser(decryptenv).parse(decryptreader, decryptfile, 1);
             //System.out.println(decryptnode.toSource());
+            AstRoot deadnode = null;
+            AstRoot deadnodeIf = null;
+            if (DeadCode == 1) {
+                String deadfile = "C:\\Program Files\\deadcode.js";
+                Reader deadreader = new FileReader(deadfile);
+                CompilerEnvirons deadenv = new CompilerEnvirons();
+                deadenv.setRecordingLocalJsDocComments(true);
+                deadenv.setAllowSharpComments(true);
+                deadenv.setRecordingComments(true);
+                deadnode = new Parser(deadenv).parse(deadreader, deadfile, 1);
+
+                String deadfileIf = "C:\\Program Files\\deadcodeIf.js";
+                Reader deadreaderIf = new FileReader(deadfileIf);
+                CompilerEnvirons deadenvIf = new CompilerEnvirons();
+                deadenvIf.setRecordingLocalJsDocComments(true);
+                deadenvIf.setAllowSharpComments(true);
+                deadenvIf.setRecordingComments(true);
+                deadnodeIf = new Parser(deadenvIf).parse(deadreaderIf, deadfileIf, 1);
+            }
 
 
             String file = path;
@@ -79,7 +98,7 @@ public class test {
             AstNode Nnode = InsertCrypt(decryptnode, (AstNode) node.getFirstChild());
             function fu = new function();
             ToElement ob = new ToElement(Nnode);
-            ob.GetVarNameMap(Nnode, Prop, caculate, Shell, ratecalculate,ReserverName);
+            ob.GetVarNameMap(Nnode, deadnode, deadnodeIf, Prop, caculate, Shell, ratecalculate, ReserverName);
             Set<String> KeyWord = ob.getKeyWord();
             ArrayList<AstNode> NodeList = ob.getNodeList();
             VarComp Varp = new VarComp();
@@ -93,9 +112,9 @@ public class test {
                 fla.flattencontrol(Nnode, stand, eachcase);
             }
             createfunc cfunc = new createfunc();
-            Nnode = cfunc.createfunction(Nnode, KeyWord, Shell, IIS,IIS, 0);
+            Nnode = cfunc.createfunction(Nnode, KeyWord, Shell, IIS, IIS, 0);
             testpage test = new testpage();
-            test.testt(Nnode, NodeList,ReserverName);
+            test.testt(Nnode, NodeList, ReserverName);
             File protectedProjectPath = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user));
             if (!protectedProjectPath.exists())
                 protectedProjectPath.mkdir();

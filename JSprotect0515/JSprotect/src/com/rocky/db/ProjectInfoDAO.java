@@ -166,7 +166,8 @@ public class ProjectInfoDAO {
 
         //生成SQL代码
         StringBuilder sqlStatement = new StringBuilder();
-        sqlStatement.append("SELECT * FROM project_info WHERE username=?");
+        sqlStatement.append("SELECT * FROM project_info WHERE username=? ");
+        sqlStatement.append("ORDER BY project_id ASC");
 
         //设置数据库的字段值
         try {

@@ -7,6 +7,8 @@ import java.util.*;
 
 
 public class DealProperty {
+	private Map<AstNode,ArrayList<String>> ObjLinksMap;//保存一条obj传输链;
+	private Map<AstNode,ArrayList<String>> ObjProMap;//保存对象和属性名;
 	private Set<String> WindowSet;//保存window关键字相关的属性名
 	private Set<String> thisProSet;//保存由this声明的方法和属性名
 	private Set<String> thisSet;//保存值为set的结点
@@ -18,6 +20,7 @@ public class DealProperty {
 	private Set<AstNode> JsonArguObjAst;//保存所有和json相关的对象结点
 	private Set<String> objectNames;//保存所有的属性名;
 	private Set<String> ObjNode;//保存所有的保存对象类型的结点名;
+	private Map<String,Set<String>> ObjMap;//保存新结点和原结点的映射
 	private Set<AstNode> ObjNodeInFunctionCall;//保存所有的对象类型为参数的函数调用
 	private Set<AstNode> FunctionNodeAst;//保存所有函数定义结点
 	private Set<AstNode> TargetFunNodeAst;//保存所有的目标函数结点;保存函数名或者记录函数的变量
@@ -31,6 +34,7 @@ public class DealProperty {
 	private int Namenum;
 	DealProperty(){
 		Namenum=0;
+		ObjMap=new HashMap<String,Set<String>>();
 		thisSet=new HashSet<String>();
 		thisProMap=new HashMap<String,String>();
 		WindowSet=new HashSet<String>();
@@ -409,6 +413,25 @@ public class DealProperty {
 		return word;
 	}
 
+	private Map<AstNode,AstNode> NameFunction=new HashMap<AstNode,AstNode>();
+	private Map<AstNode,AstNode> ObjFunction=new HashMap<AstNode,AstNode>();
+	class CollectFunctionNode implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof VariableInitializer){
+				AstNode Name=((VariableInitializer) node).getTarget();
+				AstNode FunctionNode=((VariableInitializer) node).getInitializer();
+				if(Name instanceof Name){
+					NameFunction.put(Name, FunctionNode);
+				}
+			}else if(node instanceof FunctionNode){
+				AstNode FunName=((FunctionNode) node).getFunctionName();
+				if(FunName!=null)NameFunction.put(FunName, node);
+			}
+			return true;
+		}
+	}
+
+
 	class FindWinNode implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof PropertyGet){//获取由this引导的属性和方法
@@ -465,6 +488,182 @@ public class DealProperty {
 	}
 
 
+
+	private Map<String,Set<String>> ReturnObjFunction=new HashMap<String,Set<String>>();
+	private Set<String> ObjNodes=new HashSet<String>();
+	class CreateObjMap implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof VariableInitializer){
+				AstNode Init=((VariableInitializer) node).getInitializer();
+				if(Init!=null&&(Init instanceof ObjectLiteral||ObjNodes.contains(Init.toSource()))){
+					//记录声明一个对象
+					AstNode Tar=((VariableInitializer) node).getTarget();
+					//if(!WindowLists.contains(Tar.toSource())){
+					ObjNodes.add(Tar.toSource());
+					if(Init instanceof ObjectLiteral){
+						if(ObjMap.containsKey(Tar.toSource())){
+							Set<String> ObjSet=ObjMap.get(Tar.toSource());
+							if(ObjSet!=null){
+								ObjSet.add(Tar.toSource());
+							}
+						}else{
+							HashSet<String> ObjSet=new HashSet<String>();
+							ObjSet.add(Tar.toSource());
+							ObjMap.put(Tar.toSource(), ObjSet);
+						}
+					}else if(ObjNodes.contains(Init.toSource())){
+						Set<String> ObjSet=ObjMap.get(Init.toSource());
+						if(ObjSet!=null){
+							if(ObjMap.containsKey(Tar.toSource())){
+								Set<String> TarObjSet=ObjMap.get(Tar.toSource());
+								if(ObjSet!=null){
+									Iterator it=ObjSet.iterator();
+									while(it.hasNext()){
+										TarObjSet.add((String)it.next());
+									}
+								}
+							}else{
+								HashSet<String> TarObjSet=new HashSet<String>();
+								Iterator it=ObjSet.iterator();
+								while(it.hasNext()){
+									TarObjSet.add((String)it.next());
+								}
+								ObjMap.put(Tar.toSource(), TarObjSet);
+							}
+						}
+					}
+					//}
+				}
+				if(Init!=null&&WindowSet.contains(Init.toSource())){
+					WindowSet.add(((VariableInitializer) node).getTarget().toSource());
+				}else if(Init!=null&&thisSet.contains(Init.toSource())){
+					thisSet.add(((VariableInitializer) node).getTarget().toSource());
+				}
+			}else if(node instanceof Assignment){
+				AstNode Right=((Assignment) node).getRight();
+				AstNode Left =((Assignment) node).getLeft();
+				if(ObjNodes.contains(Right.toSource())){
+					ObjNodes.add(Left.toSource());
+					if(ObjMap.containsKey(Left.toSource())){
+						Set<String>LeftObjSet=ObjMap.get(Left.toSource());
+						Set<String> RightObjSet=ObjMap.get(Right.toSource());
+						if(RightObjSet!=null){
+							Iterator it=RightObjSet.iterator();
+							while(it.hasNext()){
+								LeftObjSet.add((String)it.next());
+							}
+						}
+					}else{
+						Set<String>LeftObjSet=new HashSet<String>();
+						Set<String> RightObjSet=ObjMap.get(Right.toSource());
+						if(RightObjSet!=null){
+							Iterator it=RightObjSet.iterator();
+							while(it.hasNext()){
+								LeftObjSet.add((String)it.next());
+							}
+						}
+						ObjMap.put(Left.toSource(), LeftObjSet);
+					}
+				}
+				if(WindowSet.contains(Right.toSource())){
+					WindowSet.add(Left.toSource());
+				}
+
+			}if(node instanceof ReturnStatement){
+				if(((ReturnStatement) node).getReturnValue() instanceof Name&&ObjNodes.contains(((ReturnStatement) node).getReturnValue().toSource())){
+					AstNode parent=((ReturnStatement) node).getParent();
+					while(!(parent instanceof FunctionNode)){
+						parent=parent.getParent();
+					}
+					if(parent instanceof FunctionNode&&((FunctionNode)parent).getFunctionName()!=null){
+						Set<String>ObjSet=ObjMap.get(((ReturnStatement) node).getReturnValue().toSource());
+						if(ObjSet!=null){
+							ReturnObjFunction.put(((FunctionNode)parent).getFunctionName().toSource(),ObjSet);
+						}
+					}else if(parent instanceof FunctionNode&&((FunctionNode)parent).getFunctionName()==null){
+						parent=parent.getParent().getParent().getParent();
+						if(parent instanceof Assignment){
+							AstNode Left=((Assignment) parent).getLeft();
+							Set<String>ObjSet=ObjMap.get(((ReturnStatement) node).getReturnValue().toSource());
+							if(ObjSet!=null){
+								Set<String> ObjSetLeft=new HashSet<String>();
+								Iterator it=ObjSet.iterator();
+								ObjSetLeft.add((String)it.next());
+								ObjNodes.add(Left.toSource());
+								ObjMap.put(Left.toSource(), ObjSetLeft);
+							}
+						}else if(parent instanceof VariableInitializer){
+							AstNode Tar=((VariableInitializer) parent).getTarget();
+							Set<String>ObjSet=ObjMap.get(((ReturnStatement) node).getReturnValue().toSource());
+							if(ObjSet!=null){
+								Set<String> ObjSetLeft=new HashSet<String>();
+								Iterator it=ObjSet.iterator();
+								ObjSetLeft.add((String)it.next());
+								ObjNodes.add(Tar.toSource());
+								ObjMap.put(Tar.toSource(), ObjSetLeft);
+							}
+						}
+					}
+				}else if(((ReturnStatement) node).getReturnValue() instanceof ObjectLiteral){
+					AstNode parent=node.getParent();
+					while(!(parent instanceof FunctionNode)){
+						parent=parent.getParent();
+					}
+					if(parent instanceof FunctionNode&&((FunctionNode)parent).getFunctionName()!=null){
+						Set<String> ObjSet=new HashSet<String>();
+						ObjSet.add(((FunctionNode)parent).getFunctionName().toSource());
+						ReturnObjFunction.put(((FunctionNode)parent).getFunctionName().toSource(),ObjSet);
+					}else if(parent instanceof FunctionNode&&((FunctionNode)parent).getFunctionName()==null){
+						parent=parent.getParent().getParent().getParent();
+						if(parent instanceof Assignment){
+							AstNode Left=((Assignment) parent).getLeft();
+							Set<String> ObjSetLeft=new HashSet<String>();
+							ObjSetLeft.add(Left.toSource());
+							ObjNodes.add(Left.toSource());
+							ObjMap.put(Left.toSource(), ObjSetLeft);
+						}else if(parent instanceof VariableInitializer){
+							AstNode Tar=((VariableInitializer) parent).getTarget();
+							Set<String> ObjSetLeft=new HashSet<String>();
+							ObjSetLeft.add(Tar.toSource());
+							ObjNodes.add(Tar.toSource());
+							ObjMap.put(Tar.toSource(), ObjSetLeft);
+						}
+					}
+				}
+			}else if(node instanceof FunctionCall){
+				AstNode Tar=((FunctionCall) node).getTarget();
+				if(Tar!=null&&Tar instanceof Name){
+					AstNode parent=node.getParent();
+					if(parent instanceof VariableInitializer){
+						AstNode target=((VariableInitializer) parent).getTarget();
+						Set<String>ObjSet=ReturnObjFunction.get(Tar.toSource());
+						if(ObjSet!=null){
+							Set<String> ObjSetLeft=new HashSet<String>();
+							Iterator it=ObjSet.iterator();
+							ObjSetLeft.add((String)it.next());
+							ObjNodes.add(target.toSource());
+							ObjMap.put(target.toSource(), ObjSetLeft);
+						}
+					}else if(parent instanceof Assignment){
+						AstNode Left=((Assignment)parent).getLeft();
+						Set<String>ObjSet=ReturnObjFunction.get(Left.toSource());
+						if(ObjSet!=null){
+							Set<String> ObjSetLeft=new HashSet<String>();
+							Iterator it=ObjSet.iterator();
+							ObjSetLeft.add((String)it.next());
+							ObjNodes.add(Left.toSource());
+							ObjMap.put(Left.toSource(), ObjSetLeft);
+						}
+					}
+				}
+			}
+			return true;
+		}
+	}
+
+
+
+
 	class FindObjNode implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof PropertyGet){//获取由this引导的属性和方法
@@ -479,7 +678,6 @@ public class DealProperty {
 					if(parent instanceof Assignment&&((Assignment) parent).getLeft()==node)
 						if(!ReserveKeyWord.contains(((PropertyGet) node).getProperty().toSource())){
 							thisProSet.add(((PropertyGet) node).getProperty().toSource());
-							//thisProMap.put(((PropertyGet) node).getProperty().toSource(), getValidWord());
 							ObjNameMap.put(((PropertyGet) node).getProperty().toSource(), getValidWord());
 						}
 				}
@@ -495,7 +693,7 @@ public class DealProperty {
 				if(Init!=null&&(Init instanceof ObjectLiteral||ObjNode.contains(Init.toSource()))){
 					//记录声明一个对象
 					AstNode Tar=((VariableInitializer) node).getTarget();
-					if(!WindowLists.contains(Tar.toSource()))
+					if(!WindowLists.contains(Tar.toSource())&&!WinSourceObj.contains(Tar.toSource()))
 						ObjNode.add(Tar.toSource());
 				}
 				if(Init!=null&&WindowSet.contains(Init.toSource())){
@@ -506,14 +704,14 @@ public class DealProperty {
 			}else if(node instanceof Assignment){
 				AstNode Right=((Assignment) node).getRight();
 				AstNode Left =((Assignment) node).getLeft();
-				if(ObjNode.contains(Right.toSource())&&!WindowLists.contains(Left.toSource())){
+				if(ObjNode.contains(Right.toSource())&&!WindowLists.contains(Left.toSource())&&!WinSourceObj.contains(Left.toSource())){
 					ObjNode.add(Left.toSource());
 				}
 				if(WindowSet.contains(Right.toSource())){
 					WindowSet.add(Left.toSource());
 				}
 				if(Left instanceof PropertyGet){
-					if(((PropertyGet) Left).getTarget() instanceof Name&&ObjNode.contains(((PropertyGet) Left).getTarget().toSource())){
+					if(((PropertyGet) Left).getTarget() instanceof Name&&ObjNode.contains(((PropertyGet) Left).getTarget().toSource())&&!WinSourceObj.contains(((PropertyGet) Left).getTarget().toSource())){
 						ObjNameMap.put(((PropertyGet) Left).getProperty().toSource(), getValidWord());
 					}
 				}
@@ -566,7 +764,6 @@ public class DealProperty {
 						ObjNameMap.put(LeftName.toSource(), getValidWord());
 				}
 			}else if(node instanceof VariableInitializer&&((VariableInitializer)node).getInitializer() instanceof Name){
-				System.out.println("ok");
 				AstNode Target=((VariableInitializer)node).getTarget();
 				AstNode Init=((VariableInitializer)node).getInitializer();
 				if(JsonArguObj.contains(Init.toSource())&&Target instanceof Name){
@@ -699,14 +896,40 @@ public class DealProperty {
 		}
 	}
 
+
+	class FindTargetFunctionName implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof FunctionNode&&((FunctionNode)node).getFunctionName()!=null&&((FunctionNode)node).getFunctionName().toSource().equals(TargetFunctionName)){
+				node.visit(new RemoveReturn());
+			}
+			return true;
+		}
+	}
+
+	private String TargetFunctionName=null;
 	class DealWindowLists implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof VariableInitializer){
 				AstNode Target=((VariableInitializer)node).getTarget();
 				AstNode Init=((VariableInitializer)node).getInitializer();
-				//System.out.println(node.toSource());
-				if(WindowLists.contains(Target.toSource())){
+				boolean just1=Init instanceof FunctionCall&&!(((FunctionCall)Init).getTarget() instanceof Name);
+				boolean just2=Init instanceof FunctionCall&&((FunctionCall)Init).getTarget() instanceof Name;
+				if(WindowLists.contains(Target.toSource())&&just1){
 					node.visit(new RemoveReturn());
+				}else if(WindowLists.contains(Target.toSource())&&just2){
+					TargetFunctionName=((FunctionCall)Init).getTarget().toSource();
+					nodeclone.visit(new FindTargetFunctionName());
+				}
+			}else if(node instanceof Assignment){
+				AstNode Left=((Assignment) node).getLeft();
+				AstNode Right=((Assignment) node).getRight();
+				boolean just1=Right instanceof FunctionCall&&!(((FunctionCall)Right).getTarget() instanceof Name);
+				boolean just2=Right instanceof FunctionCall&&((FunctionCall)Right).getTarget() instanceof Name;
+				if(WindowLists.contains(Left.toSource())){
+					node.visit(new RemoveReturn());
+				} if(WindowLists.contains(Left.toSource())&&just2){
+					TargetFunctionName=((FunctionCall)Right).getTarget().toSource();
+					nodeclone.visit(new FindTargetFunctionName());
 				}
 			}
 			return true;
@@ -760,12 +983,13 @@ public class DealProperty {
 					AstNode parent=node.getParent();
 					boolean just1=parent instanceof PropertyGet&&getTarget((PropertyGet)parent)!=node;
 					//boolean just2=parent instanceof ElementGet&&getTarget((ElementGet)parent)!=node;
+					boolean just2=parent instanceof PropertyGet&&!WinSourceObj.contains(getTarget((PropertyGet)parent).toSource());
 					boolean just3=!objectNames.contains(node.toSource());
 					boolean just4=parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node;
-					if(just1&&just3){
+					if(just2&&just1&&just3){
 						String NewName=ObjNameMap.get(node.toSource());
 						if(NewName!=null)((Name) node).setIdentifier(NewName);
-					}else if(just1||just4){
+					}else if((just2&&just1)||just4){
 						String NewName=ObjNameMap.get(node.toSource());
 						if(NewName!=null)((Name)node).setIdentifier(NewName);
 					}
@@ -823,18 +1047,39 @@ public class DealProperty {
 	}
 
 
-	public void DealPropertyName(AstNode node){
+	private Set<String>WinSourceObj=new HashSet<String>();//记录释放的初始结点;
+	private AstNode nodeclone=null;
+	public void DealPropertyName(AstNode node,Set<String> ReserveNames){
+		nodeclone=node;
+		Iterator it=ReserveNames.iterator();
+		while(it.hasNext()){
+			ReserveKeyWord.add((String)it.next());
+		}
 		collectNames(node);
-		getValidWord();
+		node.visit(new CollectFunctionNode());
 		node.visit(new FindWinNode());
-		node.visit(new FindWindowLists());
-		node.visit(new FindObjNode());
 		DealObjNodeInFunctionCall();
+		node.visit(new FindWindowLists());
+		node.visit(new CreateObjMap());
+		Iterator itt=WindowLists.iterator();
+		while(itt.hasNext()){
+			String str=(String)itt.next();
+			Set<String> source=ObjMap.get(str);
+			if(source!=null){
+				Iterator sit=source.iterator();
+				WinSourceObj.add((String)sit.next());
+			}
+		}
+		itt=WinSourceObj.iterator();
+		while(itt.hasNext()){
+			String Str=(String)itt.next();
+			WindowLists.add(Str);
+			System.out.println(Str);
+		}
+		node.visit(new FindObjNode());
 		node.visit(new FindObjFunction());
 		node.visit(new DealWindowLists());
 		DealTargetFunNodeAst();
 		node.visit(new ChangeObjName());
-		Iterator it=FunctionNames.iterator();
 	}
 }
-

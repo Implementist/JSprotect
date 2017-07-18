@@ -375,8 +375,8 @@ public class createfunc {
 			}else if(node instanceof KeywordLiteral){
 				if(!node.toSource().equals("this")){
 					KeyLiteral.add(node.getType());
-					if(KeyMap.containsKey(node.toSource())){
-						ArrayList<AstNode>KeyLists=KeyMap.get(node.toSource());
+					if(KeyMap.containsKey(node.getType())){
+						ArrayList<AstNode>KeyLists=KeyMap.get(node.getType());
 						KeyLists.add(node);
 					}else{
 						ArrayList<AstNode> KeyLists=new ArrayList<AstNode>();
@@ -404,7 +404,6 @@ public class createfunc {
 			Params.add(ParaStr);
 		}
 		Iterator keyIt=KeyLiteral.iterator();
-		System.out.println(KeyLiteral.size());
 		while(keyIt.hasNext()){
 			KeywordLiteral Key=new KeywordLiteral();
 			Key.setType((int)keyIt.next());
@@ -577,7 +576,6 @@ public class createfunc {
 				NewNode.setRelative(parent.getPosition());
 			}
 		}else{
-			System.out.println("::"+parent.getClass());
 		}
 	}
 

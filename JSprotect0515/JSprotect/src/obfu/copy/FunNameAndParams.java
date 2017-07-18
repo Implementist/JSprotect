@@ -1,6 +1,7 @@
 package obfu.copy;
 
 
+
 import org.mozilla.javascript.ast.*;
 
 import java.util.*;

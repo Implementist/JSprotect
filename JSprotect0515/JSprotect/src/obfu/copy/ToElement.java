@@ -1,4 +1,5 @@
 package obfu.copy;
+
 import org.mozilla.javascript.Token;
 import org.mozilla.javascript.ast.*;
 
@@ -136,7 +137,6 @@ class ToElement{
 		ObjKeyWord.add("Float32Array");
 		ObjKeyWord.add("XMLHttpRequest");
 		ObjKeyWord.add("Infinity");
-		//ObjKeyWord.add("Error");
 	}
 
 	public	Set<String> getKeyWord(){
@@ -214,11 +214,43 @@ class ToElement{
 	private void collectNames(AstNode node) {
 		node.visit(new Visitor());
 	}
+
+	class ChangeDeadName implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof Name){
+				((Name) node).setIdentifier(FunNameDead);
+			}
+			return true;
+		}
+	}
+
+	private String FunNameDead=null;
 	class Visitor implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node.getType()==Token.NAME){
 				if(((Name)node).getIdentifier().length()<6)
 					NamesInFlattern.add(((Name)node).getIdentifier());
+			}
+			if(node instanceof FunctionNode){
+				AstNode FunName=((FunctionNode) node).getFunctionName();
+				if(DeadCodesIf!=null&&DeadCodesIf.size()>0&&FunName!=null){
+					FunNameDead=FunName.toSource();
+					AstNode body=((FunctionNode) node).getBody();
+					int ran=random.nextInt(DeadCodesIf.size());
+					AstNode DeadCodeIfs=(AstNode)((AstNode)DeadCodesIf.get(ran).getFirstChild()).clone();
+					DeadCodesIf.remove(ran);
+					DeadCodeIfs.visit(new ChangeDeadName());
+					for(AstNode First=(AstNode)body.getFirstChild();First.getNext()!=null;First=(AstNode)First.getNext()){
+						int num=random.nextInt(10);
+						if(num<4){
+							AstNode NewNode=(AstNode)DeadCodeIfs.clone();
+							body.addChildAfter(NewNode, First);
+							NewNode.setParent(body);
+							NewNode.setRelative(body.getPosition());
+							break;
+						}
+					}
+				}
 			}
 			return true;
 		}
@@ -828,6 +860,7 @@ class ToElement{
 			if(ScopeList.get(i) instanceof IfStatement){
 				//给if的then和else部分添加括号
 				AstNode ThenPart=((IfStatement)ScopeList.get(i)).getThenPart();
+				AstNode ThenPartClone=(AstNode)ThenPart.clone();
 				if(ThenPart.getFirstChild()==null){
 					Scope Thenscope=new Scope();
 					Thenscope.addChild(ThenPart);
@@ -840,6 +873,30 @@ class ToElement{
 						Elsescope.addChild(ElsePart);
 						((IfStatement)ScopeList.get(i)).setElsePart(Elsescope);
 					}
+				}else if(ThenPartClone instanceof Scope){
+					/*Scope ElseScope=new Scope();
+					if(DeadCodes.size()>0){
+						int ran=random.nextInt(DeadCodes.size());
+						AstNode DeadCode=(AstNode)DeadCodes.get(ran).clone();
+						DeadCodes.remove(ran);
+						((IfStatement)ScopeList.get(i)).setElsePart(DeadCode);
+						DeadCode.setParent(ScopeList.get(i));
+						DeadCode.setRelative(ScopeList.get(i).getPosition());
+					/*	List<AstNode> DeadList=new ArrayList<AstNode>();
+						AstNode firstNode=(AstNode)((AstNode)DeadCode.getFirstChild()).clone();
+						ElseScope.addChild(firstNode);
+						for(AstNode first=(AstNode)DeadCode.getFirstChild();first!=null;first=(AstNode)first.getNext()){
+							AstNode InsertNode=(AstNode)first.clone();
+							ElseScope.addChildAfter(InsertNode, firstNode);
+							firstNode=InsertNode;
+							InsertNode.setParent(ElseScope);
+							InsertNode.setRelative(ElseScope.getPosition());
+							System.out.println(InsertNode.getParent().toSource());
+						}
+						((IfStatement)ScopeList.get(i)).setElsePart(ElseScope);
+						ElseScope.setParent(ScopeList.get(i));
+						ElseScope.setRelative(ScopeList.get(i).getPosition());
+					}*/
 				}
 				//把状态作为变量提取
 				AstNode Condition=((IfStatement)ScopeList.get(i)).getCondition();
@@ -894,7 +951,7 @@ class ToElement{
 		for(int i=0;i<InfixExpressionArrayList.size();i++){
 			int InfixRate=random.nextInt(10);
 			int ratestand=10-this.ratecalculate;
-			if(InfixRate>ratestand)continue;
+			//if(InfixRate>ratestand)continue;
 			if(((InfixExpression)InfixExpressionArrayList.get(i)).getOperator()==33)continue;
 			//防止将a.b这种类型作为计算式
 			if(((InfixExpression)InfixExpressionArrayList.get(i)).getOperator()==Token.ASSIGN)continue;
@@ -917,11 +974,16 @@ class ToElement{
 			if(parent instanceof Assignment){
 				AstNode tmp=dealInfixExpression(InfixExpressionArrayList.get(i),suparent,0);
 				((Assignment) parent).setRight(tmp);
+				tmp.setParent(parent);
+				tmp.setRelative(parent.getPosition());
+				//System.out.println("@@@:"+parent.getParent().getParent().getParent().toSource());
 				InfixComma.add(parent.getParent());
 				InfixCommaFather.add(parent.getParent());
 			}else if(parent instanceof VariableInitializer){
 				AstNode tmp=dealInfixExpression(InfixExpressionArrayList.get(i),suparent,0);
 				((VariableInitializer) parent).setInitializer(tmp);
+				tmp.setParent(parent);
+				tmp.setRelative(parent.getPosition());
 				InfixComma.add(parent.getParent());
 				InfixCommaFather.add(parent.getParent());
 			}
@@ -1147,6 +1209,8 @@ class ToElement{
 	//Node 结点是以a=b+c的形式.
 	private void CreateObInfix(AstNode Father,AstNode node){
 		int num=random.nextInt(2);
+		num=1;
+		//if(Father.getParent()==null)System.out.println("ookkk"+Father.toSource());
 		if(node instanceof Assignment){
 			AstNode Left=((Assignment) node).getLeft();
 			AstNode Right=((Assignment) node).getRight();
@@ -1159,12 +1223,14 @@ class ToElement{
 				else if(num==1)CreateInfixComma2(Father,((Assignment) Expr).getRight(),((Assignment) Expr).getLeft(),0);
 			}
 			AstNode parent=Father.getParent();
-			if(parent instanceof SwitchCase){
-				List<AstNode> Statements=((SwitchCase) parent).getStatements();
-				Statements.remove(Father);
-			}else{
-				parent.removeChild(Father);
-				Father.setParent(null);
+			if(parent!=null){
+				if(parent instanceof SwitchCase){
+					List<AstNode> Statements=((SwitchCase) parent).getStatements();
+					Statements.remove(Father);
+				}else{
+					parent.removeChild(Father);
+					Father.setParent(null);
+				}
 			}
 		}else if(node instanceof VariableDeclaration){
 			List<VariableInitializer> variable=((VariableDeclaration) node).getVariables();
@@ -1173,12 +1239,14 @@ class ToElement{
 				else if(num==1)CreateInfixComma2(Father,variable.get(i).getInitializer(),(AstNode)variable.get(i).getTarget().clone(),1);
 			}
 			AstNode parent=Father.getParent();
-			if(parent instanceof SwitchCase){
-				List<AstNode> Statements=((SwitchCase) parent).getStatements();
-				Statements.remove(Father);
-			}else{
-				parent.removeChild(Father);
-				Father.setParent(null);
+			if(parent!=null){
+				if(parent instanceof SwitchCase){
+					List<AstNode> Statements=((SwitchCase) parent).getStatements();
+					Statements.remove(Father);
+				}else{
+					parent.removeChild(Father);
+					Father.setParent(null);
+				}
 			}
 		}
 	}
@@ -1290,24 +1358,26 @@ class ToElement{
 		ResAss.setParent(ExpS);
 		ResAss.setRelative(ResAss.getPosition());
 		AstNode parent=Father.getParent();
-		if(!(parent instanceof SwitchCase)){
-			VarName.setParent(parent);
-			VarName.setRelative(parent.getPosition());
-			ExpS.setParent(parent);
-			ExpS.setRelative(parent.getPosition());
-			if(parent instanceof ForLoop){
-				System.out.println("ForLoop1");
+		if(parent!=null){
+			if(!(parent instanceof SwitchCase)){
+				VarName.setParent(parent);
+				VarName.setRelative(parent.getPosition());
+				ExpS.setParent(parent);
+				ExpS.setRelative(parent.getPosition());
+				if(parent instanceof ForLoop){
+					System.out.println("ForLoop1");
+				}else{
+					parent.addChildBefore(VarName, Father);
+					parent.addChildBefore(ExpS,Father);
+				}
 			}else{
-				parent.addChildBefore(VarName, Father);
-				parent.addChildBefore(ExpS,Father);
-			}
-		}else{
-			List<AstNode>Statements=((SwitchCase)parent).getStatements();
-			for(int i=0;i<Statements.size();i++){
-				if(Statements.get(i)==Father){
-					Statements.add(i,VarName);
-					Statements.add(i+1,ExpS);
-					break;
+				List<AstNode>Statements=((SwitchCase)parent).getStatements();
+				for(int i=0;i<Statements.size();i++){
+					if(Statements.get(i)==Father){
+						Statements.add(i,VarName);
+						Statements.add(i+1,ExpS);
+						break;
+					}
 				}
 			}
 		}
@@ -1361,7 +1431,24 @@ class ToElement{
 			Node2.setRelative(Node3.getPosition());
 		}
 		else {
-			AstNode Res=(AstNode)Result.clone();
+			//AstNode Res=(AstNode)Result.clone();
+			AstNode Res=null;
+			if(Result instanceof ElementGet&&((ElementGet) Result).getElement() instanceof StringLiteral){
+				ElementGet Ele=new ElementGet();
+				AstNode Tar=(AstNode)((ElementGet) Result).getTarget().clone();
+				Ele.setTarget(Tar);
+				Tar.setParent(Ele);
+				Tar.setRelative(Ele.getPosition());
+				StringLiteral newStr=new StringLiteral();
+				newStr.setValue(((StringLiteral)((ElementGet) Result).getElement()).getValue());
+				newStr.setQuoteCharacter('"');
+				Ele.setElement(newStr);
+				newStr.setParent(Ele);
+				newStr.setRelative(Ele.getPosition());
+				Res=Ele;
+			}else{
+				Res=(AstNode)Result.clone();
+			}
 			Res.setParent(Node3);
 			Res.setRelative(Node3.getPosition());
 			Node2.setParent(Node3);
@@ -1391,24 +1478,27 @@ class ToElement{
 		NameList.add((AstNode)fake.clone());
 		AstNode ResVar=CreateVaraibeWithOutIni(NameList);
 		AstNode parent=Father.getParent();
-		if(!(parent instanceof SwitchCase)){
-			ResVar.setParent(parent);
-			ResVar.setRelative(parent.getPosition());
-			Expr.setParent(parent);
-			Expr.setRelative(parent.getPosition());
-			if(parent instanceof ForLoop){
-				System.out.println("ForLoop2");
+		if(parent!=null){
+			if(!(parent instanceof SwitchCase)){
+				//System.out.println(ResVar.toSource()+"   "+parent.toSource());
+				ResVar.setParent(parent);
+				ResVar.setRelative(parent.getPosition());
+				Expr.setParent(parent);
+				Expr.setRelative(parent.getPosition());
+				if(parent instanceof ForLoop){
+					System.out.println("ForLoop2");
+				}else{
+					parent.addChildBefore(ResVar, Father);
+					parent.addChildBefore(Expr, Father);
+				}
 			}else{
-				parent.addChildBefore(ResVar, Father);
-				parent.addChildBefore(Expr, Father);
-			}
-		}else{
-			List<AstNode>Statements=((SwitchCase)parent).getStatements();
-			for(int i=0;i<Statements.size();i++){
-				if(Statements.get(i)==Father){
-					Statements.add(i,ResVar);
-					Statements.add(i+1,Expr);
-					break;
+				List<AstNode>Statements=((SwitchCase)parent).getStatements();
+				for(int i=0;i<Statements.size();i++){
+					if(Statements.get(i)==Father){
+						Statements.add(i,ResVar);
+						Statements.add(i+1,Expr);
+						break;
+					}
 				}
 			}
 		}
@@ -2095,21 +2185,54 @@ class ToElement{
 	}
 
 
+	class clone implements NodeVisitor{
+		public boolean visit(AstNode node){
+			node=(AstNode)node.clone();
+			return true;
+		}
+	}
 
+	class InitDeadCode implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof IfStatement){
+				AstNode ElsePart=((IfStatement) node).getElsePart();
+				ElsePart.visit(new clone());
+				DeadCodes.add((AstNode)ElsePart.clone());
+			}
+			return true;
+		}
+	}
 
+	class InitDeadCodeIf implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof FunctionNode){
+				AstNode body=((FunctionNode) node).getBody();
+				DeadCodesIf.add((AstNode)body.clone());
+			}
+			return true;
+		}
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
+	class InserDeadCode implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof IfStatement){
+				AstNode ThenPart=((IfStatement) node).getThenPart();
+				AstNode ElsePart=((IfStatement) node).getElsePart();
+				if(ElsePart==null&&ThenPart instanceof Scope){
+					Scope ElseScope=new Scope();
+					if(DeadCodes!=null&&DeadCodes.size()>0){
+						int ran=random.nextInt(DeadCodes.size());
+						AstNode DeadCode=(AstNode)DeadCodes.get(ran).clone();
+						DeadCodes.remove(ran);
+						((IfStatement)node).setElsePart(DeadCode);
+						DeadCode.setParent(node);
+						DeadCode.setRelative(node.getPosition());
+					}
+				}
+			}
+			return true;
+		}
+	}
 
 
 	AstNode Root=null;
@@ -2118,11 +2241,18 @@ class ToElement{
 	private int ratecalculate;
 	private ArrayList<String> NislFunction;
 	private Set<AstNode> DealedNodes;
-	public void GetVarNameMap(AstNode node,int Prop,int caculate,int Shell,int ratecalculate,Set<String> ResverName) throws IOException {
+	private ArrayList<AstNode> DeadCodes=new ArrayList<AstNode>();//保存所有的垃圾代码
+	private ArrayList<AstNode> DeadCodesIf=new ArrayList<AstNode>();//保存所有的带有if的垃圾代码
+	public void GetVarNameMap(AstNode node,AstNode DeadNode,AstNode DeadNodeIf,int Prop,int caculate,int Shell,int ratecalculate,Set<String> ResverName) throws IOException {
+		if(DeadNode!=null&&DeadNodeIf!=null){
+			DeadNode.visit(new InitDeadCode());
+			DeadNodeIf.visit(new InitDeadCodeIf());
+		}
 		this.ratecalculate=ratecalculate;
 		this.Shell=Shell;
 		Root=node;
 		InitFirst((AstNode)node.getFirstChild());
+		node.visit(new InserDeadCode());
 		node.visit(new testvisit1());
 		FunNameAndParams NameAndParams=new FunNameAndParams();
 		NameAndParams.testt(node,ObjName,ResverName);
@@ -2132,7 +2262,7 @@ class ToElement{
 		collectNames(node);//获取目前所有的变量名。
 		if(Prop==1){
 			DealProperty property=new DealProperty();
-			property.DealPropertyName(node);
+			property.DealPropertyName(node,ResverName);
 		}
 		//补充if,for循环的大括号
 		DealBlankList();//必选
@@ -2146,7 +2276,7 @@ class ToElement{
 		DealSpeAssList();
 		//提取函数实参
 		//DealFunctionCallStack();
-		//删除拆分声明后的原声明结点
+
 		for(int i=0;i<VariableList.size();i++){
 			AstNode parent=VariableList.get(i).getParent();
 			if(parent instanceof ForLoop)continue;
