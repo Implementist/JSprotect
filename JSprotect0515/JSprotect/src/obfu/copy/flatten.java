@@ -1,5 +1,6 @@
 package obfu.copy;
 
+
 import org.mozilla.javascript.Token;
 import org.mozilla.javascript.ast.*;
 

@@ -188,9 +188,9 @@
                                                 <div class="field" style="position: relative;top:96px">
                                                     <div class="ui checked checkbox">
                                                         <label>
-                                                            <input name="chbWasteCode" type="checkbox" tabindex="0"
+                                                            <input name="chbDeadCode" type="checkbox" tabindex="0"
                                                                    value="unchecked"
-                                                                   onchange="reverseValue(document.getElementsByName('chbWasteCode')[0])">
+                                                                   onchange="reverseValue(document.getElementsByName('chbDeadCode')[0])">
                                                             <h4>废代码</h4>
                                                         </label>
                                                     </div>
