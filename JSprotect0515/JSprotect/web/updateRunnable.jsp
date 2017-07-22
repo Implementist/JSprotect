@@ -11,7 +11,7 @@
     String username = request.getParameter("username");
     String projectId = request.getParameter("projectId");
 
-    Boolean result = ProjectInfoDAO.updateRunnableByUsernameAndProjectId(username,projectId);
+    Boolean result = ProjectInfoDAO.updateRunnableByUsernameAndProjectId(username,Integer.parseInt(projectId));
     if (result) {
         out.print(1);
     } else {

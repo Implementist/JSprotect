@@ -13,7 +13,7 @@
         response.sendRedirect("login.jsp");
 
     Project project = new Project();
-    ProjectInfo projectInfo = project.getOneProjectInfo((String) session.getAttribute("user"), request.getParameter("id"));
+    ProjectInfo projectInfo = project.getOneProjectInfo((String) session.getAttribute("user"), Integer.parseInt(request.getParameter("id")));
 %>
 
 <!DOCTYPE html>

@@ -51,7 +51,7 @@ public class test {
     }
 
     //是否控制流平展，阈值，case大小，大数组加壳，计算式混淆，计算式混淆参数，属性名，处理数字，处理字符串
-    public void protect(int DeadCode, Set ReserverName, int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, String projectId, String user) {
+    public void protect(int DeadCode, Set ReserverName, int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, int projectId, String user) {
         //public static void main(String[] args)throws IOException{
         try {
             //D:\个人\js前端相关\JSprotect0515\JSprotect\src\obfu\copy
@@ -118,22 +118,22 @@ public class test {
             File protectedProjectPath = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user));
             if (!protectedProjectPath.exists())
                 protectedProjectPath.mkdir();
-            System.out.println(FileUtils.getWholeFileName(fileName + "====----====", FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
-            File protectedProjectPath2 = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
+            System.out.println(FileUtils.getWholeFileName(fileName + "====----====", FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
+            File protectedProjectPath2 = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
             if (!protectedProjectPath2.exists())
                 protectedProjectPath2.mkdirs();
 
-            File dir = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
+            File dir = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
             dir.mkdirs();
 
-            FileWriter fw = new FileWriter(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
+            FileWriter fw = new FileWriter(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
             String str = Nnode.toSource();
             //System.out.println(str);
             fw.write(str);
             fw.flush();
             fw.close();
             compress comp = new compress();
-            comp.compress(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId));
+            comp.compress(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
         } catch (IOException ee) {
             System.out.println(ee.toString());
         }

@@ -87,7 +87,7 @@
                             String downloadURLItem = "\"" + "Projects/" + (String) session.getAttribute("user") + "/" + projectInfo.getProjectId() + "/" + projectInfo.getFileName().substring(0, projectInfo.getFileName().length() - 3) + "-min.js" + "\"";
 
                             out.print("<tr>");
-                            out.print("<td>" + projectInfo.getProjectId() + "</td>");
+                            out.print("<td>Project" + projectInfo.getProjectId() + "</td>");
                             out.print("<td>" + projectInfo.getDate() + "</td>");
 
                             out.print("<td> <a href=" + downloadURLItem + " download=" + "\"" + projectInfo.getFileName().substring(0, projectInfo.getFileName().length() - 3) + "-min.js" + "\"" + ">" + projectInfo.getFileName() + "</a></td>");

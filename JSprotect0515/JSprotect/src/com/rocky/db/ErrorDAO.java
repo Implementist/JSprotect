@@ -34,7 +34,7 @@ public class ErrorDAO {
                 Error error = new Error();
                 error.setErrorId(resultSet.getInt("errorId"));
                 error.setUsername(resultSet.getString("username"));
-                error.setProjectId(resultSet.getString("projectId"));
+                error.setProjectId(resultSet.getInt("projectId"));
                 error.setErrorType(resultSet.getString("errorType"));
                 error.setErrorContent(resultSet.getString("errorContent"));
 
