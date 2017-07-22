@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  */
 public class ProjectInfo {
     private String username;
-    private String projectId;
+    private int projectId;
     private int antidbg;
     private int obfuscation;
     private int antiTamper;
@@ -18,11 +18,11 @@ public class ProjectInfo {
     private Boolean runnable;
     private String fileName;
 
-    public String getProjectId() {
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(String projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 

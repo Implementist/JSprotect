@@ -203,8 +203,7 @@
                                                 <div class="field" style="position: relative">
                                                     <h4>&nbsp;&nbsp;&nbsp;&nbsp;保留字</h4>
                                                     <textarea name="txtReserveName" type="text"
-                                                              style="width: 100px;height: 140px;float: left">
-                                                    </textarea>
+                                                              style="width: 100px;height: 140px;float: left"></textarea>
                                                     <span style="font-size: 12px;position: relative;left: -80px;top: 140px">(请用空格间隔)</span>
                                                 </div>
                                             </div>

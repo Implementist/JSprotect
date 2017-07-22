@@ -1,11 +1,11 @@
 package com.rocky.adbProject;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import com.rocky.db.ProjectInfo;
 import com.rocky.db.ProjectInfoDAO;
 import com.rocky.protect.Protection;
+
+import java.io.File;
+import java.util.ArrayList;
 
 
 public class Project {
@@ -23,9 +23,9 @@ public class Project {
         this.libNames.add("bootstrap");
     }
 
-    public String getProjectId(String username) {
-        int currentCount = ProjectInfoDAO.queryCountByUsername(username);
-        return "Project" + (currentCount + 1);
+    public int getProjectId(String username) {
+        int currentCount = ProjectInfoDAO.queryMaxByUsername(username);
+        return currentCount + 1;
     }
 
     public ArrayList<Integer> ProcessProject(ArrayList<String> filesNeedProcess, int flatternStrength, int opaqueStrength) {
@@ -84,7 +84,7 @@ public class Project {
         file.delete();
     }
 
-    public ProjectInfo getOneProjectInfo(String username, String projectID) {
+    public ProjectInfo getOneProjectInfo(String username, int projectID) {
         return ProjectInfoDAO.queryProjectInfoByUsernameAndProjectId(username, projectID);
     }
 

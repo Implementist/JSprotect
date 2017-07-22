@@ -133,7 +133,7 @@
 
                     // 生成该用户的ProjectId
                     Project project = new Project();
-                    String projectId = project
+                    int projectId = project
                             .getProjectId((String) session
                                     .getAttribute("user"));
 

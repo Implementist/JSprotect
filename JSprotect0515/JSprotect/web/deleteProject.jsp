@@ -11,7 +11,7 @@
     String username = request.getParameter("username");
     String projectId = request.getParameter("projectId");
 
-    Boolean result = ProjectInfoDAO.deleteProjectInfoByUsernameAndProjectId(username, projectId);
+    Boolean result = ProjectInfoDAO.deleteProjectInfoByUsernameAndProjectId(username, Integer.parseInt(projectId));
     if (result) {
         out.print(1);
     } else {

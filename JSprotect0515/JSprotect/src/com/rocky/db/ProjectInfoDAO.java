@@ -32,7 +32,7 @@ public class ProjectInfoDAO {
         try {
             preparedStatement = connection.prepareStatement(sqlStatement.toString());
             preparedStatement.setString(1, projectInfo.getUsername());
-            preparedStatement.setString(2, projectInfo.getProjectId());
+            preparedStatement.setInt(2, projectInfo.getProjectId());
             preparedStatement.setInt(3, projectInfo.getAntidbg());
             preparedStatement.setInt(4, projectInfo.getObfuscation());
             preparedStatement.setInt(5, projectInfo.getAntiTamper());
@@ -92,7 +92,7 @@ public class ProjectInfoDAO {
      * @param projectId 工程Id
      * @return 删除是否成功
      */
-    public static Boolean deleteProjectInfoByUsernameAndProjectId(String username, String projectId) {
+    public static Boolean deleteProjectInfoByUsernameAndProjectId(String username, int projectId) {
         //获得数据库的连接对象
         Connection connection = DBManager.getConnection();
         PreparedStatement preparedStatement = null;
@@ -105,7 +105,7 @@ public class ProjectInfoDAO {
         try {
             preparedStatement = connection.prepareStatement(sqlStatement.toString());
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, projectId);
+            preparedStatement.setInt(2, projectId);
 
             preparedStatement.executeUpdate();
             return true;
@@ -123,7 +123,7 @@ public class ProjectInfoDAO {
      * @param projectId 工程Id
      * @return 更改是否成功
      */
-    public static Boolean updateRunnableByUsernameAndProjectId(String username, String projectId){
+    public static Boolean updateRunnableByUsernameAndProjectId(String username, int projectId){
         //获得数据库的连接对象
         Connection connection = DBManager.getConnection();
         PreparedStatement preparedStatement = null;
@@ -138,7 +138,7 @@ public class ProjectInfoDAO {
         try {
             preparedStatement = connection.prepareStatement(sqlStatement.toString());
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, projectId);
+            preparedStatement.setInt(2, projectId);
 
             preparedStatement.executeUpdate();
             return true;
@@ -179,7 +179,7 @@ public class ProjectInfoDAO {
             while (resultSet.next()) {
                 ProjectInfo projectInfo = new ProjectInfo();
                 projectInfo.setUsername(resultSet.getString("username"));
-                projectInfo.setProjectId(resultSet.getString("project_id"));
+                projectInfo.setProjectId(resultSet.getInt("project_id"));
                 projectInfo.setAntidbg(resultSet.getInt("anti_dbg"));
                 projectInfo.setObfuscation(resultSet.getInt("obfuscation"));
                 projectInfo.setAntiTamper(resultSet.getInt("anti_tamper"));
@@ -208,7 +208,7 @@ public class ProjectInfoDAO {
      * @param projectId 工程Id
      * @return 工程信息
      */
-    public static ProjectInfo queryProjectInfoByUsernameAndProjectId(String username, String projectId) {
+    public static ProjectInfo queryProjectInfoByUsernameAndProjectId(String username, int projectId) {
         //获得数据库的连接对象
         Connection connection = DBManager.getConnection();
         PreparedStatement preparedStatement = null;
@@ -224,13 +224,13 @@ public class ProjectInfoDAO {
         try {
             preparedStatement = connection.prepareStatement(sqlStatement.toString());
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, projectId);
+            preparedStatement.setInt(2, projectId);
 
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 projectInfo.setUsername(resultSet.getString("username"));
-                projectInfo.setProjectId(resultSet.getString("project_id"));
+                projectInfo.setProjectId(resultSet.getInt("project_id"));
                 projectInfo.setAntidbg(resultSet.getInt("anti_dbg"));
                 projectInfo.setObfuscation(resultSet.getInt("obfuscation"));
                 projectInfo.setAntiTamper(resultSet.getInt("anti_tamper"));
@@ -257,7 +257,7 @@ public class ProjectInfoDAO {
      * @param username 用户名
      * @return 用户名下的工程总数
      */
-    public static int queryCountByUsername(String username) {
+    public static int queryMaxByUsername(String username) {
         //获得数据库的连接对象
         Connection connection = DBManager.getConnection();
         PreparedStatement preparedStatement = null;
@@ -265,7 +265,7 @@ public class ProjectInfoDAO {
 
         //生成SQL代码
         StringBuilder sqlStatement = new StringBuilder();
-        sqlStatement.append("SELECT COUNT(*) FROM project_info WHERE username=?");
+        sqlStatement.append("SELECT MAX(project_id) FROM project_info WHERE username=?");
 
         //设置数据库的字段值
         try {
