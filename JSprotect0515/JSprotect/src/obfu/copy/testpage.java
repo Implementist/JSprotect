@@ -8,6 +8,10 @@ import java.util.*;
 //函数形式声明对象会出错
 
 public class testpage {
+	private Set<String> VarNames=new HashSet<String>();
+	private Set<String> AssNames=new HashSet<String>();
+
+
 	private Set<String>FunName=new HashSet<String>();//记录函数名
 	private Set<String>ArguName=new HashSet<String>();
 	private Set<AstNode>Params=new HashSet<AstNode>();
@@ -128,10 +132,13 @@ public class testpage {
 				FlagList.add(end);
 				parent.addChildrenToBack(end);
 			}else if(node instanceof VariableInitializer){
-				//if(((VariableInitializer) node).getInitializer() instanceof ObjectLiteral)
-				//System.out.println(node.toSource());
+				AstNode Target=((VariableInitializer) node).getTarget();
+				if(Target instanceof Name)VarNames.add(Target.toSource());
 			}else if(node instanceof Name){
 				NameSet.add(node.toSource());
+			}else if(node instanceof Assignment){
+				AstNode Left=((Assignment) node).getLeft();
+				if(Left instanceof Name)AssNames.add(Left.toSource());
 			}
 			return true;
 		}
@@ -169,7 +176,7 @@ public class testpage {
 				if(node.getParent() instanceof VariableInitializer){
 					AstNode tmp=node.getParent();
 					AstNode tmpP=tmp.getParent();
-					if(((VariableInitializer)tmp).getInitializer()!=node){
+					if(((VariableInitializer)tmp).getInitializer()!=node&&!VarThisMap.containsKey(node.toSource())){
 						scopeData.addData(node.toSource());
 					}
 				}else if(node.getParent() instanceof ElementGet){
@@ -359,6 +366,10 @@ public class testpage {
 				}else {
 					NameToScope.put(node,(DataTrees)scopeData.clone());
 				}
+				if(VarThisMap.containsKey(node.toSource())){
+					String VarThisStr=VarThisMap.get(node.toSource());
+					if(VarThisStr!=null)((Name) node).setIdentifier(VarThisStr);
+				}
 			}
 			return true;
 		}
@@ -402,6 +413,7 @@ public class testpage {
 			}
 		}
 	}
+
 
 
 	private void DealAssToScope2(){
@@ -565,18 +577,60 @@ public class testpage {
 		}
 	}
 
-	//functioncall 参数提取父节点设置有问题。
-	ToElement ob =null;
-	AstNode Root=null;
+	private void InitVarThisMap(){
+		Iterator it=VarThisMap.keySet().iterator();
+		while(it.hasNext()){
+			VarThisNewName.add(VarThisMap.get((String)it.next()));
+		}
+	}
 
-	Set<String> ResverNames=null;
-	ArrayList<AstNode> NislArgu=new ArrayList<AstNode>();
-	public void testt(AstNode node,ArrayList<AstNode> NodeList,Set<String> ResverName){
+
+	class FindGlobal implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof StringLiteral&&((StringLiteral) node).getValue().equals("start flag")){
+				int oldScopeNum=scopeNum.pop();
+				scopeNum.push(oldScopeNum+1);
+				scopeNum.push(0);
+				scopeData=scopeData.getChild(oldScopeNum);
+			}
+			if(node instanceof StringLiteral&&((StringLiteral) node).getValue().equals("end flag")){
+				scopeNum.pop();
+				scopeData=scopeData.getFather();
+			}
+			return true;
+		}
+	}
+
+	//functioncall 参数提取父节点设置有问题。
+	private ToElement ob =null;
+	private AstNode Root=null;
+
+
+	private Set<String> global=new HashSet<String>();//记录全局变量
+	private Set<String> ResverNames=null;
+	private ArrayList<AstNode> NislArgu=new ArrayList<AstNode>();
+	private Map<String,String>VarThisMap=null;
+	private Set<String>VarThisNewName=new HashSet<String>();
+	public void testt(AstNode node,ArrayList<AstNode> NodeList,Set<String> ResverName,Map<String,String> VarThisMap){
 		this.ob=ob;
+		this.VarThisMap=VarThisMap;
 		ResverNames=ResverName;
 		Root=(AstNode)node.clone();
 		scopeNum.push(0);
 		node.visit(new InsertFlag());
+		Iterator AssIt=AssNames.iterator();
+		while(AssIt.hasNext()){
+			String AssName=(String)AssIt.next();
+			if(!FunName.contains(AssName)&&!ArguName.contains(AssName)&&!VarNames.contains(AssName)){
+				scopeData.addData(AssName);
+			}
+		}
+		InitVarThisMap();
+		Iterator ThisIt=VarThisNewName.iterator();
+		while(ThisIt.hasNext()){
+			String sn=(String)ThisIt.next();
+			Names.remove(sn);
+		}
 		Iterator it=ArguName.iterator();
 		while(it.hasNext()){
 			Names.remove((String)it.next());
