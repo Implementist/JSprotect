@@ -1,6 +1,5 @@
 package obfu.copy;
 
-
 import org.mozilla.javascript.ast.AstNode;
 
 import java.util.*;

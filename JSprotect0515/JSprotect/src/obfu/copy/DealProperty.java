@@ -662,8 +662,12 @@ public class DealProperty {
 	}
 
 
+	public Map<String,String> getVarThisSet(){
+		return VarThisMap;
+	}
 
 
+	private Map<String,String> VarThisMap=new HashMap<String,String>();//保存this的全局变量;
 	class FindObjNode implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof PropertyGet){//获取由this引导的属性和方法
@@ -675,10 +679,18 @@ public class DealProperty {
 				}
 				if(parent instanceof ExpressionStatement)parent=((ExpressionStatement) parent).getExpression();
 				if(((PropertyGet) node).getTarget() instanceof KeywordLiteral){
+					AstNode Property=((PropertyGet) node).getProperty();
 					if(parent instanceof Assignment&&((Assignment) parent).getLeft()==node)
 						if(!ReserveKeyWord.contains(((PropertyGet) node).getProperty().toSource())){
 							thisProSet.add(((PropertyGet) node).getProperty().toSource());
-							ObjNameMap.put(((PropertyGet) node).getProperty().toSource(), getValidWord());
+							if(Property instanceof Name&&SetVarNames.contains(Property.toSource())){
+								String StrName=getValidWord();
+								ObjNameMap.put(((PropertyGet) node).getProperty().toSource(),StrName);
+								VarThisMap.put(((PropertyGet) node).getProperty().toSource(),StrName);
+							}else{
+								String StrName=getValidWord();
+								ObjNameMap.put(((PropertyGet) node).getProperty().toSource(), StrName);
+								VarThisMap.put(((PropertyGet) node).getProperty().toSource(),StrName);							}
 						}
 				}
 				AstNode Target=getTarget(node);
@@ -1048,9 +1060,11 @@ public class DealProperty {
 
 
 	private Set<String>WinSourceObj=new HashSet<String>();//记录释放的初始结点;
+	private Set<String>SetVarNames=null;
 	private AstNode nodeclone=null;
-	public void DealPropertyName(AstNode node,Set<String> ReserveNames){
+	public void DealPropertyName(AstNode node,Set<String> ReserveNames,Set<String> SetVarNames){
 		nodeclone=node;
+		this.SetVarNames=SetVarNames;
 		Iterator it=ReserveNames.iterator();
 		while(it.hasNext()){
 			ReserveKeyWord.add((String)it.next());

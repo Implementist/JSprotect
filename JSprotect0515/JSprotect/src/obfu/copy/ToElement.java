@@ -2234,6 +2234,10 @@ class ToElement{
 		}
 	}
 
+	public Map<String,String> getVarThisSet(){
+		return VarThisMap;
+	}
+
 
 	AstNode Root=null;
 	int Shell=0;
@@ -2243,6 +2247,7 @@ class ToElement{
 	private Set<AstNode> DealedNodes;
 	private ArrayList<AstNode> DeadCodes=new ArrayList<AstNode>();//保存所有的垃圾代码
 	private ArrayList<AstNode> DeadCodesIf=new ArrayList<AstNode>();//保存所有的带有if的垃圾代码
+	private Map<String,String> VarThisMap=new HashMap<String,String>();//保存this的全局变量;
 	public void GetVarNameMap(AstNode node,AstNode DeadNode,AstNode DeadNodeIf,int Prop,int caculate,int Shell,int ratecalculate,Set<String> ResverName) throws IOException {
 		if(DeadNode!=null&&DeadNodeIf!=null){
 			DeadNode.visit(new InitDeadCode());
@@ -2262,7 +2267,8 @@ class ToElement{
 		collectNames(node);//获取目前所有的变量名。
 		if(Prop==1){
 			DealProperty property=new DealProperty();
-			property.DealPropertyName(node,ResverName);
+			property.DealPropertyName(node,ResverName,SetVarNames);
+			VarThisMap=property.getVarThisSet();
 		}
 		//补充if,for循环的大括号
 		DealBlankList();//必选
@@ -2276,6 +2282,7 @@ class ToElement{
 		DealSpeAssList();
 		//提取函数实参
 		//DealFunctionCallStack();
+		//删除拆分声明后的原声明结点
 
 		for(int i=0;i<VariableList.size();i++){
 			AstNode parent=VariableList.get(i).getParent();

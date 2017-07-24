@@ -10,6 +10,7 @@ import org.mozilla.javascript.ast.AstRoot;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Set;
 
 public class test {
@@ -99,6 +100,7 @@ public class test {
             function fu = new function();
             ToElement ob = new ToElement(Nnode);
             ob.GetVarNameMap(Nnode, deadnode, deadnodeIf, Prop, caculate, Shell, ratecalculate, ReserverName);
+            Map<String, String> VarThisMap = ob.getVarThisSet();
             Set<String> KeyWord = ob.getKeyWord();
             ArrayList<AstNode> NodeList = ob.getNodeList();
             VarComp Varp = new VarComp();
@@ -114,7 +116,7 @@ public class test {
             createfunc cfunc = new createfunc();
             Nnode = cfunc.createfunction(Nnode, KeyWord, Shell, IIS, IIS, 0);
             testpage test = new testpage();
-            test.testt(Nnode, NodeList, ReserverName);
+            test.testt(Nnode, NodeList, ReserverName, VarThisMap);
             File protectedProjectPath = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user));
             if (!protectedProjectPath.exists())
                 protectedProjectPath.mkdir();
