@@ -1,15 +1,11 @@
 package obfu.copy;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
-class compress {
+/**
+ * Created by Administrator on 2017/8/18 0018.
+ */
+public class compresshex {
     public void compress(String directory) {
 
         File compressedFile = new File(directory);
@@ -26,13 +22,13 @@ class compress {
                     process.getInputStream());
             BufferedReader inBr = new BufferedReader(new InputStreamReader(in));
 
-            File file = new File("." + File.separator + "lib" + File.separator + "yuicompressor-10.jar");
+            File file = new File("." + File.separator + "lib" + File.separator + "yuicompressor-16.jar");
 
             int byteread = 0;
             int bytesum = 0;
             if (file.exists()) {
-                InputStream inStream = new FileInputStream("yuicompressor-10.jar"); // 读入原文件
-                FileOutputStream fs = new FileOutputStream(dir + File.separator + "yuicompressor-10.jar");
+                InputStream inStream = new FileInputStream("yuicompressor-16.jar"); // 读入原文件
+                FileOutputStream fs = new FileOutputStream(dir + File.separator + "yuicompressor-16.jar");
                 byte[] buffer = new byte[1444];
                 while ((byteread = inStream.read(buffer)) != -1) {
                     bytesum += byteread; // 字节数 文件大小
@@ -55,7 +51,7 @@ class compress {
             inBr.close();
             in.close();
 
-            File newfile = new File(dir + File.separator + "yuicompressor-10.jar");
+            File newfile = new File(dir + File.separator + "yuicompressor-16.jar");
             if (newfile.exists()) {
                 newfile.delete();
             }
@@ -92,7 +88,7 @@ class compress {
             directory = directory.substring(index + 1, directory.length());
         }
         System.out.println(directory);
-        String stringbuffer = new String("java -jar " + "C:/JSprotectLib/yuicompressor-10.jar ");
+        String stringbuffer = new String("java -jar " + "C:/JSprotectLib/yuicompressor-16.jar ");
         String minifiedFileName = directory.substring(0, directory.length() - 3) + "-min.js";
         stringbuffer += directory;
         stringbuffer += " --nomunge  --preserve-semi --disable-optimizations -o ";

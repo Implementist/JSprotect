@@ -1,4 +1,5 @@
 package obfu.copy;
+
 import org.mozilla.javascript.Token;
 import org.mozilla.javascript.ast.*;
 
@@ -334,8 +335,10 @@ public class DealProperty {
 		ReserveKeyWord.add("URL");
 		ReserveKeyWord.add("write");
 		ReserveKeyWord.add("writeln");
-		ReserveKeyWord.add("writeln");
 		ReserveKeyWord.add("message");
+		ReserveKeyWord.add("iceServers");
+		ReserveKeyWord.add("urls");
+		ReserveKeyWord.add("type");
 		ReserveKeyWord.add("val");
 	}
 
@@ -498,7 +501,6 @@ public class DealProperty {
 				if(Init!=null&&(Init instanceof ObjectLiteral||ObjNodes.contains(Init.toSource()))){
 					//记录声明一个对象
 					AstNode Tar=((VariableInitializer) node).getTarget();
-					//if(!WindowLists.contains(Tar.toSource())){
 					ObjNodes.add(Tar.toSource());
 					if(Init instanceof ObjectLiteral){
 						if(ObjMap.containsKey(Tar.toSource())){
@@ -532,7 +534,6 @@ public class DealProperty {
 							}
 						}
 					}
-					//}
 				}
 				if(Init!=null&&WindowSet.contains(Init.toSource())){
 					WindowSet.add(((VariableInitializer) node).getTarget().toSource());
@@ -666,7 +667,7 @@ public class DealProperty {
 		return VarThisMap;
 	}
 
-
+	private Set<String> ReserveObjStr=new HashSet<String>();//保存不改名字的属性名
 	private Map<String,String> VarThisMap=new HashMap<String,String>();//保存this的全局变量;
 	class FindObjNode implements NodeVisitor{
 		public boolean visit(AstNode node){
@@ -705,8 +706,18 @@ public class DealProperty {
 				if(Init!=null&&(Init instanceof ObjectLiteral||ObjNode.contains(Init.toSource()))){
 					//记录声明一个对象
 					AstNode Tar=((VariableInitializer) node).getTarget();
-					if(!WindowLists.contains(Tar.toSource())&&!WinSourceObj.contains(Tar.toSource()))
+					if(ReserveObjNode.contains(Tar.toSource())&&Init instanceof ObjectLiteral){
+						List<ObjectProperty> ObjProList=((ObjectLiteral)Init).getElements();
+						for(int j=0;j<ObjProList.size();j++){
+							AstNode Left=ObjProList.get(j).getLeft();
+							if(Left instanceof Name)ReserveObjStr.add(Left.toSource());
+						}
+					}
+					if(ReserveObjNode.contains(Init.toSource()))
+						ReserveObjNode.add(Tar.toSource());
+					if(!WindowLists.contains(Tar.toSource())&&!WinSourceObj.contains(Tar.toSource())){
 						ObjNode.add(Tar.toSource());
+					}
 				}
 				if(Init!=null&&WindowSet.contains(Init.toSource())){
 					WindowSet.add(((VariableInitializer) node).getTarget().toSource());
@@ -718,6 +729,8 @@ public class DealProperty {
 				AstNode Left =((Assignment) node).getLeft();
 				if(ObjNode.contains(Right.toSource())&&!WindowLists.contains(Left.toSource())&&!WinSourceObj.contains(Left.toSource())){
 					ObjNode.add(Left.toSource());
+					if(ReserveObjNode.contains(Right.toSource()))
+						ReserveObjNode.add(Left.toSource());
 				}
 				if(WindowSet.contains(Right.toSource())){
 					WindowSet.add(Left.toSource());
@@ -725,6 +738,11 @@ public class DealProperty {
 				if(Left instanceof PropertyGet){
 					if(((PropertyGet) Left).getTarget() instanceof Name&&ObjNode.contains(((PropertyGet) Left).getTarget().toSource())&&!WinSourceObj.contains(((PropertyGet) Left).getTarget().toSource())){
 						ObjNameMap.put(((PropertyGet) Left).getProperty().toSource(), getValidWord());
+						//System.out.println(((PropertyGet) Left).getTarget().toSource());
+						if(ReserveObjNode.contains(((PropertyGet) Left).getTarget().toSource())){
+							ReserveObjStr.add(((PropertyGet) Left).getProperty().toSource());
+							//System.out.println("ookk");
+						}
 					}
 				}
 			}else if(node instanceof FunctionCall){
@@ -792,6 +810,8 @@ public class DealProperty {
 				AstNode Left=((Assignment) node).getLeft();
 				if(Left instanceof PropertyGet&&Params.contains(((PropertyGet) Left).getTarget().toSource())&&!ReserveKeyWord.contains(((PropertyGet) Left).getProperty().toSource())){
 					ObjNameMap.put(((PropertyGet) Left).getProperty().toSource(), getValidWord());
+					if(ReserveParams.contains(((PropertyGet) Left).getTarget().toSource()))
+						ReserveObjStr.add(((PropertyGet) Left).getProperty().toSource());
 				}
 			}
 			return true;
@@ -799,6 +819,7 @@ public class DealProperty {
 	}
 
 	private Set<String> Params=new HashSet<String>();
+	private Set<String> ReserveParams=new HashSet<String>();
 	private void DealObjNodeInFunctionCall(){
 		Iterator it=ObjNodeInFunctionCall.iterator();
 		while(it.hasNext()){
@@ -812,6 +833,8 @@ public class DealProperty {
 					for(int i=0;i<Argus.size();i++){
 						if(ObjNode.contains(Argus.get(i).toSource()))
 							Params.add(FuncParams.get(i).toSource());
+						if(ReserveObjNode.contains(Argus.get(i).toSource()))
+							ReserveParams.add(FuncParams.get(i).toSource());
 						if(WindowSet.contains(Argus.get(i).toSource())){
 							WindowSet.add(FuncParams.get(i).toSource());
 						}
@@ -878,6 +901,9 @@ public class DealProperty {
 					//System.out.println(Tar.toSource());
 					//node.visit(new getArguLists());
 				}
+			}else if(node instanceof StringLiteral){
+				if(node.getParent() instanceof ElementGet&&ObjNameMap.containsKey(((StringLiteral) node).getValue()))
+					ObjNameMap.remove(((StringLiteral) node).getValue());
 			}
 			return true;
 		}
@@ -899,10 +925,58 @@ public class DealProperty {
 		}
 	}
 
+	private Set<String> ReserveObjNode=new HashSet<String>();
+	class RemoveReturnFunction implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof ReturnStatement){
+				AstNode ReturnValue=((ReturnStatement) node).getReturnValue();
+				if(ReturnValue instanceof Name){
+					if(ObjMap.containsKey(ReturnValue.toSource())){
+						Set<String> tmpSet=ObjMap.get(ReturnValue.toSource());
+						if(tmpSet!=null){
+							Iterator tmpit=tmpSet.iterator();
+							while(tmpit.hasNext()){
+								String str=(String)tmpit.next();
+								System.out.println("RemoveReturnFunction  "+str);
+								ReserveObjNode.add(str);
+							}
+						}
+					}
+				}else{
+					node.visit(new RemoveJsonArguObj());
+				}
+			}
+			return true;
+		}
+	}
+
+	private Set<String> prototypeSet=new HashSet<String>();
 	class RemoveReturn implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof ReturnStatement){
-				node.visit(new RemoveJsonArguObj());
+				AstNode ReturnValue=((ReturnStatement) node).getReturnValue();
+				if(ReturnValue instanceof Name){
+					if(ObjMap.containsKey(ReturnValue.toSource())){
+						Set<String> tmpSet=ObjMap.get(ReturnValue.toSource());
+						if(tmpSet!=null){
+							Iterator tmpit=tmpSet.iterator();
+							while(tmpit.hasNext()){
+								ReserveObjNode.add((String)tmpit.next());
+							}
+						}
+					}
+				}else{
+					node.visit(new RemoveJsonArguObj());
+				}
+			}else if(node instanceof FunctionNode){
+				node.visit(new RemoveReturnFunction());
+			}else if(node instanceof Assignment){
+				AstNode Left=((Assignment) node).getLeft();
+				AstNode Right=((Assignment) node).getRight();
+				if(Left instanceof PropertyGet&&Right instanceof FunctionNode){
+					//System.out.println(((PropertyGet)Left).getProperty().toSource());
+					prototypeSet.add(((PropertyGet)Left).getProperty().toSource());
+				}
 			}
 			return true;
 		}
@@ -918,6 +992,32 @@ public class DealProperty {
 		}
 	}
 
+	class FindFunctionInObj implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof VariableInitializer){
+				AstNode Tar=((VariableInitializer) node).getTarget();
+				AstNode Init=((VariableInitializer) node).getInitializer();
+				if(Tar instanceof Name&&ReturnObjValueSet.contains(Tar.toSource())){
+					if(Init instanceof ObjectLiteral){
+						Init.visit(new RemoveReturn());
+					}else if(Init instanceof FunctionNode){
+						Init.visit(new RemoveReturn());
+						//System.out.println("Function: "+Tar.toSource());
+					}
+				}
+			}
+			else if(node instanceof FunctionNode){
+				AstNode FunctionName=((FunctionNode) node).getFunctionName();
+				if(FunctionName!=null&&ReturnObjValueSet.contains(FunctionName.toSource())){
+					node.visit(new RemoveReturn());
+				}
+			}
+
+			return true;
+		}
+	}
+
+
 	private String TargetFunctionName=null;
 	class DealWindowLists implements NodeVisitor{
 		public boolean visit(AstNode node){
@@ -928,6 +1028,7 @@ public class DealProperty {
 				boolean just2=Init instanceof FunctionCall&&((FunctionCall)Init).getTarget() instanceof Name;
 				if(WindowLists.contains(Target.toSource())&&just1){
 					node.visit(new RemoveReturn());
+					node.visit(new FindFunctionInObj());
 				}else if(WindowLists.contains(Target.toSource())&&just2){
 					TargetFunctionName=((FunctionCall)Init).getTarget().toSource();
 					nodeclone.visit(new FindTargetFunctionName());
@@ -959,12 +1060,19 @@ public class DealProperty {
 		}
 	}
 
+
+	private Set<String> RemoveJsonArguObjSet=new HashSet<String>();
+	private Set<String> ReturnObjValueSet=new HashSet<String>();//保存所有return 的对象的值.
 	class RemoveJsonArguObj implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof ObjectProperty){
 				AstNode Left=((ObjectProperty) node).getLeft();
+				AstNode Right=((ObjectProperty) node).getRight();
 				if(Left instanceof Name)
-					ObjNameMap.remove(Left.toSource());
+					RemoveJsonArguObjSet.add(Left.toSource());
+				if(Right instanceof Name){
+					ReturnObjValueSet.add(Right.toSource());
+				}
 			}
 			return true;
 		}
@@ -1007,8 +1115,10 @@ public class DealProperty {
 					}
 				}
 			}else if(node instanceof StringLiteral){
+				AstNode parent=node.getParent();
+				boolean just1=parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node;
 				String Str=ObjNameMap.get(((StringLiteral) node).getValue());
-				if(Str!=null){
+				if(Str!=null&&parent instanceof ArrayLiteral){
 					((StringLiteral)node).setValue(Str);
 				}
 			}
@@ -1062,7 +1172,7 @@ public class DealProperty {
 	private Set<String>WinSourceObj=new HashSet<String>();//记录释放的初始结点;
 	private Set<String>SetVarNames=null;
 	private AstNode nodeclone=null;
-	public void DealPropertyName(AstNode node,Set<String> ReserveNames,Set<String> SetVarNames){
+	public void DealPropertyName(int Prop,AstNode node,Set<String> ReserveNames,Set<String> SetVarNames){
 		nodeclone=node;
 		this.SetVarNames=SetVarNames;
 		Iterator it=ReserveNames.iterator();
@@ -1088,12 +1198,30 @@ public class DealProperty {
 		while(itt.hasNext()){
 			String Str=(String)itt.next();
 			WindowLists.add(Str);
-			System.out.println(Str);
 		}
+		node.visit(new DealWindowLists());
+		Iterator ReturnValue=ReturnObjValueSet.iterator();
 		node.visit(new FindObjNode());
 		node.visit(new FindObjFunction());
-		node.visit(new DealWindowLists());
 		DealTargetFunNodeAst();
-		node.visit(new ChangeObjName());
+		Iterator JsonIt=RemoveJsonArguObjSet.iterator();
+		while(JsonIt.hasNext()){
+			ObjNameMap.remove((String)JsonIt.next());
+		}
+		Iterator tmp=ReserveObjStr.iterator();
+		while(tmp.hasNext()){
+			String ResStr=(String)tmp.next();
+			ObjNameMap.remove(ResStr);
+		}
+		Iterator prototypeit=prototypeSet.iterator();
+		while(prototypeit.hasNext()){
+			ObjNameMap.remove(prototypeit.next());
+		}
+		//Iterator ObjIt=ObjNameMap.keySet().iterator();
+		//while(ObjIt.hasNext()){
+		//	System.out.println(ObjIt.next());
+		//	}
+		if(Prop==1)
+			node.visit(new ChangeObjName());
 	}
 }
