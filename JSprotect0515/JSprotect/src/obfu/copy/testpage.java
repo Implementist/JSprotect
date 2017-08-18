@@ -368,7 +368,10 @@ public class testpage {
 				}
 				if(VarThisMap.containsKey(node.toSource())){
 					String VarThisStr=VarThisMap.get(node.toSource());
-					if(VarThisStr!=null)((Name) node).setIdentifier(VarThisStr);
+					if(VarThisStr!=null){
+						if(Prop==1)
+							((Name) node).setIdentifier(VarThisStr);
+					}
 				}
 			}
 			return true;
@@ -580,7 +583,9 @@ public class testpage {
 	private void InitVarThisMap(){
 		Iterator it=VarThisMap.keySet().iterator();
 		while(it.hasNext()){
-			VarThisNewName.add(VarThisMap.get((String)it.next()));
+			String str=(String)it.next();
+			VarThisNewName.add(str);
+			VarThisNewName.add(VarThisMap.get(str));
 		}
 	}
 
@@ -611,8 +616,10 @@ public class testpage {
 	private ArrayList<AstNode> NislArgu=new ArrayList<AstNode>();
 	private Map<String,String>VarThisMap=null;
 	private Set<String>VarThisNewName=new HashSet<String>();
-	public void testt(AstNode node,ArrayList<AstNode> NodeList,Set<String> ResverName,Map<String,String> VarThisMap){
+	private int Prop=0;
+	public void testt(int Prop,AstNode node,ArrayList<AstNode> NodeList,Set<String> ResverName,Map<String,String> VarThisMap){
 		this.ob=ob;
+		this.Prop=Prop;
 		this.VarThisMap=VarThisMap;
 		ResverNames=ResverName;
 		Root=(AstNode)node.clone();

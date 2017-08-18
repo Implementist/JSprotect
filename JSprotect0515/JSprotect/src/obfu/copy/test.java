@@ -95,11 +95,12 @@ public class test {
             env.setAllowSharpComments(true);
             env.setRecordingComments(true);
             AstRoot node = new Parser(env).parse(reader, file, 1);
+            AstNode Nnode = node;
             System.out.println("finish");
-            AstNode Nnode = InsertCrypt(decryptnode, (AstNode) node.getFirstChild());
+            // AstNode Nnode = InsertCrypt(decryptnode, (AstNode) node.getFirstChild());
             function fu = new function();
             ToElement ob = new ToElement(Nnode);
-            ob.GetVarNameMap(Nnode, deadnode, deadnodeIf, Prop, caculate, Shell, ratecalculate, ReserverName);
+            ob.GetVarNameMap(decryptnode, Nnode, deadnode, deadnodeIf, Prop, caculate, Shell, ratecalculate, ReserverName);
             Map<String, String> VarThisMap = ob.getVarThisSet();
             Set<String> KeyWord = ob.getKeyWord();
             ArrayList<AstNode> NodeList = ob.getNodeList();
@@ -116,7 +117,7 @@ public class test {
             createfunc cfunc = new createfunc();
             Nnode = cfunc.createfunction(Nnode, KeyWord, Shell, IIS, IIS, 0);
             testpage test = new testpage();
-            test.testt(Nnode, NodeList, ReserverName, VarThisMap);
+            test.testt(Prop, Nnode, NodeList, ReserverName, VarThisMap);
             File protectedProjectPath = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user));
             if (!protectedProjectPath.exists())
                 protectedProjectPath.mkdir();
@@ -134,8 +135,14 @@ public class test {
             fw.write(str);
             fw.flush();
             fw.close();
-            compress comp = new compress();
-            comp.compress(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
+            if (IIS == 0) {
+                compress comp = new compress();
+                comp.compress(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
+            } else {
+                compresshex comp = new compresshex();
+                comp.compress(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
+            }
+
         } catch (IOException ee) {
             System.out.println(ee.toString());
         }

@@ -1,15 +1,64 @@
 package obfu.copy;
-
-import org.mozilla.javascript.Token;
-import org.mozilla.javascript.ast.*;
-
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
-//计算式分解错误：jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy))
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.Stack;
+
+import org.mozilla.javascript.Node;
+import org.mozilla.javascript.Token;
+import org.mozilla.javascript.ast.ArrayLiteral;
+import org.mozilla.javascript.ast.Assignment;
+import org.mozilla.javascript.ast.AstNode;
+import org.mozilla.javascript.ast.Block;
+import org.mozilla.javascript.ast.BreakStatement;
+import org.mozilla.javascript.ast.ConditionalExpression;
+import org.mozilla.javascript.ast.DoLoop;
+import org.mozilla.javascript.ast.ElementGet;
+import org.mozilla.javascript.ast.EmptyExpression;
+import org.mozilla.javascript.ast.ExpressionStatement;
+import org.mozilla.javascript.ast.ForInLoop;
+import org.mozilla.javascript.ast.ForLoop;
+import org.mozilla.javascript.ast.FunctionCall;
+import org.mozilla.javascript.ast.FunctionNode;
+import org.mozilla.javascript.ast.IfStatement;
+import org.mozilla.javascript.ast.InfixExpression;
+import org.mozilla.javascript.ast.KeywordLiteral;
+import org.mozilla.javascript.ast.Label;
+import org.mozilla.javascript.ast.LabeledStatement;
+import org.mozilla.javascript.ast.Loop;
+import org.mozilla.javascript.ast.Name;
+import org.mozilla.javascript.ast.NewExpression;
+import org.mozilla.javascript.ast.NodeVisitor;
+import org.mozilla.javascript.ast.NumberLiteral;
+import org.mozilla.javascript.ast.ObjectLiteral;
+import org.mozilla.javascript.ast.ObjectProperty;
+import org.mozilla.javascript.ast.ParenthesizedExpression;
+import org.mozilla.javascript.ast.PropertyGet;
+import org.mozilla.javascript.ast.RegExpLiteral;
+import org.mozilla.javascript.ast.ReturnStatement;
+import org.mozilla.javascript.ast.Scope;
+import org.mozilla.javascript.ast.StringLiteral;
+import org.mozilla.javascript.ast.SwitchCase;
+import org.mozilla.javascript.ast.SwitchStatement;
+import org.mozilla.javascript.ast.ThrowStatement;
+import org.mozilla.javascript.ast.UnaryExpression;
+import org.mozilla.javascript.ast.VariableDeclaration;
+import org.mozilla.javascript.ast.VariableInitializer;
+import org.mozilla.javascript.ast.WhileLoop;
+//计算式分解错误：jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)) 
 //for循环的初始化不提取导致后面出错。
 class ToElement{
+	private int SplitString=0;//是否拆分字符串
 	private Set<String> LeftName=new HashSet<String>();
 	//记录所有属性类型的变量
+	private Set<String> SpeName=new HashSet<String>();//非参数，非定义变量
 	private Set<String> NewFunctionCallSet=new HashSet<String>();
 	private Set<String> VarKeySet=new HashSet<String>();
 	private ArrayList<AstNode> NodeList=new ArrayList<AstNode>();//记录所有提取的结点
@@ -49,8 +98,8 @@ class ToElement{
 	private Set<String> ObjProName=new HashSet<String>();//获取所有的属性名，方法名
 	private Map<String,String> NewObjNameMap=new HashMap<String,String>();//新旧属性名，方法名对
 	private Set<String> ObjName=new HashSet<String>();//记录所有公有属性名，方法名
-
-
+	
+	
 	private Set<String> UseObjName=new HashSet<String>();//记录所有使用过的属性名，方法名
 	//这部分记录所有的FOR和If结点，目的在于给作用域中单一结点加上大括号。
 	private ArrayList<AstNode> ScopeList=new ArrayList<AstNode>();
@@ -75,13 +124,14 @@ class ToElement{
 		ObjNameNum=1;
 		ObjNamenum=1;
 		this.NamesInFlattern=new ArrayList<String>();
-		this.initVariablesPool();
-		this.random=new Random();
-		InitComm();
-	}
-
-
+        this.initVariablesPool();
+        this.random=new Random();
+        InitComm();
+    }
+    
+	
 	private void InitObjKeyWord(){
+		ObjKeyWord.add("Function");
 		ObjKeyWord.add("Array");
 		ObjKeyWord.add("Boolean");
 		ObjKeyWord.add("Date");
@@ -137,12 +187,28 @@ class ToElement{
 		ObjKeyWord.add("Float32Array");
 		ObjKeyWord.add("XMLHttpRequest");
 		ObjKeyWord.add("Infinity");
+		ObjKeyWord.add("Location");
+		ObjKeyWord.add("History");
+		ObjKeyWord.add("Screen");
+		ObjKeyWord.add("Navigator");
+		ObjKeyWord.add("Window");
+		ObjKeyWord.add("ArrayBuffer");
+		ObjKeyWord.add("Int8Array");
+		ObjKeyWord.add("Uint8Array");
+		ObjKeyWord.add("Int16Array");
+		ObjKeyWord.add("Uint16Array");
+		ObjKeyWord.add("Int32Array");
+		ObjKeyWord.add("Uint32Array");
+		ObjKeyWord.add("Float32Array");
+		ObjKeyWord.add("Float64Array");
+		ObjKeyWord.add("JSON");
+		ObjKeyWord.add("Error");
 	}
-
+	
 	public	Set<String> getKeyWord(){
 		return ObjKeyWord;
 	}
-
+	
 	private void InitComm(){
 		Comm.add("toString");
 		Comm.add("parse");
@@ -157,110 +223,110 @@ class ToElement{
 		Comm.add("stringify");
 	}
 
-	private void InitFirst(AstNode node){
+	private void InitFirst(AstNode node){	
 		First=node;
 	}
-
+	
 	private void initVariablesPool() {
-		ones = new ArrayList<String>();
-		for (char c = 'a'; c <= 'z'; c++)
-			ones.add(Character.toString(c));
-		for (char c = 'A'; c <= 'Z'; c++)
-			ones.add(Character.toString(c));
-		twos = new ArrayList<String>();
-		for (int i = 0; i < ones.size(); i++) {
-			String one = ones.get(i);
-			for (char c = 'a'; c <= 'z'; c++)
-				twos.add(one + Character.toString(c));
-			for (char c = 'A'; c <= 'Z'; c++)
-				twos.add(one + Character.toString(c));
-			for (char c = '0'; c <= '9'; c++)
-				twos.add(one + Character.toString(c));
-		}
-		threes = new ArrayList<String>();
-		for (int i = 0; i < twos.size(); i++) {
-			String two = twos.get(i);
-			for (char c = 'a'; c <= 'z'; c++)
-				threes.add(two + Character.toString(c));
-			for (char c = 'A'; c <= 'Z'; c++)
-				threes.add(two + Character.toString(c));
-			for (char c = '0'; c <= '9'; c++)
-				threes.add(two + Character.toString(c));
-		}
-		//ones.remove("m");
-		twos.remove("as");
-		twos.remove("is");
-		twos.remove("do");
-		twos.remove("if");
-		twos.remove("in");
-		twos.remove("of");
-		threes.remove("for");
-		threes.remove("int");
-		threes.remove("new");
-		threes.remove("try");
-		threes.remove("use");
-		threes.remove("var");
-		threes.remove("cos");
-		threes.remove("sin");
-		for(int i=0;i<threes.size();i++)
-			Names.add(threes.get(i)+"asd");
-		for(int i=0;i<ones.size();i++)
-			NamesObj.add(ones.get(i));
-		for(int i=0;i<twos.size();i++)
-			NamesObj.add(twos.get(i));
-		for(int i=0;i<threes.size();i++)
-			NamesObj.add(threes.get(i));
+        ones = new ArrayList<String>();
+        for (char c = 'a'; c <= 'z'; c++)
+            ones.add(Character.toString(c));
+        for (char c = 'A'; c <= 'Z'; c++)
+            ones.add(Character.toString(c));
+        twos = new ArrayList<String>();
+        for (int i = 0; i < ones.size(); i++) {
+            String one = ones.get(i);
+            for (char c = 'a'; c <= 'z'; c++)
+                twos.add(one + Character.toString(c));
+            for (char c = 'A'; c <= 'Z'; c++)
+                twos.add(one + Character.toString(c));
+            for (char c = '0'; c <= '9'; c++)
+                twos.add(one + Character.toString(c));
+        }
+        threes = new ArrayList<String>();
+        for (int i = 0; i < twos.size(); i++) {
+            String two = twos.get(i);
+            for (char c = 'a'; c <= 'z'; c++)
+                threes.add(two + Character.toString(c));
+            for (char c = 'A'; c <= 'Z'; c++)
+                threes.add(two + Character.toString(c));
+            for (char c = '0'; c <= '9'; c++)
+                threes.add(two + Character.toString(c));
+        }
+        //ones.remove("m");
+        twos.remove("as");
+        twos.remove("is");
+        twos.remove("do");
+        twos.remove("if");
+        twos.remove("in");
+        twos.remove("of");
+        threes.remove("for");
+        threes.remove("int");
+        threes.remove("new");
+        threes.remove("try");
+        threes.remove("use");
+        threes.remove("var");
+        threes.remove("cos");
+        threes.remove("sin");
+        for(int i=0;i<threes.size();i++)
+        	Names.add(threes.get(i)+"asd");
+        for(int i=0;i<ones.size();i++)
+        	Names.add(ones.get(i)+"asd");
+        for(int i=0;i<twos.size();i++)
+        	NamesObj.add(twos.get(i));
+        for(int i=0;i<threes.size();i++)
+        	NamesObj.add(threes.get(i));
+    }
+    private void collectNames(AstNode node) {
+    	node.visit(new Visitor());
 	}
-	private void collectNames(AstNode node) {
-		node.visit(new Visitor());
-	}
-
-	class ChangeDeadName implements NodeVisitor{
-		public boolean visit(AstNode node){
-			if(node instanceof Name){
-				((Name) node).setIdentifier(FunNameDead);
-			}
-			return true;
-		}
-	}
-
-	private String FunNameDead=null;
-	class Visitor implements NodeVisitor{
-		public boolean visit(AstNode node){
-			if(node.getType()==Token.NAME){
-				if(((Name)node).getIdentifier().length()<6)
-					NamesInFlattern.add(((Name)node).getIdentifier());
-			}
-			if(node instanceof FunctionNode){
-				AstNode FunName=((FunctionNode) node).getFunctionName();
-				if(DeadCodesIf!=null&&DeadCodesIf.size()>0&&FunName!=null){
-					FunNameDead=FunName.toSource();
-					AstNode body=((FunctionNode) node).getBody();
-					int ran=random.nextInt(DeadCodesIf.size());
-					AstNode DeadCodeIfs=(AstNode)((AstNode)DeadCodesIf.get(ran).getFirstChild()).clone();
-					DeadCodesIf.remove(ran);
-					DeadCodeIfs.visit(new ChangeDeadName());
-					for(AstNode First=(AstNode)body.getFirstChild();First.getNext()!=null;First=(AstNode)First.getNext()){
-						int num=random.nextInt(10);
-						if(num<4){
-							AstNode NewNode=(AstNode)DeadCodeIfs.clone();
-							body.addChildAfter(NewNode, First);
-							NewNode.setParent(body);
-							NewNode.setRelative(body.getPosition());
-							break;
+    
+    class ChangeDeadName implements NodeVisitor{
+    	public boolean visit(AstNode node){
+    		if(node instanceof Name){
+    			((Name) node).setIdentifier(FunNameDead);
+    		}
+    		return true;
+    	}
+    }
+    
+    private String FunNameDead=null;
+	 class Visitor implements NodeVisitor{
+	    	public boolean visit(AstNode node){
+	    		if(node.getType()==Token.NAME){
+	    			if(((Name)node).getIdentifier().length()<6)
+	    				NamesInFlattern.add(((Name)node).getIdentifier());
+	    		}
+	    		if(node instanceof FunctionNode){
+	    			AstNode FunName=((FunctionNode) node).getFunctionName();
+	    			if(DeadCodesIf!=null&&DeadCodesIf.size()>0&&FunName!=null){
+	    				FunNameDead=FunName.toSource();
+						AstNode body=((FunctionNode) node).getBody();
+						int ran=random.nextInt(DeadCodesIf.size());
+						AstNode DeadCodeIfs=(AstNode)((AstNode)DeadCodesIf.get(ran).getFirstChild()).clone();
+						DeadCodesIf.remove(ran);
+						DeadCodeIfs.visit(new ChangeDeadName());
+						for(AstNode First=(AstNode)body.getFirstChild();First!=null&&First.getNext()!=null;First=(AstNode)First.getNext()){
+							int num=random.nextInt(10);
+							if(num<4){
+								AstNode NewNode=(AstNode)DeadCodeIfs.clone();
+								body.addChildAfter(NewNode, First);
+								NewNode.setParent(body);
+								NewNode.setRelative(body.getPosition());
+								break;
+							}
 						}
 					}
-				}
-			}
-			return true;
-		}
-	}
-	public String getWordFromThePool(int flag) {
-		String word;
-		word = this.Names.get(Namenum++);
-		return word;
-	}
-
+	    		}
+	    		return true;
+	    	}
+	    }
+	 public String getWordFromThePool(int flag) {
+		 	String word;
+		 	word = this.Names.get(Namenum++);
+	        return word;
+	    }
+	 
 	public  String getValidWord(AstNode node,int flag) {
 		//this.NamesInFlattern.clear();
 		//this.collectNames(node);
@@ -270,14 +336,14 @@ class ToElement{
 		}
 		this.NamesInFlattern.add(word);
 		return word;
-	}
-
+    }
+	
 	private String getWordFromTheObjPool(){
 		String word = this.NamesObj.get(ObjNameNum++);
-		return word;
+        return word;
 	}
-
-
+	
+	
 	private String getNewObjName(){
 		String Name=this.getWordFromTheObjPool();
 		while(this.UseObjName.contains(Name)||ObjName.contains(Name)){
@@ -286,59 +352,59 @@ class ToElement{
 		this.UseObjName.add(Name);
 		return Name;
 	}
-
+	
 	//上面是获取新的变量名
 	private void DealUnaryExprList(){
 		for(int i=0;i<UnaryExprList.size();i++){
 			AstNode op=((UnaryExpression)UnaryExprList.get(i)).getOperand();
 			int opp=((UnaryExpression)UnaryExprList.get(i)).getOperator();
 			if(opp==107||opp==106){
-				if(opp==107)opp=22;
-				if(opp==106)opp=21;
-				InfixExpression NewInfix=new InfixExpression();
-				NumberLiteral Num=new NumberLiteral();
-				Num.setValue("1");
-				Num.setParent(NewInfix);
-				Num.setRelative(NewInfix.getPosition());
-				NewInfix.setOperator(opp);
-				AstNode Nop=(AstNode)op.clone();
-				if(Nop instanceof ElementGet){
-					AstNode Ele=(AstNode)((ElementGet) Nop).getElement().clone();
-					Ele.setParent(Nop);
-					Ele.setRelative(Nop.getPosition());
-					((ElementGet) Nop).setElement(Ele);
+			if(opp==107)opp=22;
+			if(opp==106)opp=21;
+			InfixExpression NewInfix=new InfixExpression();
+			NumberLiteral Num=new NumberLiteral();
+			Num.setValue("1");
+			Num.setParent(NewInfix);
+			Num.setRelative(NewInfix.getPosition());
+			NewInfix.setOperator(opp);
+			AstNode Nop=(AstNode)op.clone();
+			if(Nop instanceof ElementGet){
+				AstNode Ele=(AstNode)((ElementGet) Nop).getElement().clone();
+				Ele.setParent(Nop);
+				Ele.setRelative(Nop.getPosition());
+				((ElementGet) Nop).setElement(Ele);
+			}
+			NewInfix.setLeftAndRight(Nop,Num);
+			Assignment InfixExp=new Assignment();
+			InfixExp.setOperator(Token.ASSIGN);
+			op=(AstNode)op.clone();
+			if(op instanceof ElementGet){
+				AstNode Ele=(AstNode)((ElementGet) op).getElement().clone();
+				Ele.setParent(op);
+				Ele.setRelative(op.getPosition());
+				((ElementGet) op).setElement(Ele);
+			}
+			InfixExp.setLeftAndRight(op, NewInfix);
+			op.setParent(InfixExp);
+			op.setRelative(InfixExp.getPosition());
+			NewInfix.setParent(InfixExp);
+			NewInfix.setRelative(InfixExp.getPosition());
+			if(UnaryExprList.get(i).getParent() instanceof ExpressionStatement){
+				((ExpressionStatement)UnaryExprList.get(i).getParent()).setExpression(InfixExp);
+				InfixExp.setParent(UnaryExprList.get(i).getParent());
+				InfixExp.setRelative(((ExpressionStatement)UnaryExprList.get(i).getParent()).getPosition());
+			}else if(UnaryExprList.get(i).getParent() instanceof ForLoop){
+				AstNode Increment=((ForLoop)UnaryExprList.get(i).getParent()).getIncrement();
+				if(Increment.toSource().equals(UnaryExprList.get(i).toSource())){
+					((ForLoop)UnaryExprList.get(i).getParent()).setIncrement(InfixExp);
 				}
-				NewInfix.setLeftAndRight(Nop,Num);
-				Assignment InfixExp=new Assignment();
-				InfixExp.setOperator(Token.ASSIGN);
-				op=(AstNode)op.clone();
-				if(op instanceof ElementGet){
-					AstNode Ele=(AstNode)((ElementGet) op).getElement().clone();
-					Ele.setParent(op);
-					Ele.setRelative(op.getPosition());
-					((ElementGet) op).setElement(Ele);
-				}
-				InfixExp.setLeftAndRight(op, NewInfix);
-				op.setParent(InfixExp);
-				op.setRelative(InfixExp.getPosition());
-				NewInfix.setParent(InfixExp);
-				NewInfix.setRelative(InfixExp.getPosition());
-				if(UnaryExprList.get(i).getParent() instanceof ExpressionStatement){
-					((ExpressionStatement)UnaryExprList.get(i).getParent()).setExpression(InfixExp);
-					InfixExp.setParent(UnaryExprList.get(i).getParent());
-					InfixExp.setRelative(((ExpressionStatement)UnaryExprList.get(i).getParent()).getPosition());
-				}else if(UnaryExprList.get(i).getParent() instanceof ForLoop){
-					AstNode Increment=((ForLoop)UnaryExprList.get(i).getParent()).getIncrement();
-					if(Increment.toSource().equals(UnaryExprList.get(i).toSource())){
-						((ForLoop)UnaryExprList.get(i).getParent()).setIncrement(InfixExp);
-					}
-				}else{
-					System.out.println("UnaryExprList:"+UnaryExprList.get(i).getParent().getClass());
-				}
+			}else{
+				System.out.println("UnaryExprList:"+UnaryExprList.get(i).getParent().getClass());
+			}
 			}
 		}
 	}
-
+	
 	private void DealSpeAssList(){
 		for(int i=0;i<SpeAssList.size()&&SpeAssList.get(i) instanceof Assignment;i++){
 			AstNode Left=((Assignment) SpeAssList.get(i)).getLeft();
@@ -386,23 +452,21 @@ class ToElement{
 			}
 		}
 	}
-
-
+	
+	
 	class testvisit1 implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof StringLiteral){
 				StrNum++;
 			}else if(node.getType()==Token.NAME){
-				SetNames.add(((Name)node).getIdentifier());
-				Name tmp=new Name();
-				String word=getValidWord(tmp,1);
-				NewSetNames.add(word);
-				AstNode Parent=node.getParent();
-				if(Parent instanceof Assignment&&((Assignment)Parent).getLeft().toSource().equals(node.toSource()))
-					LeftName.add(node.toSource());
-			}else if(node instanceof FunctionNode){
+    			AstNode Parent=node.getParent();
+    			if(Parent instanceof Assignment&&((Assignment)Parent).getLeft().toSource().equals(node.toSource()))
+    				LeftName.add(node.toSource());
+    		}else if(node instanceof FunctionNode){
+    	
 				Name FunName=((FunctionNode)node).getFunctionName();
 				if(FunName!=null){
+					SpeName.add(FunName.toSource());
 					VarKeySet.add(FunName.toSource());
 					FunNames.add(FunName.toSource());
 					FuncName.add(FunName.toSource());
@@ -413,6 +477,7 @@ class ToElement{
 					if(Argus.get(i) instanceof Name){
 						FunNames.add(Argus.get(i).toSource());
 						VarKeySet.add(Argus.get(i).toSource());
+						SpeName.add(Argus.get(i).toSource());
 					}
 				}
 			}else if(node instanceof FunctionCall){
@@ -463,11 +528,11 @@ class ToElement{
 				if(Expr instanceof InfixExpression&& ((InfixExpression)Expr).getOperator()==Token.COMMA){
 					ExpressionList.add(node);
 				}
-				if(Expr instanceof UnaryExpression){
-					//将 a++的形式转换成 a=a+1;
-					UnaryExprList.add(Expr);
-				}
-			}else if(node instanceof ReturnStatement){
+					if(Expr instanceof UnaryExpression){
+						//将 a++的形式转换成 a=a+1;
+						UnaryExprList.add(Expr);
+					}	
+				}else if(node instanceof ReturnStatement){
 				AstNode ReturnValue=((ReturnStatement)node).getReturnValue();
 				if((ReturnValue instanceof InfixExpression)||(ReturnValue instanceof ObjectLiteral)){
 					ReturnList.add(node);
@@ -518,19 +583,25 @@ class ToElement{
 			return true;
 		}
 	}
-
-
+	
+	
 	class testvisit2 implements NodeVisitor{
 		public boolean visit(AstNode node){
-			if(node instanceof Name){
-				AstNode parent=node.getParent();
-				if(Shell==1){
-					if(MapNames.containsKey(node.toSource())){
-						((Name) node).setIdentifier(MapNames.get(node.toSource()));
-					}
-				}
-			}else
-			if(node instanceof VariableDeclaration){
+			 if(node instanceof Name){
+				 	AstNode parent=node.getParent();
+				 	if(!(parent instanceof VariableInitializer&&((VariableInitializer)parent).getTarget()==node)&&ObjKeyWord.contains(node.toSource())&&Shell==1){
+				 		if(!SetNames.contains(node.toSource())){
+					 		SetNames.add(node.toSource());
+					 		Name tmpName=new Name();
+					 		tmpName.setIdentifier(getValidWord(tmpName,1));
+					 		MapNames.put(node.toSource(),tmpName.toSource());
+					 		((Name) node).setIdentifier(tmpName.toSource());
+				 		}else{
+				 			((Name) node).setIdentifier(MapNames.get(node.toSource()));
+				 		}
+				 	}
+				}else 
+			 if(node instanceof VariableDeclaration){
 				List<VariableInitializer> InitList=((VariableDeclaration)node).getVariables();
 				for(int i=0;i<InitList.size();i++){
 					AstNode Target=InitList.get(i).getTarget();
@@ -541,7 +612,7 @@ class ToElement{
 				}
 			}else if(node instanceof ElementGet){
 				if(((ElementGet) node).getElement() instanceof InfixExpression)
-					ElementList.add(node);
+				ElementList.add(node);
 			}else if(node instanceof ExpressionStatement){
 				AstNode Expr=((ExpressionStatement) node).getExpression();
 				if(Expr instanceof Assignment){
@@ -551,7 +622,7 @@ class ToElement{
 			}else if(node instanceof StringLiteral){
 				AstNode parent=node.getParent();//字符串处理有问题
 				if(parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node){
-
+					
 				}else if(((StringLiteral) node).getValue().length()>4){
 					StrDataList.add(node);
 				}
@@ -567,7 +638,7 @@ class ToElement{
 			return true;
 		}
 	}
-
+	
 	private AstNode SearchNode(AstNode parent,AstNode LocalNode,ArrayList<AstNode> NodeList){
 		AstNode Result=null,SubResult=null;
 		for(int i=0;i<NodeList.size();i++){
@@ -578,8 +649,8 @@ class ToElement{
 						AstNode Expr=((ExpressionStatement)start).getExpression();
 						if(Expr instanceof Assignment){
 							AstNode Left=((Assignment)Expr).getLeft();
-							if(Left.toSource().contains(NodeList.get(i).toSource())&&NodeList.get(i).getType()==Left.getType())
-								SubResult=start;//可能出错
+							 if(Left.toSource().contains(NodeList.get(i).toSource())&&NodeList.get(i).getType()==Left.getType())
+	                        	SubResult=start;//可能出错
 						}
 					}else if(start instanceof VariableDeclaration){
 						List<VariableInitializer> VarInitList=((VariableDeclaration)start).getVariables();
@@ -598,8 +669,8 @@ class ToElement{
 						AstNode Expr=((ExpressionStatement)Statements.get(j)).getExpression();
 						if(Expr instanceof Assignment){
 							AstNode Left=((Assignment)Expr).getLeft();
-							if(Left.toSource().contains(NodeList.get(i).toSource())&&NodeList.get(i).getType()==Left.getType())
-								SubResult=Statements.get(j);//可能出错
+							 if(Left.toSource().contains(NodeList.get(i).toSource())&&NodeList.get(i).getType()==Left.getType())
+	                        	SubResult=Statements.get(j);//可能出错
 						}
 					}else if(Statements.get(j) instanceof VariableDeclaration){
 						List<VariableInitializer> VarInitList=((VariableDeclaration)Statements.get(j)).getVariables();
@@ -623,14 +694,14 @@ class ToElement{
 			return Result;
 		}
 	}
-
-
+	
+	
 	public static String De(String str){
-		String n_str=str.replace(" ","");
-		n_str=n_str.replace("\n","");
-		return n_str;
-	}
-
+		   String n_str=str.replace(" ","");
+		   n_str=n_str.replace("\n","");
+		   return n_str;
+	   }
+	
 	private void DealElementList(){
 		//记录Element结点和声明的变量名。
 		Map<AstNode,AstNode>InsertNode=new HashMap<AstNode,AstNode>();
@@ -651,7 +722,7 @@ class ToElement{
 					Left=((InfixExpression)Element).getRight();
 				}
 				if(!(Left instanceof NumberLiteral))
-					NodeList.add(Left);
+					NodeList.add(Left);	
 			}
 			while(Target instanceof ElementGet){
 				Target=((ElementGet)Target).getTarget();
@@ -662,41 +733,41 @@ class ToElement{
 			Element=((ElementGet)ElementList.get(i)).getElement();
 			AstNode Result=SearchNode(parent.getParent(),parent,NodeList);
 			if(!InsertCondition.contains(parent.toSource()+ElementList.get(i).toSource())){
-				VariableDeclaration Variable=new VariableDeclaration();
-				List<VariableInitializer> variables=new ArrayList<VariableInitializer>();
-				VariableInitializer Init=new VariableInitializer();
-				Init.setInitializer(Element);
-				InfixExpressionArrayList.add(Element);
-				Element.setParent(Init);
-				Element.setRelative(Init.getPosition());
-				Name NewTarget=new Name();
-				NewTarget.setIdentifier(getValidWord(NewTarget,1));
-				InsertNode.put(ElementList.get(i),(AstNode)NewTarget);
-				Init.setTarget(NewTarget);
-				NewTarget.setParent(Init);
-				NewTarget.setRelative(Init.getPosition());
-				variables.add(Init);
-				Variable.setVariables(variables);
-				Variable.setIsStatement(true);
-				Variable.setParent(parent.getParent());
-				Variable.setRelative(parent.getParent().getPosition());
-				if(!(parent.getParent()instanceof SwitchCase)){
-					if(Result!=null)
-						parent.getParent().addChildAfter(Variable,Result);
-					else
-						parent.getParent().addChildBefore(Variable, parent.getParent().getFirstChild());
-				}else{
-					List<AstNode> Statements=((SwitchCase)parent.getParent()).getStatements();
-					if(Result!=null)
-						for(int k=0;k<Statements.size();k++){
-							if(Statements.get(k)==Result){
-								Statements.add(k+1, Variable);
-							}
-						}
-					else
-						Statements.add(0,Variable);
-				}
-				InsertCondition.add(parent.toSource()+ElementList.get(i).toSource());
+			    VariableDeclaration Variable=new VariableDeclaration();
+			    List<VariableInitializer> variables=new ArrayList<VariableInitializer>();
+			    VariableInitializer Init=new VariableInitializer();
+			    Init.setInitializer(Element);
+			    InfixExpressionArrayList.add(Element);
+			    Element.setParent(Init);
+			    Element.setRelative(Init.getPosition());
+			    Name NewTarget=new Name();
+			    NewTarget.setIdentifier(getValidWord(NewTarget,1));
+			    InsertNode.put(ElementList.get(i),(AstNode)NewTarget);
+			    Init.setTarget(NewTarget);
+			    NewTarget.setParent(Init);
+			    NewTarget.setRelative(Init.getPosition());
+			    variables.add(Init);
+			    Variable.setVariables(variables);
+			    Variable.setIsStatement(true);
+			    Variable.setParent(parent.getParent());
+			    Variable.setRelative(parent.getParent().getPosition());
+			    if(!(parent.getParent()instanceof SwitchCase)){
+			        if(Result!=null)
+			            parent.getParent().addChildAfter(Variable,Result);
+			        else
+			            parent.getParent().addChildBefore(Variable, parent.getParent().getFirstChild());
+			    }else{
+			        List<AstNode> Statements=((SwitchCase)parent.getParent()).getStatements();
+			        if(Result!=null)
+			            for(int k=0;k<Statements.size();k++){
+			                if(Statements.get(k)==Result){
+			                    Statements.add(k+1, Variable);
+			                 }
+			            }
+			        else
+			            Statements.add(0,Variable);
+			    }
+			    InsertCondition.add(parent.toSource()+ElementList.get(i).toSource());
 			}else{
 				InsertNode.put(ElementList.get(i),null);
 			}
@@ -728,7 +799,7 @@ class ToElement{
 							&&De(parent.toSource()).contains(De(parent2.toSource()))){
 						AstNode name=InsertNode.get(Node);
 						InsertNode.put(EleNode,name);
-					}
+					}	
 				}
 			}
 		}
@@ -740,8 +811,8 @@ class ToElement{
 			}
 		}
 	}
-
-
+	
+	
 	private void DealReturnList(){
 		for(int i=0;i<ReturnList.size();i++){
 			AstNode ReturnValue=((ReturnStatement)ReturnList.get(i)).getReturnValue();
@@ -773,12 +844,13 @@ class ToElement{
 			}
 		}
 	}
-
-
+	
+	
 	private void DealBlankList(){
 		for(int i=0;i<ScopeList.size();i++){
 			AstNode Parent=ScopeList.get(i).getParent();
 			if(Parent instanceof DoLoop)continue;
+			if(Parent instanceof LabeledStatement)continue;
 			if(ScopeList.get(i) instanceof Loop){
 				//如果结点属于for(;;)类型的结点
 				if(ScopeList.get(i) instanceof ForLoop){
@@ -796,6 +868,7 @@ class ToElement{
 							((ForLoop)ScopeList.get(i)).setBody(LoopScope);
 						}
 					}
+					if(Condition instanceof EmptyExpression)continue;
 					//将原本的判断结构变为if语句和break的组合
 					ExpressionStatement ExprCondition=new ExpressionStatement();
 					VariableInitializer VarInit=new VariableInitializer();
@@ -816,7 +889,7 @@ class ToElement{
 					VarInits.add(VarInit);
 					VarCon.setVariables(VarInits);
 					VarCon.setIsStatement(true);
-
+					
 					EmptyExpression NewInit=new EmptyExpression();
 					((ForLoop)ScopeList.get(i)).setCondition(NewInit);
 					UnaryExpression Unary=new UnaryExpression();
@@ -870,7 +943,7 @@ class ToElement{
 				if(ElsePart!=null){
 					if(ElsePart.getFirstChild()==null){
 						Scope Elsescope=new Scope();
-						Elsescope.addChild(ElsePart);
+						 Elsescope.addChild(ElsePart);
 						((IfStatement)ScopeList.get(i)).setElsePart(Elsescope);
 					}
 				}else if(ThenPartClone instanceof Scope){
@@ -943,9 +1016,9 @@ class ToElement{
 			}
 		}
 	}
-
-
-
+	
+	
+	
 	//获取InfixExpressionArrayList中的所有InfixExpression的父节点。
 	private void DealInfixExpressionArrayList(){
 		for(int i=0;i<InfixExpressionArrayList.size();i++){
@@ -1043,20 +1116,20 @@ class ToElement{
 			return node;
 		}
 	}
-
-
-	public static  String  cotl(String str){
-		String n_str="";
-		for(int i=0;i<str.length();i++){
-			n_str+=(char)((int)(str.charAt(i))-1);
-		}
-		return n_str;
-	}
-
+	
+	
+   public static  String  cotl(String str){
+  	  String n_str="";
+  	  for(int i=0;i<str.length();i++){
+  		  n_str+=(char)((int)(str.charAt(i))-1);
+  	  }
+  	  return n_str;
+  }
+	
 	public static String stringToAscii(String value)
 	{
 		StringBuffer sbu = new StringBuffer("\\x");
-		char[] chars = value.toCharArray();
+		char[] chars = value.toCharArray(); 
 		for (int i = 0; i < chars.length; i++) {
 			if(i != chars.length - 1)
 			{
@@ -1069,7 +1142,7 @@ class ToElement{
 		return sbu.toString();
 	}
 
-
+	
 	//处理所有的propertyGet,变成ElementGet
 	private void DealPropertyList(){
 		for(int i=PropertyList.size()-1;i>=0;i--){
@@ -1108,7 +1181,7 @@ class ToElement{
 			}else if(parent instanceof InfixExpression){
 				if(((InfixExpression) parent).getLeft().toSource().equals(PropertyList.get(i).toSource()))
 					((InfixExpression) parent).setLeft(EleNode);
-				else
+				else 
 					((InfixExpression) parent).setRight(EleNode);
 			}else if(parent instanceof VariableInitializer){
 				((VariableInitializer) parent).setInitializer(EleNode);
@@ -1146,8 +1219,8 @@ class ToElement{
 			}
 		}
 	}
-
-
+	
+	
 	//将FunctionCallStack里的所有FunctionCall的参数取出来
 	private void DealFunctionCallStack(){
 		for(int i=FunctionCallStack.size()-1;i>=0;i--){
@@ -1199,13 +1272,13 @@ class ToElement{
 			}
 		}
 	}
-
+	
 	private void DealCommaInfix(){
 		for(int i=0;i<InfixComma.size();i++){
 			CreateObInfix(InfixCommaFather.get(i),InfixComma.get(i));
 		}
 	}
-
+	
 	//Node 结点是以a=b+c的形式.
 	private void CreateObInfix(AstNode Father,AstNode node){
 		int num=random.nextInt(2);
@@ -1250,7 +1323,7 @@ class ToElement{
 			}
 		}
 	}
-
+	
 	//声明数组中的变量。
 	private AstNode CreateVaraibeWithOutIni(ArrayList<AstNode> node){
 		VariableDeclaration variableDeclaration=new VariableDeclaration();
@@ -1263,11 +1336,11 @@ class ToElement{
 			tmp.setRelative(variableInit.getPosition());
 			variables.add(variableInit);
 		}
-		variableDeclaration.setVariables(variables);
-		variableDeclaration.setIsStatement(true);
+		 variableDeclaration.setVariables(variables);
+		 variableDeclaration.setIsStatement(true);
 		return variableDeclaration;
 	}
-
+	
 	//result=(b=left,b*right),b*random;
 	private void CreateInfixComma1(AstNode Father,AstNode node,AstNode Result,int flag){
 		ArrayList<AstNode> NameList=new ArrayList<AstNode>();//保存需要声明的变量名。
@@ -1382,7 +1455,7 @@ class ToElement{
 			}
 		}
 	}
-
+	
 	//fake=(b=left,result=b*right);
 	private void CreateInfixComma2(AstNode Father,AstNode node,AstNode Result,int flag){
 		ArrayList<AstNode> NameList=new ArrayList<AstNode>();//保存需要声明的变量名。
@@ -1503,36 +1576,36 @@ class ToElement{
 			}
 		}
 	}
-
+	
 	private int getRandomOp(){
 		int result=random.nextInt(4);
 		return 20+result;
 	}
-
+	
 	//新建一个声明结点
 	private AstNode CreateVariable(AstNode node,Name NewName){
-		VariableDeclaration variableDeclaration=new VariableDeclaration();
-		ArrayList<VariableInitializer>variables=new ArrayList<VariableInitializer>();
-		VariableInitializer variableInit=new VariableInitializer();
-		Name tmpName=NewName;
-		variableInit.setTarget(tmpName);
-		tmpName.setParent(variableInit);
-		tmpName.setRelative(variableInit.getPosition());
-		if(ObjKeyWord.contains(node.toSource())){
-			Param.add(node.toSource());
-		}
-		node=(AstNode)node.clone();
-		if(node!=null){
-			variableInit.setInitializer(node);
-			node.setParent(variableInit);
-			node.setRelative(variableInit.getPosition());
-			variables.add(variableInit);
-		}
-		variableDeclaration.setVariables(variables);
-		variableDeclaration.setIsStatement(true);
-		return variableDeclaration;
+		 VariableDeclaration variableDeclaration=new VariableDeclaration();
+		 ArrayList<VariableInitializer>variables=new ArrayList<VariableInitializer>();
+		 VariableInitializer variableInit=new VariableInitializer();
+		 Name tmpName=NewName;
+		 variableInit.setTarget(tmpName);
+		 tmpName.setParent(variableInit);
+		 tmpName.setRelative(variableInit.getPosition());
+		 if(ObjKeyWord.contains(node.toSource())){
+			 Param.add(node.toSource());
+		 }
+		 node=(AstNode)node.clone();
+		 if(node!=null){
+			 variableInit.setInitializer(node);
+			 node.setParent(variableInit);
+			 node.setRelative(variableInit.getPosition());
+			 variables.add(variableInit);
+		 }
+		 variableDeclaration.setVariables(variables);
+		 variableDeclaration.setIsStatement(true);
+		 return variableDeclaration;
 	}
-
+	
 	//拆分a=b,b=c+a等;
 	private void DealExpressionList(){
 		for(int i=0;i<ExpressionList.size();i++){
@@ -1555,8 +1628,8 @@ class ToElement{
 			parent.addChildBefore(NewExpr,ExpressionList.get(i));
 		}
 	}
-
-
+	
+	
 	//将 var a=b,b=c+e等拆分开
 	private void DealVariableList(){
 		for(int i=0;i<VariableList.size();i++){
@@ -1572,7 +1645,7 @@ class ToElement{
 			ArrayList<String> VarNames=new ArrayList<String>();
 			AstNode InsertNode=null;
 			if(Variables.size()>1){
-				for(int j=0;j<Variables.size();j++){
+				for(int j=0;j<Variables.size();j++){	
 					if(!VarNames.contains(Variables.get(j).getTarget().toSource())){
 						VarNames.add(Variables.get(j).getTarget().toSource());
 						List<VariableInitializer>NewVar=new ArrayList<VariableInitializer>();
@@ -1627,15 +1700,15 @@ class ToElement{
 			}
 		}
 	}
-
-
-
+	
+	
+	
 	private void DealStrDataList(){
 		Map<String,String> StrToName=new HashMap<String,String>();
 		for(int i=0;i<StrDataList.size();i++){
 			Name StrName=new Name();
 			if(!StrToName.containsKey(((StringLiteral)StrDataList.get(i)).getValue())){
-				StrName.setIdentifier(getValidWord(StrName,1));
+				StrName.setIdentifier(getValidWord(StrName,1));	
 				StringLiteral str=(StringLiteral)StrDataList.get(i).clone();
 				str.setValue(((StringLiteral) str).getValue());
 				str.setQuoteCharacter('"');
@@ -1671,7 +1744,7 @@ class ToElement{
 						StrName.setRelative(RegParent.getPosition());
 					}
 				}
-
+				
 			}else if(RegParent instanceof ObjectProperty){
 				if(((ObjectProperty) RegParent).getLeft() instanceof StringLiteral&&((ObjectProperty) RegParent).getLeft().toSource().equals(StrDataList.get(i).toSource())){
 					StrName=(Name)StrName.clone();
@@ -1688,7 +1761,7 @@ class ToElement{
 			}
 			else if(RegParent instanceof InfixExpression){
 				if(((InfixExpression) RegParent).getLeft() instanceof StringLiteral&&((InfixExpression) RegParent).getLeft().toSource().equals(StrDataList.get(i).toSource())){
-
+					
 					StrName=(Name)StrName.clone();
 					((InfixExpression) RegParent).setLeft(StrName);
 					StrName.setParent(RegParent);
@@ -1763,7 +1836,7 @@ class ToElement{
 			}
 		}
 	}
-
+	
 	private void DealRegDataList(){
 		Map<String,String> RegToName=new HashMap<String,String>();
 		for(int i=0;i<RegDataList.size();i++){
@@ -1794,7 +1867,7 @@ class ToElement{
 				List<AstNode> Argus=((FunctionCall) RegParent).getArguments();
 				for(int j=0;j<Argus.size();j++){
 					if(Argus.get(j) instanceof RegExpLiteral&&
-							((RegExpLiteral)Argus.get(j)).getValue().contains(((RegExpLiteral)RegDataList.get(i)).getValue())){
+						((RegExpLiteral)Argus.get(j)).getValue().contains(((RegExpLiteral)RegDataList.get(i)).getValue())){
 						RegName=(Name)RegName.clone();
 						RegName.setParent(RegParent);
 						RegName.setRelative(RegParent.getPosition());
@@ -1826,8 +1899,8 @@ class ToElement{
 			}
 		}
 	}
-
-
+	
+	
 	private void DealNumDataList(){
 		Map<String,String> NumToName=new HashMap<String,String>();
 		for(int i=0;i<NumDataList.size();i++){
@@ -1849,7 +1922,7 @@ class ToElement{
 				NumNode.setRelative(parent.getPosition());
 				NumToName.put(((NumberLiteral)NumDataList.get(i)).getValue(), NumName.getIdentifier());
 			}
-
+			
 			AstNode NumParent=NumDataList.get(i).getParent();
 			if(NumParent instanceof InfixExpression){
 				if(((InfixExpression) NumParent).getLeft() instanceof NumberLiteral){
@@ -1875,18 +1948,18 @@ class ToElement{
 				List<AstNode> Array=((ArrayLiteral) NumParent).getElements();
 				for(int j=0;j<Array.size();j++){
 					if(Array.get(j) instanceof NumberLiteral&&
-							((NumberLiteral)Array.get(j)).getValue().equals(((NumberLiteral)NumDataList.get(i)).getValue())){
+						((NumberLiteral)Array.get(j)).getValue().equals(((NumberLiteral)NumDataList.get(i)).getValue())){
 						NumName=(Name)NumName.clone();
 						NumName.setParent(NumParent);
-						NumName.setRelative(NumParent.getPosition());
+						NumName.setRelative(NumParent.getPosition());	
 						Array.set(j,NumName);
-					}
+						}
 				}
 			}else if(NumParent instanceof FunctionCall){
 				List<AstNode> Argu=((FunctionCall)NumParent).getArguments();
 				for(int j=0;j<Argu.size();j++){
 					if(Argu.get(j) instanceof NumberLiteral &&
-							((NumberLiteral)Argu.get(j)).getValue().equals(((NumberLiteral)NumDataList.get(i)).getValue())){
+					((NumberLiteral)Argu.get(j)).getValue().equals(((NumberLiteral)NumDataList.get(i)).getValue())){
 						NumName=(Name)NumName.clone();
 						NumName.setParent(NumParent);
 						NumName.setRelative(NumParent.getPosition());
@@ -1937,8 +2010,8 @@ class ToElement{
 			}
 		}
 	}
-
-
+	
+	
 	public void DealName(){
 		Iterator it=MapNames.keySet().iterator();
 		while(it.hasNext()){
@@ -1957,7 +2030,7 @@ class ToElement{
 			}
 		}
 	}
-
+	
 	public void CreateNameMap(){
 		Iterator it=SetNames.iterator();
 		Iterator it2=NewSetNames.iterator();
@@ -1968,60 +2041,62 @@ class ToElement{
 				MapNames.put(Name,NewName);
 			}
 		}
-		Iterator DealIt=DealedNodes.iterator();
-		while(DealIt.hasNext()){
-			String str=((AstNode)DealIt.next()).toSource();
-			MapNames.remove(str);
+		if(DealedNodes!=null){
+			Iterator DealIt=DealedNodes.iterator();
+			while(DealIt.hasNext()){
+				String str=((AstNode)DealIt.next()).toSource();
+				MapNames.remove(str);
+			}
 		}
 	}
-
+	
 	private Map<String,Map<String,String>> require=new HashMap<String,Map<String,String>>();
 	private Map<String,Map<String,String>> ObjMap=new HashMap<String,Map<String,String>>();
 	private ArrayList<Map<String,Map<String,String>>> ObjList=new ArrayList<Map<String,Map<String,String>>>();
 	private Stack<AstNode> FunLists=new Stack<AstNode>();
 	private int moduleNum=0;
-
-
+	
+	
 	Map<String,AstNode> FunNode=new HashMap<String,AstNode>();//记录所有函数
 	ArrayList<AstNode> ObjLocal=new ArrayList<AstNode>();//记录对象所属的环境
 	ArrayList<String> Object=new ArrayList<String>();//记录所有的属性方法名
 	Map<String,String> NewObj=new HashMap<String,String>();//属性名和新属性名
-
-
+	
+	
 	public Set<String> GetParam(){
 		return Param;
 	}
-
+	
 	private ArrayList<String> Split2(String str){
-		ArrayList<String> string=new ArrayList<String>();
-		if(str.length()>1){
-			String str1=str.substring(0,(int)(str.length()/2));
-			String str2=str.substring((int)(str.length()/2),str.length());
-			string.add(str1);
-			string.add(str2);
-			return string;
-		}
-		else
-			return null;
-	}
-
+			ArrayList<String> string=new ArrayList<String>();
+			if(str.length()>1){
+		        String str1=str.substring(0,(int)(str.length()/2));
+		        String str2=str.substring((int)(str.length()/2),str.length());
+		        string.add(str1);
+		        string.add(str2);
+		        return string;
+			}
+			else
+				return null;
+	   }
+	
 	private ArrayList<String> Split4(String str){
 		ArrayList<String> Str=new ArrayList<String>();
-		if(str.length()>=4){
-			String str1=str.substring(0,(int)(str.length()/4));
-			String str2=str.substring((int)(str.length()/4),(int)((str.length()/4)*2));
-			String str3=str.substring((int)((str.length()/4)*2),(int)((str.length()/4)*3));
-			String str4=str.substring((int)((str.length()/4)*3),str.length());
-			Str.add(str1);
-			Str.add(str2);
-			Str.add(str3);
-			Str.add(str4);
-			return Str;
+		 if(str.length()>=4){
+	         String str1=str.substring(0,(int)(str.length()/4));
+	         String str2=str.substring((int)(str.length()/4),(int)((str.length()/4)*2));
+	         String str3=str.substring((int)((str.length()/4)*2),(int)((str.length()/4)*3));
+	         String str4=str.substring((int)((str.length()/4)*3),str.length());
+	         Str.add(str1);
+	         Str.add(str2);
+	         Str.add(str3);
+	         Str.add(str4);
+	          return Str;
 		}
-		else
+		else 
 			return null;
-	}
-
+	 }
+	
 	ArrayList<AstNode> NewStr=new ArrayList<AstNode>();
 	ArrayList<String> fakeName=new ArrayList<String>();
 	private void SplitStr(){
@@ -2136,8 +2211,8 @@ class ToElement{
 			this.NewStr.get(j).setRelative(parent.getPosition());
 		}
 	}
-
-
+	
+	
 	private void DealFirstEle(){
 		Iterator it=MapNames.keySet().iterator();
 		while(it.hasNext()){
@@ -2155,20 +2230,20 @@ class ToElement{
 			}
 		}
 	}
-
+	
 	public ArrayList<AstNode> getNodeList(){
 		return NodeList;
 	}
-
-
-
-
-
+	
+	
+	
+	
+	
 	private ArrayList<AstNode> WinVar=new ArrayList<AstNode>();//记录window属性声明结点.
 	private ArrayList<String> WindowNode=new ArrayList<String>();//获取所有给window.node赋值右值的变量（window.Message=window.Message||Message）
 	//记录等于释放变量名的结点
 	private ArrayList<AstNode> WindowNodeAst=new ArrayList<AstNode>();
-
+	
 	class GetWindowNodeVarAss implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof VariableInitializer){
@@ -2183,15 +2258,15 @@ class ToElement{
 			return true;
 		}
 	}
-
-
+	
+	
 	class clone implements NodeVisitor{
 		public boolean visit(AstNode node){
 			node=(AstNode)node.clone();
 			return true;
 		}
 	}
-
+	
 	class InitDeadCode implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof IfStatement){
@@ -2202,7 +2277,7 @@ class ToElement{
 			return true;
 		}
 	}
-
+	
 	class InitDeadCodeIf implements NodeVisitor{
 		public boolean visit(AstNode node){
 			if(node instanceof FunctionNode){
@@ -2212,9 +2287,19 @@ class ToElement{
 			return true;
 		}
 	}
-
+	
 	class InserDeadCode implements NodeVisitor{
 		public boolean visit(AstNode node){
+			if(node instanceof Name){
+				if(node.getParent() instanceof PropertyGet&&node!=((PropertyGet)node.getParent()).getTarget()){
+					if(node.toSource().length()>=8){
+						SplitString=1;
+					}
+				}else if(node.getParent() instanceof ElementGet&&node!=((ElementGet)node.getParent()).getTarget()){
+					if(node.toSource().length()>=8)
+						SplitString=1;
+				}
+			}
 			if(node instanceof IfStatement){
 				AstNode ThenPart=((IfStatement) node).getThenPart();
 				AstNode ElsePart=((IfStatement) node).getElsePart();
@@ -2229,26 +2314,65 @@ class ToElement{
 						DeadCode.setRelative(node.getPosition());
 					}
 				}
+			}else if(node instanceof VariableInitializer){
+				AstNode Tar=((VariableInitializer) node).getTarget();
+				if(Tar instanceof Name)SpeName.add(Tar.toSource());
+			}else if(node instanceof Assignment){
+				AstNode Left=((Assignment) node).getLeft();
+				SpeName.add(Left.toSource());
+			}else if(node instanceof StringLiteral){
+				if(((StringLiteral) node).getValue().length()>=8)
+					SplitString=1;
 			}
 			return true;
 		}
 	}
-
+	
 	public Map<String,String> getVarThisSet(){
 		return VarThisMap;
 	}
-
-
+	
+	class FindSpeName implements NodeVisitor{
+		public boolean visit(AstNode node){
+			if(node instanceof PropertyGet){
+				AstNode Target=((PropertyGet) node).getTarget();
+				while(Target instanceof PropertyGet){
+					Target=((PropertyGet)Target).getTarget();
+				}
+				if(Target instanceof Name){
+					if(!SpeName.contains(Target.toSource())){
+						ObjKeyWord.add(Target.toSource());
+					}
+				}
+			}else if(node instanceof NewExpression){
+				AstNode Target=((NewExpression) node).getTarget();
+				if(Target instanceof Name){
+					if(!SpeName.contains(Target.toSource())){
+						ObjKeyWord.add(Target.toSource());
+					}
+				}
+			}
+			return true;
+		}
+	}
+	
+	
+	public static AstNode InsertCrypt(AstNode Decrypt,AstNode Source){
+		AstNode parent=Source.getParent();
+		parent.addChildBefore(Decrypt, Source);
+		Decrypt.setParent(parent);
+		return parent;
+	}
+	
 	AstNode Root=null;
 	int Shell=0;
-	ArrayList<String> NewObjName=new ArrayList<String>();
 	private int ratecalculate;
 	private ArrayList<String> NislFunction;
 	private Set<AstNode> DealedNodes;
 	private ArrayList<AstNode> DeadCodes=new ArrayList<AstNode>();//保存所有的垃圾代码
 	private ArrayList<AstNode> DeadCodesIf=new ArrayList<AstNode>();//保存所有的带有if的垃圾代码
 	private Map<String,String> VarThisMap=new HashMap<String,String>();//保存this的全局变量;
-	public void GetVarNameMap(AstNode node,AstNode DeadNode,AstNode DeadNodeIf,int Prop,int caculate,int Shell,int ratecalculate,Set<String> ResverName) throws IOException {
+	public void GetVarNameMap(AstNode decryptnode,AstNode node,AstNode DeadNode,AstNode DeadNodeIf,int Prop,int caculate,int Shell,int ratecalculate,Set<String> ResverName) throws IOException {
 		if(DeadNode!=null&&DeadNodeIf!=null){
 			DeadNode.visit(new InitDeadCode());
 			DeadNodeIf.visit(new InitDeadCodeIf());
@@ -2258,18 +2382,21 @@ class ToElement{
 		Root=node;
 		InitFirst((AstNode)node.getFirstChild());
 		node.visit(new InserDeadCode());
+		if(SplitString==1)
+			node=InsertCrypt(decryptnode,(AstNode)node.getFirstChild());
 		node.visit(new testvisit1());
+		//node.visit(new FindSpeName());
 		FunNameAndParams NameAndParams=new FunNameAndParams();
 		NameAndParams.testt(node,ObjName,ResverName);
-		NislFunction=NameAndParams.getEncryptFunctionName();
+		if(SplitString==1)
+			NislFunction=NameAndParams.getEncryptFunctionName();
 		DealedNodes=NameAndParams.GetDealedNode();
 		//属性名修改
 		collectNames(node);//获取目前所有的变量名。
-		if(Prop==1){
-			DealProperty property=new DealProperty();
-			property.DealPropertyName(node,ResverName,SetVarNames);
-			VarThisMap=property.getVarThisSet();
-		}
+		DealProperty property=new DealProperty();
+		property.DealPropertyName(Prop,node,ResverName,SetVarNames);
+		VarThisMap=property.getVarThisSet();
+	
 		//补充if,for循环的大括号
 		DealBlankList();//必选
 		//取消连续声明的变量
@@ -2283,7 +2410,7 @@ class ToElement{
 		//提取函数实参
 		//DealFunctionCallStack();
 		//删除拆分声明后的原声明结点
-
+		
 		for(int i=0;i<VariableList.size();i++){
 			AstNode parent=VariableList.get(i).getParent();
 			if(parent instanceof ForLoop)continue;
@@ -2300,8 +2427,8 @@ class ToElement{
 			}
 		}
 		PropertyList.clear();
-		CreateNameMap();//创建新旧名对应表
 		node.visit(new testvisit2());
+		//CreateNameMap();//创建新旧名对应表
 		if(Shell==1)
 			DealName();//修改名字.
 		//计算式混淆
