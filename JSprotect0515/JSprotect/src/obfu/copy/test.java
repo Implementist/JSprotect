@@ -53,24 +53,20 @@ public class test {
 
     //是否控制流平展，阈值，case大小，大数组加壳，计算式混淆，计算式混淆参数，属性名，处理数字，处理字符串
     public void protect(int DeadCode, Set ReserverName, int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, int projectId, String user) {
-        //public static void main(String[] args)throws IOException{
         try {
-            //D:\个人\js前端相关\JSprotect0515\JSprotect\src\obfu\copy
-            //4.13
-            //String decryptfile="D:\\Ideaworkspace\\JSprotect0515\\JSprotect\\src\\obfu\\copy\\decrypt.js";
-            String decryptfile = "C:\\Program Files\\decrypt.js";
-            //String decryptfile="D:\\workspace\\java\\JSprotect\\src\\obfu\\copy\\decrypt.js";
+            String decryptfile = FileUtils.getWholeFileName("decrypt.js", FileUtils.SERVER_LIB_FOLDER);
+
             Reader decryptreader = new FileReader(decryptfile);
             CompilerEnvirons decryptenv = new CompilerEnvirons();
-            decryptenv.setRecordingLocalJsDocComments(true);    //C:\Program Files\Apache Software Foundation\Tomcat 7.0\webapps\JSprotect\WEB-INF\classes\obfu\copy
+            decryptenv.setRecordingLocalJsDocComments(true);
             decryptenv.setAllowSharpComments(true);
             decryptenv.setRecordingComments(true);
             AstRoot decryptnode = new Parser(decryptenv).parse(decryptreader, decryptfile, 1);
-            //System.out.println(decryptnode.toSource());
+
             AstRoot deadnode = null;
             AstRoot deadnodeIf = null;
             if (DeadCode == 1) {
-                String deadfile = "C:\\Program Files\\deadcode.js";
+                String deadfile = FileUtils.getWholeFileName("deadcode.js", FileUtils.SERVER_LIB_FOLDER);
                 Reader deadreader = new FileReader(deadfile);
                 CompilerEnvirons deadenv = new CompilerEnvirons();
                 deadenv.setRecordingLocalJsDocComments(true);
@@ -78,7 +74,7 @@ public class test {
                 deadenv.setRecordingComments(true);
                 deadnode = new Parser(deadenv).parse(deadreader, deadfile, 1);
 
-                String deadfileIf = "C:\\Program Files\\deadcodeIf.js";
+                String deadfileIf = FileUtils.getWholeFileName("deadcodeIf.js", FileUtils.SERVER_LIB_FOLDER);
                 Reader deadreaderIf = new FileReader(deadfileIf);
                 CompilerEnvirons deadenvIf = new CompilerEnvirons();
                 deadenvIf.setRecordingLocalJsDocComments(true);
