@@ -22,12 +22,12 @@ public class compresshex {
                     process.getInputStream());
             BufferedReader inBr = new BufferedReader(new InputStreamReader(in));
 
-            File file = new File("." + File.separator + "lib" + File.separator + "yuicompressor-16.jar");
+            File file = new File(FileUtils.getWholeFileName("yuicompressor-16.jar", FileUtils.SERVER_LIB_FOLDER));
 
             int byteread = 0;
             int bytesum = 0;
             if (file.exists()) {
-                InputStream inStream = new FileInputStream("yuicompressor-16.jar"); // 读入原文件
+                InputStream inStream = new FileInputStream(FileUtils.getWholeFileName("yuicompressor-16.jar", FileUtils.SERVER_LIB_FOLDER)); // 读入原文件
                 FileOutputStream fs = new FileOutputStream(dir + File.separator + "yuicompressor-16.jar");
                 byte[] buffer = new byte[1444];
                 while ((byteread = inStream.read(buffer)) != -1) {
@@ -81,19 +81,19 @@ public class compresshex {
     public String constructCommandLine(String directory) {
         int index;
         String cutedDir = directory.substring(0, directory.lastIndexOf('\\'));
-        System.out.println("This is the result: " + cutedDir);
+        System.out.println("Output File: " + cutedDir);
         File file = new File(cutedDir);
         file.mkdirs();
         if ((index = directory.lastIndexOf('\\')) != -1) {
             directory = directory.substring(index + 1, directory.length());
         }
         System.out.println(directory);
-        String stringbuffer = new String("java -jar " + "C:/JSprotectLib/yuicompressor-16.jar ");
+        String stringbuffer = new String("java -jar " + FileUtils.getWholeFileName("yuicompressor-16.jar", FileUtils.SERVER_LIB_FOLDER) + " ");
         String minifiedFileName = directory.substring(0, directory.length() - 3) + "-min.js";
         stringbuffer += directory;
         stringbuffer += " --nomunge  --preserve-semi --disable-optimizations -o ";
 
-        stringbuffer += cutedDir  + File.separator + minifiedFileName;
+        stringbuffer += cutedDir + File.separator + minifiedFileName;
         return stringbuffer;
     }
 }
