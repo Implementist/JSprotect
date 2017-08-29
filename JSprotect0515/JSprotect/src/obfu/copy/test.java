@@ -113,7 +113,7 @@ public class test {
             createfunc cfunc = new createfunc();
             Nnode = cfunc.createfunction(Nnode, KeyWord, Shell, IIS, IIS, 0);
             testpage test = new testpage();
-            test.testt(Prop, Nnode, NodeList, ReserverName, VarThisMap);
+            test.testt(Shell, Prop, Nnode, NodeList, ReserverName, VarThisMap);
             File protectedProjectPath = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user));
             if (!protectedProjectPath.exists())
                 protectedProjectPath.mkdir();
@@ -140,7 +140,7 @@ public class test {
             }
 
         } catch (IOException ee) {
-            System.out.println(ee.toString());
+            ee.printStackTrace();
         }
     }
 }

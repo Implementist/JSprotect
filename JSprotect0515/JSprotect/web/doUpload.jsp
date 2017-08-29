@@ -168,7 +168,8 @@
         } catch (SizeLimitExceededException ex) {
             System.out.println("File size exceeded!");
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            //System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 %>
