@@ -61,7 +61,14 @@
     </div>
 
     <div class="ui container grid" style="width:740px; margin: 80px auto 0;">
-        <form id="form1" style="margin: 0 auto;" action="doUpload.jsp" method="post"
+        <form id="form" action="UploadFile.jsp" method="post" enctype="multipart/form-data">
+            <input type="file" name="selectFile">
+            <input type="submit" name="Upload" value="Upload">
+        </form>
+    </div>
+
+    <div class="ui container grid" style="width:740px; margin: 80px auto 0;">
+        <form id="form1" style="margin: 0 auto;" action="Obfuscation.jsp" method="post"
               enctype="multipart/form-data" target="hidden_frame">
             <div class="row">
                 <div class="column">
@@ -217,10 +224,8 @@
             </div>
             <div class="row">
                 <div style="text-align: center">
-                    <input class="filestyle" type="file" name="upfile" id="filesubmit" accept="application"
-                           style="position: relative;top:48px;float: left;left: 10%">&nbsp;&nbsp;
                     <input type="submit" class="btn" value="Submit" id="btnsubmit"
-                           style="position: relative;top:48px;float: right;right: 30%">
+                           style="position: relative;top:48px">
                 </div>
             </div>
         </form>
