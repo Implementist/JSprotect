@@ -83,15 +83,12 @@ public class test {
                 deadnodeIf = new Parser(deadenvIf).parse(deadreaderIf, deadfileIf, 1);
             }
 
-
-            String file = path;
-            Reader reader = new FileReader(file);
+            Reader reader = new FileReader(path);
             CompilerEnvirons env = new CompilerEnvirons();
             env.setRecordingLocalJsDocComments(true);
             env.setAllowSharpComments(true);
             env.setRecordingComments(true);
-            AstRoot node = new Parser(env).parse(reader, file, 1);
-            AstNode Nnode = node;
+            AstNode Nnode = new Parser(env).parse(reader, path, 1);
             System.out.println("finish");
             // AstNode Nnode = InsertCrypt(decryptnode, (AstNode) node.getFirstChild());
             function fu = new function();
@@ -117,7 +114,8 @@ public class test {
             File protectedProjectPath = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user));
             if (!protectedProjectPath.exists())
                 protectedProjectPath.mkdir();
-            System.out.println(FileUtils.getWholeFileName(fileName + "====----====", FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
+
+            System.out.println("Full File Name: " + FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
             File protectedProjectPath2 = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
             if (!protectedProjectPath2.exists())
                 protectedProjectPath2.mkdirs();

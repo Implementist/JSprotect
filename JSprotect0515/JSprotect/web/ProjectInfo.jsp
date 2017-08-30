@@ -102,7 +102,7 @@
     <!--<div class="container">
         <div style="width:740px; margin: 0 auto; margin-top: 80px; ">
             <iframe id="hidden_frame" name="hidden_frame" style="display:none"></iframe>
-          <form id="form1" style="width:700px; margin: 0 auto;" action="doUpload.jsp" method="post" enctype="multipart/form-data" target="hidden_frame">
+          <form id="form1" style="width:700px; margin: 0 auto;" action="Obfuscation.jsp" method="post" enctype="multipart/form-data" target="hidden_frame">
           <legend style="margin-bottom:50px;">Project Information</legend>
           <label class="checkbox" style="padding-left:70px;margin-bottom:20px;"><input type="checkbox" value="1" id="adb">Anti debugging</label>
           <label class="checkbox" style="padding-left:70px;margin-bottom:20px;"><input type="checkbox" value="2" id="obf">Obfuscation</label>

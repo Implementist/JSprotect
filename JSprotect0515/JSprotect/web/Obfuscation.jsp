@@ -18,10 +18,6 @@
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.List" %>
 <%
-    File file;
-    int maxFileSize = 50000 * 1024;
-    int maxMemSize = 100000 * 1024;
-
     // 获取文件要上传的路径
     String filePath = FileUtils.SERVER_ROOT_UPLOAD_FOLDER;
 
@@ -33,29 +29,17 @@
     if ((contentType.contains("multipart/form-data"))) {
         DiskFileItemFactory factory = new DiskFileItemFactory();
 
-        // 设置内存中存储文件的最大值
-        factory.setSizeThreshold(maxMemSize);
-
         // 本地存储的数据大于maxMemSize
         factory.setRepository(new File("file-upload-temp"));
 
         // 创建一个新的文件上传处理程序
         ServletFileUpload upload = new ServletFileUpload(factory);
 
-        // 设置最大上传的文件大小
-        upload.setSizeMax(maxFileSize);
-
         // 获取用户的md5
         String userName = (String) session.getAttribute("user");
         //System.out.println(md5);
         filePath = filePath + userName + File.separator;
-        //上传
-        System.out.println("Upload Path: " + filePath);
         try {
-            File upLoadDir = new File(filePath);
-            if (!upLoadDir.exists())
-                upLoadDir.mkdirs();
-
             // 解析获取的文件
             List fileItems = upload.parseRequest(request);
 
@@ -104,67 +88,50 @@
                         deadCode = fi.getString().equals("checked") ? 1 : 0;
                         System.out.println(deadCode);
                     }
-                } else {
-
-                    String fileName = fi.getName();
-                    // 写入文件
-                    if (fileName.lastIndexOf("\\") >= 0) {
-                        file = new File(filePath,
-                                fileName.substring(fileName
-                                        .lastIndexOf("\\")));
-                    } else {
-                        file = new File(filePath,
-                                fileName.substring(fileName
-                                        .lastIndexOf("\\") + 1));
-                    }
-                    fi.write(file);
-                    System.out.println("Uploaded Filename:" + filePath + fileName);
-
-                    // 生成该用户的ProjectId
-                    Project project = new Project();
-                    int projectId = project
-                            .getProjectId((String) session
-                                    .getAttribute("user"));
-
-                    test ntest = new test();
-                    ntest.protect(deadCode, reserveName, cff, thresholdValue, blockSize, bigArray, calculate, strength, paramName, numberHandling, filePath + fileName, filePath, fileName, projectId, (String) session.getAttribute("user"));
-
-                    System.out.println(filePath + projectId);
-
-                    // upLoadPath实际就是md5值
-                    File protectedProjectPath = new File(request
-                            .getSession().getServletContext()
-                            .getRealPath("")
-                            + "\\Projects\\"
-                            + session.getAttribute("user"));
-
-                    // 若md5目录不存在，则创建
-                    if (!protectedProjectPath.exists())
-                        protectedProjectPath.mkdirs();
-
-                    // 压缩完成后，删除该Project提交的文件
-                    project.deleteDirectory(filePath + projectId);
-
-                    //构造工程信息
-                    ProjectInfo projectInfo = new ProjectInfo();
-                    projectInfo.setUsername((String) session.getAttribute("user"));
-                    projectInfo.setProjectId(projectId);
-                    projectInfo.setAntidbg(1);
-                    projectInfo.setObfuscation(1);
-                    projectInfo.setAntiTamper(1);
-                    projectInfo.setObfuscationStrength(obfuscationStrength);
-                    projectInfo.setFlatternCount(0);
-                    projectInfo.setOpaqueCount(0);
-                    projectInfo.setFileName(fileName);
-
-                    // 将该工程信息插入数据库
-                    ProjectInfoDAO.insertProjectInfo(projectInfo);
-
-                    // 构造返回成功的字符串
-                    String returnValue = "<script>parent.callback('success')</script>";
-                    out.print(returnValue);
                 }
             }
+
+            String fileName = (String) session.getAttribute("CurrentFile");
+
+            // 生成该用户的ProjectId
+            Project project = new Project();
+            int projectId = project.getProjectId(userName);
+
+            test ntest = new test();
+            ntest.protect(deadCode, reserveName, cff, thresholdValue, blockSize, bigArray, calculate, strength, paramName, numberHandling, filePath + fileName, filePath, fileName, projectId, (String) session.getAttribute("user"));
+
+            // upLoadPath实际就是md5值
+            File protectedProjectPath = new File(request
+                    .getSession().getServletContext()
+                    .getRealPath("")
+                    + "\\Projects\\"
+                    + userName);
+
+            if (!protectedProjectPath.exists())
+                protectedProjectPath.mkdirs();
+
+            // 压缩完成后，删除该Project提交的文件
+            project.deleteDirectory(filePath + projectId);
+
+            //构造工程信息
+            ProjectInfo projectInfo = new ProjectInfo();
+            projectInfo.setUsername((String) session.getAttribute("user"));
+            projectInfo.setProjectId(projectId);
+            projectInfo.setAntidbg(1);
+            projectInfo.setObfuscation(1);
+            projectInfo.setAntiTamper(1);
+            projectInfo.setObfuscationStrength(obfuscationStrength);
+            projectInfo.setFlatternCount(0);
+            projectInfo.setOpaqueCount(0);
+            projectInfo.setFileName(fileName);
+
+            // 将该工程信息插入数据库
+            ProjectInfoDAO.insertProjectInfo(projectInfo);
+
+            // 构造返回成功的字符串
+            String returnValue = "<script>parent.callback('success')</script>";
+            out.print(returnValue);
+
         } catch (SizeLimitExceededException ex) {
             System.out.println("File size exceeded!");
         } catch (Exception ex) {
