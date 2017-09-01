@@ -52,7 +52,7 @@ public class test {
     }
 
     //是否控制流平展，阈值，case大小，大数组加壳，计算式混淆，计算式混淆参数，属性名，处理数字，处理字符串
-    public void protect(int DeadCode, Set ReserverName, int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, int projectId, String user) {
+    public void protect(String propertyNames, String strings, int DeadCode, Set ReserverName, int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, int projectId, String user) {
         try {
             String decryptfile = FileUtils.getWholeFileName("decrypt.js", FileUtils.SERVER_LIB_FOLDER);
 
@@ -93,7 +93,7 @@ public class test {
             // AstNode Nnode = InsertCrypt(decryptnode, (AstNode) node.getFirstChild());
             function fu = new function();
             ToElement ob = new ToElement(Nnode);
-            ob.GetVarNameMap(decryptnode, Nnode, deadnode, deadnodeIf, Prop, caculate, Shell, ratecalculate, ReserverName);
+            ob.GetVarNameMap(propertyNames, strings, decryptnode, Nnode, deadnode, deadnodeIf, Prop, caculate, Shell, ratecalculate, ReserverName);
             Map<String, String> VarThisMap = ob.getVarThisSet();
             Set<String> KeyWord = ob.getKeyWord();
             ArrayList<AstNode> NodeList = ob.getNodeList();
