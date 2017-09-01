@@ -1,57 +1,9 @@
 package obfu.copy;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
-import java.util.Stack;
-
-import org.mozilla.javascript.Node;
 import org.mozilla.javascript.Token;
-import org.mozilla.javascript.ast.ArrayLiteral;
-import org.mozilla.javascript.ast.Assignment;
-import org.mozilla.javascript.ast.AstNode;
-import org.mozilla.javascript.ast.Block;
-import org.mozilla.javascript.ast.BreakStatement;
-import org.mozilla.javascript.ast.ConditionalExpression;
-import org.mozilla.javascript.ast.DoLoop;
-import org.mozilla.javascript.ast.ElementGet;
-import org.mozilla.javascript.ast.EmptyExpression;
-import org.mozilla.javascript.ast.ExpressionStatement;
-import org.mozilla.javascript.ast.ForInLoop;
-import org.mozilla.javascript.ast.ForLoop;
-import org.mozilla.javascript.ast.FunctionCall;
-import org.mozilla.javascript.ast.FunctionNode;
-import org.mozilla.javascript.ast.IfStatement;
-import org.mozilla.javascript.ast.InfixExpression;
-import org.mozilla.javascript.ast.KeywordLiteral;
-import org.mozilla.javascript.ast.Label;
-import org.mozilla.javascript.ast.LabeledStatement;
-import org.mozilla.javascript.ast.Loop;
-import org.mozilla.javascript.ast.Name;
-import org.mozilla.javascript.ast.NewExpression;
-import org.mozilla.javascript.ast.NodeVisitor;
-import org.mozilla.javascript.ast.NumberLiteral;
-import org.mozilla.javascript.ast.ObjectLiteral;
-import org.mozilla.javascript.ast.ObjectProperty;
-import org.mozilla.javascript.ast.ParenthesizedExpression;
-import org.mozilla.javascript.ast.PropertyGet;
-import org.mozilla.javascript.ast.RegExpLiteral;
-import org.mozilla.javascript.ast.ReturnStatement;
-import org.mozilla.javascript.ast.Scope;
-import org.mozilla.javascript.ast.StringLiteral;
-import org.mozilla.javascript.ast.SwitchCase;
-import org.mozilla.javascript.ast.SwitchStatement;
-import org.mozilla.javascript.ast.ThrowStatement;
-import org.mozilla.javascript.ast.UnaryExpression;
-import org.mozilla.javascript.ast.VariableDeclaration;
-import org.mozilla.javascript.ast.VariableInitializer;
-import org.mozilla.javascript.ast.WhileLoop;
+import org.mozilla.javascript.ast.*;
+
+import java.io.IOException;
+import java.util.*;
 //计算式分解错误：jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)) 
 //for循环的初始化不提取导致后面出错。
 class ToElement{
@@ -458,6 +410,10 @@ class ToElement{
 		public boolean visit(AstNode node){
 			if(node instanceof StringLiteral){
 				StrNum++;
+				String str=((StringLiteral) node).getValue();
+				if(str.contains("\'")){
+					((StringLiteral) node).setQuoteCharacter('"');
+				}
 			}else if(node.getType()==Token.NAME){
     			AstNode Parent=node.getParent();
     			if(Parent instanceof Assignment&&((Assignment)Parent).getLeft().toSource().equals(node.toSource()))
@@ -2372,7 +2328,7 @@ class ToElement{
 	private ArrayList<AstNode> DeadCodes=new ArrayList<AstNode>();//保存所有的垃圾代码
 	private ArrayList<AstNode> DeadCodesIf=new ArrayList<AstNode>();//保存所有的带有if的垃圾代码
 	private Map<String,String> VarThisMap=new HashMap<String,String>();//保存this的全局变量;
-	public void GetVarNameMap(AstNode decryptnode,AstNode node,AstNode DeadNode,AstNode DeadNodeIf,int Prop,int caculate,int Shell,int ratecalculate,Set<String> ResverName) throws IOException {
+	public void GetVarNameMap(String PropertyStr,String PropertyStrList,AstNode decryptnode,AstNode node,AstNode DeadNode,AstNode DeadNodeIf,int Prop,int caculate,int Shell,int ratecalculate,Set<String> ResverName) throws IOException {
 		if(DeadNode!=null&&DeadNodeIf!=null){
 			DeadNode.visit(new InitDeadCode());
 			DeadNodeIf.visit(new InitDeadCodeIf());
@@ -2394,9 +2350,9 @@ class ToElement{
 		//属性名修改
 		collectNames(node);//获取目前所有的变量名。
 		DealProperty property=new DealProperty();
-		property.DealPropertyName(Prop,node,ResverName,SetVarNames);
+		property.DealPropertyName(PropertyStr,PropertyStrList,Prop,node,SetVarNames);
 		VarThisMap=property.getVarThisSet();
-	
+
 		//补充if,for循环的大括号
 		DealBlankList();//必选
 		//取消连续声明的变量
@@ -2410,7 +2366,7 @@ class ToElement{
 		//提取函数实参
 		//DealFunctionCallStack();
 		//删除拆分声明后的原声明结点
-		
+
 		for(int i=0;i<VariableList.size();i++){
 			AstNode parent=VariableList.get(i).getParent();
 			if(parent instanceof ForLoop)continue;

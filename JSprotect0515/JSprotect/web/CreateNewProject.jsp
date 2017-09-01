@@ -60,30 +60,33 @@
         </div>
     </div>
 
-    <div class="ui container grid" style="width:740px; margin: 80px auto 0;">
-        <form id="form" action="UploadFile.jsp" method="post" enctype="multipart/form-data">
-            <input type="file" name="selectFile">
-            <input type="submit" name="Upload" value="Upload">
-        </form>
-    </div>
+    <propertyNames style="display:none;">
+        <%
+            out.print(session.getAttribute("CurrentPropertyNameString"));
+        %>
+    </propertyNames>
+
+    <strings style="display:none;">
+        <%
+            out.print(session.getAttribute("CurrentStringString"));
+        %>
+    </strings>
+
+    <stringDetails style="display:none;">
+        <%
+            out.print(session.getAttribute("CurrentStringDetailString"));
+        %>
+    </stringDetails>
 
     <div class="ui container grid" style="width:740px; margin: 80px auto 0;">
-        <form id="form1" style="margin: 0 auto;" action="Obfuscation.jsp" method="post"
-              enctype="multipart/form-data" target="hidden_frame">
-            <div class="row">
-                <div class="column">
-                    <div class="" id="root">
-                        <div data-reactroot="">
-                            <div class="ui grid">
-                                <div class="column">
-                                    <iframe id="hidden_frame" name="hidden_frame" style="display:none"></iframe>
-                                    <legend style="margin-bottom:50px;">
-                                        Create New Project
-                                        <img id="imgHelp" src="img/feedback.png"
-                                             style="width: 25px; height: 25px; margin-bottom: 5px; margin-left: 5px"
-                                             onmouseover="this.src='img/feedback_fill.png'; this.style.cursor='pointer'"
-                                             onmouseleave="this.src='img/feedback.png'"
-                                             onclick="confirm('操作说明:\n\n' +
+        <form id="form" action="UploadFile.jsp" method="post" enctype="multipart/form-data">
+            <legend style="margin-bottom:50px;">
+                Create New Project
+                <img id="imgHelp" src="img/feedback.png"
+                     style="width: 25px; height: 25px; margin-bottom: 5px; margin-left: 5px"
+                     onmouseover="this.src='img/feedback_fill.png'; this.style.cursor='pointer'"
+                     onmouseleave="this.src='img/feedback.png'"
+                     onclick="confirm('操作说明:\n\n' +
                                               '*框选计算式后可设置强度，范围[1~10]\n\n' +
                                               '*框选控制流平展后可设置阈值和块大小\n' +
                                               '        阈值表示触发平展的最低函数量,范围[1~10]\n' +
@@ -100,7 +103,28 @@
                                               '}\n' +
                                               '注意：块大小应小于阈值！\n\n' +
                                               '记得选择要上传的文件！')">
-                                    </legend>
+            </legend>
+            <input type="file" name="selectFile">
+            <input type="submit" name="Upload" value="Upload">
+        </form>
+        <textarea cols=40 rows=5 wrap=virtual name=ipt id="in" style="width:505px;height:306px"><%
+            if(session.getAttribute("context")!=null)
+                out.println(((String)session.getAttribute("context")).trim());
+            session.setAttribute("context","");
+            %></textarea><br>
+        <button value="Analyze" onclick="analyzeFile()"></button>
+    </div>
+
+    <div class="ui container grid" style="width:740px; margin: 80px auto 0;">
+        <form id="form1" style="margin: 0 auto;" onsubmit="submitForm()" method="post"
+              enctype="multipart/form-data" target="hidden_frame">
+            <div class="row">
+                <div class="column">
+                    <div class="" id="root">
+                        <div data-reactroot="">
+                            <div class="ui grid">
+                                <div class="column">
+                                    <iframe id="hidden_frame" name="hidden_frame" style="display:none"></iframe>
                                     <div class="ui relaxed four column grid">
                                         <div class="column">
                                             <div class="ui basic segment">
@@ -168,8 +192,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="column" id="lastColumn">
-                                            <div class="ui basic segment" style="position: relative;left: 104px">
+                                        <div class="column">
+                                            <div id="thirdColumn" class="ui basic segment" style="position: relative;left: 104px">
                                                 <div class="field">
                                                     <div class="ui checkbox">
                                                         <label>
@@ -206,7 +230,7 @@
                                         </div>
 
                                         <div class="column">
-                                            <div class="ui basic segment" style="position: relative;left: 104px">
+                                            <div id="fourthColumn" class="ui basic segment" style="position: relative;left: 104px">
                                                 <div class="field" style="position: relative">
                                                     <h4>&nbsp;&nbsp;&nbsp;&nbsp;保留字</h4>
                                                     <textarea name="txtReserveName" type="text"
@@ -219,6 +243,34 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+                <div id="content_property" style="width:505px;">
+                    <h5 style="position: absolute;top: 321px;">选择要进行混淆的属性&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp选择字符串</h5>
+                    <div id="content_left" name="content_left" style="position:relative;top:21px;border:1px solid black;width:200px;height:200px;float:left;overflow:scroll;">
+
+                    </div>
+                    <div name="content_right" style="position:relative;top:21px;width:300px;height:200px;float:left;overflow:scroll;border:1px solid black;">
+                        <table id="content_right" style="border:1px solid black;width:300px;overflow-x:scroll" cellpadding="3" cellspacing="0" border="1">
+                            <tr>
+                                <td></td>
+                                <td>字符串</td>
+                                <td>对字符串的解释</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div id="btnposition1" style="position: absolute;left: 8px;top: 573px">
+                        <input type="button" name="btall1" value="全选" onclick="chooseall1();">
+                        <input type="button" name="btno1" value="反选" onclick="obchoose1();">
+                        <input type="button" name="btob1" value="全不选" onclick="not1();">
+                    </div>
+                    <div id="btnposition2" style="position: absolute;left: 268px;top: 573px">
+                        <input type="button" name="btall2" value="全选" onclick="chooseall2();">
+                        <input type="button" name="btno2" value="反选" onclick="obchoose2();">
+                        <input type="button" name="btob2" value="全不选" onclick="not2();">
                     </div>
                 </div>
             </div>
