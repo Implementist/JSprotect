@@ -19,7 +19,7 @@
     int thresholdValue = Integer.parseInt(request.getParameter("thresholdValue"));
     int blockSize = Integer.parseInt(request.getParameter("blockSize"));
     int numberHandling = Integer.parseInt(request.getParameter("numberHandling"));
-    int paramName = Integer.parseInt(request.getParameter("paramName"));
+    int paramName = 1;
     int deadCode = Integer.parseInt(request.getParameter("deadCode"));
 
     //保留字
@@ -29,28 +29,35 @@
 
     //属性名
     String propertyNames = request.getParameter("propertyNames");
+    System.out.println(propertyNames);
 
     //字符串
     String strings = request.getParameter("strings");
 
     // 获取文件要上传的路径
-    String filePath = FileUtils.SERVER_ROOT_UPLOAD_FOLDER;
+    String filePath;
 
     String obfuscationStrength = "";
+
+    String fileName = (String) session.getAttribute("CurrentFile");
 
     // 获取用户名
     String userName = (String) session.getAttribute("user");
 
-    filePath = filePath + userName + File.separator;
-    try {
-        String fileName = (String) session.getAttribute("CurrentFile");
+    if (((String) session.getAttribute("Transcode")).equals("1"))
+        filePath = FileUtils.getWholeFileName("app-webpack.js", FileUtils.SERVER_ROOT_FOLDER, "Temp");
+    else
+        filePath = FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_UPLOAD_FOLDER, userName);
 
+    System.out.println("Running");
+
+    try {
         // 生成该用户的ProjectId
         Project project = new Project();
         int projectId = project.getProjectId(userName);
 
         test ntest = new test();
-        ntest.protect(propertyNames, strings, deadCode, reservedNameSet, controlFlowFlatten, thresholdValue, blockSize, bigArray, calculate, strength, paramName, numberHandling, filePath + fileName, filePath, fileName, projectId, (String) session.getAttribute("user"));
+        ntest.protect(propertyNames, strings, deadCode, reservedNameSet, controlFlowFlatten, thresholdValue, blockSize, bigArray, calculate, strength, paramName, numberHandling, filePath, filePath, fileName, projectId, (String) session.getAttribute("user"));
 
         // upLoadPath实际就是md5值
         File protectedProjectPath = new File(request
@@ -61,9 +68,6 @@
 
         if (!protectedProjectPath.exists())
             protectedProjectPath.mkdirs();
-
-        // 压缩完成后，删除该Project提交的文件
-        project.deleteDirectory(filePath + projectId);
 
         //构造工程信息
         ProjectInfo projectInfo = new ProjectInfo();

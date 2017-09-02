@@ -109,7 +109,6 @@ function submitForm() {
     var thresholdValue = parseInt(document.getElementsByName('txtThresholdValue')[0].value);
     var blockSize = parseInt(document.getElementsByName('txtBlockSize')[0].value);
     var numberHandling = document.getElementsByName('chbStringAndNumber')[0].value === "checked" ? 1 : 0;
-    var paramName = document.getElementsByName('chbParamName')[0].value === "checked" ? 1 : 0;
     var reserveNames = document.getElementsByName('txtReserveName')[0].value.trim().split(" ");
     var deadCode = document.getElementsByName('chbDeadCode')[0].value === "checked" ? 1 : 0;
 
@@ -138,7 +137,7 @@ function submitForm() {
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("bigArray=" + bigArray + "&calculate=" + calculate + "&strength=" + strength +
         "&controlFlowFlatten=" + controlFlowFlatten + "&thresholdValue=" + thresholdValue + "&blockSize="
-        + blockSize + "&numberHandling=" + numberHandling + "&paramName=" + paramName + "&reserveNames="
+        + blockSize + "&numberHandling=" + numberHandling + "&reserveNames="
         + reserveNames + "&deadCode=" + deadCode + "&propertyNames=" + propertyNames + "&strings=" + strings);
 }
 

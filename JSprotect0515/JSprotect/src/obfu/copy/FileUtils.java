@@ -15,19 +15,7 @@ public abstract class FileUtils {
      * 部署服务器中Tomcat服务器ROOT文件夹的绝对路径
      * TODO:部署的时候解除下列注释
      */
-//    public static final String SERVER_ROOT_FOLDER = "C:" +
-//            File.separator +
-//            "XAMPP" +
-//            File.separator +
-//            "tomcat" +
-//            File.separator +
-//            "webapps" +
-//            File.separator +
-//            "ROOT";
-    /**
-     * Implementist电脑中Tomcat服务器ROOT文件夹的绝对路径
-     */
-    public static final String SERVER_ROOT_FOLDER = "E:" +
+    public static final String SERVER_ROOT_FOLDER = "C:" +
             File.separator +
             "XAMPP" +
             File.separator +
@@ -36,6 +24,18 @@ public abstract class FileUtils {
             "webapps" +
             File.separator +
             "ROOT";
+    /**
+     * Implementist电脑中Tomcat服务器ROOT文件夹的绝对路径
+     */
+//    public static final String SERVER_ROOT_FOLDER = "E:" +
+//            File.separator +
+//            "XAMPP" +
+//            File.separator +
+//            "tomcat" +
+//            File.separator +
+//            "webapps" +
+//            File.separator +
+//            "ROOT";
 
     /**
      * 工程下web文件夹下lib文件夹的相对路径
