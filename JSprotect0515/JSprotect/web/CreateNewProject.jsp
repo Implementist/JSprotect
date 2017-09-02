@@ -5,7 +5,7 @@
   Time: 11:00
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +22,37 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/CreateNewProjectPageUtils.js"></script>
+    <script type="text/javascript">
+        function checkchange() {
+            var btn1 = document.getElementById("analy");
+            var btn2 = document.getElementById("btall1");
+            var btn3 = document.getElementById("btno1");
+            var btn4 = document.getElementById("btob1");
+            var btn5 = document.getElementById("btall2");
+            var btn6 = document.getElementById("btno2");
+            var btn7 = document.getElementById("btob2");
+            var tag = document.getElementById("chpro");
+            if (tag.checked === true) {
+                btn1.removeAttribute("disabled");
+                btn2.removeAttribute("disabled");
+                btn3.removeAttribute("disabled");
+                btn4.removeAttribute("disabled");
+                btn5.removeAttribute("disabled");
+                btn6.removeAttribute("disabled");
+                btn7.removeAttribute("disabled");
+
+            }
+            else {
+                btn1.setAttribute("disabled", true);
+                btn2.setAttribute("disabled", true);
+                btn3.setAttribute("disabled", true);
+                btn4.setAttribute("disabled", true);
+                btn5.setAttribute("disabled", true);
+                btn6.setAttribute("disabled", true);
+                btn7.setAttribute("disabled", true);
+            }
+        }
+    </script>
 </head>
 <body class="logged_out  env-production windows  signup">
 <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
@@ -78,8 +109,8 @@
         %>
     </stringDetails>
 
-    <div class="ui container grid" style="width:740px; margin: 80px auto 0;">
-        <form id="form" action="UploadFile.jsp" method="post" enctype="multipart/form-data">
+    <div class="ui container grid" style="position: relative;top:10px;left: 143px">
+        <form id="form" action="UploadFile.jsp" method="post" enctype="multipart/form-data" style="height: 111px">
             <legend style="margin-bottom:50px;">
                 Create New Project
                 <img id="imgHelp" src="img/feedback.png"
@@ -104,20 +135,66 @@
                                               '注意：块大小应小于阈值！\n\n' +
                                               '记得选择要上传的文件！')">
             </legend>
-            <input type="file" name="selectFile">
-            <input type="submit" name="Upload" value="Upload">
-        </form>
-        <textarea cols=40 rows=5 wrap=virtual name=ipt id="in" style="width:505px;height:306px"><%
-            if(session.getAttribute("context")!=null)
-                out.println(((String)session.getAttribute("context")).trim());
-            session.setAttribute("context","");
-            %></textarea><br>
-        <button value="Analyze" onclick="analyzeFile()"></button>
-    </div>
+            <div class="ui checkbox" style="position: relative;top: 1px;left: 300px">
+                <label>
+                    <input name="chbTranscode" type="checkbox"
+                           tabindex="0" value="unchecked"
+                           onchange="reverseValue(document.getElementsByName('chbTranscode')[0])">
+                    <h4>JS版本转换</h4>
+                </label>
+            </div>
+            <input type="file" name="selectFile" style="position: relative;top: -34px;left: 0px">
 
+            <div class="field">
+
+            </div>
+
+            <input type="submit" name="Upload" value="Upload" style="position: relative;top:-61px;left: 547px">
+        </form>
+        <textarea cols=40 rows=5 wrap=virtual name=ipt id="in" style="width:609px;height:306px"><%
+            if (session.getAttribute("context") != null)
+                out.println(((String) session.getAttribute("context")).trim());
+            session.setAttribute("context", "");
+        %></textarea><br>
+        <input type="checkbox" id="chpro" style="position: relative;top: 40px;left: 2px" onchange="checkchange();">
+        <span style=" display: block; position: relative;top: 23px;left: 22px;font-weight: bold;">属性混淆</span>
+        <div class="row" style="position: relative;top: 66px;left: 22px">
+            <h5 style="position: absolute;top: -20px;">
+                选择要进行混淆的属性&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp选择字符串</h5>
+            <div id="content_property" style="width:690px;">
+                <div id="content_left" name="content_left"
+                     style="position:relative;top:21px;border:1px solid black;width:307px;height:264px;float:left;overflow:scroll;">
+
+                </div>
+                <div name="content_right"
+                     style="position:relative;top:21px;width:300px;height:264px;float:left;overflow:scroll;border:1px solid black;">
+                    <table id="content_right" style="width:300px;overflow-x:scroll">
+                        <tr>
+                            <td></td>
+                            <td>字符串</td>
+                            <td>对字符串的解释</td>
+                        </tr>
+
+                    </table>
+                </div>
+                <input id="analy" type="button" value="Analyze" onclick="analyzeFile()"
+                       style="position: relative;top: -15px;left: -68px" disabled="true">
+                <div id="btnposition1" style="position: absolute;left: 0px;top: 301px">
+                    <input disabled="true" type="button" id="btall1" name="btall1" value="全选" onclick="chooseall1();">
+                    <input disabled="true" type="button" id="btno1" name="btno1" value="反选" onclick="obchoose1();">
+                    <input disabled="true" type="button" id="btob1" name="btob1" value="全不选" onclick="not1();">
+                </div>
+                <div id="btnposition2" style="position: absolute;left: 312px;top: 301px">
+                    <input disabled="true" type="button" id="btall2" name="btall2" value="全选" onclick="chooseall2();">
+                    <input disabled="true" type="button" id="btno2" name="btno2" value="反选" onclick="obchoose2();">
+                    <input disabled="true" type="button" id="btob2" name="btob2" value="全不选" onclick="not2();">
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="ui container grid" style="width:740px; margin: 80px auto 0;">
-        <form id="form1" style="margin: 0 auto;" onsubmit="submitForm()" method="post"
-              enctype="multipart/form-data" target="hidden_frame">
+        <form id="form1" style="border-top: 1px solid #b3abab;margin: 0 auto;position: relative;top: 81px;left:28px"
+              onsubmit="submitForm()" method="post" enctype="multipart/form-data" target="hidden_frame">
             <div class="row">
                 <div class="column">
                     <div class="" id="root">
@@ -193,7 +270,8 @@
                                             </div>
                                         </div>
                                         <div class="column">
-                                            <div id="thirdColumn" class="ui basic segment" style="position: relative;left: 104px">
+                                            <div id="thirdColumn" class="ui basic segment"
+                                                 style="position: relative;left: 104px">
                                                 <div class="field">
                                                     <div class="ui checkbox">
                                                         <label>
@@ -201,17 +279,6 @@
                                                                    tabindex="0" value="unchecked"
                                                                    onchange="reverseValue(document.getElementsByName('chbStringAndNumber')[0])">
                                                             <h4>数字处理</h4>
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="field" style="position: relative;top:48px">
-                                                    <div class="ui checked checkbox">
-                                                        <label>
-                                                            <input name="chbParamName" type="checkbox" tabindex="0"
-                                                                   value="unchecked"
-                                                                   onchange="reverseValue(document.getElementsByName('chbParamName')[0])">
-                                                            <h4>属性名</h4>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -230,7 +297,8 @@
                                         </div>
 
                                         <div class="column">
-                                            <div id="fourthColumn" class="ui basic segment" style="position: relative;left: 104px">
+                                            <div id="fourthColumn" class="ui basic segment"
+                                                 style="position: relative;left: 104px">
                                                 <div class="field" style="position: relative">
                                                     <h4>&nbsp;&nbsp;&nbsp;&nbsp;保留字</h4>
                                                     <textarea name="txtReserveName" type="text"
@@ -246,38 +314,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row" >
-                <div id="content_property" style="width:505px;">
-                    <h5 style="position: absolute;top: 321px;">选择要进行混淆的属性&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp选择字符串</h5>
-                    <div id="content_left" name="content_left" style="position:relative;top:21px;border:1px solid black;width:200px;height:200px;float:left;overflow:scroll;">
-
-                    </div>
-                    <div name="content_right" style="position:relative;top:21px;width:300px;height:200px;float:left;overflow:scroll;border:1px solid black;">
-                        <table id="content_right" style="border:1px solid black;width:300px;overflow-x:scroll" cellpadding="3" cellspacing="0" border="1">
-                            <tr>
-                                <td></td>
-                                <td>字符串</td>
-                                <td>对字符串的解释</td>
-                            </tr>
-
-                        </table>
-                    </div>
-                    <div id="btnposition1" style="position: absolute;left: 8px;top: 573px">
-                        <input type="button" name="btall1" value="全选" onclick="chooseall1();">
-                        <input type="button" name="btno1" value="反选" onclick="obchoose1();">
-                        <input type="button" name="btob1" value="全不选" onclick="not1();">
-                    </div>
-                    <div id="btnposition2" style="position: absolute;left: 268px;top: 573px">
-                        <input type="button" name="btall2" value="全选" onclick="chooseall2();">
-                        <input type="button" name="btno2" value="反选" onclick="obchoose2();">
-                        <input type="button" name="btob2" value="全不选" onclick="not2();">
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div style="text-align: center">
                     <input type="submit" class="btn" value="Submit" id="btnsubmit"
-                           style="position: relative;top:48px">
+                           style="position: relative;top:48px;left: 212px">
                 </div>
             </div>
         </form>

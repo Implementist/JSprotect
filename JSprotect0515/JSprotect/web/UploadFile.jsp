@@ -6,8 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+<%@ page import="com.rocky.adbProject.Project" %>
 <%@ page import="obfu.copy.DealProperty_NEW" %>
 <%@ page import="obfu.copy.FileUtils" %>
+<%@ page import="obfu.copy.compile" %>
+<%@ page import="obfu.copy.webpack" %>
 <%@ page import="org.apache.commons.fileupload.FileItem" %>
 <%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory" %>
 <%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %>
@@ -54,9 +57,19 @@
 
         String fileName = "";
 
+        //transcode值指示的是是否将JS代码转码（高版本转到版本5）
+        int transcode = 0;
+        session.setAttribute("Transcode", "0");
+
         // 得到所有的文件
         List<FileItem> items = upload.parseRequest(request);
         for (FileItem fileItem : items) {
+
+            if (fileItem.isFormField() && fileItem.getFieldName().equals("chbTranscode")) {
+                transcode = fileItem.getString().equals("checked") ? 1 : 0;
+                session.setAttribute("Transcode", String.valueOf(transcode));
+            }
+
             fileName = fileItem.getName();
             if (fileName != null) {
                 session.setAttribute("CurrentFile", fileName);
@@ -79,10 +92,26 @@
             e.printStackTrace();
         }
 
+        // 生成该用户的ProjectId
+        Project project = new Project();
+        session.setAttribute("CurrentProjectId", project.getProjectId(userName) + "");
+
+        if (transcode == 1) {
+            compile com = new compile();
+            com.compile(userName, (String) session.getAttribute("CurrentFile"));
+            webpack web = new webpack();
+            web.webpack();
+        }
+
         DealProperty_NEW dealProperty_new = new DealProperty_NEW();
 
-        fileName = (String) session.getAttribute("CurrentFile");
-        String fullFileName = FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_UPLOAD_FOLDER, userName);
+        String fullFileName;
+        if (((String) session.getAttribute("Transcode")).equals("1"))
+            fullFileName = FileUtils.getWholeFileName("app-webpack.js", FileUtils.SERVER_ROOT_FOLDER, "Temp");
+        else
+            fullFileName = FileUtils.getWholeFileName((String) session.getAttribute("CurrentFile"),
+                    FileUtils.SERVER_ROOT_UPLOAD_FOLDER, (String) session.getAttribute("user"));
+
         dealProperty_new.DealPropertyName(fullFileName);
 
         //属性名

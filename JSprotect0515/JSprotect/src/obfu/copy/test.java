@@ -93,6 +93,7 @@ public class test {
             // AstNode Nnode = InsertCrypt(decryptnode, (AstNode) node.getFirstChild());
             function fu = new function();
             ToElement ob = new ToElement(Nnode);
+            System.out.println("test in"+propertyNames);
             ob.GetVarNameMap(propertyNames, strings, decryptnode, Nnode, deadnode, deadnodeIf, Prop, caculate, Shell, ratecalculate, ReserverName);
             Map<String, String> VarThisMap = ob.getVarThisSet();
             Set<String> KeyWord = ob.getKeyWord();
