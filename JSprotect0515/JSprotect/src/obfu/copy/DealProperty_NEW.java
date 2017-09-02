@@ -14,19 +14,21 @@ import java.util.Set;
 
 public class DealProperty_NEW {
     private Set<String> PropertyName;
-    private ArrayList<String>PropertyNameList;
+    private ArrayList<String> PropertyNameList;
     private ArrayList<String> StringEn;
     private ArrayList<String> StringList;
     private Set<String> ReserveKeyWord;
-    public DealProperty_NEW(){
-        StringList=new ArrayList<String>();
-        StringEn=new ArrayList<String>();
-        PropertyName=new HashSet<String>();
-        PropertyNameList=new ArrayList<String>();
-        ReserveKeyWord=new HashSet<String>();
+
+    public DealProperty_NEW() {
+        StringList = new ArrayList<String>();
+        StringEn = new ArrayList<String>();
+        PropertyName = new HashSet<String>();
+        PropertyNameList = new ArrayList<String>();
+        ReserveKeyWord = new HashSet<String>();
         InitReserveName();
     }
-    private void InitReserveName(){
+
+    private void InitReserveName() {
         ReserveKeyWord.add("constructor");
         ReserveKeyWord.add("length");
         ReserveKeyWord.add("prototype");
@@ -305,46 +307,46 @@ public class DealProperty_NEW {
         ReserveKeyWord.add("val");
     }
 
-    class visit implements NodeVisitor{
-        public boolean visit(AstNode node){
-            if(node instanceof Assignment){
-                AstNode Left=((Assignment) node).getLeft();
-                while(Left instanceof PropertyGet){
-                    AstNode Property=((PropertyGet)Left).getProperty();
-                    if(!PropertyName.contains(Property.toSource())){
+    class visit implements NodeVisitor {
+        public boolean visit(AstNode node) {
+            if (node instanceof Assignment) {
+                AstNode Left = ((Assignment) node).getLeft();
+                while (Left instanceof PropertyGet) {
+                    AstNode Property = ((PropertyGet) Left).getProperty();
+                    if (!PropertyName.contains(Property.toSource())) {
                         PropertyName.add(Property.toSource());
                         PropertyNameList.add(Property.toSource());
                     }
-                    Left=((PropertyGet)Left).getTarget();
-                    if(Left instanceof FunctionCall)Left=((FunctionCall) Left).getTarget();
+                    Left = ((PropertyGet) Left).getTarget();
+                    if (Left instanceof FunctionCall) Left = ((FunctionCall) Left).getTarget();
                 }
-            }
-            else if(node instanceof ObjectProperty){
-                AstNode Left=((ObjectProperty) node).getLeft();
-                if(Left instanceof Name){
-                    if(!PropertyName.contains(Left.toSource())){
+            } else if (node instanceof ObjectProperty) {
+                AstNode Left = ((ObjectProperty) node).getLeft();
+                if (Left instanceof Name) {
+                    if (!PropertyName.contains(Left.toSource())) {
                         PropertyName.add(Left.toSource());
                         PropertyNameList.add(Left.toSource());
                     }
-                }else if(Left instanceof StringLiteral){
+                } else if (Left instanceof StringLiteral) {
                     ReserveKeyWord.add(((StringLiteral) Left).getValue());
                 }
             }
             return true;
         }
     }
-    class visit2 implements NodeVisitor{
-        public boolean visit(AstNode node){
-            if(node instanceof StringLiteral){
-                AstNode parent=node.getParent();
-                if(PropertyName.contains(((StringLiteral) node).getValue())&&!(parent instanceof PropertyGet&&((PropertyGet)parent).getLeft()==node)){
-                    while(true){
-                        if(parent instanceof ExpressionStatement||parent instanceof FunctionCall||parent instanceof PropertyGet||parent instanceof ElementGet||parent instanceof VariableInitializer||parent instanceof Assignment)
+
+    class visit2 implements NodeVisitor {
+        public boolean visit(AstNode node) {
+            if (node instanceof StringLiteral) {
+                AstNode parent = node.getParent();
+                if (PropertyName.contains(((StringLiteral) node).getValue()) && !(parent instanceof PropertyGet && ((PropertyGet) parent).getLeft() == node)) {
+                    while (true) {
+                        if (parent instanceof ObjectProperty || parent instanceof ExpressionStatement || parent instanceof FunctionCall || parent instanceof PropertyGet || parent instanceof ElementGet || parent instanceof VariableInitializer || parent instanceof Assignment)
                             break;
-                        parent=parent.getParent();
+                        parent = parent.getParent();
                     }
                     StringEn.add(parent.toSource());
-                    System.out.println(":"+node.toSource());
+                    System.out.println(":" + node.toSource());
                     StringList.add(node.toSource());
                 }
             }
@@ -352,58 +354,53 @@ public class DealProperty_NEW {
         }
     }
 
-    public AstNode getAstNode(String filePath) throws IOException{
-        try{
-            Reader reader=new FileReader(filePath);
-            CompilerEnvirons env=new CompilerEnvirons();
+    public AstNode getAstNode(String filePath) throws IOException {
+        try {
+            Reader reader = new FileReader(filePath);
+            CompilerEnvirons env = new CompilerEnvirons();
             env.setRecordingLocalJsDocComments(true);
             env.setAllowSharpComments(true);
             env.setRecordingComments(true);
-            AstRoot node=new Parser(env).parse(reader,filePath,1);
+            AstRoot node = new Parser(env).parse(reader, filePath, 1);
             return node;
-        }catch(IOException ee){
+        } catch (IOException ee) {
             System.out.println(ee.toString());
             return null;
         }
     }
 
-    public ArrayList<String> getPropertyNameList(){
+    public ArrayList<String> getPropertyNameList() {
         return PropertyNameList;
         //获取属性名
     }
 
-    public ArrayList<String> getStringEn(){
+    public ArrayList<String> getStringEn() {
         return StringEn;
         //获取字符串详情
     }
 
-    public ArrayList<String> getStringList(){
+    public ArrayList<String> getStringList() {
         return StringList;
         //获取属性字符串
     }
 
-    public String getCode(){
+    public String getCode() {
         return StringCode;
         //获取所有代码
     }
 
-    private String StringCode=null;
-    public void DealPropertyName(String filePath) throws IOException{
-        AstNode node=getAstNode(filePath);
+    private String StringCode = null;
+
+    public void DealPropertyName(String filePath) throws IOException {
+        AstNode node = getAstNode(filePath);
         node.visit(new visit());
-        for(int i=0,j=0;i<PropertyNameList.size();i++){
-            if(ReserveKeyWord.contains(PropertyNameList.get(i))){
+        for (int i = 0, j = 0; i < PropertyNameList.size(); i++) {
+            if (ReserveKeyWord.contains(PropertyNameList.get(i))) {
                 PropertyName.remove(PropertyNameList.get(i));
                 PropertyNameList.remove(i);
             }
         }
         node.visit(new visit2());
-        for(int i=0;i<PropertyNameList.size();i++){
-            System.out.println(PropertyNameList.get(i));
-        }
-        for(int i=0;i<StringEn.size();i++){
-            System.out.println("Test in DP_NEW: " + StringEn.get(i));
-        }
-        StringCode=node.toSource();
+        StringCode = node.toSource();
     }
 }
