@@ -484,13 +484,11 @@ public class DealProperty {
             }
             node.visit(new visit2());
             for(int i=PropertyStr.length()-1;i>=0;i--){
-                System.out.println("Fuck0");
                 if(PropertyStr.charAt(i)=='0')
                     PropertyNameList.remove(i);
             }
             node.visit(new getProperty());
             for(int i=PropertyStrList.length()-1;i>=0;i--){
-                System.out.println("Fuck1");
                 if(PropertyStrList.charAt(i)=='1'){
                     ((StringLiteral)StringList.get(i)).setValue(PropertyMap.get(((StringLiteral)StringList.get(i)).getValue()));
                 }
