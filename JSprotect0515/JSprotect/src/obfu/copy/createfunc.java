@@ -1,38 +1,8 @@
 package obfu.copy;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Random;
-
 import org.mozilla.javascript.Token;
-import org.mozilla.javascript.ast.ArrayLiteral;
-import org.mozilla.javascript.ast.Assignment;
-import org.mozilla.javascript.ast.AstNode;
-import org.mozilla.javascript.ast.Block;
-import org.mozilla.javascript.ast.ConditionalExpression;
-import org.mozilla.javascript.ast.ElementGet;
-import org.mozilla.javascript.ast.ExpressionStatement;
-import org.mozilla.javascript.ast.FunctionCall;
-import org.mozilla.javascript.ast.FunctionNode;
-import org.mozilla.javascript.ast.InfixExpression;
-import org.mozilla.javascript.ast.KeywordLiteral;
-import org.mozilla.javascript.ast.Name;
-import org.mozilla.javascript.ast.NodeVisitor;
-import org.mozilla.javascript.ast.NumberLiteral;
-import org.mozilla.javascript.ast.ObjectProperty;
-import org.mozilla.javascript.ast.ParenthesizedExpression;
-import org.mozilla.javascript.ast.RegExpLiteral;
-import org.mozilla.javascript.ast.ReturnStatement;
-import org.mozilla.javascript.ast.StringLiteral;
-import org.mozilla.javascript.ast.SwitchCase;
-import org.mozilla.javascript.ast.UnaryExpression;
-import org.mozilla.javascript.ast.VariableDeclaration;
-import org.mozilla.javascript.ast.VariableInitializer;
+import org.mozilla.javascript.ast.*;
+
+import java.util.*;
 
 
 public class createfunc {

@@ -1,30 +1,12 @@
 package com.rocky.protect;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Random;
-
-//import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
-import org.mozilla.javascript.Token;
-import org.mozilla.javascript.ast.AstNode;
-import org.mozilla.javascript.ast.AstRoot;
-import org.mozilla.javascript.ast.ExpressionStatement;
-import org.mozilla.javascript.ast.FunctionCall;
-import org.mozilla.javascript.ast.FunctionNode;
-import org.mozilla.javascript.ast.Name;
+import org.mozilla.javascript.ast.*;
 
-import com.mysql.jdbc.Field;
+import java.io.*;
+
+//import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 public class Antidbg {
 

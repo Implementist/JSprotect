@@ -40,7 +40,6 @@
                 btn5.removeAttribute("disabled");
                 btn6.removeAttribute("disabled");
                 btn7.removeAttribute("disabled");
-
             }
             else {
                 btn1.setAttribute("disabled", true);
@@ -93,19 +92,22 @@
 
     <propertyNames style="display:none;">
         <%
-            out.print(session.getAttribute("CurrentPropertyNameString"));
+            if (session.getAttribute("CurrentPropertyNameString") != null)
+                out.println(((String) session.getAttribute("CurrentPropertyNameString")).trim());
         %>
     </propertyNames>
 
     <strings style="display:none;">
         <%
-            out.print(session.getAttribute("CurrentStringString"));
+            if (session.getAttribute("CurrentStringString") != null)
+                out.print(((String) session.getAttribute("CurrentStringString")).trim());
         %>
     </strings>
 
     <stringDetails style="display:none;">
         <%
-            out.print(session.getAttribute("CurrentStringDetailString"));
+            if (session.getAttribute("CurrentStringDetailString") != null)
+                out.print(((String) session.getAttribute("CurrentStringDetailString")).trim());
         %>
     </stringDetails>
 
@@ -152,11 +154,12 @@
             <input type="submit" name="Upload" value="Upload" style="position: relative;top:-61px;left: 547px">
         </form>
         <textarea cols=40 rows=5 wrap=virtual name=ipt id="in" style="width:609px;height:306px"><%
-            if (session.getAttribute("context") != null)
+            if (session.getAttribute("context") != null) {
                 out.println(((String) session.getAttribute("context")).trim());
-            session.setAttribute("context", "");
+                session.setAttribute("context", "");
+            }
         %></textarea><br>
-        <input type="checkbox" id="chpro" style="position: relative;top: 40px;left: 2px" onchange="checkchange();">
+        <input name="chbPropertyName" type="checkbox" id="chpro" style="position: relative;top: 40px;left: 2px" onchange="checkchange();">
         <span style=" display: block; position: relative;top: 23px;left: 22px;font-weight: bold;">属性混淆</span>
         <div class="row" style="position: relative;top: 66px;left: 22px">
             <h5 style="position: absolute;top: -20px;">
@@ -168,7 +171,7 @@
                 </div>
                 <div name="content_right"
                      style="position:relative;top:21px;width:300px;height:264px;float:left;overflow:scroll;border:1px solid black;">
-                    <table id="content_right" style="width:300px;overflow-x:scroll">
+                    <table border="1px" rules="rows" id="content_right" style="width:300px;overflow-x:scroll">
                         <tr>
                             <td></td>
                             <td>字符串</td>

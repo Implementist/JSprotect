@@ -19,7 +19,7 @@
     int thresholdValue = Integer.parseInt(request.getParameter("thresholdValue"));
     int blockSize = Integer.parseInt(request.getParameter("blockSize"));
     int numberHandling = Integer.parseInt(request.getParameter("numberHandling"));
-    int paramName = 1;
+    int propertyName = Integer.parseInt(request.getParameter("PropertyName"));
     int deadCode = Integer.parseInt(request.getParameter("deadCode"));
 
     //保留字
@@ -57,7 +57,7 @@
         int projectId = project.getProjectId(userName);
 
         test ntest = new test();
-        ntest.protect(propertyNames, strings, deadCode, reservedNameSet, controlFlowFlatten, thresholdValue, blockSize, bigArray, calculate, strength, paramName, numberHandling, filePath, filePath, fileName, projectId, (String) session.getAttribute("user"));
+        ntest.protect(propertyNames, strings, deadCode, reservedNameSet, controlFlowFlatten, thresholdValue, blockSize, bigArray, calculate, strength, propertyName, numberHandling, filePath, filePath, fileName, projectId, (String) session.getAttribute("user"));
 
         // upLoadPath实际就是md5值
         File protectedProjectPath = new File(request

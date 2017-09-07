@@ -79,19 +79,6 @@
             }
         }
 
-        byte buf[] = new byte[10000];
-        try {
-            String path = FileUtils.getWholeFileName((String) session.getAttribute("CurrentFile"), FileUtils.SERVER_ROOT_UPLOAD_FOLDER, userName);
-            File fp = new File(path);
-            FileInputStream fistream = new FileInputStream(fp);
-            int bytesum = fistream.read(buf, 0, 10000);
-            String str_file = new String(buf, 0, bytesum);
-            fistream.close();
-            session.setAttribute("context", str_file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         // 生成该用户的ProjectId
         Project project = new Project();
         session.setAttribute("CurrentProjectId", project.getProjectId(userName) + "");
@@ -114,19 +101,21 @@
 
         dealProperty_new.DealPropertyName(fullFileName);
 
+        session.setAttribute("context", dealProperty_new.getCode());
+
         //属性名
         ArrayList<String> propertyNames = dealProperty_new.getPropertyNameList();
         StringBuilder propertyNameString = new StringBuilder();
         for (String s : propertyNames)
             propertyNameString.append(s).append(" ");
-        session.setAttribute("CurrentPropertyNameString", propertyNameString);
+        session.setAttribute("CurrentPropertyNameString", propertyNameString.toString());
 
         //字符串
         ArrayList<String> strings = dealProperty_new.getStringList();
         StringBuilder stringString = new StringBuilder();
         for (String s : strings)
             stringString.append(s).append(" ");
-        session.setAttribute("CurrentStringString", stringString);
+        session.setAttribute("CurrentStringString", stringString.toString());
 
         //字符串详情
         ArrayList<String> stringDetails = dealProperty_new.getStringEn();
@@ -134,7 +123,7 @@
         for (String s : stringDetails) {
             stringDetailString.append(s).append("!@#");
         }
-        session.setAttribute("CurrentStringDetailString", stringDetailString);
+        session.setAttribute("CurrentStringDetailString", stringDetailString.toString());
 
         response.sendRedirect("CreateNewProject.jsp");
     } catch (Exception e) {

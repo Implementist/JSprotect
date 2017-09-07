@@ -288,6 +288,7 @@ public class DealProperty_NEW {
         ReserveKeyWord.add("links");
         ReserveKeyWord.add("normalize");
         ReserveKeyWord.add("normalizeDocument");
+        ReserveKeyWord.add("style");
         ReserveKeyWord.add("querySelector");
         ReserveKeyWord.add("querySelectorAll");
         ReserveKeyWord.add("readyState");
@@ -311,7 +312,7 @@ public class DealProperty_NEW {
         public boolean visit(AstNode node) {
             if (node instanceof Assignment) {
                 AstNode Left = ((Assignment) node).getLeft();
-                while (Left instanceof PropertyGet) {
+                if (Left instanceof PropertyGet) {
                     AstNode Property = ((PropertyGet) Left).getProperty();
                     if (!PropertyName.contains(Property.toSource())) {
                         PropertyName.add(Property.toSource());
@@ -341,12 +342,13 @@ public class DealProperty_NEW {
                 AstNode parent = node.getParent();
                 if (PropertyName.contains(((StringLiteral) node).getValue()) && !(parent instanceof PropertyGet && ((PropertyGet) parent).getLeft() == node)) {
                     while (true) {
-                        if (parent instanceof ObjectProperty || parent instanceof ExpressionStatement || parent instanceof FunctionCall || parent instanceof PropertyGet || parent instanceof ElementGet || parent instanceof VariableInitializer || parent instanceof Assignment)
+                        if (parent instanceof FunctionNode || parent instanceof ReturnStatement || parent instanceof IfStatement || parent instanceof ObjectProperty || parent instanceof ExpressionStatement || parent instanceof FunctionCall || parent instanceof PropertyGet || parent instanceof ElementGet || parent instanceof VariableInitializer || parent instanceof Assignment)
                             break;
                         parent = parent.getParent();
                     }
+                    if (parent instanceof IfStatement) parent = ((IfStatement) parent).getCondition();
+                    //if (parent instanceof ReturnStatement) parent = ((ReturnStatement) parent).getReturnValue();
                     StringEn.add(parent.toSource());
-                    System.out.println(":" + node.toSource());
                     StringList.add(node.toSource());
                 }
             }
@@ -394,7 +396,7 @@ public class DealProperty_NEW {
     public void DealPropertyName(String filePath) throws IOException {
         AstNode node = getAstNode(filePath);
         node.visit(new visit());
-        for (int i = 0, j = 0; i < PropertyNameList.size(); i++) {
+        for (int i = PropertyNameList.size() - 1; i >= 0; i--) {
             if (ReserveKeyWord.contains(PropertyNameList.get(i))) {
                 PropertyName.remove(PropertyNameList.get(i));
                 PropertyNameList.remove(i);
