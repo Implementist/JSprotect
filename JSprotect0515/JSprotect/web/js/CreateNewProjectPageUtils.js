@@ -111,6 +111,7 @@ function submitForm() {
     var numberHandling = document.getElementsByName('chbStringAndNumber')[0].value === "checked" ? 1 : 0;
     var reserveNames = document.getElementsByName('txtReserveName')[0].value.trim().split(" ");
     var deadCode = document.getElementsByName('chbDeadCode')[0].value === "checked" ? 1 : 0;
+    var propertyName = document.getElementsByName('chbPropertyName')[0].checked === true ? 1 : 0;
 
     var propertyNames = "";
     var elements1 = document.getElementsByName('chbPropertyNames');
@@ -138,7 +139,8 @@ function submitForm() {
     xmlhttp.send("bigArray=" + bigArray + "&calculate=" + calculate + "&strength=" + strength +
         "&controlFlowFlatten=" + controlFlowFlatten + "&thresholdValue=" + thresholdValue + "&blockSize="
         + blockSize + "&numberHandling=" + numberHandling + "&reserveNames="
-        + reserveNames + "&deadCode=" + deadCode + "&propertyNames=" + propertyNames + "&strings=" + strings);
+        + reserveNames + "&deadCode=" + deadCode + "&propertyNames=" + propertyNames + "&strings=" + strings
+        + "&PropertyName=" + propertyName);
 }
 
 function analyzeFile() {

@@ -53,6 +53,8 @@ public class test {
 
     //是否控制流平展，阈值，case大小，大数组加壳，计算式混淆，计算式混淆参数，属性名，处理数字，处理字符串
     public void protect(String propertyNames, String strings, int DeadCode, Set ReserverName, int controlflow, int stand, int eachcase, int Shell, int caculate, int ratecalculate, int Prop, int IIS, String path, String FilePath, String fileName, int projectId, String user) {
+        System.out.println("Prop: " + Prop);
+
         try {
             String decryptfile = FileUtils.getWholeFileName("decrypt.js", FileUtils.SERVER_LIB_FOLDER);
 
@@ -91,7 +93,7 @@ public class test {
             AstNode Nnode = new Parser(env).parse(reader, path, 1);
             System.out.println("finish");
             // AstNode Nnode = InsertCrypt(decryptnode, (AstNode) node.getFirstChild());
-            function fu = new function();
+
             ToElement ob = new ToElement(Nnode);
             System.out.println("test in"+propertyNames);
             ob.GetVarNameMap(propertyNames, strings, decryptnode, Nnode, deadnode, deadnodeIf, Prop, caculate, Shell, ratecalculate, ReserverName);
@@ -130,14 +132,9 @@ public class test {
             fw.write(str);
             fw.flush();
             fw.close();
-            if (IIS == 0) {
-                compress comp = new compress();
-                comp.compress(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
-            } else {
-                compresshex comp = new compresshex();
-                comp.compress(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
-            }
 
+            compress comp = new compress();
+            comp.compress(FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_FOLDER, "Projects", user, projectId + ""));
         } catch (IOException ee) {
             ee.printStackTrace();
         }

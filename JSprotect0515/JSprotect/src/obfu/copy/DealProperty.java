@@ -293,6 +293,7 @@ public class DealProperty {
         ReserveKeyWord.add("getElementsByName");
         ReserveKeyWord.add("getElementsByTagName");
         ReserveKeyWord.add("images");
+        ReserveKeyWord.add("style");
         ReserveKeyWord.add("implementation");
         ReserveKeyWord.add("importNode");
         ReserveKeyWord.add("inputEncoding");
@@ -430,7 +431,7 @@ public class DealProperty {
         public boolean visit(AstNode node){
             if(node instanceof Assignment){
                 AstNode Left=((Assignment) node).getLeft();
-                while(Left instanceof PropertyGet){
+                if(Left instanceof PropertyGet){
                     AstNode Property=((PropertyGet)Left).getProperty();
                     if(!PropertyName.contains(Property.toSource())){
                         PropertyName.add(Property.toSource());
@@ -475,7 +476,7 @@ public class DealProperty {
     public void DealPropertyName(String PropertyStr,String PropertyStrList,int Prop,AstNode node,Set<String> SetVarNames){
         if(Prop==1){
             node.visit(new visit());
-            for(int i=0,j=0;i<PropertyNameList.size();i++){
+            for(int i=PropertyNameList.size()-1,j=0;i>=0;i--){
                 if(ReserveKeyWord.contains(PropertyNameList.get(i))){
                     PropertyName.remove(PropertyNameList.get(i));
                     PropertyNameList.remove(i);
@@ -484,8 +485,10 @@ public class DealProperty {
             }
             node.visit(new visit2());
             for(int i=PropertyStr.length()-1;i>=0;i--){
-                if(PropertyStr.charAt(i)=='0')
+                if(PropertyStr.charAt(i)=='0') {
+                   // System.out.println(PropertyNameList.get(i));
                     PropertyNameList.remove(i);
+                }
             }
             node.visit(new getProperty());
             for(int i=PropertyStrList.length()-1;i>=0;i--){

@@ -7,7 +7,8 @@ import java.io.*;
  */
 public class compile {
    public void compile(String userName, String fileName){
-       File compiledFile = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "node_modules",".bin"));
+//       File compiledFile = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "node_modules",".bin"));
+       File compiledFile = new File(FileUtils.getWholeDirectory(""));
        File dir = compiledFile;
        System.out.println(dir);
        String cmd = this.constructCommandLine(userName, fileName);
@@ -62,6 +63,7 @@ public class compile {
         stringbuffer += FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_UPLOAD_FOLDER, userName);
         stringbuffer += " -o ";
         stringbuffer += FileUtils.getWholeFileName("app-compile.js", FileUtils.SERVER_ROOT_FOLDER, "Temp");
+        System.out.println(stringbuffer);
         return stringbuffer;
     }
 }

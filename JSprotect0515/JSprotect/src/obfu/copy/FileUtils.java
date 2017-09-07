@@ -59,6 +59,9 @@ public abstract class FileUtils {
         for (String folder : folders) {
             result.append(folder).append(File.separator);
         }
+
+        result.delete(result.length() - 1, result.length());
+
         return result.toString();
     }
 
