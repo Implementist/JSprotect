@@ -12,41 +12,34 @@ public abstract class FileUtils {
 //    }
 
     /**
-     * 部署服务器中Tomcat服务器ROOT文件夹的绝对路径
-     * TODO:部署的时候解除下列注释
+     * 服务器所在盘符
+     * TODO:部署时更改盘符即可
      */
-    public static final String SERVER_ROOT_FOLDER = "C:" +
-            File.separator +
-            "XAMPP" +
-            File.separator +
-            "tomcat" +
-            File.separator +
-            "webapps" +
-            File.separator +
-            "ROOT";
-    /**
-     * Implementist电脑中Tomcat服务器ROOT文件夹的绝对路径
-     * TODO:本地更新的时候解除下列注释
-     */
-//    public static final String SERVER_ROOT_FOLDER = "E:" +
-//            File.separator +
-//            "XAMPP" +
-//            File.separator +
-//            "tomcat" +
-//            File.separator +
-//            "webapps" +
-//            File.separator +
-//            "ROOT";
+    private static final String DRIVE = "C:";
 
     /**
-     * 工程下web文件夹下lib文件夹的相对路径
+     * Tomcat服务器ROOT文件夹的绝对路径
      */
-    public static final String SERVER_LIB_FOLDER = FileUtils.getWholeDirectory(SERVER_ROOT_FOLDER, "lib");
+    public static final String SERVER_ROOT_FOLDER = getWholeDirectory(
+            DRIVE, "XAMPP", "tomcat", "webapps", "ROOT");
 
     /**
-     * Tomcat服务器ROOT文件夹下Upload文件夹的绝对路径
+     * ROOT文件夹下lib文件夹的相对路径
      */
-    public static final String SERVER_ROOT_UPLOAD_FOLDER = getWholeDirectory(SERVER_ROOT_FOLDER, "Upload");
+    public static final String SERVER_ROOT_LIB_FOLDER = getWholeDirectory(
+            SERVER_ROOT_FOLDER, "lib");
+
+    /**
+     * ROOT文件夹下Upload文件夹的绝对路径
+     */
+    public static final String SERVER_ROOT_UPLOAD_FOLDER = getWholeDirectory(
+            SERVER_ROOT_FOLDER, "Upload");
+
+    /**
+     * ROOT文件夹下Temp文件夹的绝对路径
+     */
+    public static final String SERVER_ROOT_TEMP_FOLDER = getWholeDirectory(
+            SERVER_ROOT_FOLDER, "Temp");
 
     /**
      * 获取完整的路径
@@ -63,19 +56,6 @@ public abstract class FileUtils {
         result.delete(result.length() - 1, result.length());
 
         return result.toString();
-    }
-
-    /**
-     * 获取完整的文件名
-     *
-     * @param fileName 文件名
-     * @param folder   根目录
-     * @return 完整的文件名
-     */
-    public static String getWholeFileName(String fileName, String folder) {
-        return folder +
-                File.separator +
-                fileName;
     }
 
     /**

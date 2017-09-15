@@ -56,7 +56,7 @@ public class test {
         System.out.println("Prop: " + Prop);
 
         try {
-            String decryptfile = FileUtils.getWholeFileName("decrypt.js", FileUtils.SERVER_LIB_FOLDER);
+            String decryptfile = FileUtils.getWholeFileName("decrypt.js", FileUtils.SERVER_ROOT_LIB_FOLDER);
 
             Reader decryptreader = new FileReader(decryptfile);
             CompilerEnvirons decryptenv = new CompilerEnvirons();
@@ -68,7 +68,7 @@ public class test {
             AstRoot deadnode = null;
             AstRoot deadnodeIf = null;
             if (DeadCode == 1) {
-                String deadfile = FileUtils.getWholeFileName("deadcode.js", FileUtils.SERVER_LIB_FOLDER);
+                String deadfile = FileUtils.getWholeFileName("deadcode.js", FileUtils.SERVER_ROOT_LIB_FOLDER);
                 Reader deadreader = new FileReader(deadfile);
                 CompilerEnvirons deadenv = new CompilerEnvirons();
                 deadenv.setRecordingLocalJsDocComments(true);
@@ -76,7 +76,7 @@ public class test {
                 deadenv.setRecordingComments(true);
                 deadnode = new Parser(deadenv).parse(deadreader, deadfile, 1);
 
-                String deadfileIf = FileUtils.getWholeFileName("deadcodeIf.js", FileUtils.SERVER_LIB_FOLDER);
+                String deadfileIf = FileUtils.getWholeFileName("deadcodeIf.js", FileUtils.SERVER_ROOT_LIB_FOLDER);
                 Reader deadreaderIf = new FileReader(deadfileIf);
                 CompilerEnvirons deadenvIf = new CompilerEnvirons();
                 deadenvIf.setRecordingLocalJsDocComments(true);

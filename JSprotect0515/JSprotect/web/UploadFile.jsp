@@ -15,8 +15,6 @@
 <%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory" %>
 <%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %>
 <%@ page import="java.io.File" %>
-<%@ page import="java.io.FileInputStream" %>
-<%@ page import="java.io.IOException" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -28,7 +26,10 @@
     String uploadDirectory = FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_UPLOAD_FOLDER, userName);
 
     // 临时文件目录
-    String tempDirectory = FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Temp");
+    String tempDirectory = FileUtils.SERVER_ROOT_TEMP_FOLDER;
+
+    // 上传文件副件目录
+    String copyDirectory = FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Copy");
 
     try {
         File uploadFile = new File(uploadDirectory);
@@ -39,6 +40,10 @@
         if (!tempFile.exists()) {
             tempFile.mkdirs();
         }
+
+        File copyFile = new File (copyDirectory);
+        if (!copyFile.exists())
+            copyFile.mkdirs();
 
         // Create a factory for disk-based file items
         DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -76,6 +81,10 @@
                 File fullFile = new File(fileItem.getName());
                 File savedFile = new File(uploadDirectory, fullFile.getName());
                 fileItem.write(savedFile);
+
+                //将上传的文件复制出来一份
+                File copiedFile = new File(copyDirectory, userName + "-" + fullFile.getName());
+                fileItem.write(copiedFile);
             }
         }
 
@@ -86,15 +95,13 @@
         if (transcode == 1) {
             compile com = new compile();
             com.compile(userName, (String) session.getAttribute("CurrentFile"));
-            webpack web = new webpack();
-            web.webpack();
         }
 
         DealProperty_NEW dealProperty_new = new DealProperty_NEW();
 
         String fullFileName;
         if (((String) session.getAttribute("Transcode")).equals("1"))
-            fullFileName = FileUtils.getWholeFileName("app-webpack.js", FileUtils.SERVER_ROOT_FOLDER, "Temp");
+            fullFileName = FileUtils.getWholeFileName(userName + "-" + ((String) session.getAttribute("CurrentFile")), FileUtils.SERVER_ROOT_TEMP_FOLDER);
         else
             fullFileName = FileUtils.getWholeFileName((String) session.getAttribute("CurrentFile"),
                     FileUtils.SERVER_ROOT_UPLOAD_FOLDER, (String) session.getAttribute("user"));

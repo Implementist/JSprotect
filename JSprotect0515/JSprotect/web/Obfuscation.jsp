@@ -45,7 +45,7 @@
     String userName = (String) session.getAttribute("user");
 
     if (((String) session.getAttribute("Transcode")).equals("1"))
-        filePath = FileUtils.getWholeFileName("app-webpack.js", FileUtils.SERVER_ROOT_FOLDER, "Temp");
+        filePath = FileUtils.getWholeFileName(userName + "-" + ((String) session.getAttribute("CurrentFile")), FileUtils.SERVER_ROOT_TEMP_FOLDER);
     else
         filePath = FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_UPLOAD_FOLDER, userName);
 

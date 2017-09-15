@@ -24,9 +24,7 @@ public class compress {
             inBr.close();
             in.close();
 
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
+        } catch (InterruptedException | IOException ex) {
             ex.printStackTrace();
         }
     }
@@ -48,9 +46,9 @@ public class compress {
                 + "-min.js";
 
         stringbuffer += "cmd /c ";
-        stringbuffer += (FileUtils.getWholeFileName("jsmin.exe",FileUtils.SERVER_ROOT_FOLDER,"lib") + " ");
+        stringbuffer += (FileUtils.getWholeFileName("jsmin.exe",FileUtils.SERVER_ROOT_LIB_FOLDER) + " ");
         stringbuffer += "<" + fileName + "> ";
         stringbuffer += compileFileName;
-        return stringbuffer.toString();
+        return stringbuffer;
     }
 }
