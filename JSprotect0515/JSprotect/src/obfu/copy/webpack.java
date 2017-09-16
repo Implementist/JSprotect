@@ -10,13 +10,11 @@ import java.io.*;
  */
 public class webpack {
     public void webpack(){
-        File compiledFile = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "node_modules",".bin"));
-        File dir = compiledFile;
-        System.out.println(dir);
+
         String cmd = this.constructCommandLine();
         Runtime runtime = Runtime.getRuntime();
         try {
-            Process process = runtime.exec(cmd, null, dir);
+            Process process = runtime.exec(cmd);
             System.err.print(loadStream(process.getErrorStream()));
             BufferedInputStream in = new BufferedInputStream(
                     process.getInputStream());
@@ -52,9 +50,8 @@ public class webpack {
     }
 
     public String constructCommandLine() {
-
         String stringbuffer = new String("");
-        stringbuffer +="webpack.cmd";
+        stringbuffer += FileUtils.getWholeFileName("webpack.cmd ",FileUtils.SERVER_ROOT_FOLDER, "node_modules",".bin");
         return stringbuffer.toString();
     }
 }

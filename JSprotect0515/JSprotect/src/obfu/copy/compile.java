@@ -8,13 +8,12 @@ import java.io.*;
 public class compile {
    public void compile(String userName, String fileName){
 //       File compiledFile = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "node_modules",".bin"));
-       File compiledFile = new File(FileUtils.getWholeDirectory(""));
-       File dir = compiledFile;
-       System.out.println(dir);
-       String cmd = this.constructCommandLine(userName, fileName);
+       /*String cmd = this.constructCommandLine(userName, fileName);*/
+       String cmd = "gulp.cmd";
+       File dir  = new File(FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "node_modules","gulp"));
        Runtime runtime = Runtime.getRuntime();
        try {
-           Process process = runtime.exec(cmd, null, dir);
+           Process process = runtime.exec(cmd,null,dir);
            System.err.print(loadStream(process.getErrorStream()));
            BufferedInputStream in = new BufferedInputStream(
                    process.getInputStream());
@@ -47,23 +46,5 @@ public class compile {
         return buffer.toString();
     }
 
-    public String constructCommandLine(String userName, String fileName) {
-        int index;
-        if((index = fileName.lastIndexOf('\\')) != -1){
-            fileName = fileName.substring(index + 1, fileName.length());
-        }
 
-        String outputDirectory = FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Temp");
-        File outputFolder = new File(outputDirectory);
-        if (!outputFolder.exists())
-            outputFolder.mkdirs();
-
-        String stringbuffer = new String("");
-        stringbuffer +="babel.cmd ";
-        stringbuffer += FileUtils.getWholeFileName(fileName, FileUtils.SERVER_ROOT_UPLOAD_FOLDER, userName);
-        stringbuffer += " -o ";
-        stringbuffer += FileUtils.getWholeFileName("app-compile.js", FileUtils.SERVER_ROOT_FOLDER, "Temp");
-        System.out.println(stringbuffer);
-        return stringbuffer;
-    }
 }
