@@ -10,7 +10,6 @@
 <%@ page import="obfu.copy.DealProperty_NEW" %>
 <%@ page import="obfu.copy.FileUtils" %>
 <%@ page import="obfu.copy.compile" %>
-<%@ page import="obfu.copy.webpack" %>
 <%@ page import="org.apache.commons.fileupload.FileItem" %>
 <%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory" %>
 <%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %>
@@ -31,6 +30,7 @@
     // 上传文件副件目录
     String copyDirectory = FileUtils.getWholeDirectory(FileUtils.SERVER_ROOT_FOLDER, "Copy");
 
+    FileItem fileItemCopy = null;
     try {
         File uploadFile = new File(uploadDirectory);
         if (!uploadFile.exists()) {
@@ -41,7 +41,7 @@
             tempFile.mkdirs();
         }
 
-        File copyFile = new File (copyDirectory);
+        File copyFile = new File(copyDirectory);
         if (!copyFile.exists())
             copyFile.mkdirs();
 
@@ -69,22 +69,13 @@
         // 得到所有的文件
         List<FileItem> items = upload.parseRequest(request);
         for (FileItem fileItem : items) {
-
-            if (fileItem.isFormField() && fileItem.getFieldName().equals("chbTranscode")) {
-                transcode = fileItem.getString().equals("checked") ? 1 : 0;
-                session.setAttribute("Transcode", String.valueOf(transcode));
-            }
-
             fileName = fileItem.getName();
             if (fileName != null) {
+                fileItemCopy = fileItem;
                 session.setAttribute("CurrentFile", fileName);
                 File fullFile = new File(fileItem.getName());
                 File savedFile = new File(uploadDirectory, fullFile.getName());
                 fileItem.write(savedFile);
-
-                //将上传的文件复制出来一份
-                File copiedFile = new File(copyDirectory, userName + "-" + fullFile.getName());
-                fileItem.write(copiedFile);
             }
         }
 
@@ -92,21 +83,26 @@
         Project project = new Project();
         session.setAttribute("CurrentProjectId", project.getProjectId(userName) + "");
 
-        if (transcode == 1) {
-            compile com = new compile();
-            com.compile(userName, (String) session.getAttribute("CurrentFile"));
-        }
-
         DealProperty_NEW dealProperty_new = new DealProperty_NEW();
 
         String fullFileName;
-        if (((String) session.getAttribute("Transcode")).equals("1"))
-            fullFileName = FileUtils.getWholeFileName(userName + "-" + ((String) session.getAttribute("CurrentFile")), FileUtils.SERVER_ROOT_TEMP_FOLDER);
-        else
-            fullFileName = FileUtils.getWholeFileName((String) session.getAttribute("CurrentFile"),
-                    FileUtils.SERVER_ROOT_UPLOAD_FOLDER, (String) session.getAttribute("user"));
+        fullFileName = FileUtils.getWholeFileName((String) session.getAttribute("CurrentFile"),
+                FileUtils.SERVER_ROOT_UPLOAD_FOLDER, (String) session.getAttribute("user"));
 
-        dealProperty_new.DealPropertyName(fullFileName);
+        int Result = dealProperty_new.DealPropertyName(fullFileName);
+        if (Result == 1) {
+            //将上传的文件复制出来一份
+            File fullFile = new File(fileItemCopy.getName());
+            File copiedFile = new File(copyDirectory, userName + "-" + fullFile.getName());
+            fileItemCopy.write(copiedFile);
+
+            session.setAttribute("Transcode", String.valueOf(Result));
+            compile com = new compile();
+            com.compile(userName, (String) session.getAttribute("CurrentFile"));
+
+            fullFileName = FileUtils.getWholeFileName(userName + "-" + ((String) session.getAttribute("CurrentFile")), FileUtils.SERVER_ROOT_TEMP_FOLDER);
+            dealProperty_new.DealPropertyName(fullFileName);
+        }
 
         session.setAttribute("context", dealProperty_new.getCode());
 

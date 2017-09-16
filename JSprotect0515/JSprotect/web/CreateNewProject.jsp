@@ -137,14 +137,6 @@
                                               '注意：块大小应小于阈值！\n\n' +
                                               '记得选择要上传的文件！')">
             </legend>
-            <div class="ui checkbox" style="position: relative;top: 1px;left: 300px">
-                <label>
-                    <input name="chbTranscode" type="checkbox"
-                           tabindex="0" value="unchecked"
-                           onchange="reverseValue(document.getElementsByName('chbTranscode')[0])">
-                    <h4>JS版本转换</h4>
-                </label>
-            </div>
             <input type="file" name="selectFile" style="position: relative;top: -34px;left: 0px">
 
             <div class="field">
@@ -332,20 +324,7 @@
         </div><!-- /.site-footer -->
     </div>
 </div>
-<div id="info">
-    <div id="top">
-        <h1 id="header">Information</h1>
-    </div>
-    <div id="bottom">
-        <p>The projects has been protected successfully, please download!</p>
-        <div id="confirmbtn">
-            <button class="btn btn-info" onClick="confirmOperation()">Confirm</button>
-        </div>
-    </div>
-</div><!-- end of info -->
-<script>
-    document.getElementById("info").style.display = "none";
-</script>
+
 </body>
 </html>
 

@@ -128,10 +128,9 @@ function submitForm() {
         xmlhttp = new XMLHttpRequest();
     else
         xml = new ActiveXObject("Microsoft.XMLHTTP");
-
     xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
-            window.location.href = "index.jsp";
+       if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
+           window.location.href = "index.jsp";
     };
 
     xmlhttp.open("POST", "Obfuscation.jsp", true);

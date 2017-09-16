@@ -3,6 +3,7 @@ package obfu.copy;
 import org.mozilla.javascript.CompilerEnvirons;
 import org.mozilla.javascript.Parser;
 import org.mozilla.javascript.ast.*;
+import org.mozilla.javascript.EvaluatorException;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -357,18 +358,13 @@ public class DealProperty_NEW {
     }
 
     public AstNode getAstNode(String filePath) throws IOException {
-        try {
-            Reader reader = new FileReader(filePath);
-            CompilerEnvirons env = new CompilerEnvirons();
-            env.setRecordingLocalJsDocComments(true);
-            env.setAllowSharpComments(true);
-            env.setRecordingComments(true);
-            AstRoot node = new Parser(env).parse(reader, filePath, 1);
-            return node;
-        } catch (IOException ee) {
-            System.out.println(ee.toString());
-            return null;
-        }
+        Reader reader = new FileReader(filePath);
+        CompilerEnvirons env = new CompilerEnvirons();
+        env.setRecordingLocalJsDocComments(true);
+        env.setAllowSharpComments(true);
+        env.setRecordingComments(true);
+        AstRoot node = new Parser(env).parse(reader, filePath, 1);
+        return node;
     }
 
     public ArrayList<String> getPropertyNameList() {
@@ -393,16 +389,25 @@ public class DealProperty_NEW {
 
     private String StringCode = null;
 
-    public void DealPropertyName(String filePath) throws IOException {
-        AstNode node = getAstNode(filePath);
-        node.visit(new visit());
-        for (int i = PropertyNameList.size() - 1; i >= 0; i--) {
-            if (ReserveKeyWord.contains(PropertyNameList.get(i))) {
-                PropertyName.remove(PropertyNameList.get(i));
-                PropertyNameList.remove(i);
+    public int DealPropertyName(String filePath) {
+        try {
+            AstNode node = getAstNode(filePath);
+            node.visit(new visit());
+            for (int i = PropertyNameList.size() - 1; i >= 0; i--) {
+                if (ReserveKeyWord.contains(PropertyNameList.get(i))) {
+                    PropertyName.remove(PropertyNameList.get(i));
+                    PropertyNameList.remove(i);
+                }
             }
+            node.visit(new visit2());
+            StringCode = node.toSource();
+            return 0;
+        } catch (EvaluatorException eve) {
+            eve.printStackTrace();
+            return 1;
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            return -1;
         }
-        node.visit(new visit2());
-        StringCode = node.toSource();
     }
 }
