@@ -7,518 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b7f517f-0037-445e-b011-c19abb60119a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/JSprotect.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/JSprotect.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Project1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Project1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Project11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Project11.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/kky.xml" afterPath="$PROJECT_DIR$/.idea/libraries/kky.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/kky1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/kky1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lib2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lib2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/test.xml" afterPath="$PROJECT_DIR$/.idea/libraries/test.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/test1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/test1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/testif.xml" afterPath="$PROJECT_DIR$/.idea/libraries/testif.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/testif1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/testif1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/.idea/artifacts/JSprotect_war_exploded.xml" afterPath="$PROJECT_DIR$/JSprotect/.idea/artifacts/JSprotect_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/.idea/compiler.xml" afterPath="$PROJECT_DIR$/JSprotect/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/JSprotect/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/.idea/libraries/commons_lang_2_3.xml" afterPath="$PROJECT_DIR$/JSprotect/.idea/libraries/commons_lang_2_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/.idea/libraries/jsp_api.xml" afterPath="$PROJECT_DIR$/JSprotect/.idea/libraries/jsp_api.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/.idea/misc.xml" afterPath="$PROJECT_DIR$/JSprotect/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/.idea/modules.xml" afterPath="$PROJECT_DIR$/JSprotect/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/.idea/workspace.xml" afterPath="$PROJECT_DIR$/JSprotect/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/JSprotect.iml" afterPath="$PROJECT_DIR$/JSprotect/JSprotect.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/adbProject/Project.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/adbProject/Project.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/DBManager.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/DBManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/Error.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/Error.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/ErrorDAO.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/ErrorDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/ProjectInfo.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/ProjectInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/ProjectInfoDAO.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/ProjectInfoDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/UserInfo.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/UserInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/UserInfoDAO.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/db/UserInfoDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/protect/Antidbg.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/protect/Antidbg.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/protect/Ast.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/protect/Ast.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/protect/Obfuscation.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/protect/Obfuscation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/protect/Process.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/protect/Process.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/protect/Protection.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/protect/Protection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/security/MD5.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/security/MD5.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/zip/Unzip.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/zip/Unzip.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/com/rocky/zip/Zip.java" afterPath="$PROJECT_DIR$/JSprotect/src/com/rocky/zip/Zip.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/.project" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/.project" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/DataTrees.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/DataTrees.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty_NEW.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty_NEW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/ObjTree.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/ObjTree.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/VarComp.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/VarComp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/compile.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/compile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/compress.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/compress.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/createfunc.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/createfunc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/flatten.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/flatten.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/obfuscation.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/obfuscation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/test.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/testt.js" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/testt.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/webpack.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/webpack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/.project" afterPath="$PROJECT_DIR$/JSprotect/src/org/.project" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/AnnotationUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/AnnotationUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/ArrayUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/ArrayUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/BitField.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/BitField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/BooleanUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/BooleanUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharEncoding.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharEncoding.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharRange.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharRange.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharSequenceUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharSequenceUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharSet.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharSet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharSetUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharSetUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/CharUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/ClassPathUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/ClassPathUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/ClassUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/ClassUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/Conversion.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/Conversion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/EnumUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/EnumUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/JavaVersion.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/JavaVersion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/LocaleUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/LocaleUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/NotImplementedException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/NotImplementedException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/ObjectUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/ObjectUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/RandomStringUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/RandomStringUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/RandomUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/RandomUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/Range.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/Range.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/SerializationException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/SerializationException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/SerializationUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/SerializationUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/StringEscapeUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/StringEscapeUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/StringUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/StringUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/SystemUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/SystemUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/ThreadUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/ThreadUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/Validate.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/Validate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/Builder.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/Builder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/CompareToBuilder.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/CompareToBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/Diff.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/Diff.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/DiffBuilder.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/DiffBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/DiffResult.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/DiffResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/Diffable.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/Diffable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/EqualsBuilder.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/EqualsBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/EqualsExclude.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/EqualsExclude.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/HashCodeBuilder.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/HashCodeBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/HashCodeExclude.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/HashCodeExclude.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/IDKey.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/IDKey.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/MultilineRecursiveToStringStyle.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/MultilineRecursiveToStringStyle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/RecursiveToStringStyle.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/RecursiveToStringStyle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/ReflectionToStringBuilder.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/ReflectionToStringBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/StandardToStringStyle.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/StandardToStringStyle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/ToStringBuilder.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/ToStringBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/ToStringExclude.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/ToStringExclude.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/ToStringStyle.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/ToStringStyle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/builder/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/AbstractCircuitBreaker.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/AbstractCircuitBreaker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/AtomicInitializer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/AtomicInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/AtomicSafeInitializer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/AtomicSafeInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/BackgroundInitializer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/BackgroundInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/BasicThreadFactory.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/BasicThreadFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/CallableBackgroundInitializer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/CallableBackgroundInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/CircuitBreaker.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/CircuitBreaker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/CircuitBreakingException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/CircuitBreakingException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ConcurrentException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ConcurrentException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ConcurrentInitializer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ConcurrentInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ConcurrentRuntimeException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ConcurrentRuntimeException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ConcurrentUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ConcurrentUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ConstantInitializer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ConstantInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/EventCountCircuitBreaker.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/EventCountCircuitBreaker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/LazyInitializer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/LazyInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/MultiBackgroundInitializer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/MultiBackgroundInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ThresholdCircuitBreaker.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/ThresholdCircuitBreaker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/TimedSemaphore.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/TimedSemaphore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/concurrent/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/event/EventListenerSupport.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/event/EventListenerSupport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/event/EventUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/event/EventUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/event/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/event/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/CloneFailedException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/CloneFailedException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/ContextedException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/ContextedException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/ContextedRuntimeException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/ContextedRuntimeException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/DefaultExceptionContext.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/DefaultExceptionContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/ExceptionContext.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/ExceptionContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/ExceptionUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/ExceptionUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/exception/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/math/Fraction.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/math/Fraction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/math/IEEE754rUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/math/IEEE754rUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/math/NumberUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/math/NumberUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/math/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/math/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/Mutable.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/Mutable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableBoolean.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableBoolean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableByte.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableByte.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableDouble.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableDouble.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableFloat.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableFloat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableInt.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableLong.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableLong.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableObject.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableShort.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/MutableShort.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/mutable/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/ConstructorUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/ConstructorUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/FieldUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/FieldUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/InheritanceUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/InheritanceUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/MemberUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/MemberUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/MethodUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/MethodUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/TypeLiteral.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/TypeLiteral.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/TypeUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/TypeUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/Typed.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/Typed.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/reflect/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/CompositeFormat.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/CompositeFormat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/ExtendedMessageFormat.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/ExtendedMessageFormat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/FormatFactory.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/FormatFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/FormattableUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/FormattableUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/StrBuilder.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/StrBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/StrLookup.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/StrLookup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/StrMatcher.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/StrMatcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/StrSubstitutor.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/StrSubstitutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/StrTokenizer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/StrTokenizer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/WordUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/WordUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/AggregateTranslator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/AggregateTranslator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/CodePointTranslator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/CodePointTranslator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/EntityArrays.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/EntityArrays.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/JavaUnicodeEscaper.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/JavaUnicodeEscaper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/LookupTranslator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/LookupTranslator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/NumericEntityEscaper.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/NumericEntityEscaper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/NumericEntityUnescaper.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/NumericEntityUnescaper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/OctalUnescaper.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/OctalUnescaper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/UnicodeEscaper.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/UnicodeEscaper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/UnicodeUnescaper.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/UnicodeUnescaper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/UnicodeUnpairedSurrogateRemover.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/UnicodeUnpairedSurrogateRemover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/CalendarReflection.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/CalendarReflection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/DateFormatUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/DateFormatUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/DateParser.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/DateParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/DatePrinter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/DatePrinter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/DateUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/DateUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/DurationFormatUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/DurationFormatUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/FastDateFormat.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/FastDateFormat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/FastDateParser.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/FastDateParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/FastDatePrinter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/FastDatePrinter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/FormatCache.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/FormatCache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/StopWatch.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/StopWatch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/time/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/ImmutablePair.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/ImmutablePair.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/ImmutableTriple.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/ImmutableTriple.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/MutablePair.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/MutablePair.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/MutableTriple.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/MutableTriple.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/Pair.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/Pair.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/Triple.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/Triple.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/package-info.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/tuple/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/classfile/ByteCode.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/classfile/ByteCode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/classfile/ClassFileWriter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/classfile/ClassFileWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Arguments.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Arguments.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/BaseFunction.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/BaseFunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/BoundFunction.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/BoundFunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Callable.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Callable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ClassCache.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ClassCache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ClassShutter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ClassShutter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/CodeGenerator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/CodeGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/CompilerEnvirons.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/CompilerEnvirons.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ConsString.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ConsString.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ConstProperties.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ConstProperties.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Context.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Context.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ContextAction.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ContextAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ContextFactory.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ContextFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ContextListener.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ContextListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ContinuationPending.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ContinuationPending.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/DToA.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/DToA.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Decompiler.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Decompiler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/DefaultErrorReporter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/DefaultErrorReporter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/DefiningClassLoader.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/DefiningClassLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Delegator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Delegator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/EcmaError.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/EcmaError.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ErrorReporter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ErrorReporter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Evaluator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Evaluator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/EvaluatorException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/EvaluatorException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Function.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Function.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/FunctionObject.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/FunctionObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/GeneratedClassLoader.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/GeneratedClassLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/IRFactory.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/IRFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Icode.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Icode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/IdFunctionCall.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/IdFunctionCall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/IdFunctionObject.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/IdFunctionObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/IdScriptableObject.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/IdScriptableObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ImporterTopLevel.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ImporterTopLevel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/InterfaceAdapter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/InterfaceAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/InterpretedFunction.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/InterpretedFunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Interpreter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Interpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/InterpreterData.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/InterpreterData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/JavaAdapter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/JavaAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/JavaMembers.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/JavaMembers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/JavaScriptException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/JavaScriptException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Kit.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Kit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/LazilyLoadedCtor.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/LazilyLoadedCtor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/MemberBox.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/MemberBox.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeArray.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeArray.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeBoolean.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeBoolean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeCall.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeCall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeContinuation.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeContinuation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeDate.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeDate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeError.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeError.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeFunction.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeFunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeGenerator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeGlobal.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeGlobal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeIterator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeIterator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJSON.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJSON.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaArray.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaArray.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaClass.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaConstructor.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaConstructor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaMethod.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaMethod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaObject.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaPackage.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaPackage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaTopPackage.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeJavaTopPackage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeMath.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeMath.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeNumber.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeNumber.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeObject.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeScript.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeScript.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeString.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeString.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeWith.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NativeWith.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Node.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Node.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NodeTransformer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/NodeTransformer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ObjArray.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ObjArray.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ObjToIntMap.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ObjToIntMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Parser.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/PolicySecurityController.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/PolicySecurityController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Ref.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Ref.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/RefCallable.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/RefCallable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/RegExpProxy.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/RegExpProxy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/RhinoException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/RhinoException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/RhinoSecurityManager.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/RhinoSecurityManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Script.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Script.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ScriptRuntime.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ScriptRuntime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ScriptStackElement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ScriptStackElement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Scriptable.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Scriptable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ScriptableObject.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ScriptableObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/SecureCaller.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/SecureCaller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/SecurityController.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/SecurityController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/SecurityUtilities.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/SecurityUtilities.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/SpecialRef.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/SpecialRef.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Synchronizer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Synchronizer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Token.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Token.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/TokenStream.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/TokenStream.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/TopLevel.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/TopLevel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/UintMap.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/UintMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Undefined.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Undefined.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/UniqueTag.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/UniqueTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/VMBridge.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/VMBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/WrapFactory.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/WrapFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/WrappedException.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/WrappedException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Wrapper.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/Wrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/annotations/JSConstructor.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/annotations/JSConstructor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/annotations/JSFunction.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/annotations/JSFunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/annotations/JSGetter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/annotations/JSGetter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/annotations/JSSetter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/annotations/JSSetter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/annotations/JSStaticFunction.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/annotations/JSStaticFunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ArrayComprehension.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ArrayComprehension.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ArrayComprehensionLoop.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ArrayComprehensionLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ArrayLiteral.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ArrayLiteral.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Assignment.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Assignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/AstNode.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/AstNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/AstRoot.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/AstRoot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Block.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Block.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/BreakStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/BreakStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/CatchClause.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/CatchClause.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Comment.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Comment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ConditionalExpression.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ConditionalExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ContinueStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ContinueStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/DestructuringForm.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/DestructuringForm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/DoLoop.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/DoLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ElementGet.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ElementGet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/EmptyExpression.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/EmptyExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/EmptyStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/EmptyStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ErrorCollector.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ErrorCollector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ErrorNode.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ErrorNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ExpressionStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ExpressionStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ForInLoop.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ForInLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ForLoop.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ForLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/FunctionCall.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/FunctionCall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/FunctionNode.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/FunctionNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/GeneratorExpression.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/GeneratorExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/GeneratorExpressionLoop.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/GeneratorExpressionLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/IdeErrorReporter.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/IdeErrorReporter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/IfStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/IfStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/InfixExpression.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/InfixExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Jump.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Jump.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/KeywordLiteral.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/KeywordLiteral.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Label.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Label.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/LabeledStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/LabeledStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/LetNode.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/LetNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Loop.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Loop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Name.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Name.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/NewExpression.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/NewExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/NodeVisitor.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/NodeVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/NumberLiteral.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/NumberLiteral.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ObjectLiteral.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ObjectLiteral.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ObjectProperty.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ObjectProperty.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ParenthesizedExpression.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ParenthesizedExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ParseProblem.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ParseProblem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/PropertyGet.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/PropertyGet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/RegExpLiteral.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/RegExpLiteral.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ReturnStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ReturnStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Scope.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Scope.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ScriptNode.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ScriptNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/StringLiteral.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/StringLiteral.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/SwitchCase.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/SwitchCase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/SwitchStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/SwitchStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Symbol.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Symbol.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ThrowStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/ThrowStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/TryStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/TryStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/UnaryExpression.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/UnaryExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/VariableDeclaration.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/VariableDeclaration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/VariableInitializer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/VariableInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/WhileLoop.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/WhileLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/WithStatement.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/WithStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlDotQuery.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlDotQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlElemRef.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlElemRef.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlExpression.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlFragment.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlLiteral.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlLiteral.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlMemberGet.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlMemberGet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlPropRef.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlPropRef.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlRef.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlRef.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlString.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/XmlString.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Yield.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/ast/Yield.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/ModuleScope.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/ModuleScope.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/ModuleScript.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/ModuleScript.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/ModuleScriptProvider.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/ModuleScriptProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/Require.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/Require.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/RequireBuilder.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/RequireBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/CachingModuleScriptProviderBase.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/CachingModuleScriptProviderBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/DefaultUrlConnectionExpiryCalculator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/DefaultUrlConnectionExpiryCalculator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/ModuleSource.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/ModuleSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/ModuleSourceProvider.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/ModuleSourceProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/ModuleSourceProviderBase.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/ModuleSourceProviderBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/MultiModuleScriptProvider.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/MultiModuleScriptProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/ParsedContentType.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/ParsedContentType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/SoftCachingModuleScriptProvider.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/SoftCachingModuleScriptProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/StrongCachingModuleScriptProvider.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/StrongCachingModuleScriptProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/UrlConnectionExpiryCalculator.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/UrlConnectionExpiryCalculator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/UrlConnectionSecurityDomainProvider.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/UrlConnectionSecurityDomainProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/UrlModuleSourceProvider.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/commonjs/module/provider/UrlModuleSourceProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/debug/DebugFrame.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/debug/DebugFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/debug/DebuggableObject.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/debug/DebuggableObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/debug/DebuggableScript.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/debug/DebuggableScript.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/debug/Debugger.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/debug/Debugger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/jdk13/VMBridge_jdk13.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/jdk13/VMBridge_jdk13.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/jdk15/VMBridge_jdk15.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/jdk15/VMBridge_jdk15.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/json/JsonParser.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/json/JsonParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/Block.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/Block.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/ClassCompiler.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/ClassCompiler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/Codegen.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/Codegen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/OptFunctionNode.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/OptFunctionNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/OptRuntime.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/OptRuntime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/OptTransformer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/OptTransformer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/Optimizer.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/optimizer/Optimizer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/regexp/NativeRegExp.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/regexp/NativeRegExp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/regexp/NativeRegExpCtor.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/regexp/NativeRegExpCtor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/regexp/RegExpImpl.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/regexp/RegExpImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/regexp/SubString.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/regexp/SubString.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/resources/Messages.properties" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/resources/Messages.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/resources/Messages_fr.properties" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/resources/Messages_fr.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/serialize/ScriptableInputStream.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/serialize/ScriptableInputStream.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/serialize/ScriptableOutputStream.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/serialize/ScriptableOutputStream.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/v8dtoa/CachedPowers.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/v8dtoa/CachedPowers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/v8dtoa/DiyFp.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/v8dtoa/DiyFp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/v8dtoa/DoubleHelper.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/v8dtoa/DoubleHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/v8dtoa/FastDtoa.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/v8dtoa/FastDtoa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/v8dtoa/FastDtoaBuilder.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/v8dtoa/FastDtoaBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/xml/XMLLib.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/xml/XMLLib.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/xml/XMLObject.java" afterPath="$PROJECT_DIR$/JSprotect/src/org/mozilla/javascript/xml/XMLObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/.babelrc" afterPath="$PROJECT_DIR$/JSprotect/web/.babelrc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/ErrorManagement.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/ErrorManagement.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/GetUserName.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/GetUserName.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/JSprotect/web/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/Obfuscation.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/Obfuscation.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/Opaques/001.js" afterPath="$PROJECT_DIR$/JSprotect/web/Opaques/001.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/Opaques/002.js" afterPath="$PROJECT_DIR$/JSprotect/web/Opaques/002.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/ProjectInfo.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/ProjectInfo.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/Projects/test/Project3tdc.js" afterPath="$PROJECT_DIR$/JSprotect/web/Projects/test/Project3tdc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/Projects/test/Project4tdc.js" afterPath="$PROJECT_DIR$/JSprotect/web/Projects/test/Project4tdc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/Projects/test/Project5tdc.js" afterPath="$PROJECT_DIR$/JSprotect/web/Projects/test/Project5tdc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/Projects/test/Project6tdc.js" afterPath="$PROJECT_DIR$/JSprotect/web/Projects/test/Project6tdc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/UploadFile.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/UploadFile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/UserManagement.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/UserManagement.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/JSprotect/web/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/WebPack.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/WebPack.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/a.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/a.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/b.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/b.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/createAccount.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/createAccount.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/css/bootstrap-responsive.css" afterPath="$PROJECT_DIR$/JSprotect/web/css/bootstrap-responsive.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/css/bootstrap-responsive.min.css" afterPath="$PROJECT_DIR$/JSprotect/web/css/bootstrap-responsive.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/css/bootstrap.css" afterPath="$PROJECT_DIR$/JSprotect/web/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/JSprotect/web/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/css/createNewProject.css" afterPath="$PROJECT_DIR$/JSprotect/web/css/createNewProject.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/css/index.css" afterPath="$PROJECT_DIR$/JSprotect/web/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/css/login.css" afterPath="$PROJECT_DIR$/JSprotect/web/css/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/css/signup1.css" afterPath="$PROJECT_DIR$/JSprotect/web/css/signup1.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/css/signup2.css" afterPath="$PROJECT_DIR$/JSprotect/web/css/signup2.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/deleteProject.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/deleteProject.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/deleteUser.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/deleteUser.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/gulpfile.js" afterPath="$PROJECT_DIR$/JSprotect/web/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/index.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/ErrorUtils.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/ErrorUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/ProjectUtils.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/ProjectUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/UserUtils.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/UserUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/bootstrap-filestyle.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/bootstrap-filestyle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/bootstrap.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/createAccount.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/createAccount.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/jquery.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/login.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/uupLoadProject.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/uupLoadProject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/lib/deadcode.js" afterPath="$PROJECT_DIR$/JSprotect/web/lib/deadcode.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/lib/deadcodeIf.js" afterPath="$PROJECT_DIR$/JSprotect/web/lib/deadcodeIf.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/lib/decrypt.js" afterPath="$PROJECT_DIR$/JSprotect/web/lib/decrypt.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/login.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/logout.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/logout.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/babylon.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/babylon.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/gulp.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/gulp.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/jsesc.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/jsesc.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/json5.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/json5.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/loose-envify.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/loose-envify.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/mkdirp.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/mkdirp.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/regjsparser.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/regjsparser.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/semver.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/semver.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/strip-bom.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/strip-bom.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/user-home.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/user-home.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/which.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/which.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/babel-generator/node_modules/.bin/jsesc.cmd" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/babel-generator/node_modules/.bin/jsesc.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/orchestrator/.npmignore" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/orchestrator/.npmignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/orchestrator/LICENSE" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/orchestrator/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/orchestrator/README.md" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/orchestrator/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/orchestrator/index.js" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/orchestrator/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/orchestrator/lib/runTask.js" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/orchestrator/lib/runTask.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/pretty-hrtime/.jshintignore" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/pretty-hrtime/.jshintignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/pretty-hrtime/.npmignore" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/pretty-hrtime/.npmignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/pretty-hrtime/LICENSE" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/pretty-hrtime/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/pretty-hrtime/README.md" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/pretty-hrtime/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/pretty-hrtime/index.js" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/pretty-hrtime/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/regjsgen/LICENSE.txt" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/regjsgen/LICENSE.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/resolve/test/resolver/symlinked/.npmignore" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/resolve/test/resolver/symlinked/.npmignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/sequencify/.npmignore" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/sequencify/.npmignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/sequencify/.travis.yml" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/sequencify/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/sequencify/LICENSE" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/sequencify/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/sequencify/README.md" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/sequencify/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/node_modules/sequencify/index.js" afterPath="$PROJECT_DIR$/JSprotect/web/node_modules/sequencify/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/reverseStatus.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/reverseStatus.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/signUp.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/signUp.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/unzip.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/unzip.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/updateRunnable.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/updateRunnable.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/verify.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/verify.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/webpack.config.js" afterPath="$PROJECT_DIR$/JSprotect/web/webpack.config.js" />
     </list>
     <ignored path="JSprotect0515.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -552,36 +47,226 @@
     <favorites_list name="JSprotect0515" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="CreateNewProject.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="325" column="6" lean-forward="true" selection-start-line="325" selection-start-column="6" selection-end-line="325" selection-end-column="6" />
+            <state relative-caret-position="254">
+              <caret line="174" column="73" lean-forward="true" selection-start-line="174" selection-start-column="73" selection-end-line="174" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSprotect/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="97" column="35" lean-forward="false" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProjectUtils.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSprotect/web/js/ProjectUtils.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deleteProject.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSprotect/web/deleteProject.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UploadFile.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSprotect/web/UploadFile.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="130" column="42" lean-forward="false" selection-start-line="130" selection-start-column="42" selection-end-line="130" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="83" column="20" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateNewProjectPageUtils.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="147" column="55" lean-forward="true" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToElement.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding>
-                <element signature="n#style#0;n#form#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#iframe#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#343#351#0" expanded="true" />
+                <element signature="e#416#424#0" expanded="true" />
+                <element signature="e#493#501#0" expanded="true" />
+                <element signature="e#550#558#0" expanded="true" />
+                <element signature="e#615#624#0" expanded="true" />
+                <element signature="e#684#692#0" expanded="true" />
+                <element signature="e#755#763#0" expanded="true" />
+                <element signature="e#828#837#0" expanded="true" />
+                <element signature="e#893#902#0" expanded="true" />
+                <element signature="e#958#966#0" expanded="true" />
+                <element signature="e#1011#1019#0" expanded="true" />
+                <element signature="e#1076#1085#0" expanded="true" />
+                <element signature="e#1155#1164#0" expanded="true" />
+                <element signature="e#1228#1237#0" expanded="true" />
+                <element signature="e#1307#1315#0" expanded="true" />
+                <element signature="e#1382#1390#0" expanded="true" />
+                <element signature="e#1451#1459#0" expanded="true" />
+                <element signature="e#1521#1529#0" expanded="true" />
+                <element signature="e#1590#1598#0" expanded="true" />
+                <element signature="e#1664#1672#0" expanded="true" />
+                <element signature="e#1742#1757#0" expanded="true" />
+                <element signature="e#1825#1834#0" expanded="true" />
+                <element signature="e#1928#1937#0" expanded="true" />
+                <element signature="e#2018#2027#0" expanded="true" />
+                <element signature="e#2106#2115#0" expanded="true" />
+                <element signature="e#2198#2207#0" expanded="true" />
+                <element signature="e#2290#2299#0" expanded="true" />
+                <element signature="e#2388#2397#0" expanded="true" />
+                <element signature="e#2513#2522#0" expanded="true" />
+                <element signature="e#2618#2627#0" expanded="true" />
+                <element signature="e#2723#2732#0" expanded="true" />
+                <element signature="e#2804#2813#0" expanded="true" />
+                <element signature="e#2884#2893#0" expanded="true" />
+                <element signature="e#2983#2992#0" expanded="true" />
+                <element signature="e#3062#3071#0" expanded="true" />
+                <element signature="e#3142#3151#0" expanded="true" />
+                <element signature="e#3220#3229#0" expanded="true" />
+                <element signature="e#3295#3304#0" expanded="true" />
+                <element signature="e#3366#3374#0" expanded="true" />
+                <element signature="e#3448#3463#0" expanded="true" />
+                <element signature="e#3522#3530#0" expanded="true" />
+                <element signature="e#3597#3605#0" expanded="true" />
+                <element signature="e#3723#3732#0" expanded="true" />
+                <element signature="e#3947#3955#0" expanded="true" />
+                <element signature="e#4011#4019#0" expanded="true" />
+                <element signature="e#4229#4237#0" expanded="true" />
+                <element signature="e#7297#7298#0" expanded="true" />
+                <element signature="e#7330#7331#0" expanded="true" />
+                <element signature="e#7725#7726#0" expanded="true" />
+                <element signature="e#7751#7752#0" expanded="true" />
+                <element signature="e#9699#9700#0" expanded="true" />
+                <element signature="e#9740#9741#0" expanded="true" />
+                <element signature="e#31627#31644#0" expanded="true" />
+                <element signature="e#31720#31728#0" expanded="true" />
+                <element signature="e#32039#32048#0" expanded="true" />
+                <element signature="e#33211#33232#0" expanded="true" />
+                <element signature="e#37311#37332#0" expanded="true" />
+                <element signature="e#40127#40148#0" expanded="true" />
+                <element signature="e#46535#46556#0" expanded="true" />
+                <element signature="e#63487#63508#0" expanded="true" />
+                <element signature="e#64192#64201#0" expanded="true" />
+                <element signature="e#68777#68786#0" expanded="true" />
+                <element signature="e#74317#74338#0" expanded="true" />
+                <element signature="e#76855#76863#0" expanded="true" />
+                <element signature="e#77226#77247#0" expanded="true" />
+                <element signature="e#80108#80123#0" expanded="true" />
+                <element signature="e#88111#88126#0" expanded="true" />
+                <element signature="e#91482#91497#0" expanded="true" />
+                <element signature="e#99211#99238#0" expanded="true" />
+                <element signature="e#99303#99330#0" expanded="true" />
+                <element signature="e#99409#99441#0" expanded="true" />
+                <element signature="e#99490#99499#0" expanded="true" />
+                <element signature="e#99577#99593#0" expanded="true" />
+                <element signature="e#99650#99659#0" expanded="true" />
+                <element signature="e#99716#99724#0" expanded="true" />
+                <element signature="e#99781#99796#0" expanded="true" />
+                <element signature="e#99845#99846#0" expanded="true" />
+                <element signature="e#99873#99874#0" expanded="true" />
+                <element signature="e#99972#99980#0" expanded="true" />
+                <element signature="e#100386#100394#0" expanded="true" />
+                <element signature="e#101030#101038#0" expanded="true" />
+                <element signature="e#101862#101871#0" expanded="true" />
+                <element signature="e#101919#101927#0" expanded="true" />
+                <element signature="e#102007#102016#0" expanded="true" />
+                <element signature="e#102736#102744#0" expanded="true" />
+                <element signature="e#104174#104183#0" expanded="true" />
+                <element signature="e#105194#105203#0" expanded="true" />
+                <element signature="e#106198#106207#0" expanded="true" />
+                <element signature="e#108861#108862#0" expanded="true" />
+                <element signature="e#108892#108893#0" expanded="true" />
+                <element signature="e#108950#108959#0" expanded="true" />
+                <element signature="e#109034#109042#0" expanded="true" />
+                <element signature="e#109188#109197#0" expanded="true" />
+                <element signature="e#112681#112682#0" expanded="true" />
+                <element signature="e#112714#112715#0" expanded="true" />
+                <element signature="e#113951#113959#0" expanded="true" />
+                <element signature="e#114130#114139#0" expanded="true" />
+                <element signature="e#114210#114219#0" expanded="true" />
+                <element signature="e#114292#114307#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Obfuscation.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/web/Obfuscation.jsp">
+      <file leaf-file-name="decrypt.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSprotect/web/lib/decrypt.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="83" column="16" lean-forward="false" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="16" />
+            <state relative-caret-position="330">
+              <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateNewProjectPageUtils.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js">
+      <file leaf-file-name="FunNameAndParams.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="224">
+              <caret line="362" column="5" lean-forward="false" selection-start-line="362" selection-start-column="5" selection-end-line="362" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#180#196#0" expanded="true" />
+                <element signature="e#268#284#0" expanded="true" />
+                <element signature="e#348#356#0" expanded="true" />
+                <element signature="e#413#421#0" expanded="true" />
+                <element signature="e#470#479#0" expanded="true" />
+                <element signature="e#532#541#0" expanded="true" />
+                <element signature="e#626#635#0" expanded="true" />
+                <element signature="e#693#702#0" expanded="true" />
+                <element signature="e#873#893#0" expanded="true" />
+                <element signature="e#944#953#0" expanded="true" />
+                <element signature="e#1002#1010#0" expanded="true" />
+                <element signature="e#1186#1194#0" expanded="true" />
+                <element signature="e#7163#7171#0" expanded="true" />
+                <element signature="e#7988#7997#0" expanded="true" />
+                <element signature="e#11542#11543#0" expanded="true" />
+                <element signature="e#11571#11572#0" expanded="true" />
+                <element signature="e#11624#11633#0" expanded="true" />
+                <element signature="e#14548#14549#0" expanded="true" />
+                <element signature="e#14581#14582#0" expanded="true" />
+                <element signature="e#14733#14742#0" expanded="true" />
+                <element signature="e#15461#15469#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -626,10 +311,10 @@
       <find>hidden_frame</find>
       <find>__________________________________</find>
       <find>________________________________</find>
-      <find>Analyze</find>
       <find>table</find>
       <find>FileUtils</find>
       <find>ifr</find>
+      <find>Analyze</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -651,7 +336,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/JSprotect/web/signUp.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/UserManagement.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/toElement.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/WEB-INF/lib/commons-fileupload-1.3.1.jar!/org/apache/commons/fileupload/servlet/ServletFileUpload.class" />
@@ -665,17 +349,14 @@
         <option value="$PROJECT_DIR$/JSprotect/src/com/rocky/adbProject/Project.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/ProjectInfo.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/index.jsp" />
-        <option value="$PROJECT_DIR$/JSprotect/web/deleteProject.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/updateRunnable.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/DataTrees.java" />
-        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/createfunc.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/compresshex.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/doUpload.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/WebPack.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/webpack.config.js" />
-        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/a.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/b.jsp" />
@@ -698,10 +379,14 @@
         <option value="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty_NEW.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/UploadFile.jsp" />
-        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/js/uupLoadProject.js" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java" />
+        <option value="$PROJECT_DIR$/JSprotect/web/deleteProject.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" />
+        <option value="$PROJECT_DIR$/JSprotect/web/lib/decrypt.js" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" />
       </list>
     </option>
   </component>
@@ -733,7 +418,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/JSprotect/web/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1300" />
@@ -757,9 +442,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -771,6 +456,17 @@
             <path>
               <item name="JSprotect" type="b2602c69:ProjectViewProjectNode" />
               <item name="JSprotect" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JSprotect" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JSprotect" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="copy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JSprotect" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JSprotect" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -778,6 +474,12 @@
               <item name="JSprotect" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JSprotect" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JSprotect" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -1642,11 +1344,14 @@
       <workItem from="1505525616717" duration="6549000" />
       <workItem from="1505547184395" duration="252000" />
       <workItem from="1505547453589" duration="2719000" />
+      <workItem from="1505994035977" duration="844000" />
+      <workItem from="1505995851110" duration="769000" />
+      <workItem from="1506080646911" duration="6543000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="502461000" />
+    <option name="totallyTimeSpent" value="510617000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1658,33 +1363,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1300" height="980" extended-state="1" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1300" height="980" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32560834" sideWeight="0.315625" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39165702" sideWeight="0.7664577" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32402235" sideWeight="0.4978678" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32560834" sideWeight="0.315625" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29620853" sideWeight="0.775" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908458" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22903226" sideWeight="0.49538106" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17903225" sideWeight="0.49538106" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32402235" sideWeight="0.684375" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26796874" sideWeight="0.50461894" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39165702" sideWeight="0.7664577" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1693,7 +1398,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32402235" sideWeight="0.684375" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1751,58 +1455,49 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-          <folding>
-            <marker date="1505532452811" expanded="true" signature="1378:1480" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/bootstrap-filestyle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="343" column="40" lean-forward="false" selection-start-line="343" selection-start-column="40" selection-end-line="343" selection-end-column="40" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="2267" column="28" lean-forward="true" selection-start-line="2267" selection-start-column="28" selection-end-line="2267" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="325" column="6" lean-forward="true" selection-start-line="325" selection-start-column="6" selection-end-line="325" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#form#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#iframe#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/uupLoadProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        <state relative-caret-position="9750">
+          <caret line="325" column="6" lean-forward="false" selection-start-line="325" selection-start-column="6" selection-end-line="325" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/web/Obfuscation.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
+        <state relative-caret-position="1680">
+          <caret line="56" column="40" lean-forward="true" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4020">
+          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/com/rocky/adbProject/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9750">
+          <caret line="325" column="6" lean-forward="true" selection-start-line="325" selection-start-column="6" selection-end-line="325" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/Obfuscation.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2490">
           <caret line="83" column="16" lean-forward="false" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="16" />
           <folding />
         </state>
@@ -1810,9 +1505,264 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="4020">
           <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/bootstrap-filestyle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="343" column="40" lean-forward="false" selection-start-line="343" selection-start-column="40" selection-end-line="343" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="2267" column="28" lean-forward="true" selection-start-line="2267" selection-start-column="28" selection-end-line="2267" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/uupLoadProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/com/rocky/db/ProjectInfoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="259" column="22" lean-forward="false" selection-start-line="259" selection-start-column="22" selection-end-line="259" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/Obfuscation.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="56" column="40" lean-forward="false" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/com/rocky/adbProject/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3090">
+          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="97" column="35" lean-forward="false" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/deleteUser.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/ProjectUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="83" column="20" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/deleteProject.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/UploadFile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="130" column="42" lean-forward="false" selection-start-line="130" selection-start-column="42" selection-end-line="130" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="174" column="73" lean-forward="true" selection-start-line="174" selection-start-column="73" selection-end-line="174" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="147" column="55" lean-forward="true" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#343#351#0" expanded="true" />
+            <element signature="e#416#424#0" expanded="true" />
+            <element signature="e#493#501#0" expanded="true" />
+            <element signature="e#550#558#0" expanded="true" />
+            <element signature="e#615#624#0" expanded="true" />
+            <element signature="e#684#692#0" expanded="true" />
+            <element signature="e#755#763#0" expanded="true" />
+            <element signature="e#828#837#0" expanded="true" />
+            <element signature="e#893#902#0" expanded="true" />
+            <element signature="e#958#966#0" expanded="true" />
+            <element signature="e#1011#1019#0" expanded="true" />
+            <element signature="e#1076#1085#0" expanded="true" />
+            <element signature="e#1155#1164#0" expanded="true" />
+            <element signature="e#1228#1237#0" expanded="true" />
+            <element signature="e#1307#1315#0" expanded="true" />
+            <element signature="e#1382#1390#0" expanded="true" />
+            <element signature="e#1451#1459#0" expanded="true" />
+            <element signature="e#1521#1529#0" expanded="true" />
+            <element signature="e#1590#1598#0" expanded="true" />
+            <element signature="e#1664#1672#0" expanded="true" />
+            <element signature="e#1742#1757#0" expanded="true" />
+            <element signature="e#1825#1834#0" expanded="true" />
+            <element signature="e#1928#1937#0" expanded="true" />
+            <element signature="e#2018#2027#0" expanded="true" />
+            <element signature="e#2106#2115#0" expanded="true" />
+            <element signature="e#2198#2207#0" expanded="true" />
+            <element signature="e#2290#2299#0" expanded="true" />
+            <element signature="e#2388#2397#0" expanded="true" />
+            <element signature="e#2513#2522#0" expanded="true" />
+            <element signature="e#2618#2627#0" expanded="true" />
+            <element signature="e#2723#2732#0" expanded="true" />
+            <element signature="e#2804#2813#0" expanded="true" />
+            <element signature="e#2884#2893#0" expanded="true" />
+            <element signature="e#2983#2992#0" expanded="true" />
+            <element signature="e#3062#3071#0" expanded="true" />
+            <element signature="e#3142#3151#0" expanded="true" />
+            <element signature="e#3220#3229#0" expanded="true" />
+            <element signature="e#3295#3304#0" expanded="true" />
+            <element signature="e#3366#3374#0" expanded="true" />
+            <element signature="e#3448#3463#0" expanded="true" />
+            <element signature="e#3522#3530#0" expanded="true" />
+            <element signature="e#3597#3605#0" expanded="true" />
+            <element signature="e#3723#3732#0" expanded="true" />
+            <element signature="e#3947#3955#0" expanded="true" />
+            <element signature="e#4011#4019#0" expanded="true" />
+            <element signature="e#4229#4237#0" expanded="true" />
+            <element signature="e#7297#7298#0" expanded="true" />
+            <element signature="e#7330#7331#0" expanded="true" />
+            <element signature="e#7725#7726#0" expanded="true" />
+            <element signature="e#7751#7752#0" expanded="true" />
+            <element signature="e#9699#9700#0" expanded="true" />
+            <element signature="e#9740#9741#0" expanded="true" />
+            <element signature="e#31627#31644#0" expanded="true" />
+            <element signature="e#31720#31728#0" expanded="true" />
+            <element signature="e#32039#32048#0" expanded="true" />
+            <element signature="e#33211#33232#0" expanded="true" />
+            <element signature="e#37311#37332#0" expanded="true" />
+            <element signature="e#40127#40148#0" expanded="true" />
+            <element signature="e#46535#46556#0" expanded="true" />
+            <element signature="e#63487#63508#0" expanded="true" />
+            <element signature="e#64192#64201#0" expanded="true" />
+            <element signature="e#68777#68786#0" expanded="true" />
+            <element signature="e#74317#74338#0" expanded="true" />
+            <element signature="e#76855#76863#0" expanded="true" />
+            <element signature="e#77226#77247#0" expanded="true" />
+            <element signature="e#80108#80123#0" expanded="true" />
+            <element signature="e#88111#88126#0" expanded="true" />
+            <element signature="e#91482#91497#0" expanded="true" />
+            <element signature="e#99211#99238#0" expanded="true" />
+            <element signature="e#99303#99330#0" expanded="true" />
+            <element signature="e#99409#99441#0" expanded="true" />
+            <element signature="e#99490#99499#0" expanded="true" />
+            <element signature="e#99577#99593#0" expanded="true" />
+            <element signature="e#99650#99659#0" expanded="true" />
+            <element signature="e#99716#99724#0" expanded="true" />
+            <element signature="e#99781#99796#0" expanded="true" />
+            <element signature="e#99845#99846#0" expanded="true" />
+            <element signature="e#99873#99874#0" expanded="true" />
+            <element signature="e#99972#99980#0" expanded="true" />
+            <element signature="e#100386#100394#0" expanded="true" />
+            <element signature="e#101030#101038#0" expanded="true" />
+            <element signature="e#101862#101871#0" expanded="true" />
+            <element signature="e#101919#101927#0" expanded="true" />
+            <element signature="e#102007#102016#0" expanded="true" />
+            <element signature="e#102736#102744#0" expanded="true" />
+            <element signature="e#104174#104183#0" expanded="true" />
+            <element signature="e#105194#105203#0" expanded="true" />
+            <element signature="e#106198#106207#0" expanded="true" />
+            <element signature="e#108861#108862#0" expanded="true" />
+            <element signature="e#108892#108893#0" expanded="true" />
+            <element signature="e#108950#108959#0" expanded="true" />
+            <element signature="e#109034#109042#0" expanded="true" />
+            <element signature="e#109188#109197#0" expanded="true" />
+            <element signature="e#112681#112682#0" expanded="true" />
+            <element signature="e#112714#112715#0" expanded="true" />
+            <element signature="e#113951#113959#0" expanded="true" />
+            <element signature="e#114130#114139#0" expanded="true" />
+            <element signature="e#114210#114219#0" expanded="true" />
+            <element signature="e#114292#114307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/lib/decrypt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="362" column="5" lean-forward="false" selection-start-line="362" selection-start-column="5" selection-end-line="362" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#180#196#0" expanded="true" />
+            <element signature="e#268#284#0" expanded="true" />
+            <element signature="e#348#356#0" expanded="true" />
+            <element signature="e#413#421#0" expanded="true" />
+            <element signature="e#470#479#0" expanded="true" />
+            <element signature="e#532#541#0" expanded="true" />
+            <element signature="e#626#635#0" expanded="true" />
+            <element signature="e#693#702#0" expanded="true" />
+            <element signature="e#873#893#0" expanded="true" />
+            <element signature="e#944#953#0" expanded="true" />
+            <element signature="e#1002#1010#0" expanded="true" />
+            <element signature="e#1186#1194#0" expanded="true" />
+            <element signature="e#7163#7171#0" expanded="true" />
+            <element signature="e#7988#7997#0" expanded="true" />
+            <element signature="e#11542#11543#0" expanded="true" />
+            <element signature="e#11571#11572#0" expanded="true" />
+            <element signature="e#11624#11633#0" expanded="true" />
+            <element signature="e#14548#14549#0" expanded="true" />
+            <element signature="e#14581#14582#0" expanded="true" />
+            <element signature="e#14733#14742#0" expanded="true" />
+            <element signature="e#15461#15469#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

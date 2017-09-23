@@ -73,4 +73,20 @@ public abstract class FileUtils {
         result.append(fileName);
         return result.toString();
     }
+
+    public static void deleteFile(File file) {
+        if (file.exists()) {
+            if (file.isFile()) {
+                file.delete();
+            } else if (file.isDirectory()) {
+                File[] files = file.listFiles();
+                for (File file1 : files) {
+                    deleteFile(file1);
+                }
+                file.delete();
+            }
+        } else {
+            System.out.println("所删除的文件不存在");
+        }
+    }
 }
