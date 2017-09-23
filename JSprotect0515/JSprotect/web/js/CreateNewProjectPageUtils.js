@@ -129,8 +129,8 @@ function submitForm() {
     else
         xml = new ActiveXObject("Microsoft.XMLHTTP");
     xmlhttp.onreadystatechange = function () {
-       if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
-           window.location.href = "index.jsp";
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
+            window.location.href = "index.jsp";
     };
 
     xmlhttp.open("POST", "Obfuscation.jsp", true);
@@ -147,7 +147,8 @@ function analyzeFile() {
     var textOfPropertyNames = document.getElementsByTagName('propertyNames')[0].innerHTML;
     var propertyNameArray = textOfPropertyNames.trim().split(" ");
     for (var i = 0; i < propertyNameArray.length; i++)
-        addACheckBoxWithOneText(document.getElementById('content_left'), propertyNameArray[i]);
+        if (propertyNameArray[i].length != 0)
+            addACheckBoxWithOneText(document.getElementById('content_left'), propertyNameArray[i]);
 
     //字符串及其详情
     var textOfStrings = document.getElementsByTagName('strings')[0].innerHTML;
@@ -155,7 +156,8 @@ function analyzeFile() {
     var stringArray = textOfStrings.trim().split(" ");
     var stringDetailArray = textOfStringDetails.trim().split("!@#");
     for (var j = 0; j < stringArray.length; j++)
-        addACheckBoxWithTwoTexts(document.getElementById('content_right'), stringArray[j], stringDetailArray[j]);
+        if (stringArray[j].length != 0)
+            addACheckBoxWithTwoTexts(document.getElementById('content_right'), stringArray[j], stringDetailArray[j]);
 }
 
 function chooseall1() {
