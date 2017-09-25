@@ -5,42 +5,43 @@ import org.mozilla.javascript.ast.*;
 
 import java.util.*;
 
-
-
 public class DealProperty {
-    private Map<String,String> PropertyMap;
+    private Set<String> AllName;
+    private Map<String, String> PropertyMap;
     private Set<String> PropertyName;
-    private ArrayList<String>PropertyNameList;
+    private ArrayList<String> PropertyNameList;
     private ArrayList<String> StringEn;
     private ArrayList<AstNode> StringList;
-    private Map<String,String> VarThisMap;
+    private Map<String, String> VarThisMap;
     private Set<String> ReserveNames;
     private Set<String> SetVarNames;
-    private ArrayList<String>NamesInFlattern;
-    private ArrayList<String>   ones;
-    private ArrayList<String>   twos;
-    private ArrayList<String>   threes;
+    private ArrayList<String> NamesInFlattern;
+    private ArrayList<String> ones;
+    private ArrayList<String> twos;
+    private ArrayList<String> threes;
     private ArrayList<String> Names;
     private Set<String> ReserveKeyWord;
     private int Namenum;
-    DealProperty(){
-        Namenum=0;
-        PropertyMap=new HashMap<String,String>();
-        StringList=new ArrayList<AstNode>();
-        StringEn=new ArrayList<String>();
-        NamesInFlattern=new ArrayList<String>();
-        PropertyName=new HashSet<String>();
-        PropertyNameList=new ArrayList<String>();
-        ReserveNames=new HashSet<String>();
-        SetVarNames=new HashSet<String>();
-        VarThisMap=new HashMap<String,String>();
-        ReserveKeyWord=new HashSet<String>();
-        Names=new ArrayList<String>();
+
+    DealProperty() {
+        Namenum = 0;
+        AllName = new HashSet<String>();
+        PropertyMap = new HashMap<String, String>();
+        StringList = new ArrayList<AstNode>();
+        StringEn = new ArrayList<String>();
+        NamesInFlattern = new ArrayList<String>();
+        PropertyName = new HashSet<String>();
+        PropertyNameList = new ArrayList<String>();
+        ReserveNames = new HashSet<String>();
+        SetVarNames = new HashSet<String>();
+        VarThisMap = new HashMap<String, String>();
+        ReserveKeyWord = new HashSet<String>();
+        Names = new ArrayList<String>();
         InitReserveKeyWord();
         initVariablesPool();
     }
 
-    private void InitReserveKeyWord(){
+    private void InitReserveKeyWord() {
         ReserveKeyWord.add("constructor");
         ReserveKeyWord.add("length");
         ReserveKeyWord.add("prototype");
@@ -361,31 +362,34 @@ public class DealProperty {
         threes.remove("var");
         threes.remove("cos");
         threes.remove("sin");
-        for(int i=0;i<ones.size();i++)
+        for (int i = 0; i < ones.size(); i++)
             Names.add(ones.get(i));
-        for(int i=0;i<twos.size();i++)
+        for (int i = 0; i < twos.size(); i++)
             Names.add(twos.get(i));
-        for(int i=0;i<threes.size();i++)
+        for (int i = 0; i < threes.size(); i++)
             Names.add(threes.get(i));
     }
+
     private void collectNames(AstNode node) {
         node.visit(new Visitor());
     }
-    class Visitor implements NodeVisitor{
-        public boolean visit(AstNode node){
-            if(node.getType()==Token.NAME){
-                if(((Name)node).getIdentifier().length()<6)
-                    NamesInFlattern.add(((Name)node).getIdentifier());
+
+    class Visitor implements NodeVisitor {
+        public boolean visit(AstNode node) {
+            if (node.getType() == Token.NAME) {
+                if (((Name) node).getIdentifier().length() < 6)
+                    NamesInFlattern.add(((Name) node).getIdentifier());
             }
             return true;
         }
     }
+
     public String getWordFromThePool() {
         String word = this.Names.get(Namenum++);
         return word;
     }
 
-    public  String getValidWord() {
+    public String getValidWord() {
         String word = this.getWordFromThePool();
         while (this.NamesInFlattern.contains(word)) {
             word = this.getWordFromThePool();
@@ -394,32 +398,17 @@ public class DealProperty {
         return word;
     }
 
-    class getProperty implements NodeVisitor{
-        public boolean visit(AstNode node){
-            if(node instanceof ObjectProperty){
-                AstNode Left=((ObjectProperty) node).getLeft();
-                if(Left instanceof Name&&!ReserveKeyWord.contains(Left.toSource())&&PropertyNameList.contains(Left.toSource())){
-                    if(!PropertyMap.containsKey(Left.toSource())){
-                        String name=getValidWord();
-                        PropertyMap.put(Left.toSource(), name);
-                        ((Name)Left).setIdentifier(name);
-                    }else{
-                        ((Name)Left).setIdentifier(PropertyMap.get(Left.toSource()));
-                    }
+    class getProperty implements NodeVisitor {
+        public boolean visit(AstNode node) {
+            if (node instanceof ObjectProperty) {
+                AstNode Left = ((ObjectProperty) node).getLeft();
+                if (Left instanceof Name && !ReserveKeyWord.contains(Left.toSource()) && PropertyNameList.contains(Left.toSource())) {
+                    ((Name) Left).setIdentifier(PropertyMap.get(Left.toSource()));
                 }
-            }else if(node instanceof PropertyGet){
-                AstNode property=((PropertyGet) node).getProperty();
-                if(property instanceof Name&&!ReserveKeyWord.contains(property.toSource())&&PropertyNameList.contains(property.toSource())){
-                    if(!PropertyMap.containsKey(property.toSource())){
-                        String name=getValidWord();
-                        PropertyMap.put(property.toSource(), name);
-                        if(SetVarNames.contains(property.toSource())){
-                            VarThisMap.put(property.toSource(),name);
-                        }
-                        ((Name)property).setIdentifier(name);
-                    }else{
-                        ((Name)property).setIdentifier(PropertyMap.get(property.toSource()));
-                    }
+            } else if (node instanceof PropertyGet) {
+                AstNode property = ((PropertyGet) node).getProperty();
+                if (property instanceof Name && !ReserveKeyWord.contains(property.toSource()) && PropertyNameList.contains(property.toSource())) {
+                    ((Name) property).setIdentifier(PropertyMap.get(property.toSource()));
                 }
             }
             return true;
@@ -427,40 +416,59 @@ public class DealProperty {
     }
 
 
-    class visit implements NodeVisitor{
-        public boolean visit(AstNode node){
-            if(node instanceof Assignment){
-                AstNode Left=((Assignment) node).getLeft();
-                if(Left instanceof PropertyGet){
-                    AstNode Property=((PropertyGet)Left).getProperty();
-                    if(!PropertyName.contains(Property.toSource())){
+    class visit implements NodeVisitor {
+        public boolean visit(AstNode node) {
+            if (node instanceof Name) {
+                AllName.add(node.toSource());
+            }
+            if (node instanceof Assignment) {
+                AstNode Left = ((Assignment) node).getLeft();
+                if (Left instanceof PropertyGet) {
+                    AstNode Property = ((PropertyGet) Left).getProperty();
+                    if (!PropertyName.contains(Property.toSource())) {
                         PropertyName.add(Property.toSource());
                         PropertyNameList.add(Property.toSource());
                     }
-                    Left=((PropertyGet)Left).getTarget();
-                    if(Left instanceof FunctionCall)Left=((FunctionCall) Left).getTarget();
+                    Left = ((PropertyGet) Left).getTarget();
+                    if (Left instanceof FunctionCall) Left = ((FunctionCall) Left).getTarget();
                 }
-            }
-            else if(node instanceof ObjectProperty){
-                AstNode Left=((ObjectProperty) node).getLeft();
-                if(Left instanceof Name){
-                    if(!PropertyName.contains(Left.toSource())){
+            } else if (node instanceof ObjectProperty) {
+                AstNode Left = ((ObjectProperty) node).getLeft();
+                if (Left instanceof Name) {
+                    if (!PropertyName.contains(Left.toSource())) {
                         PropertyName.add(Left.toSource());
                         PropertyNameList.add(Left.toSource());
                     }
-                }else if(Left instanceof StringLiteral){
+                } else if (Left instanceof StringLiteral) {
                     ReserveKeyWord.add(((StringLiteral) Left).getValue());
                 }
             }
             return true;
         }
     }
-    class visit2 implements NodeVisitor{
-        public boolean visit(AstNode node){
-            if(node instanceof StringLiteral){
-                AstNode parent=node.getParent();
-                if(PropertyName.contains(((StringLiteral) node).getValue())&&!(parent instanceof ObjectProperty&&((ObjectProperty)parent).getLeft()==node)){
+
+    class visit2 implements NodeVisitor {
+        public boolean visit(AstNode node) {
+            if (node instanceof StringLiteral) {
+                AstNode parent = node.getParent();
+                if (PropertyName.contains(((StringLiteral) node).getValue()) && !(parent instanceof ObjectProperty && ((ObjectProperty) parent).getLeft() == node)) {
                     StringList.add(node);
+                }
+            } else if (node instanceof PropertyGet) {
+                if (((PropertyGet) node).getTarget() instanceof KeywordLiteral && ((PropertyGet) node).getProperty() instanceof Name) {
+                    VarThisMap.put(((PropertyGet) node).getProperty().toSource(), null);
+                }
+            }
+            return true;
+        }
+    }
+
+    class visit3 implements NodeVisitor {
+        public boolean visit(AstNode node) {
+            if (node instanceof PropertyGet) {
+                AstNode property = ((PropertyGet) node).getProperty();
+                if (property instanceof Name && ((PropertyGet) node).getTarget() instanceof KeywordLiteral) {
+                    //String obfName=PropertyNameList.get
                 }
             }
             return true;
@@ -468,32 +476,37 @@ public class DealProperty {
     }
 
 
-
-    public Map<String,String> getVarThisSet(){
+    public Map<String, String> getVarThisSet() {
         return VarThisMap;
     }
 
-    public void DealPropertyName(String PropertyStr,String PropertyStrList,int Prop,AstNode node,Set<String> SetVarNames){
-        if(Prop==1){
-            node.visit(new visit());
-            for(int i=PropertyNameList.size()-1,j=0;i>=0;i--){
-                if(ReserveKeyWord.contains(PropertyNameList.get(i))){
-                    PropertyName.remove(PropertyNameList.get(i));
-                    PropertyNameList.remove(i);
-                    //System.out.println("delete:"+PropertyNameList.get(i));
-                }
+    public void DealPropertyName(String PropertyStr, String PropertyStrList, int Prop, AstNode node, Set<String> SetVarNames) {
+        node.visit(new visit());
+        for (int i = PropertyNameList.size() - 1, j = 0; i >= 0; i--) {
+            if (ReserveKeyWord.contains(PropertyNameList.get(i))) {
+                PropertyName.remove(PropertyNameList.get(i));
+                PropertyNameList.remove(i);
             }
-            node.visit(new visit2());
-            for(int i=PropertyStr.length()-1;i>=0;i--){
-                if(PropertyStr.charAt(i)=='0') {
-                   // System.out.println(PropertyNameList.get(i));
-                    PropertyNameList.remove(i);
-                }
+        }
+        node.visit(new visit2());
+        for (int i = PropertyStr.length() - 1; i >= 0; i--) {
+            if (PropertyStr.charAt(i) == '0')
+                PropertyNameList.remove(i);
+        }
+        for (int i = 0; i < PropertyNameList.size(); i++) {
+            String NewName = getValidWord();
+            if (VarThisMap.keySet().contains(PropertyNameList.get(i))) {
+                while (AllName.contains(NewName))
+                    NewName = getValidWord();
+                VarThisMap.put(PropertyNameList.get(i), NewName);
             }
+            PropertyMap.put(PropertyNameList.get(i), NewName);
+        }
+        if (Prop == 1) {
             node.visit(new getProperty());
-            for(int i=PropertyStrList.length()-1;i>=0;i--){
-                if(PropertyStrList.charAt(i)=='1'){
-                    ((StringLiteral)StringList.get(i)).setValue(PropertyMap.get(((StringLiteral)StringList.get(i)).getValue()));
+            for (int i = PropertyStrList.length() - 1; i >= 0; i--) {
+                if (PropertyStrList.charAt(i) == '1') {
+                    ((StringLiteral) StringList.get(i)).setValue(PropertyMap.get(((StringLiteral) StringList.get(i)).getValue()));
                 }
             }
         }

@@ -118,6 +118,10 @@ function submitForm() {
     for (var i = 0; i < elements1.length; i++)
         propertyNames += elements1[i].getAttribute('unchecked') === "checked" ? "1" : "0";
 
+    //如果任何的属性名都没有勾选，则不做属性名混淆
+    if (propertyNames.length == 0)
+        propertyName = 0;
+
     var strings = "";
     var elements2 = document.getElementsByName('chbStrings');
     for (var j = 0; j < elements2.length; j++)
