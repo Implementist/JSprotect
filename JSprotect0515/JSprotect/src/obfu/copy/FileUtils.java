@@ -15,7 +15,8 @@ public abstract class FileUtils {
      * 服务器所在盘符
      * TODO:部署时更改盘符即可
      */
-    private static final String DRIVE = "C:";
+    private static final String DRIVE = "C" +
+            ":";
 
     /**
      * Tomcat服务器ROOT文件夹的绝对路径

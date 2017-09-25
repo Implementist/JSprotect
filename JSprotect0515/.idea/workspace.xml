@@ -8,12 +8,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6b7f517f-0037-445e-b011-c19abb60119a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/deleteProject.jsp" afterPath="$PROJECT_DIR$/JSprotect/web/deleteProject.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" afterPath="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js" afterPath="$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSprotect/web/lib/decrypt.js" afterPath="$PROJECT_DIR$/JSprotect/web/lib/decrypt.js" />
     </list>
     <ignored path="JSprotect0515.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,231 +46,7 @@
     <favorites_list name="JSprotect0515" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CreateNewProject.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="174" column="73" lean-forward="true" selection-start-line="174" selection-start-column="73" selection-end-line="174" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/web/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="97" column="35" lean-forward="false" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProjectUtils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/web/js/ProjectUtils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deleteProject.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/web/deleteProject.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UploadFile.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/web/UploadFile.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="130" column="42" lean-forward="false" selection-start-line="130" selection-start-column="42" selection-end-line="130" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="83" column="20" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateNewProjectPageUtils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="147" column="55" lean-forward="true" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToElement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding>
-                <element signature="e#343#351#0" expanded="true" />
-                <element signature="e#416#424#0" expanded="true" />
-                <element signature="e#493#501#0" expanded="true" />
-                <element signature="e#550#558#0" expanded="true" />
-                <element signature="e#615#624#0" expanded="true" />
-                <element signature="e#684#692#0" expanded="true" />
-                <element signature="e#755#763#0" expanded="true" />
-                <element signature="e#828#837#0" expanded="true" />
-                <element signature="e#893#902#0" expanded="true" />
-                <element signature="e#958#966#0" expanded="true" />
-                <element signature="e#1011#1019#0" expanded="true" />
-                <element signature="e#1076#1085#0" expanded="true" />
-                <element signature="e#1155#1164#0" expanded="true" />
-                <element signature="e#1228#1237#0" expanded="true" />
-                <element signature="e#1307#1315#0" expanded="true" />
-                <element signature="e#1382#1390#0" expanded="true" />
-                <element signature="e#1451#1459#0" expanded="true" />
-                <element signature="e#1521#1529#0" expanded="true" />
-                <element signature="e#1590#1598#0" expanded="true" />
-                <element signature="e#1664#1672#0" expanded="true" />
-                <element signature="e#1742#1757#0" expanded="true" />
-                <element signature="e#1825#1834#0" expanded="true" />
-                <element signature="e#1928#1937#0" expanded="true" />
-                <element signature="e#2018#2027#0" expanded="true" />
-                <element signature="e#2106#2115#0" expanded="true" />
-                <element signature="e#2198#2207#0" expanded="true" />
-                <element signature="e#2290#2299#0" expanded="true" />
-                <element signature="e#2388#2397#0" expanded="true" />
-                <element signature="e#2513#2522#0" expanded="true" />
-                <element signature="e#2618#2627#0" expanded="true" />
-                <element signature="e#2723#2732#0" expanded="true" />
-                <element signature="e#2804#2813#0" expanded="true" />
-                <element signature="e#2884#2893#0" expanded="true" />
-                <element signature="e#2983#2992#0" expanded="true" />
-                <element signature="e#3062#3071#0" expanded="true" />
-                <element signature="e#3142#3151#0" expanded="true" />
-                <element signature="e#3220#3229#0" expanded="true" />
-                <element signature="e#3295#3304#0" expanded="true" />
-                <element signature="e#3366#3374#0" expanded="true" />
-                <element signature="e#3448#3463#0" expanded="true" />
-                <element signature="e#3522#3530#0" expanded="true" />
-                <element signature="e#3597#3605#0" expanded="true" />
-                <element signature="e#3723#3732#0" expanded="true" />
-                <element signature="e#3947#3955#0" expanded="true" />
-                <element signature="e#4011#4019#0" expanded="true" />
-                <element signature="e#4229#4237#0" expanded="true" />
-                <element signature="e#7297#7298#0" expanded="true" />
-                <element signature="e#7330#7331#0" expanded="true" />
-                <element signature="e#7725#7726#0" expanded="true" />
-                <element signature="e#7751#7752#0" expanded="true" />
-                <element signature="e#9699#9700#0" expanded="true" />
-                <element signature="e#9740#9741#0" expanded="true" />
-                <element signature="e#31627#31644#0" expanded="true" />
-                <element signature="e#31720#31728#0" expanded="true" />
-                <element signature="e#32039#32048#0" expanded="true" />
-                <element signature="e#33211#33232#0" expanded="true" />
-                <element signature="e#37311#37332#0" expanded="true" />
-                <element signature="e#40127#40148#0" expanded="true" />
-                <element signature="e#46535#46556#0" expanded="true" />
-                <element signature="e#63487#63508#0" expanded="true" />
-                <element signature="e#64192#64201#0" expanded="true" />
-                <element signature="e#68777#68786#0" expanded="true" />
-                <element signature="e#74317#74338#0" expanded="true" />
-                <element signature="e#76855#76863#0" expanded="true" />
-                <element signature="e#77226#77247#0" expanded="true" />
-                <element signature="e#80108#80123#0" expanded="true" />
-                <element signature="e#88111#88126#0" expanded="true" />
-                <element signature="e#91482#91497#0" expanded="true" />
-                <element signature="e#99211#99238#0" expanded="true" />
-                <element signature="e#99303#99330#0" expanded="true" />
-                <element signature="e#99409#99441#0" expanded="true" />
-                <element signature="e#99490#99499#0" expanded="true" />
-                <element signature="e#99577#99593#0" expanded="true" />
-                <element signature="e#99650#99659#0" expanded="true" />
-                <element signature="e#99716#99724#0" expanded="true" />
-                <element signature="e#99781#99796#0" expanded="true" />
-                <element signature="e#99845#99846#0" expanded="true" />
-                <element signature="e#99873#99874#0" expanded="true" />
-                <element signature="e#99972#99980#0" expanded="true" />
-                <element signature="e#100386#100394#0" expanded="true" />
-                <element signature="e#101030#101038#0" expanded="true" />
-                <element signature="e#101862#101871#0" expanded="true" />
-                <element signature="e#101919#101927#0" expanded="true" />
-                <element signature="e#102007#102016#0" expanded="true" />
-                <element signature="e#102736#102744#0" expanded="true" />
-                <element signature="e#104174#104183#0" expanded="true" />
-                <element signature="e#105194#105203#0" expanded="true" />
-                <element signature="e#106198#106207#0" expanded="true" />
-                <element signature="e#108861#108862#0" expanded="true" />
-                <element signature="e#108892#108893#0" expanded="true" />
-                <element signature="e#108950#108959#0" expanded="true" />
-                <element signature="e#109034#109042#0" expanded="true" />
-                <element signature="e#109188#109197#0" expanded="true" />
-                <element signature="e#112681#112682#0" expanded="true" />
-                <element signature="e#112714#112715#0" expanded="true" />
-                <element signature="e#113951#113959#0" expanded="true" />
-                <element signature="e#114130#114139#0" expanded="true" />
-                <element signature="e#114210#114219#0" expanded="true" />
-                <element signature="e#114292#114307#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="decrypt.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSprotect/web/lib/decrypt.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FunNameAndParams.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="362" column="5" lean-forward="false" selection-start-line="362" selection-start-column="5" selection-end-line="362" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#180#196#0" expanded="true" />
-                <element signature="e#268#284#0" expanded="true" />
-                <element signature="e#348#356#0" expanded="true" />
-                <element signature="e#413#421#0" expanded="true" />
-                <element signature="e#470#479#0" expanded="true" />
-                <element signature="e#532#541#0" expanded="true" />
-                <element signature="e#626#635#0" expanded="true" />
-                <element signature="e#693#702#0" expanded="true" />
-                <element signature="e#873#893#0" expanded="true" />
-                <element signature="e#944#953#0" expanded="true" />
-                <element signature="e#1002#1010#0" expanded="true" />
-                <element signature="e#1186#1194#0" expanded="true" />
-                <element signature="e#7163#7171#0" expanded="true" />
-                <element signature="e#7988#7997#0" expanded="true" />
-                <element signature="e#11542#11543#0" expanded="true" />
-                <element signature="e#11571#11572#0" expanded="true" />
-                <element signature="e#11624#11633#0" expanded="true" />
-                <element signature="e#14548#14549#0" expanded="true" />
-                <element signature="e#14581#14582#0" expanded="true" />
-                <element signature="e#14733#14742#0" expanded="true" />
-                <element signature="e#15461#15469#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -285,9 +60,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>comp</find>
-      <find>projectI</find>
-      <find>getAnti</find>
       <find>fi</find>
       <find>parent</find>
       <find>Syste</find>
@@ -315,6 +87,9 @@
       <find>FileUtils</find>
       <find>ifr</find>
       <find>Analyze</find>
+      <find>compile</find>
+      <find>visit</find>
+      <find>AssNames</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -357,10 +132,8 @@
         <option value="$PROJECT_DIR$/JSprotect/web/doUpload.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/WebPack.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/node_modules/.bin/webpack.config.js" />
-        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/a.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/b.jsp" />
-        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/compress.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/test.java" />
         <option value="C:/XAMPP/tomcat/webapps/ROOT/node_modules/.bin/a.js" />
@@ -378,15 +151,17 @@
         <option value="$USER_HOME$/Desktop/test.js" />
         <option value="$PROJECT_DIR$/JSprotect/src/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty_NEW.java" />
-        <option value="$PROJECT_DIR$/JSprotect/web/UploadFile.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp" />
         <option value="$PROJECT_DIR$/JSprotect/web/js/uupLoadProject.js" />
-        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/deleteProject.jsp" />
-        <option value="$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js" />
-        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" />
         <option value="$PROJECT_DIR$/JSprotect/web/lib/decrypt.js" />
         <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java" />
+        <option value="$PROJECT_DIR$/JSprotect/web/UploadFile.jsp" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java" />
+        <option value="$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty.java" />
+        <option value="$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java" />
       </list>
     </option>
   </component>
@@ -442,9 +217,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -485,6 +258,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -543,7 +318,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.temp">
+  <component name="RunManager" selected="Tomcat Server.JSprotect/CreateNewProject.jsp">
     <configuration name="CreateNewProject.jsp" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/CreateNewProject.jsp" />
     <configuration default="false" name="CreateNewProject.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 7.0.56" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/CreateNewProject.jsp" />
@@ -636,7 +411,7 @@
       <module name="JSprotect" />
       <envs />
     </configuration>
-    <configuration name="JSprotect/CreateNewProject.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.56" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:/Program Files/Java/jre1.8.0_131">
+    <configuration name="JSprotect/CreateNewProject.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.56" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="E:\Java\jdk1.8.0_131\jre">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="JSprotect">
@@ -1347,11 +1122,13 @@
       <workItem from="1505994035977" duration="844000" />
       <workItem from="1505995851110" duration="769000" />
       <workItem from="1506080646911" duration="6543000" />
+      <workItem from="1506216670129" duration="49000" />
+      <workItem from="1506324175175" duration="7488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="510617000" />
+    <option name="totallyTimeSpent" value="518154000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1366,30 +1143,29 @@
     <frame x="-8" y="-8" width="1300" height="980" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32560834" sideWeight="0.315625" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39165702" sideWeight="0.7664577" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32402235" sideWeight="0.4978678" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32560834" sideWeight="0.315625" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29620853" sideWeight="0.775" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908458" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17903225" sideWeight="0.49538106" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18064517" sideWeight="0.49538106" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32402235" sideWeight="0.684375" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26796874" sideWeight="0.50461894" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39165702" sideWeight="0.7664577" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1398,6 +1174,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32402235" sideWeight="0.684375" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1457,6 +1234,406 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5220">
+          <caret line="174" column="73" lean-forward="false" selection-start-line="174" selection-start-column="73" selection-end-line="174" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2910">
+          <caret line="97" column="35" lean-forward="false" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/ProjectUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/deleteProject.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/UploadFile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3900">
+          <caret line="130" column="42" lean-forward="false" selection-start-line="130" selection-start-column="42" selection-end-line="130" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2490">
+          <caret line="83" column="20" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4410">
+          <caret line="147" column="55" lean-forward="false" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/lib/decrypt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#349#357#0" expanded="true" />
+            <element signature="e#424#432#0" expanded="true" />
+            <element signature="e#503#511#0" expanded="true" />
+            <element signature="e#562#570#0" expanded="true" />
+            <element signature="e#629#638#0" expanded="true" />
+            <element signature="e#700#708#0" expanded="true" />
+            <element signature="e#773#781#0" expanded="true" />
+            <element signature="e#848#857#0" expanded="true" />
+            <element signature="e#915#924#0" expanded="true" />
+            <element signature="e#982#990#0" expanded="true" />
+            <element signature="e#1037#1045#0" expanded="true" />
+            <element signature="e#1104#1113#0" expanded="true" />
+            <element signature="e#1185#1194#0" expanded="true" />
+            <element signature="e#1260#1269#0" expanded="true" />
+            <element signature="e#1341#1349#0" expanded="true" />
+            <element signature="e#1418#1426#0" expanded="true" />
+            <element signature="e#1489#1497#0" expanded="true" />
+            <element signature="e#1561#1569#0" expanded="true" />
+            <element signature="e#1632#1640#0" expanded="true" />
+            <element signature="e#1708#1716#0" expanded="true" />
+            <element signature="e#1788#1804#0" expanded="true" />
+            <element signature="e#1874#1883#0" expanded="true" />
+            <element signature="e#1979#1988#0" expanded="true" />
+            <element signature="e#2071#2080#0" expanded="true" />
+            <element signature="e#2161#2170#0" expanded="true" />
+            <element signature="e#2255#2264#0" expanded="true" />
+            <element signature="e#2348#2357#0" expanded="true" />
+            <element signature="e#2448#2457#0" expanded="true" />
+            <element signature="e#2575#2584#0" expanded="true" />
+            <element signature="e#2682#2691#0" expanded="true" />
+            <element signature="e#2789#2798#0" expanded="true" />
+            <element signature="e#2872#2881#0" expanded="true" />
+            <element signature="e#2954#2963#0" expanded="true" />
+            <element signature="e#3055#3064#0" expanded="true" />
+            <element signature="e#3136#3145#0" expanded="true" />
+            <element signature="e#3218#3227#0" expanded="true" />
+            <element signature="e#3298#3307#0" expanded="true" />
+            <element signature="e#3375#3384#0" expanded="true" />
+            <element signature="e#3448#3456#0" expanded="true" />
+            <element signature="e#3533#3549#0" expanded="true" />
+            <element signature="e#3610#3618#0" expanded="true" />
+            <element signature="e#3687#3695#0" expanded="true" />
+            <element signature="e#3815#3824#0" expanded="true" />
+            <element signature="e#4036#4044#0" expanded="true" />
+            <element signature="e#4102#4110#0" expanded="true" />
+            <element signature="e#4326#4334#0" expanded="true" />
+            <element signature="e#7408#7409#0" expanded="true" />
+            <element signature="e#7441#7442#0" expanded="true" />
+            <element signature="e#7838#7839#0" expanded="true" />
+            <element signature="e#7866#7867#0" expanded="true" />
+            <element signature="e#9847#9848#0" expanded="true" />
+            <element signature="e#9888#9889#0" expanded="true" />
+            <element signature="e#32500#32518#0" expanded="true" />
+            <element signature="e#32597#32605#0" expanded="true" />
+            <element signature="e#32934#32943#0" expanded="true" />
+            <element signature="e#34133#34154#0" expanded="true" />
+            <element signature="e#38364#38385#0" expanded="true" />
+            <element signature="e#41243#41264#0" expanded="true" />
+            <element signature="e#47770#47791#0" expanded="true" />
+            <element signature="e#65279#65300#0" expanded="true" />
+            <element signature="e#66003#66012#0" expanded="true" />
+            <element signature="e#70677#70686#0" expanded="true" />
+            <element signature="e#76336#76357#0" expanded="true" />
+            <element signature="e#78950#78958#0" expanded="true" />
+            <element signature="e#79340#79361#0" expanded="true" />
+            <element signature="e#82272#82288#0" expanded="true" />
+            <element signature="e#90450#90466#0" expanded="true" />
+            <element signature="e#93908#93924#0" expanded="true" />
+            <element signature="e#101848#101877#0" expanded="true" />
+            <element signature="e#101946#101975#0" expanded="true" />
+            <element signature="e#102058#102092#0" expanded="true" />
+            <element signature="e#102143#102152#0" expanded="true" />
+            <element signature="e#102235#102252#0" expanded="true" />
+            <element signature="e#102311#102320#0" expanded="true" />
+            <element signature="e#102379#102387#0" expanded="true" />
+            <element signature="e#102447#102463#0" expanded="true" />
+            <element signature="e#102513#102514#0" expanded="true" />
+            <element signature="e#102541#102542#0" expanded="true" />
+            <element signature="e#102643#102651#0" expanded="true" />
+            <element signature="e#103068#103076#0" expanded="true" />
+            <element signature="e#103749#103757#0" expanded="true" />
+            <element signature="e#104643#104652#0" expanded="true" />
+            <element signature="e#104702#104710#0" expanded="true" />
+            <element signature="e#104794#104803#0" expanded="true" />
+            <element signature="e#105571#105579#0" expanded="true" />
+            <element signature="e#107054#107063#0" expanded="true" />
+            <element signature="e#108103#108112#0" expanded="true" />
+            <element signature="e#109132#109141#0" expanded="true" />
+            <element signature="e#111876#111877#0" expanded="true" />
+            <element signature="e#111907#111908#0" expanded="true" />
+            <element signature="e#111964#111973#0" expanded="true" />
+            <element signature="e#112050#112058#0" expanded="true" />
+            <element signature="e#112206#112215#0" expanded="true" />
+            <element signature="e#115811#115812#0" expanded="true" />
+            <element signature="e#115844#115845#0" expanded="true" />
+            <element signature="e#117115#117123#0" expanded="true" />
+            <element signature="e#117296#117305#0" expanded="true" />
+            <element signature="e#117378#117387#0" expanded="true" />
+            <element signature="e#117463#117479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11130">
+          <caret line="377" column="32" lean-forward="true" selection-start-line="377" selection-start-column="32" selection-end-line="377" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#180#196#0" expanded="true" />
+            <element signature="e#268#284#0" expanded="true" />
+            <element signature="e#348#356#0" expanded="true" />
+            <element signature="e#413#421#0" expanded="true" />
+            <element signature="e#470#479#0" expanded="true" />
+            <element signature="e#532#541#0" expanded="true" />
+            <element signature="e#626#635#0" expanded="true" />
+            <element signature="e#693#702#0" expanded="true" />
+            <element signature="e#873#893#0" expanded="true" />
+            <element signature="e#944#953#0" expanded="true" />
+            <element signature="e#1002#1010#0" expanded="true" />
+            <element signature="e#1186#1194#0" expanded="true" />
+            <element signature="e#7163#7171#0" expanded="true" />
+            <element signature="e#7988#7997#0" expanded="true" />
+            <element signature="e#11624#11633#0" expanded="true" />
+            <element signature="e#14733#14742#0" expanded="true" />
+            <element signature="e#15461#15469#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5220">
+          <caret line="174" column="73" lean-forward="false" selection-start-line="174" selection-start-column="73" selection-end-line="174" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2910">
+          <caret line="97" column="35" lean-forward="false" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/ProjectUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/deleteProject.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/UploadFile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3900">
+          <caret line="130" column="42" lean-forward="false" selection-start-line="130" selection-start-column="42" selection-end-line="130" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2490">
+          <caret line="83" column="20" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4410">
+          <caret line="147" column="55" lean-forward="true" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#349#357#0" expanded="true" />
+            <element signature="e#424#432#0" expanded="true" />
+            <element signature="e#503#511#0" expanded="true" />
+            <element signature="e#562#570#0" expanded="true" />
+            <element signature="e#629#638#0" expanded="true" />
+            <element signature="e#700#708#0" expanded="true" />
+            <element signature="e#773#781#0" expanded="true" />
+            <element signature="e#848#857#0" expanded="true" />
+            <element signature="e#915#924#0" expanded="true" />
+            <element signature="e#982#990#0" expanded="true" />
+            <element signature="e#1037#1045#0" expanded="true" />
+            <element signature="e#1104#1113#0" expanded="true" />
+            <element signature="e#1185#1194#0" expanded="true" />
+            <element signature="e#1260#1269#0" expanded="true" />
+            <element signature="e#1341#1349#0" expanded="true" />
+            <element signature="e#1418#1426#0" expanded="true" />
+            <element signature="e#1489#1497#0" expanded="true" />
+            <element signature="e#1561#1569#0" expanded="true" />
+            <element signature="e#1632#1640#0" expanded="true" />
+            <element signature="e#1708#1716#0" expanded="true" />
+            <element signature="e#1788#1804#0" expanded="true" />
+            <element signature="e#1874#1883#0" expanded="true" />
+            <element signature="e#1979#1988#0" expanded="true" />
+            <element signature="e#2071#2080#0" expanded="true" />
+            <element signature="e#2161#2170#0" expanded="true" />
+            <element signature="e#2255#2264#0" expanded="true" />
+            <element signature="e#2348#2357#0" expanded="true" />
+            <element signature="e#2448#2457#0" expanded="true" />
+            <element signature="e#2575#2584#0" expanded="true" />
+            <element signature="e#2682#2691#0" expanded="true" />
+            <element signature="e#2789#2798#0" expanded="true" />
+            <element signature="e#2872#2881#0" expanded="true" />
+            <element signature="e#2954#2963#0" expanded="true" />
+            <element signature="e#3055#3064#0" expanded="true" />
+            <element signature="e#3136#3145#0" expanded="true" />
+            <element signature="e#3218#3227#0" expanded="true" />
+            <element signature="e#3298#3307#0" expanded="true" />
+            <element signature="e#3375#3384#0" expanded="true" />
+            <element signature="e#3448#3456#0" expanded="true" />
+            <element signature="e#3533#3549#0" expanded="true" />
+            <element signature="e#3610#3618#0" expanded="true" />
+            <element signature="e#3687#3695#0" expanded="true" />
+            <element signature="e#3815#3824#0" expanded="true" />
+            <element signature="e#4036#4044#0" expanded="true" />
+            <element signature="e#4102#4110#0" expanded="true" />
+            <element signature="e#4326#4334#0" expanded="true" />
+            <element signature="e#7408#7409#0" expanded="true" />
+            <element signature="e#7441#7442#0" expanded="true" />
+            <element signature="e#7838#7839#0" expanded="true" />
+            <element signature="e#7866#7867#0" expanded="true" />
+            <element signature="e#9847#9848#0" expanded="true" />
+            <element signature="e#9888#9889#0" expanded="true" />
+            <element signature="e#32500#32518#0" expanded="true" />
+            <element signature="e#32597#32605#0" expanded="true" />
+            <element signature="e#32934#32943#0" expanded="true" />
+            <element signature="e#34133#34154#0" expanded="true" />
+            <element signature="e#38364#38385#0" expanded="true" />
+            <element signature="e#41243#41264#0" expanded="true" />
+            <element signature="e#47770#47791#0" expanded="true" />
+            <element signature="e#65279#65300#0" expanded="true" />
+            <element signature="e#66003#66012#0" expanded="true" />
+            <element signature="e#70677#70686#0" expanded="true" />
+            <element signature="e#76336#76357#0" expanded="true" />
+            <element signature="e#78950#78958#0" expanded="true" />
+            <element signature="e#79340#79361#0" expanded="true" />
+            <element signature="e#82272#82288#0" expanded="true" />
+            <element signature="e#90450#90466#0" expanded="true" />
+            <element signature="e#93908#93924#0" expanded="true" />
+            <element signature="e#101848#101877#0" expanded="true" />
+            <element signature="e#101946#101975#0" expanded="true" />
+            <element signature="e#102058#102092#0" expanded="true" />
+            <element signature="e#102143#102152#0" expanded="true" />
+            <element signature="e#102235#102252#0" expanded="true" />
+            <element signature="e#102311#102320#0" expanded="true" />
+            <element signature="e#102379#102387#0" expanded="true" />
+            <element signature="e#102447#102463#0" expanded="true" />
+            <element signature="e#102513#102514#0" expanded="true" />
+            <element signature="e#102541#102542#0" expanded="true" />
+            <element signature="e#102643#102651#0" expanded="true" />
+            <element signature="e#103068#103076#0" expanded="true" />
+            <element signature="e#103749#103757#0" expanded="true" />
+            <element signature="e#104643#104652#0" expanded="true" />
+            <element signature="e#104702#104710#0" expanded="true" />
+            <element signature="e#104794#104803#0" expanded="true" />
+            <element signature="e#105571#105579#0" expanded="true" />
+            <element signature="e#107054#107063#0" expanded="true" />
+            <element signature="e#108103#108112#0" expanded="true" />
+            <element signature="e#109132#109141#0" expanded="true" />
+            <element signature="e#111876#111877#0" expanded="true" />
+            <element signature="e#111907#111908#0" expanded="true" />
+            <element signature="e#111964#111973#0" expanded="true" />
+            <element signature="e#112050#112058#0" expanded="true" />
+            <element signature="e#112206#112215#0" expanded="true" />
+            <element signature="e#115811#115812#0" expanded="true" />
+            <element signature="e#115844#115845#0" expanded="true" />
+            <element signature="e#117115#117123#0" expanded="true" />
+            <element signature="e#117296#117305#0" expanded="true" />
+            <element signature="e#117378#117387#0" expanded="true" />
+            <element signature="e#117463#117479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/lib/decrypt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10860">
+          <caret line="362" column="5" lean-forward="false" selection-start-line="362" selection-start-column="5" selection-end-line="362" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#180#196#0" expanded="true" />
+            <element signature="e#268#284#0" expanded="true" />
+            <element signature="e#348#356#0" expanded="true" />
+            <element signature="e#413#421#0" expanded="true" />
+            <element signature="e#470#479#0" expanded="true" />
+            <element signature="e#532#541#0" expanded="true" />
+            <element signature="e#626#635#0" expanded="true" />
+            <element signature="e#693#702#0" expanded="true" />
+            <element signature="e#873#893#0" expanded="true" />
+            <element signature="e#944#953#0" expanded="true" />
+            <element signature="e#1002#1010#0" expanded="true" />
+            <element signature="e#1186#1194#0" expanded="true" />
+            <element signature="e#7163#7171#0" expanded="true" />
+            <element signature="e#7988#7997#0" expanded="true" />
+            <element signature="e#11624#11633#0" expanded="true" />
+            <element signature="e#14733#14742#0" expanded="true" />
+            <element signature="e#15461#15469#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9750">
           <caret line="325" column="6" lean-forward="false" selection-start-line="325" selection-start-column="6" selection-end-line="325" selection-end-column="6" />
           <folding />
@@ -1483,7 +1660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1551,13 +1727,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3090">
           <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
+        <state relative-caret-position="2910">
           <caret line="97" column="35" lean-forward="false" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
           <folding />
         </state>
@@ -1579,151 +1754,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="83" column="20" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/web/deleteProject.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="630">
           <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/UploadFile.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="130" column="42" lean-forward="false" selection-start-line="130" selection-start-column="42" selection-end-line="130" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/web/CreateNewProject.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="174" column="73" lean-forward="true" selection-start-line="174" selection-start-column="73" selection-end-line="174" selection-end-column="73" />
+        <state relative-caret-position="5220">
+          <caret line="174" column="73" lean-forward="false" selection-start-line="174" selection-start-column="73" selection-end-line="174" selection-end-column="73" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="147" column="55" lean-forward="true" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#343#351#0" expanded="true" />
-            <element signature="e#416#424#0" expanded="true" />
-            <element signature="e#493#501#0" expanded="true" />
-            <element signature="e#550#558#0" expanded="true" />
-            <element signature="e#615#624#0" expanded="true" />
-            <element signature="e#684#692#0" expanded="true" />
-            <element signature="e#755#763#0" expanded="true" />
-            <element signature="e#828#837#0" expanded="true" />
-            <element signature="e#893#902#0" expanded="true" />
-            <element signature="e#958#966#0" expanded="true" />
-            <element signature="e#1011#1019#0" expanded="true" />
-            <element signature="e#1076#1085#0" expanded="true" />
-            <element signature="e#1155#1164#0" expanded="true" />
-            <element signature="e#1228#1237#0" expanded="true" />
-            <element signature="e#1307#1315#0" expanded="true" />
-            <element signature="e#1382#1390#0" expanded="true" />
-            <element signature="e#1451#1459#0" expanded="true" />
-            <element signature="e#1521#1529#0" expanded="true" />
-            <element signature="e#1590#1598#0" expanded="true" />
-            <element signature="e#1664#1672#0" expanded="true" />
-            <element signature="e#1742#1757#0" expanded="true" />
-            <element signature="e#1825#1834#0" expanded="true" />
-            <element signature="e#1928#1937#0" expanded="true" />
-            <element signature="e#2018#2027#0" expanded="true" />
-            <element signature="e#2106#2115#0" expanded="true" />
-            <element signature="e#2198#2207#0" expanded="true" />
-            <element signature="e#2290#2299#0" expanded="true" />
-            <element signature="e#2388#2397#0" expanded="true" />
-            <element signature="e#2513#2522#0" expanded="true" />
-            <element signature="e#2618#2627#0" expanded="true" />
-            <element signature="e#2723#2732#0" expanded="true" />
-            <element signature="e#2804#2813#0" expanded="true" />
-            <element signature="e#2884#2893#0" expanded="true" />
-            <element signature="e#2983#2992#0" expanded="true" />
-            <element signature="e#3062#3071#0" expanded="true" />
-            <element signature="e#3142#3151#0" expanded="true" />
-            <element signature="e#3220#3229#0" expanded="true" />
-            <element signature="e#3295#3304#0" expanded="true" />
-            <element signature="e#3366#3374#0" expanded="true" />
-            <element signature="e#3448#3463#0" expanded="true" />
-            <element signature="e#3522#3530#0" expanded="true" />
-            <element signature="e#3597#3605#0" expanded="true" />
-            <element signature="e#3723#3732#0" expanded="true" />
-            <element signature="e#3947#3955#0" expanded="true" />
-            <element signature="e#4011#4019#0" expanded="true" />
-            <element signature="e#4229#4237#0" expanded="true" />
-            <element signature="e#7297#7298#0" expanded="true" />
-            <element signature="e#7330#7331#0" expanded="true" />
-            <element signature="e#7725#7726#0" expanded="true" />
-            <element signature="e#7751#7752#0" expanded="true" />
-            <element signature="e#9699#9700#0" expanded="true" />
-            <element signature="e#9740#9741#0" expanded="true" />
-            <element signature="e#31627#31644#0" expanded="true" />
-            <element signature="e#31720#31728#0" expanded="true" />
-            <element signature="e#32039#32048#0" expanded="true" />
-            <element signature="e#33211#33232#0" expanded="true" />
-            <element signature="e#37311#37332#0" expanded="true" />
-            <element signature="e#40127#40148#0" expanded="true" />
-            <element signature="e#46535#46556#0" expanded="true" />
-            <element signature="e#63487#63508#0" expanded="true" />
-            <element signature="e#64192#64201#0" expanded="true" />
-            <element signature="e#68777#68786#0" expanded="true" />
-            <element signature="e#74317#74338#0" expanded="true" />
-            <element signature="e#76855#76863#0" expanded="true" />
-            <element signature="e#77226#77247#0" expanded="true" />
-            <element signature="e#80108#80123#0" expanded="true" />
-            <element signature="e#88111#88126#0" expanded="true" />
-            <element signature="e#91482#91497#0" expanded="true" />
-            <element signature="e#99211#99238#0" expanded="true" />
-            <element signature="e#99303#99330#0" expanded="true" />
-            <element signature="e#99409#99441#0" expanded="true" />
-            <element signature="e#99490#99499#0" expanded="true" />
-            <element signature="e#99577#99593#0" expanded="true" />
-            <element signature="e#99650#99659#0" expanded="true" />
-            <element signature="e#99716#99724#0" expanded="true" />
-            <element signature="e#99781#99796#0" expanded="true" />
-            <element signature="e#99845#99846#0" expanded="true" />
-            <element signature="e#99873#99874#0" expanded="true" />
-            <element signature="e#99972#99980#0" expanded="true" />
-            <element signature="e#100386#100394#0" expanded="true" />
-            <element signature="e#101030#101038#0" expanded="true" />
-            <element signature="e#101862#101871#0" expanded="true" />
-            <element signature="e#101919#101927#0" expanded="true" />
-            <element signature="e#102007#102016#0" expanded="true" />
-            <element signature="e#102736#102744#0" expanded="true" />
-            <element signature="e#104174#104183#0" expanded="true" />
-            <element signature="e#105194#105203#0" expanded="true" />
-            <element signature="e#106198#106207#0" expanded="true" />
-            <element signature="e#108861#108862#0" expanded="true" />
-            <element signature="e#108892#108893#0" expanded="true" />
-            <element signature="e#108950#108959#0" expanded="true" />
-            <element signature="e#109034#109042#0" expanded="true" />
-            <element signature="e#109188#109197#0" expanded="true" />
-            <element signature="e#112681#112682#0" expanded="true" />
-            <element signature="e#112714#112715#0" expanded="true" />
-            <element signature="e#113951#113959#0" expanded="true" />
-            <element signature="e#114130#114139#0" expanded="true" />
-            <element signature="e#114210#114219#0" expanded="true" />
-            <element signature="e#114292#114307#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1735,10 +1778,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/compile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-420">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/DealProperty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2340">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#18742#18743#0" expanded="true" />
+            <element signature="e#18775#18776#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FunNameAndParams.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="362" column="5" lean-forward="false" selection-start-line="362" selection-start-column="5" selection-end-line="362" selection-end-column="5" />
+        <state relative-caret-position="735">
+          <caret line="377" column="32" lean-forward="false" selection-start-line="377" selection-start-column="32" selection-end-line="377" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#180#196#0" expanded="true" />
@@ -1755,14 +1817,189 @@
             <element signature="e#1186#1194#0" expanded="true" />
             <element signature="e#7163#7171#0" expanded="true" />
             <element signature="e#7988#7997#0" expanded="true" />
-            <element signature="e#11542#11543#0" expanded="true" />
-            <element signature="e#11571#11572#0" expanded="true" />
             <element signature="e#11624#11633#0" expanded="true" />
-            <element signature="e#14548#14549#0" expanded="true" />
-            <element signature="e#14581#14582#0" expanded="true" />
             <element signature="e#14733#14742#0" expanded="true" />
             <element signature="e#15461#15469#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/testpage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-690">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#200#208#0" expanded="true" />
+            <element signature="e#258#266#0" expanded="true" />
+            <element signature="e#317#325#0" expanded="true" />
+            <element signature="e#382#390#0" expanded="true" />
+            <element signature="e#439#448#0" expanded="true" />
+            <element signature="e#523#532#0" expanded="true" />
+            <element signature="e#590#599#0" expanded="true" />
+            <element signature="e#743#763#0" expanded="true" />
+            <element signature="e#850#870#0" expanded="true" />
+            <element signature="e#935#955#0" expanded="true" />
+            <element signature="e#1037#1057#0" expanded="true" />
+            <element signature="e#1173#1193#0" expanded="true" />
+            <element signature="e#1244#1253#0" expanded="true" />
+            <element signature="e#1302#1310#0" expanded="true" />
+            <element signature="e#1386#1394#0" expanded="true" />
+            <element signature="e#1559#1567#0" expanded="true" />
+            <element signature="e#10324#10332#0" expanded="true" />
+            <element signature="e#11396#11405#0" expanded="true" />
+            <element signature="e#11690#11699#0" expanded="true" />
+            <element signature="e#11915#11924#0" expanded="true" />
+            <element signature="e#12827#12835#0" expanded="true" />
+            <element signature="e#13835#13844#0" expanded="true" />
+            <element signature="e#14129#14138#0" expanded="true" />
+            <element signature="e#31680#31701#0" expanded="true" />
+            <element signature="e#35712#35721#0" expanded="true" />
+            <element signature="e#37406#37414#0" expanded="true" />
+            <element signature="e#37525#37534#0" expanded="true" />
+            <element signature="e#37641#37649#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/ToElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2540">
+          <caret line="2442" column="10" lean-forward="false" selection-start-line="2442" selection-start-column="10" selection-end-line="2442" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#349#357#0" expanded="true" />
+            <element signature="e#424#432#0" expanded="true" />
+            <element signature="e#503#511#0" expanded="true" />
+            <element signature="e#562#570#0" expanded="true" />
+            <element signature="e#629#638#0" expanded="true" />
+            <element signature="e#700#708#0" expanded="true" />
+            <element signature="e#773#781#0" expanded="true" />
+            <element signature="e#848#857#0" expanded="true" />
+            <element signature="e#915#924#0" expanded="true" />
+            <element signature="e#982#990#0" expanded="true" />
+            <element signature="e#1037#1045#0" expanded="true" />
+            <element signature="e#1104#1113#0" expanded="true" />
+            <element signature="e#1185#1194#0" expanded="true" />
+            <element signature="e#1260#1269#0" expanded="true" />
+            <element signature="e#1341#1349#0" expanded="true" />
+            <element signature="e#1418#1426#0" expanded="true" />
+            <element signature="e#1489#1497#0" expanded="true" />
+            <element signature="e#1561#1569#0" expanded="true" />
+            <element signature="e#1632#1640#0" expanded="true" />
+            <element signature="e#1708#1716#0" expanded="true" />
+            <element signature="e#1788#1804#0" expanded="true" />
+            <element signature="e#1874#1883#0" expanded="true" />
+            <element signature="e#1979#1988#0" expanded="true" />
+            <element signature="e#2071#2080#0" expanded="true" />
+            <element signature="e#2161#2170#0" expanded="true" />
+            <element signature="e#2255#2264#0" expanded="true" />
+            <element signature="e#2348#2357#0" expanded="true" />
+            <element signature="e#2448#2457#0" expanded="true" />
+            <element signature="e#2575#2584#0" expanded="true" />
+            <element signature="e#2682#2691#0" expanded="true" />
+            <element signature="e#2789#2798#0" expanded="true" />
+            <element signature="e#2872#2881#0" expanded="true" />
+            <element signature="e#2954#2963#0" expanded="true" />
+            <element signature="e#3055#3064#0" expanded="true" />
+            <element signature="e#3136#3145#0" expanded="true" />
+            <element signature="e#3218#3227#0" expanded="true" />
+            <element signature="e#3298#3307#0" expanded="true" />
+            <element signature="e#3375#3384#0" expanded="true" />
+            <element signature="e#3448#3456#0" expanded="true" />
+            <element signature="e#3533#3549#0" expanded="true" />
+            <element signature="e#3610#3618#0" expanded="true" />
+            <element signature="e#3687#3695#0" expanded="true" />
+            <element signature="e#3815#3824#0" expanded="true" />
+            <element signature="e#4036#4044#0" expanded="true" />
+            <element signature="e#4102#4110#0" expanded="true" />
+            <element signature="e#4326#4334#0" expanded="true" />
+            <element signature="e#7408#7409#0" expanded="true" />
+            <element signature="e#7441#7442#0" expanded="true" />
+            <element signature="e#7838#7839#0" expanded="true" />
+            <element signature="e#7866#7867#0" expanded="true" />
+            <element signature="e#9847#9848#0" expanded="true" />
+            <element signature="e#9888#9889#0" expanded="true" />
+            <element signature="e#32500#32518#0" expanded="true" />
+            <element signature="e#32597#32605#0" expanded="true" />
+            <element signature="e#32934#32943#0" expanded="true" />
+            <element signature="e#34133#34154#0" expanded="true" />
+            <element signature="e#38364#38385#0" expanded="true" />
+            <element signature="e#41243#41264#0" expanded="true" />
+            <element signature="e#47770#47791#0" expanded="true" />
+            <element signature="e#65279#65300#0" expanded="true" />
+            <element signature="e#66003#66012#0" expanded="true" />
+            <element signature="e#70677#70686#0" expanded="true" />
+            <element signature="e#76336#76357#0" expanded="true" />
+            <element signature="e#78950#78958#0" expanded="true" />
+            <element signature="e#79340#79361#0" expanded="true" />
+            <element signature="e#82272#82288#0" expanded="true" />
+            <element signature="e#90450#90466#0" expanded="true" />
+            <element signature="e#93908#93924#0" expanded="true" />
+            <element signature="e#101848#101877#0" expanded="true" />
+            <element signature="e#101946#101975#0" expanded="true" />
+            <element signature="e#102058#102092#0" expanded="true" />
+            <element signature="e#102143#102152#0" expanded="true" />
+            <element signature="e#102235#102252#0" expanded="true" />
+            <element signature="e#102311#102320#0" expanded="true" />
+            <element signature="e#102379#102387#0" expanded="true" />
+            <element signature="e#102447#102463#0" expanded="true" />
+            <element signature="e#102513#102514#0" expanded="true" />
+            <element signature="e#102541#102542#0" expanded="true" />
+            <element signature="e#102643#102651#0" expanded="true" />
+            <element signature="e#103068#103076#0" expanded="true" />
+            <element signature="e#103749#103757#0" expanded="true" />
+            <element signature="e#104643#104652#0" expanded="true" />
+            <element signature="e#104702#104710#0" expanded="true" />
+            <element signature="e#104794#104803#0" expanded="true" />
+            <element signature="e#105571#105579#0" expanded="true" />
+            <element signature="e#107054#107063#0" expanded="true" />
+            <element signature="e#108103#108112#0" expanded="true" />
+            <element signature="e#109132#109141#0" expanded="true" />
+            <element signature="e#111876#111877#0" expanded="true" />
+            <element signature="e#111907#111908#0" expanded="true" />
+            <element signature="e#111964#111973#0" expanded="true" />
+            <element signature="e#112050#112058#0" expanded="true" />
+            <element signature="e#112206#112215#0" expanded="true" />
+            <element signature="e#115811#115812#0" expanded="true" />
+            <element signature="e#115844#115845#0" expanded="true" />
+            <element signature="e#117115#117123#0" expanded="true" />
+            <element signature="e#117296#117305#0" expanded="true" />
+            <element signature="e#117378#117387#0" expanded="true" />
+            <element signature="e#117463#117479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/js/CreateNewProjectPageUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="120" column="28" lean-forward="false" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/web/UploadFile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="91" column="17" lean-forward="false" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSprotect/src/obfu/copy/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2250">
+          <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
